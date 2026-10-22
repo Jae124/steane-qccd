@@ -1,0 +1,323 @@
+"""
+Layer 2 of the thesis stack: logical error rate of one Steane EC round.
+
+Builds on steane_ft.py (layer 1: the flagged EC gadget, verified FT).
+
+What this file does
+-------------------
+1. A Pauli-frame simulator. Every measurement in a noiseless EC round is
+   deterministic (syndrome 0, flag 0), so we only need to track how injected
+   Pauli errors propagate. Exact for Clifford circuits + Pauli noise, and
+   ~100x faster than a tableau simulator. Cross-checked against the tableau
+   simulator from steane_ft.py on every single fault.
+2. A per-location noise model. Every fault location (each reset, CNOT and
+   measurement, in both the flagged round and the bare round) gets its own
+   probability. Today: one global p. Later (layer 3): probabilities derived
+   from the QCCD schedule (idle time, shuttling) are dropped in here.
+3. Malignant-pair counting: enumerate every pair of faults, count the ones that
+   cause a logical error -> exact leading-order coefficient A in p_L ~ A p^2.
+4. Monte Carlo at higher p to validate the A p^2 approximation.
+5. Plot: p_L vs p for the Steane EC round, against a bare physical qubit (p_L = p).
+"""
+
+import itertools
+import json
+import random
+import time
+
+import numpy as np
+
+from steane_ft import (ROUND, SUPPORTS, SUPPORTS_1IDX, stabilizer_circuit,
+                       flagged_decode, standard_decode, syndrome_value,
+                       fault_list, ec_round, prepare_logical, apply_pauli,
+                       output_is_correctable)
+import stim
+
+DATA_MASK = (1 << 7) - 1
+SUPPORT_MASKS = [sum(1 << q for q in s) for s in SUPPORTS]
+
+# Pre-build the 12 circuits (6 flagged, 6 bare)
+CIRCUITS = {
+    ('F', i): stabilizer_circuit(kind, SUPPORTS[k], flagged=True)
+    for i, (kind, k) in enumerate(ROUND)
+}
+CIRCUITS.update({
+    ('B', i): stabilizer_circuit(kind, SUPPORTS[k], flagged=False)
+    for i, (kind, k) in enumerate(ROUND)
+})
+
+
+# ---------------------------------------------------------------------------
+# Pauli-frame simulation of one adaptive EC round
+# ---------------------------------------------------------------------------
+
+def _apply_payload(fx, fz, qubits, payload):
+    for q, p in zip(qubits, payload):
+        bit = 1 << q
+        if p in 'XY':
+            fx ^= bit
+        if p in 'ZY':
+            fz ^= bit
+    return fx, fz
+
+
+def run_ops_frame(fx, fz, ops, faults):
+    """faults: dict op_index -> payload ('XZ', 'X', 'FLIP', ...)."""
+    results = {}
+    for i, op in enumerate(ops):
+        kind = op[0]
+        if kind in ('R', 'RX'):
+            q = op[1]
+            fx &= ~(1 << q)
+            fz &= ~(1 << q)
+            if i in faults:
+                fx, fz = _apply_payload(fx, fz, [q], faults[i])
+        elif kind == 'CX':
+            c, t = op[1], op[2]
+            if (fx >> c) & 1:
+                fx ^= 1 << t
+            if (fz >> t) & 1:
+                fz ^= 1 << c
+            if i in faults:
+                fx, fz = _apply_payload(fx, fz, [c, t], faults[i])
+        else:  # M (Z basis: sees X frame) or MX (X basis: sees Z frame)
+            q = op[1]
+            bit = (fx >> q) & 1 if kind == 'M' else (fz >> q) & 1
+            if faults.get(i) == 'FLIP':
+                bit ^= 1
+            results[op[2]] = bit
+    return fx, fz, results
+
+
+def ec_round_frame(fx, fz, faults):
+    """
+    faults: dict (stage, circuit_index) -> {op_index: payload}
+    stage 'F' = flagged round, 'B' = bare round (only runs if triggered).
+    Returns the data frame after correction.
+    """
+    trigger = None
+    for i, (kind, k) in enumerate(ROUND):
+        fx, fz, r = run_ops_frame(fx, fz, CIRCUITS[('F', i)], faults.get(('F', i), {}))
+        if r['flag'] or r['synd']:
+            trigger = (kind, k, r['flag'])
+            break
+    if trigger is None:
+        return fx, fz
+
+    bits = {'Z': [], 'X': []}
+    for i, (kind, k) in enumerate(ROUND):
+        fx, fz, r = run_ops_frame(fx, fz, CIRCUITS[('B', i)], faults.get(('B', i), {}))
+        bits[kind].append(r['synd'])
+    s_x, s_z = syndrome_value(bits['Z']), syndrome_value(bits['X'])
+
+    kind, k, flag = trigger
+    if flag and kind == 'Z':
+        z_fix, x_fix = flagged_decode(s_z, SUPPORTS[k]), standard_decode(s_x)
+    elif flag and kind == 'X':
+        z_fix, x_fix = standard_decode(s_z), flagged_decode(s_x, SUPPORTS[k])
+    else:
+        z_fix, x_fix = standard_decode(s_z), standard_decode(s_x)
+    for q in x_fix:
+        fx ^= 1 << q
+    for q in z_fix:
+        fz ^= 1 << q
+    return fx, fz
+
+
+def _parity(x):
+    return bin(x).count('1') & 1
+
+
+def logical_failure(fx, fz):
+    """
+    Ideal decoder on the residual data error, then: did a logical X or Z survive?
+    After ideal correction the residual is a stabilizer (even weight) or a
+    logical (odd weight), so overall parity decides.
+    Returns (x_fail, z_fail).
+    """
+    dx, dz = fx & DATA_MASK, fz & DATA_MASK
+    s_x = syndrome_value([_parity(dx & m) for m in SUPPORT_MASKS])
+    s_z = syndrome_value([_parity(dz & m) for m in SUPPORT_MASKS])
+    for q in standard_decode(s_x):
+        dx ^= 1 << q
+    for q in standard_decode(s_z):
+        dz ^= 1 << q
+    return _parity(dx), _parity(dz)
+
+
+# ---------------------------------------------------------------------------
+# Fault locations and the per-location noise model
+# ---------------------------------------------------------------------------
+
+def physical_variants(op):
+    """Fault variants at a location under circuit-level depolarizing noise."""
+    if op[0] == 'R':
+        return ['X']                      # prepared |1> instead of |0>
+    if op[0] == 'RX':
+        return ['Z']                      # prepared |-> instead of |+>
+    if op[0] == 'CX':
+        return [a + b for a, b in itertools.product('IXYZ', repeat=2) if a + b != 'II']
+    return ['FLIP']                       # measurement reports the wrong bit
+
+
+def all_locations():
+    """Every fault location in the gadget: (stage, circuit_index, op_index, op)."""
+    locs = []
+    for stage in ('F', 'B'):
+        for i in range(len(ROUND)):
+            for j, op in enumerate(CIRCUITS[(stage, i)]):
+                locs.append((stage, i, j, op))
+    return locs
+
+
+def loc_type(loc):
+    op = loc[3][0]
+    return '2q' if op == 'CX' else ('reset' if op in ('R', 'RX') else 'meas')
+
+
+class NoiseModel:
+    """
+    Per-location fault probabilities. The interface layer 3 will plug into:
+    replace prob(loc) with schedule-derived values (e.g. add idle/shuttle
+    error for the ions involved at that time step).
+    """
+
+    def __init__(self, p_2q, p_reset=None, p_meas=None):
+        self.p_2q = p_2q
+        self.p_reset = p_2q if p_reset is None else p_reset
+        self.p_meas = p_2q if p_meas is None else p_meas
+
+    def prob(self, loc):
+        op = loc[3]
+        if op[0] == 'CX':
+            return self.p_2q
+        if op[0] in ('R', 'RX'):
+            return self.p_reset
+        return self.p_meas
+
+
+# ---------------------------------------------------------------------------
+# 1. Cross-check frame simulator vs tableau simulator on all single faults
+# ---------------------------------------------------------------------------
+
+def cross_check():
+    mismatches, n = 0, 0
+    for idx in range(len(ROUND)):
+        ops = CIRCUITS[('F', idx)]
+        for fault in fault_list(ops):
+            fx, fz = ec_round_frame(0, 0, {('F', idx): {fault[0]: fault[1]}})
+            xf, zf = logical_failure(fx, fz)
+            for basis, frame_fail in (('0', xf), ('+', zf)):
+                sim = stim.TableauSimulator()
+                prepare_logical(sim, basis)
+                ec_round(sim, fault_at=(idx, fault))
+                tableau_fail = not output_is_correctable(sim, basis)
+                n += 1
+                mismatches += int(bool(frame_fail) != tableau_fail)
+    print(f"Cross-check frame vs tableau simulator: {n} single-fault runs, "
+          f"{mismatches} mismatches")
+    assert mismatches == 0
+
+
+# ---------------------------------------------------------------------------
+# 2. Single faults and malignant pairs
+# ---------------------------------------------------------------------------
+
+def count_faults():
+    locs = all_locations()
+    variants = [physical_variants(l[3]) for l in locs]
+
+    # First order: any single fault that fails would break fault tolerance
+    single_fail = 0
+    for loc, vs in zip(locs, variants):
+        for v in vs:
+            fx, fz = ec_round_frame(0, 0, {(loc[0], loc[1]): {loc[2]: v}})
+            if any(logical_failure(fx, fz)):
+                single_fail += 1
+
+    # Second order: weight each pair by (1/n_variants_i)(1/n_variants_j) so that
+    # p_L ~ A p^2 with every location failing with probability p
+    A = {'X': 0.0, 'Z': 0.0, 'any': 0.0}
+    malignant_pairs = 0
+    per_stage = {}
+    per_type = {}
+    for a, b in itertools.combinations(range(len(locs)), 2):
+        la, lb = locs[a], locs[b]
+        w = 1.0 / (len(variants[a]) * len(variants[b]))
+        for va in variants[a]:
+            for vb in variants[b]:
+                faults = {}
+                faults.setdefault((la[0], la[1]), {})[la[2]] = va
+                faults.setdefault((lb[0], lb[1]), {})[lb[2]] = vb
+                fx, fz = ec_round_frame(0, 0, faults)
+                xf, zf = logical_failure(fx, fz)
+                if xf or zf:
+                    malignant_pairs += 1
+                    A['any'] += w
+                    key = la[0] + lb[0]
+                    per_stage[key] = per_stage.get(key, 0.0) + w
+                    tkey = '*'.join(sorted((loc_type(la), loc_type(lb))))
+                    per_type[tkey] = per_type.get(tkey, 0.0) + w
+                A['X'] += w * xf
+                A['Z'] += w * zf
+
+    n_loc_types = {}
+    for l in locs:
+        n_loc_types[l[3][0]] = n_loc_types.get(l[3][0], 0) + 1
+    return {
+        'n_locations': len(locs),
+        'location_counts': n_loc_types,
+        'single_fault_failures': single_fail,
+        'malignant_pairs': malignant_pairs,
+        'A': A,
+        'A_by_stage_pair': per_stage,
+        'A_by_type_pair': per_type,
+    }
+
+
+# ---------------------------------------------------------------------------
+# 3. Monte Carlo
+# ---------------------------------------------------------------------------
+
+def monte_carlo(noise, shots, rng):
+    locs = all_locations()
+    probs = [noise.prob(l) for l in locs]
+    variants = [physical_variants(l[3]) for l in locs]
+    fails = 0
+    for _ in range(shots):
+        faults = {}
+        for l, p, vs in zip(locs, probs, variants):
+            if rng.random() < p:
+                faults.setdefault((l[0], l[1]), {})[l[2]] = rng.choice(vs)
+        if not faults:
+            continue
+        fx, fz = ec_round_frame(0, 0, faults)
+        if any(logical_failure(fx, fz)):
+            fails += 1
+    return fails
+
+
+if __name__ == '__main__':
+    cross_check()
+
+    t0 = time.time()
+    counts = count_faults()
+    print(f"\nFault counting ({time.time() - t0:.0f} s):")
+    print(json.dumps(counts, indent=2))
+
+    rng = random.Random(2026)
+    mc = []
+    for p in [5e-4, 1e-3, 2e-3, 3e-3, 5e-3, 1e-2, 2e-2, 3e-2, 5e-2, 7e-2, 1e-1]:
+        shots = {5e-4: 3_000_000, 1e-3: 1_500_000, 2e-3: 500_000}.get(
+            p, 200_000 if p < 1e-2 else 50_000)
+        t0 = time.time()
+        f = monte_carlo(NoiseModel(p), shots, rng)
+        pl = f / shots
+        err = np.sqrt(max(pl, 1 / shots) * (1 - pl) / shots)
+        mc.append({'p': p, 'shots': shots, 'fails': f, 'p_L': pl, 'stderr': err})
+        print(f"MC p={p:.0e}: p_L={pl:.3e} +- {err:.1e}  "
+              f"(A p^2 = {counts['A']['any'] * p * p:.3e})  [{time.time() - t0:.0f} s]")
+
+    with open('../results/steane_ec_results.json', 'w') as fh:
+        json.dump({'counts': counts, 'monte_carlo': mc}, fh, indent=2)
+    print("\nWrote results/steane_ec_results.json")
