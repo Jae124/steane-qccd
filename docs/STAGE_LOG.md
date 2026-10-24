@@ -1300,3 +1300,177 @@ Open questions for the human:
 - Review the persistent epsilon_Z difference and the smaller epsilon_tot difference for grouped orders, including the explicitly reported R≥4 results and fit quality. The tested finite windows do not establish grouped-order stationary equivalence.
 - Some fits remain poor after excluding R=2; the report preserves this limitation rather than silently treating a precise finite-window estimate as an asymptotic rate.
 - Stop here. Stage B1 and all later Stage B work await approval.
+
+
+## Stage B1 — Published verified ancilla preparation
+
+Completed B1 only. No full Steane EC round, data/ancilla coupling, B2 decoder, or B3 design comparison was assembled or sampled. The later B3 decisions are recorded below.
+
+### Circuit, derivation and single-fault checks
+
+The fixed gadget is Goto, Scientific Reports **6**, 19578 (2016), [Fig. 1(c)](https://doi.org/10.1038/srep19578); the prompt's arXiv:1610.03309 identifies an unrelated paper. The [publisher correction](https://doi.org/10.1038/s41598-022-06633-6) corrects the volume. [Peham et al., Example 3/Fig. 4](https://doi.org/10.1103/PRXQuantum.6.020330) supplies a further published circuit/dual reference. The annotated implementation is `figures/verified_prep_circuits.png`.
+
+Block-local qubits 0..6 map to physical 7..13; verifier is 14, with data 0..6 reserved and untouched. Start the zero gadget with plus inputs at local 1,2,3 and zero inputs elsewhere. Encoder CNOTs, in execution order, are (1,0), (3,5), (2,6), (1,4), (2,0), (3,6), (1,5), (6,4). The generated X checks have supports 0145, 0246, 3456: their row span equals the frozen code. Verify logical Z on local 0,5,6 using three CNOTs into the verifier and Z readout; accept reported 0. The plus gadget is its complete Hadamard dual: swap reset/readout bases and reverse every CNOT, without adding gates. Each attempt has eight resets, eleven CNOTs and one readout.
+
+Among 141 encoder single-fault payloads, 30 have dangerous weight above one before verification. Modulo code stabilizers these form two cosets, represented by X0X2 (22 payloads) and X0X4 (8); both anticommute with the verifier. The plus case is dual. Dangerous X for zero / Z for plus is reduced modulo code stabilizers only, never modulo a harmful logical operator. All accepted dangerous components have reduced weight at most one.
+
+Universal checks: **1302 faults across six basis/timing geometries; zero violations and zero frame/tableau mismatches**. Positive-channel checks: **3288 faults across all 18 rows; zero violations and mismatches**. The maximum accepted orthogonal component has raw and code-reduced weight **3**, but prepared-state-reduced weight **1** (logical Z stabilizes zero; logical X stabilizes plus). Orthogonal Z on the zero control or X on the plus target does not propagate to the future data block through the intended CNOT direction. This is a component-level preparation result; B2 must still verify the complete EC gadget. Exact failing-fault arrays are empty; no circuit or decoder tuning followed these checks.
+
+### Per-attempt Monte Carlo and pair attribution
+
+Each row uses **5,000,000 independent attempts**. Acceptance is the primary B1 metric. The hazard below is the unconditional probability of verifier acceptance with dangerous component reduced weight >1; it is **not full-EC p_L or memory epsilon**. Raw P2, exact survival-corrected P2 and the mean-rate correction are attribution diagnostics for that same hazard. The survival factor is the product of (1-p_loc) over all other locations. The JSON additionally reports conditional hazards, Wilson 95% intervals, exact finite-rate convolution and all P2/MC ratios and differences in MC standard errors.
+
+| Preset / policy | State | Acceptance MC ± 1σ | Hazard MC ± 1σ | Raw P2 | Survival P2 | Mean survival P2 | Raw / MC | Survival / MC |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| UniformNoise(0.0005) / timing-free | 0 | 0.99459980 ± 3.3e-05 | 6.2e-06 ± 1.1e-06 | 5.181111e-06 | 5.134679e-06 | 5.134679e-06 | 0.836 | 0.828 |
+| UniformNoise(0.0005) / timing-free | + | 0.99461600 ± 3.3e-05 | 5e-06 ± 1e-06 | 5.181111e-06 | 5.134679e-06 | 5.134679e-06 | 1.036 | 1.027 |
+| UniformNoise(0.001) / timing-free | 0 | 0.98921420 ± 4.6e-05 | 1.88e-05 ± 1.9e-06 | 2.072444e-05 | 2.035456e-05 | 2.035456e-05 | 1.102 | 1.083 |
+| UniformNoise(0.001) / timing-free | + | 0.98922700 ± 4.6e-05 | 1.98e-05 ± 2e-06 | 2.072444e-05 | 2.035456e-05 | 2.035456e-05 | 1.047 | 1.028 |
+| UniformNoise(0.0015) / timing-free | 0 | 0.98385520 ± 5.6e-05 | 5.04e-05 ± 3.2e-06 | 4.663e-05 | 4.538691e-05 | 4.538691e-05 | 0.925 | 0.901 |
+| UniformNoise(0.0015) / timing-free | + | 0.98398860 ± 5.6e-05 | 5.14e-05 ± 3.2e-06 | 4.663e-05 | 4.538691e-05 | 4.538691e-05 | 0.907 | 0.883 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free | 0 | 0.99707240 ± 2.4e-05 | 1.8e-06 ± 6e-07 | 1.831111e-06 | 1.822888e-06 | 1.822068e-06 | 1.017 | 1.013 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free | + | 0.99705940 ± 2.4e-05 | 3e-06 ± 7.7e-07 | 1.831111e-06 | 1.822888e-06 | 1.822068e-06 | 0.610 | 0.608 |
+| TWO_QUBIT_ONLY(0.001) / timing-free | 0 | 0.99416980 ± 3.4e-05 | 7.4e-06 ± 1.2e-06 | 7.324444e-06 | 7.258788e-06 | 7.25227e-06 | 0.990 | 0.981 |
+| TWO_QUBIT_ONLY(0.001) / timing-free | + | 0.99421600 ± 3.4e-05 | 6e-06 ± 1.1e-06 | 7.324444e-06 | 7.258788e-06 | 7.25227e-06 | 1.221 | 1.210 |
+| TWO_QUBIT_ONLY(0.002) / timing-free | 0 | 0.98848060 ± 4.8e-05 | 3.42e-05 ± 2.6e-06 | 2.929778e-05 | 2.877462e-05 | 2.872307e-05 | 0.857 | 0.841 |
+| TWO_QUBIT_ONLY(0.002) / timing-free | + | 0.98841720 ± 4.8e-05 | 3.02e-05 ± 2.5e-06 | 2.929778e-05 | 2.877462e-05 | 2.872307e-05 | 0.970 | 0.953 |
+| H2_LIKE / timing-free | 0 | 0.99142240 ± 4.1e-05 | 1.04e-05 ± 1.4e-06 | 1.486981e-05 | 1.467745e-05 | 1.466391e-05 | 1.430 | 1.411 |
+| H2_LIKE / timing-free | + | 0.99129660 ± 4.2e-05 | 1.1e-05 ± 1.5e-06 | 1.515138e-05 | 1.4954e-05 | 1.494054e-05 | 1.377 | 1.359 |
+| JONES_MURALI_2026 / SEQ | 0 | 0.97362660 ± 7.2e-05 | 0.0001122 ± 4.7e-06 | 0.0001068578 | 0.0001020384 | 0.0001014549 | 0.952 | 0.909 |
+| JONES_MURALI_2026 / SEQ | + | 0.97311880 ± 7.2e-05 | 0.0001252 ± 5e-06 | 0.0001160877 | 0.0001108149 | 0.0001102124 | 0.927 | 0.885 |
+| JONES_MURALI_2026 / PAR_MR | 0 | 0.97373420 ± 7.2e-05 | 0.0001066 ± 4.6e-06 | 0.0001068578 | 0.000102071 | 0.000101492 | 1.002 | 0.958 |
+| JONES_MURALI_2026 / PAR_MR | + | 0.97331360 ± 7.2e-05 | 0.0001122 ± 4.7e-06 | 0.0001151445 | 0.0001099553 | 0.0001093659 | 1.026 | 0.980 |
+
+No acceptance test uses ideal error weight. All multi-fault verifier-zero states are accepted, including dangerous states. Exact XOR convolution keeps all fault orders and is a secondary benchmark. Extra orthogonal idle faults can leave a hazard unchanged while excluding that history from exactly-two-fault survival P2; corrected P2 therefore need not approximate the full hazard better.
+
+The original H2 rare-hazard MC samples (52 and 55 events) are low compared with exact expectations (73.85 and 75.24). They remain the primary recorded samples. Fixed independent **20M-attempt held-out checks per basis** gave 326 and 300 events versus expectations 295.40 and 300.96 (null-variance z=+1.78 and −0.056). These are reported separately, not substituted for the initial samples. All scalar/frame/tableau checks pass.
+
+### Verification branch triggers
+
+The verification rejection probability triggers a fresh preparation attempt. Disjoint per-attempt rates below classify the nonzero parity contributions by type; mixed means more than one type contributes. Individual contributing-type and fractional allocations are also in JSON. Flag-trigger rate and failure share through a bare round are **not applicable** to B1; no flag or bare round runs here. Bare-only versus flagged single-fault counts are likewise inapplicable: the table above covers preparation faults, with reset/encoder/verification/readout counts retained per row.
+
+| Preset / policy | State | Rejection | Reset only | Measurement only | 2q only | Idle only | Mixed |
+|---|---|---:|---:|---:|---:|---:|---:|
+| UniformNoise(0.0005) / timing-free | 0 | 0.0054002 | 0.0019528 | 0.000493 | 0.0029544 | 0 | 0 |
+| UniformNoise(0.0005) / timing-free | + | 0.005384 | 0.0019668 | 0.0005014 | 0.0029158 | 0 | 0 |
+| UniformNoise(0.001) / timing-free | 0 | 0.0107858 | 0.0039672 | 0.0009758 | 0.0058428 | 0 | 0 |
+| UniformNoise(0.001) / timing-free | + | 0.010773 | 0.0039742 | 0.000974 | 0.0058248 | 0 | 0 |
+| UniformNoise(0.0015) / timing-free | 0 | 0.0161448 | 0.0059678 | 0.0014918 | 0.0086848 | 0 | 4e-07 |
+| UniformNoise(0.0015) / timing-free | + | 0.0160114 | 0.0058802 | 0.0014766 | 0.0086544 | 0 | 2e-07 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free | 0 | 0.0029276 | 0 | 0 | 0.0029276 | 0 | 0 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free | + | 0.0029406 | 0 | 0 | 0.0029406 | 0 | 0 |
+| TWO_QUBIT_ONLY(0.001) / timing-free | 0 | 0.0058302 | 0 | 0 | 0.0058302 | 0 | 0 |
+| TWO_QUBIT_ONLY(0.001) / timing-free | + | 0.005784 | 0 | 0 | 0.005784 | 0 | 0 |
+| TWO_QUBIT_ONLY(0.002) / timing-free | 0 | 0.0115194 | 0 | 0 | 0.0115194 | 0 | 0 |
+| TWO_QUBIT_ONLY(0.002) / timing-free | + | 0.0115828 | 0 | 0 | 0.0115828 | 0 | 0 |
+| H2_LIKE / timing-free | 0 | 0.0085776 | 0.0001514 | 0.0009868 | 0.0074394 | 0 | 0 |
+| H2_LIKE / timing-free | + | 0.0087034 | 0.0002276 | 0.0010248 | 0.007451 | 0 | 0 |
+| JONES_MURALI_2026 / SEQ | 0 | 0.0263734 | 0.0196462 | 0.0009956 | 0.0057312 | 0 | 4e-07 |
+| JONES_MURALI_2026 / SEQ | + | 0.0268812 | 0.0196916 | 0.001015 | 0.0057128 | 0.0004618 | 0 |
+| JONES_MURALI_2026 / PAR_MR | 0 | 0.0262658 | 0.0195798 | 0.0009908 | 0.0056948 | 0 | 4e-07 |
+| JONES_MURALI_2026 / PAR_MR | + | 0.0266864 | 0.0196848 | 0.000965 | 0.0057232 | 0.000313 | 4e-07 |
+
+### Timing and bounded retry diagnostics
+
+Only sourced Jones–Murali timing is used. H2 remains timing-free (Stage 1 channels only); transport is empty and no hardware schedule is invented. The eight reset operations overlap in PAR_MR; encoder CNOTs remain serial, and there is just one verifier readout. A block ion becomes live after its reset finishes and waits through verifier readout. Single-attempt durations (zero, plus): SEQ **1.255, 1.270 ms**; PAR_MR **0.895, 0.900 ms**. Per-ion idle seconds and summed Z probabilities are recorded in each timed JSON row.
+
+These are standalone eight-ion preparations in a reserved fifteen-ion layout. **External data waiting is outside B1 and must be added in B2 on every attempt, including rejected attempts.** No full-EC time or resource claim is made here. Rejected attempts are discarded and all eight ions reset. Accepted states retain full Pauli frames for a future B2 adapter.
+
+The prompt's max_retries=3 can mean three total attempts or initial plus three retries. Both explicit total-attempt caps K=3 and K=4 are reported as standalone diagnostics; no full-EC default was selected. Each cap/row has 5M independently sampled cycles. For rejection q, exact exhaustion is q^K and mean attempts is Σ(q^i), i=0..K−1. Exhaustion counts as a standalone failure; the JSON also includes accepted dangerous states, total standalone failures and resource counts including rejected attempts.
+
+| Preset / policy | State | K | Exhaustion MC | Exact exhaustion | Mean attempts MC | Mean elapsed ms (timed only) |
+|---|---|---:|---:|---:|---:|---:|
+| UniformNoise(0.0005) / timing-free | 0 | 3 | 3/5000000 | 1.579833e-07 | 1.0054604 | — |
+| UniformNoise(0.0005) / timing-free | 0 | 4 | 0/5000000 | 8.540469e-10 | 1.0054142 | — |
+| UniformNoise(0.0005) / timing-free | + | 3 | 0/5000000 | 1.579833e-07 | 1.0054126 | — |
+| UniformNoise(0.0005) / timing-free | + | 4 | 0/5000000 | 8.540469e-10 | 1.0054592 | — |
+| UniformNoise(0.001) / timing-free | 0 | 3 | 6/5000000 | 1.244863e-06 | 1.0108800 | — |
+| UniformNoise(0.001) / timing-free | 0 | 4 | 0/5000000 | 1.339148e-08 | 1.0108280 | — |
+| UniformNoise(0.001) / timing-free | + | 3 | 5/5000000 | 1.244863e-06 | 1.0108938 | — |
+| UniformNoise(0.001) / timing-free | + | 4 | 0/5000000 | 1.339148e-08 | 1.0109156 | — |
+| UniformNoise(0.0015) / timing-free | 0 | 3 | 24/5000000 | 4.138313e-06 | 1.0162322 | — |
+| UniformNoise(0.0015) / timing-free | 0 | 4 | 0/5000000 | 6.644022e-08 | 1.0162502 | — |
+| UniformNoise(0.0015) / timing-free | + | 3 | 16/5000000 | 4.138313e-06 | 1.0162788 | — |
+| UniformNoise(0.0015) / timing-free | + | 4 | 0/5000000 | 6.644022e-08 | 1.0162950 | — |
+| TWO_QUBIT_ONLY(0.0005) / timing-free | 0 | 3 | 0/5000000 | 2.503865e-08 | 1.0029018 | — |
+| TWO_QUBIT_ONLY(0.0005) / timing-free | 0 | 4 | 0/5000000 | 7.325115e-11 | 1.0029182 | — |
+| TWO_QUBIT_ONLY(0.0005) / timing-free | + | 3 | 1/5000000 | 2.503865e-08 | 1.0029108 | — |
+| TWO_QUBIT_ONLY(0.0005) / timing-free | + | 4 | 0/5000000 | 7.325115e-11 | 1.0029506 | — |
+| TWO_QUBIT_ONLY(0.001) / timing-free | 0 | 3 | 0/5000000 | 1.987144e-07 | 1.0057488 | — |
+| TWO_QUBIT_ONLY(0.001) / timing-free | 0 | 4 | 0/5000000 | 1.159593e-09 | 1.0059334 | — |
+| TWO_QUBIT_ONLY(0.001) / timing-free | + | 3 | 0/5000000 | 1.987144e-07 | 1.0059002 | — |
+| TWO_QUBIT_ONLY(0.001) / timing-free | + | 4 | 0/5000000 | 1.159593e-09 | 1.0058438 | — |
+| TWO_QUBIT_ONLY(0.002) / timing-free | 0 | 3 | 11/5000000 | 1.564522e-06 | 1.0117466 | — |
+| TWO_QUBIT_ONLY(0.002) / timing-free | 0 | 4 | 0/5000000 | 1.81625e-08 | 1.0117306 | — |
+| TWO_QUBIT_ONLY(0.002) / timing-free | + | 3 | 5/5000000 | 1.564522e-06 | 1.0116394 | — |
+| TWO_QUBIT_ONLY(0.002) / timing-free | + | 4 | 0/5000000 | 1.81625e-08 | 1.0116778 | — |
+| H2_LIKE / timing-free | 0 | 3 | 7/5000000 | 6.361984e-07 | 1.0086672 | — |
+| H2_LIKE / timing-free | 0 | 4 | 0/5000000 | 5.471714e-09 | 1.0087072 | — |
+| H2_LIKE / timing-free | + | 3 | 3/5000000 | 6.575131e-07 | 1.0087384 | — |
+| H2_LIKE / timing-free | + | 4 | 0/5000000 | 5.717496e-09 | 1.0087974 | — |
+| JONES_MURALI_2026 / SEQ | 0 | 3 | 79/5000000 | 1.810219e-05 | 1.0269024 | 1.288763 |
+| JONES_MURALI_2026 / SEQ | 0 | 4 | 2/5000000 | 4.753077e-07 | 1.0269538 | 1.288827 |
+| JONES_MURALI_2026 / SEQ | + | 3 | 90/5000000 | 1.90632e-05 | 1.0275094 | 1.304937 |
+| JONES_MURALI_2026 / SEQ | + | 4 | 2/5000000 | 5.092462e-07 | 1.0275590 | 1.305000 |
+| JONES_MURALI_2026 / PAR_MR | 0 | 3 | 89/5000000 | 1.810219e-05 | 1.0270486 | 0.919208 |
+| JONES_MURALI_2026 / PAR_MR | 0 | 4 | 2/5000000 | 4.753077e-07 | 1.0269586 | 0.919128 |
+| JONES_MURALI_2026 / PAR_MR | + | 3 | 86/5000000 | 1.881783e-05 | 1.0272222 | 0.924500 |
+| JONES_MURALI_2026 / PAR_MR | + | 4 | 3/5000000 | 5.005254e-07 | 1.0273836 | 0.924645 |
+
+Zero observed exhaustions do not imply zero probability; Wilson intervals and nonzero exact expectations remain in JSON. Neither retry convention changes the per-attempt acceptance results.
+
+### Files and validation
+
+Added `src/verified_prep.py` (published circuits, independent tableau/frame checks, finite-rate convolution, pair counting and retry/frame APIs), `src/prep_experiment.py` (resumable experiments/report), `tests/test_verified_prep.py`, and the A3 approved-artifact hash fixture. Results are `results/stageB1_preparation.json`, `results/stageB1_validation.json`, and resumable `results/stageB1_cache/`; diagram is `figures/verified_prep_circuits.png`. README and noise-model documentation describe reproduction, timing boundaries and scope.
+
+Validation: **143 tests passed in 414.86 s**, including all prior regression tests and 24 new B1 checks. All **147 approved artifacts are byte-identical**. This preserves the approved single-fault counts, pair counts, seeded MC, A-stage fits/results and synthetic transport outputs. Recorded primary sampling is 90M attempts, retry sampling is 180,000,000 cycles / 182,323,349 actual attempts, plus 40M held-out H2 attempts. Count conservation, cause allocations, pair attribution sums, survival bounds and retry identities pass; both circuit panels were visually inspected. No dependencies were added.
+
+
+FT checks and cross-check counts (positive channel payloads):
+
+| Preset / policy | State | Fault runs | Accepted | Rejected | FT failures | Frame/tableau mismatches |
+|---|---|---:|---:|---:|---:|---:|
+| UniformNoise(0.0005) / timing-free | 0 | 174 | 81 | 93 | 0 | 0 |
+| UniformNoise(0.0005) / timing-free | + | 174 | 81 | 93 | 0 | 0 |
+| UniformNoise(0.001) / timing-free | 0 | 174 | 81 | 93 | 0 | 0 |
+| UniformNoise(0.001) / timing-free | + | 174 | 81 | 93 | 0 | 0 |
+| UniformNoise(0.0015) / timing-free | 0 | 174 | 81 | 93 | 0 | 0 |
+| UniformNoise(0.0015) / timing-free | + | 174 | 81 | 93 | 0 | 0 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free | 0 | 165 | 77 | 88 | 0 | 0 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free | + | 165 | 77 | 88 | 0 | 0 |
+| TWO_QUBIT_ONLY(0.001) / timing-free | 0 | 165 | 77 | 88 | 0 | 0 |
+| TWO_QUBIT_ONLY(0.001) / timing-free | + | 165 | 77 | 88 | 0 | 0 |
+| TWO_QUBIT_ONLY(0.002) / timing-free | 0 | 165 | 77 | 88 | 0 | 0 |
+| TWO_QUBIT_ONLY(0.002) / timing-free | + | 165 | 77 | 88 | 0 | 0 |
+| H2_LIKE / timing-free | 0 | 180 | 87 | 93 | 0 | 0 |
+| H2_LIKE / timing-free | + | 184 | 87 | 97 | 0 | 0 |
+| JONES_MURALI_2026 / SEQ | 0 | 222 | 129 | 93 | 0 | 0 |
+| JONES_MURALI_2026 / SEQ | + | 226 | 111 | 115 | 0 | 0 |
+| JONES_MURALI_2026 / PAR_MR | 0 | 220 | 127 | 93 | 0 | 0 |
+| JONES_MURALI_2026 / PAR_MR | + | 222 | 110 | 112 | 0 | 0 |
+
+Frozen-result checks (all pass in the full suite, with approved artifact hashes unchanged):
+
+| Regression | Result |
+|---|---|
+| Flag single faults | 0/1218 |
+| No-flag single faults | 48/1218 |
+| Cross-check faults | 0/1176 mismatches |
+| Malignant pairs / A dictionaries | 92840 / exact match |
+| Seeded Uniform MC | 542/3M, seed 2026 |
+| Seeded Jones–Murali MC | 6121/3M, seed 3326 |
+| Stage 4 empty transport and synthetic monotonicity | Pass |
+| A1/A2/A3 fixtures and frozen outputs | Pass; 147 artifact hashes unchanged |
+
+Assumptions made:
+
+- The published zero circuit and full Hadamard dual are fixed; paper-qubit mapping is explicit and the frozen stabilizer row span is preserved.
+- Reset basis durations and idle channels reuse the approved model; data storage during preparation is deferred to B2, where it belongs in the coupled gadget. H2 receives no invented timing.
+- Preparation-hazard P2 is not full-EC p_L. B1 does not produce p_eff or memory epsilon. Future B3 primary epsilon_tot comes from the A3 memory harness, with epsilon_X and epsilon_Z always shown.
+- Later B3 uses XXXZZZ as the flag best-order arm under every preset, including nonsignificant cases, and both Steane half-orders (X-syndrome first and Z-syndrome first). These are recorded decisions only; no B3 action was taken.
+
+Open questions for the human:
+
+- Review the B1 circuit, acceptance and component-level fault-tolerance results.
+- Before B2, resolve whether max_retries=3 means three total attempts or four; both diagnostics are available.
+- **Stop here. B2 and all later work require the next checkpoint approval.**

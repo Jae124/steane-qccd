@@ -1,0 +1,38 @@
+{
+  "simulation_fingerprint": "808a7c69c2748940b88cba9729860f7491b25d665cffdee33d0c7e4265eed0ed",
+  "exact_finite_rate": {
+    "acceptance": 0.9892426041751953,
+    "rejection": 0.010757395824804727,
+    "accepted_dangerous_probability": 2.0551170288628197e-05,
+    "dangerous_given_acceptance": 2.0774651437261164e-05,
+    "method": "Exact independent-location Pauli XOR convolution; no truncation."
+  },
+  "pairs": {
+    "definition": "Per-attempt probability mass of accepted preparations with dangerous component reduced weight >1; not full-EC p_L.",
+    "P1": 0.0,
+    "P2": 2.0724444444445636e-05,
+    "P2_survival_corrected": 2.0354558436537777e-05,
+    "P2_survival_mean_approx": 2.0354558436538563e-05,
+    "positive_payload_pair_trials": 13896,
+    "malignant_payload_pairs": 1807,
+    "P2_by_location_type_pair": {
+      "reset*reset": 2e-06,
+      "2q*reset": 8.533333333333322e-06,
+      "measurement*reset": 1e-06,
+      "2q*2q": 7.324444444444292e-06,
+      "2q*measurement": 1.8666666666666673e-06
+    },
+    "P2_by_prep_part_pair": {
+      "initial_resets*initial_resets": 2e-06,
+      "encoder*initial_resets": 5.866666666666658e-06,
+      "initial_resets*verification": 2.666666666666668e-06,
+      "initial_resets*verification_readout": 1e-06,
+      "encoder*encoder": 3.057777777777756e-06,
+      "encoder*verification": 3.839999999999955e-06,
+      "encoder*verification_readout": 1.8666666666666673e-06,
+      "verification*verification": 4.2666666666666747e-07
+    },
+    "n_locations": 20,
+    "mean_location_fault_probability": 0.0010000000000000005
+  }
+}

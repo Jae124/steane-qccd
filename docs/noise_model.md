@@ -783,3 +783,136 @@ classes plus scalar propagation traces are saved. Raw P2 reproduces A2;
 exact survival correction is (1-0.001)^94 under the approved full potential-
 location convention. These one-round attributions are compared only against
 one-round MC; they are not multiplied by R or used as epsilon estimates.
+
+## Stage B1: published verified preparation (standalone)
+
+### Source, code convention and circuit
+
+The preparation is transcribed from [Goto, Scientific Reports 6, 19578 (2016),
+Fig. 1(c)](https://doi.org/10.1038/srep19578). The prompt's arXiv:1610.03309 is
+an unrelated hybrid-computation paper. The publisher's
+[2022 correction](https://doi.org/10.1038/s41598-022-06633-6) fixes the old PDF
+footer's volume number; it does not change the circuit. The construction and
+Hadamard-dual CSS principle are also described in
+[Peham et al., PRX Quantum 6, 020330 (2025), Example 3/Fig. 4](https://doi.org/10.1103/PRXQuantum.6.020330).
+
+Use local block labels 0..6, physically mapped to 7..13, with verifier 14.
+The eight-CNOT encoder is
+
+    (1,0), (3,5), (2,6), (1,4), (2,0), (3,6), (1,5), (6,4).
+
+Initial local inputs are |0,+,+,+,0,0,0>. The verifier is reset to |0>.
+CNOTs (0,V),(5,V),(6,V), then M(V), check logical Z0 Z5 Z6. Accept only the
+reported bit 0; no correction is applied. Disjoint gates drawn in one paper
+column are linearized top-to-bottom and remain serial in the timing model.
+All eight resets occur first. This program-order convention was fixed before
+single-fault validation and is not a hardware schedule.
+
+Propagating initial X generators on local 1,2,3 produces supports {0,1,4,5},
+{0,2,4,6}, {3,4,5,6}; their span equals the frozen X-stabilizer span. Z0 Z5 Z6
+commutes with all code generators and has odd weight, so it is a logical Z
+representative. The generated superposition has eigenvalue +1 for it.
+The unverified encoder's dangerous X components fall into two bad cosets,
+represented by X4 X6 (equivalently X0 X2) and X1 X5 (equivalently X0 X4).
+Both anticommute with this verification observable. Independent exhaustive
+propagation finds 30 encoder-payload instances in these cosets. The verifier
+therefore rejects their one-fault instances. Its own CNOT faults can add at
+most one X on the output block.
+
+The |+_L> preparation is the full Hadamard conjugate: interchange R/RX and
+M/MX, reverse every CNOT. It checks X0 X5 X6 with V in |+> and MX readout.
+This uses existing reset/rotation primitives, not an extra noiseless or
+unsourced H gate. Dangerous Z replaces dangerous X. Physical channel weights
+retain their original basis dependence; acceptance is not assumed equal for
+ion presets or Z-only idle noise.
+
+### What the single-fault guarantee means
+
+Reduce the dangerous component modulo the **original code stabilizers only**;
+do not quotient out the dangerous logical operator. Accepted single-fault
+outputs have dangerous reduced weight <=1. Frame/tableau checks compare the
+six code-stabilizer signs, prepared logical-observable sign, verification
+outcome and a dangerous-weight classification independently reconstructed from
+the tableau signature. No correction table is trained on failing faults.
+
+The other component reaches raw and code-reduced weight 3 in the canonical
+propagated Pauli frame. However, the prepared-state stabilizer additionally
+contains logical Z for |0_L>, or logical X for |+_L>. Modulo that group the
+orthogonal component has weight at most one. This is state degeneracy, not a
+change of code or decoder. Z on an ancilla used as CX control does not spread
+to the data target; X on an ancilla used as target does not spread to the data
+control. B1 proves the stated preparation component criterion; the full noisy
+EC round remains a separate B2 correctness test.
+
+### Timing and scope
+
+There are 8 resets, 8 encoder CX, 3 verification CX and 1 verifier readout.
+SEQ retains serial operations. PAR_MR puts the eight adjacent disjoint resets
+in one layer; gates remain serial, and there is only one measurement in this
+gadget. Reset/readout operation durations and Pauli channels are exactly the
+existing conventions, including RX/MX rotation contributions.
+
+Only prepared/live ions receive idle Z noise. Block ions remain live through
+the full verifier readout; the verifier ceases being live at its terminal
+measurement. Idle waits split at reset/encoder/verification/readout boundaries
+for attribution, without added time. Nominal Jones durations per attempt are
+1.255 ms / 1.270 ms for zero/plus under SEQ and 0.895 ms / 0.900 ms under PAR_MR.
+H2 stays timing-free. Transport is empty.
+
+B1 is standalone: data 0..6 are reserved but untouched, and no data-storage
+noise is simulated. A later B2 embedding must add data waiting throughout
+every attempt, including rejected attempts. Reusing the standalone acceptance
+or duration as a full EC memory result would omit that cost. All rejected
+attempts are real operations and time; their count is included in standalone
+retry resource statistics.
+
+### Acceptance, Pauli simulation and attribution
+
+The verifier's ideal outcome is deterministic. All decisions in B1 depend
+only on that reported bit, never the ideal residual weight. Diagnostic block
+readouts are random codewords: scalar/tableau tests compare H*m, not the raw
+bitstrings. No ancilla/data coupling or EC correction is implemented in B1.
+
+Pauli faults propagate linearly through this fixed Clifford attempt. Compile
+each location/payload into its output X/Z frame and reported-verification-bit
+influence. Finite-rate MC samples the unchanged independent channels and XORs
+those influences. Full output frames can be returned for future reuse.
+A 256-state XOR convolution over the dangerous 7-bit mask plus verification bit
+provides an exact finite-rate benchmark, not an MC replacement. The parity
+product for rejection gives a second acceptance check.
+
+P1/P2 refer to the **unconditional per-attempt probability of an accepted
+preparation with dangerous reduced weight >1**, not full-EC p_L. Exact survival
+correction multiplies each pair by the product of (1-p_loc) over every other
+prep location; the mean-rate approximation is also retained. Both are compared
+to the corresponding MC preparation-hazard rate. For example, extra orthogonal
+idle faults may be irrelevant to this hazard but are excluded from an
+exactly-two-fault probability; a survival-corrected P2 is not the full
+finite-rate hazard. No memory epsilon or p_eff is inferred from these numbers.
+
+Verification rejection is the B1 branch-trigger metric, split by reset,
+measurement, 2q, idle and mixed causes using linear signal contributions.
+Flag-trigger and bare-failure-share metrics are not applicable to standalone
+preparation. The original low-count H2 hazard samples are retained; fixed,
+independent 20M-attempt checks are additionally reported, rather than silently
+replacing those samples.
+
+`sample_retries` requires an explicit **total-attempt** cap. B1 reports both
+three-total-attempt and initial-plus-three-retry (four-total-attempt) diagnostics;
+the ambiguous “max_retries=3” convention is left explicit for review before
+B2. A failed verification discards and resets the whole block; a dangerous
+multi-fault state with verifier 0 is still accepted. Exhaustion is counted as
+a standalone failure. For per-attempt rejection q, exhaustion is q^K, mean
+attempts is sum(q^i, i=0..K-1), and the selected dangerous-state probability is
+the one-attempt accepted hazard times that same sum. Finite-rate and MC values
+are both saved. These standalone diagnostics do not simulate idle evolution
+of an external data block.
+
+### Later B3 decisions (recorded only)
+
+The user selects XXXZZZ as the “flag, best order” arm under **every** preset,
+including nonsignificant cases. Both Steane half-orders must be run. In the
+prompt's definitions, the X-error-syndrome half uses |+_L> as target with Z
+readout; the Z-error-syndrome half uses |0_L> as control with X readout. Primary
+comparisons use A3 epsilon_tot, always with epsilon_X and epsilon_Z. No B3 arm
+comparison, half-order round assembly, or later-stage sampling occurs in B1.

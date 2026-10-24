@@ -1,0 +1,27 @@
+{
+  "stage": "B1",
+  "simulation_fingerprint": "808a7c69c2748940b88cba9729860f7491b25d665cffdee33d0c7e4265eed0ed",
+  "approved_artifacts": {
+    "artifact_count": 147,
+    "all_byte_identical": true,
+    "mismatches": []
+  },
+  "rows": 18,
+  "universal_geometries": 6,
+  "universal_fault_runs": 1302,
+  "positive_channel_fault_runs": 3288,
+  "single_fault_violations": 0,
+  "frame_tableau_mismatches": 0,
+  "primary_single_attempt_MC_shots": 90000000,
+  "capped_retry_MC_cycles": 180000000,
+  "capped_retry_MC_attempt_executions": 182323349,
+  "held_out_H2_attempts": 40000000,
+  "checks": "Counts, disjoint cause sums, fractional attribution, P1=0, P2 attribution sums and survival bounds, retry histograms/executions/exhaustion/mean and current source fingerprint all pass.",
+  "pytest": {
+    "full_suite_passed": 143,
+    "seconds": 414.86,
+    "focused_passed": 24
+  },
+  "circuit_diagram": "Visually inspected both basis circuits, labels and physical indices.",
+  "later_stages_executed": false
+}

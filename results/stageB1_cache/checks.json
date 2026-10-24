@@ -1,0 +1,7999 @@
+{
+  "stage": "B1",
+  "simulation_fingerprint": "808a7c69c2748940b88cba9729860f7491b25d665cffdee33d0c7e4265eed0ed",
+  "approved_artifacts": {
+    "artifact_count": 147,
+    "all_byte_identical": true,
+    "mismatches": []
+  },
+  "derivation": {
+    "source": "https://doi.org/10.1038/srep19578",
+    "figure": "1(c)",
+    "source_identifier_note": "The prompt arXiv:1610.03309 is unrelated; the correct Goto source is Sci. Rep. 6, 19578 (2016).",
+    "paper_to_local_qubit_map": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "local_to_physical_block_map": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "verifier": 14,
+    "paper_encoder_CNOTs": [
+      [
+        1,
+        0
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        6,
+        4
+      ]
+    ],
+    "initial_plus_local_qubits": [
+      1,
+      2,
+      3
+    ],
+    "generated_X_stabilizer_supports": [
+      [
+        0,
+        1,
+        4,
+        5
+      ],
+      [
+        0,
+        2,
+        4,
+        6
+      ],
+      [
+        3,
+        4,
+        5,
+        6
+      ]
+    ],
+    "same_stabilizer_row_span_as_frozen_code": true,
+    "verification_support_local": [
+      0,
+      5,
+      6
+    ],
+    "verification_is_weight_three_logical": true,
+    "encoder_single_fault_payloads": 141,
+    "unverified_dangerous_cosets": {
+      "5": {
+        "minimal_representative": 5,
+        "observed_masks": [
+          5,
+          80
+        ],
+        "payload_count": 22,
+        "anticommutes_with_verifier": true
+      },
+      "17": {
+        "minimal_representative": 17,
+        "observed_masks": [
+          34
+        ],
+        "payload_count": 8,
+        "anticommutes_with_verifier": true
+      }
+    },
+    "plus_derivation": "Full Hadamard conjugation: swap R/RX and M/MX, reverse every CX. No extra H primitive or unsourced timing is introduced.",
+    "dangerous_component": "X for zero; Z for plus. Reduce modulo the original code stabilizers only, not the dangerous logical operator.",
+    "orthogonal_component": "Canonical frame maxima are also reported modulo code stabilizers and modulo the prepared-state stabilizers, which additionally include logical Z for zero or X for plus."
+  },
+  "universal_checks": {
+    "ec9b86168b7cf72b9e6387fdac84a689fe90b1a9c6083a092c3671a7c287f1f9": {
+      "catalog": "universal physical reset/CX/measurement/idle faults",
+      "prep_fault_runs": 190,
+      "accepted_single_fault_runs": 93,
+      "rejected_single_fault_runs": 97,
+      "accepted_dangerous_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "accepted_maxima": {
+        "other_raw": 3,
+        "other_code_reduced": 3,
+        "other_prepared_state_reduced": 1,
+        "dangerous_code_reduced": 1
+      },
+      "by_part": {
+        "initial_resets": {
+          "runs": 24,
+          "accepted": 16,
+          "rejected": 8
+        },
+        "encoder": {
+          "runs": 120,
+          "accepted": 56,
+          "rejected": 64
+        },
+        "verification": {
+          "runs": 45,
+          "accepted": 21,
+          "rejected": 24
+        },
+        "verification_readout": {
+          "runs": 1,
+          "accepted": 0,
+          "rejected": 1
+        }
+      },
+      "failure_details": [],
+      "mismatch_details": []
+    },
+    "34cefa3171d4ea0572bb990fb60d3542a9f36151c90104a90f1c1bd6f8fe3db1": {
+      "catalog": "universal physical reset/CX/measurement/idle faults",
+      "prep_fault_runs": 190,
+      "accepted_single_fault_runs": 93,
+      "rejected_single_fault_runs": 97,
+      "accepted_dangerous_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "accepted_maxima": {
+        "other_raw": 3,
+        "other_code_reduced": 3,
+        "other_prepared_state_reduced": 1,
+        "dangerous_code_reduced": 1
+      },
+      "by_part": {
+        "initial_resets": {
+          "runs": 24,
+          "accepted": 16,
+          "rejected": 8
+        },
+        "encoder": {
+          "runs": 120,
+          "accepted": 56,
+          "rejected": 64
+        },
+        "verification": {
+          "runs": 45,
+          "accepted": 21,
+          "rejected": 24
+        },
+        "verification_readout": {
+          "runs": 1,
+          "accepted": 0,
+          "rejected": 1
+        }
+      },
+      "failure_details": [],
+      "mismatch_details": []
+    },
+    "075576b12cc1cb2fa1e664d69e3ca6339d9ae324f12b1a4ba8d8f6f85b6ed495": {
+      "catalog": "universal physical reset/CX/measurement/idle faults",
+      "prep_fault_runs": 232,
+      "accepted_single_fault_runs": 135,
+      "rejected_single_fault_runs": 97,
+      "accepted_dangerous_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "accepted_maxima": {
+        "other_raw": 3,
+        "other_code_reduced": 3,
+        "other_prepared_state_reduced": 1,
+        "dangerous_code_reduced": 1
+      },
+      "by_part": {
+        "initial_resets": {
+          "runs": 31,
+          "accepted": 23,
+          "rejected": 8
+        },
+        "encoder": {
+          "runs": 140,
+          "accepted": 76,
+          "rejected": 64
+        },
+        "verification": {
+          "runs": 53,
+          "accepted": 29,
+          "rejected": 24
+        },
+        "verification_readout": {
+          "runs": 8,
+          "accepted": 7,
+          "rejected": 1
+        }
+      },
+      "failure_details": [],
+      "mismatch_details": []
+    },
+    "8ff63ea4cc38be4256d899e4228c01a4652b37f2c75127f5103c29782945ab52": {
+      "catalog": "universal physical reset/CX/measurement/idle faults",
+      "prep_fault_runs": 232,
+      "accepted_single_fault_runs": 117,
+      "rejected_single_fault_runs": 115,
+      "accepted_dangerous_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "accepted_maxima": {
+        "other_raw": 3,
+        "other_code_reduced": 3,
+        "other_prepared_state_reduced": 1,
+        "dangerous_code_reduced": 1
+      },
+      "by_part": {
+        "initial_resets": {
+          "runs": 31,
+          "accepted": 20,
+          "rejected": 11
+        },
+        "encoder": {
+          "runs": 140,
+          "accepted": 63,
+          "rejected": 77
+        },
+        "verification": {
+          "runs": 53,
+          "accepted": 27,
+          "rejected": 26
+        },
+        "verification_readout": {
+          "runs": 8,
+          "accepted": 7,
+          "rejected": 1
+        }
+      },
+      "failure_details": [],
+      "mismatch_details": []
+    },
+    "78a40733e9dae365f7166d8baa0d9bbfcc0ee53bcf02d87f1a2ab20f4e373676": {
+      "catalog": "universal physical reset/CX/measurement/idle faults",
+      "prep_fault_runs": 230,
+      "accepted_single_fault_runs": 133,
+      "rejected_single_fault_runs": 97,
+      "accepted_dangerous_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "accepted_maxima": {
+        "other_raw": 3,
+        "other_code_reduced": 3,
+        "other_prepared_state_reduced": 1,
+        "dangerous_code_reduced": 1
+      },
+      "by_part": {
+        "initial_resets": {
+          "runs": 29,
+          "accepted": 21,
+          "rejected": 8
+        },
+        "encoder": {
+          "runs": 140,
+          "accepted": 76,
+          "rejected": 64
+        },
+        "verification": {
+          "runs": 53,
+          "accepted": 29,
+          "rejected": 24
+        },
+        "verification_readout": {
+          "runs": 8,
+          "accepted": 7,
+          "rejected": 1
+        }
+      },
+      "failure_details": [],
+      "mismatch_details": []
+    },
+    "da59d8a5984e8b37ae2b9dd036273515604abf597948a18942fdaa68a67d6522": {
+      "catalog": "universal physical reset/CX/measurement/idle faults",
+      "prep_fault_runs": 228,
+      "accepted_single_fault_runs": 116,
+      "rejected_single_fault_runs": 112,
+      "accepted_dangerous_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "accepted_maxima": {
+        "other_raw": 3,
+        "other_code_reduced": 3,
+        "other_prepared_state_reduced": 1,
+        "dangerous_code_reduced": 1
+      },
+      "by_part": {
+        "initial_resets": {
+          "runs": 27,
+          "accepted": 19,
+          "rejected": 8
+        },
+        "encoder": {
+          "runs": 140,
+          "accepted": 63,
+          "rejected": 77
+        },
+        "verification": {
+          "runs": 53,
+          "accepted": 27,
+          "rejected": 26
+        },
+        "verification_readout": {
+          "runs": 8,
+          "accepted": 7,
+          "rejected": 1
+        }
+      },
+      "failure_details": [],
+      "mismatch_details": []
+    }
+  },
+  "rows": {
+    "c0_zero": {
+      "preset": "UniformNoise(0.0005)",
+      "policy": "timing-free",
+      "basis": "0",
+      "noiseless": {
+        "verification_outcome": 0,
+        "signature": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "geometry_signature": "ec9b86168b7cf72b9e6387fdac84a689fe90b1a9c6083a092c3671a7c287f1f9",
+      "checks": {
+        "catalog": "positive preset-channel payloads",
+        "prep_fault_runs": 174,
+        "accepted_single_fault_runs": 81,
+        "rejected_single_fault_runs": 93,
+        "accepted_dangerous_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "accepted_maxima": {
+          "other_raw": 3,
+          "other_code_reduced": 3,
+          "other_prepared_state_reduced": 1,
+          "dangerous_code_reduced": 1
+        },
+        "by_part": {
+          "initial_resets": {
+            "runs": 8,
+            "accepted": 4,
+            "rejected": 4
+          },
+          "encoder": {
+            "runs": 120,
+            "accepted": 56,
+            "rejected": 64
+          },
+          "verification": {
+            "runs": 45,
+            "accepted": 21,
+            "rejected": 24
+          },
+          "verification_readout": {
+            "runs": 1,
+            "accepted": 0,
+            "rejected": 1
+          }
+        },
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "base_ops": [
+        [
+          "R",
+          7
+        ],
+        [
+          "RX",
+          8
+        ],
+        [
+          "RX",
+          9
+        ],
+        [
+          "RX",
+          10
+        ],
+        [
+          "R",
+          11
+        ],
+        [
+          "R",
+          12
+        ],
+        [
+          "R",
+          13
+        ],
+        [
+          "R",
+          14
+        ],
+        [
+          "CX",
+          8,
+          7
+        ],
+        [
+          "CX",
+          10,
+          12
+        ],
+        [
+          "CX",
+          9,
+          13
+        ],
+        [
+          "CX",
+          8,
+          11
+        ],
+        [
+          "CX",
+          9,
+          7
+        ],
+        [
+          "CX",
+          10,
+          13
+        ],
+        [
+          "CX",
+          8,
+          12
+        ],
+        [
+          "CX",
+          13,
+          11
+        ],
+        [
+          "CX",
+          7,
+          14
+        ],
+        [
+          "CX",
+          12,
+          14
+        ],
+        [
+          "CX",
+          13,
+          14
+        ],
+        [
+          "M",
+          14,
+          "verify"
+        ]
+      ],
+      "ops": [
+        [
+          "R",
+          7
+        ],
+        [
+          "RX",
+          8
+        ],
+        [
+          "RX",
+          9
+        ],
+        [
+          "RX",
+          10
+        ],
+        [
+          "R",
+          11
+        ],
+        [
+          "R",
+          12
+        ],
+        [
+          "R",
+          13
+        ],
+        [
+          "R",
+          14
+        ],
+        [
+          "CX",
+          8,
+          7
+        ],
+        [
+          "CX",
+          10,
+          12
+        ],
+        [
+          "CX",
+          9,
+          13
+        ],
+        [
+          "CX",
+          8,
+          11
+        ],
+        [
+          "CX",
+          9,
+          7
+        ],
+        [
+          "CX",
+          10,
+          13
+        ],
+        [
+          "CX",
+          8,
+          12
+        ],
+        [
+          "CX",
+          13,
+          11
+        ],
+        [
+          "CX",
+          7,
+          14
+        ],
+        [
+          "CX",
+          12,
+          14
+        ],
+        [
+          "CX",
+          13,
+          14
+        ],
+        [
+          "M",
+          14,
+          "verify"
+        ]
+      ],
+      "op_metadata": [
+        {
+          "part": "initial_resets",
+          "original_op_index": 0
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 1
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 2
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 3
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 4
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 5
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 6
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 7
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 15
+        },
+        {
+          "part": "verification",
+          "original_op_index": 16
+        },
+        {
+          "part": "verification",
+          "original_op_index": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": 18
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": 19
+        }
+      ],
+      "duration_seconds": null,
+      "standalone_active_ions": 8,
+      "reserved_full_EC_layout_ions": 15,
+      "parameters": {
+        "p_2q": 0.0005
+      },
+      "scope": "Standalone 7-qubit ancilla block + verifier; data 0..6 are untouched and do not accrue B1 noise/time."
+    },
+    "c0_plus": {
+      "preset": "UniformNoise(0.0005)",
+      "policy": "timing-free",
+      "basis": "+",
+      "noiseless": {
+        "verification_outcome": 0,
+        "signature": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "geometry_signature": "34cefa3171d4ea0572bb990fb60d3542a9f36151c90104a90f1c1bd6f8fe3db1",
+      "checks": {
+        "catalog": "positive preset-channel payloads",
+        "prep_fault_runs": 174,
+        "accepted_single_fault_runs": 81,
+        "rejected_single_fault_runs": 93,
+        "accepted_dangerous_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "accepted_maxima": {
+          "other_raw": 3,
+          "other_code_reduced": 3,
+          "other_prepared_state_reduced": 1,
+          "dangerous_code_reduced": 1
+        },
+        "by_part": {
+          "initial_resets": {
+            "runs": 8,
+            "accepted": 4,
+            "rejected": 4
+          },
+          "encoder": {
+            "runs": 120,
+            "accepted": 56,
+            "rejected": 64
+          },
+          "verification": {
+            "runs": 45,
+            "accepted": 21,
+            "rejected": 24
+          },
+          "verification_readout": {
+            "runs": 1,
+            "accepted": 0,
+            "rejected": 1
+          }
+        },
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "base_ops": [
+        [
+          "RX",
+          7
+        ],
+        [
+          "R",
+          8
+        ],
+        [
+          "R",
+          9
+        ],
+        [
+          "R",
+          10
+        ],
+        [
+          "RX",
+          11
+        ],
+        [
+          "RX",
+          12
+        ],
+        [
+          "RX",
+          13
+        ],
+        [
+          "RX",
+          14
+        ],
+        [
+          "CX",
+          7,
+          8
+        ],
+        [
+          "CX",
+          12,
+          10
+        ],
+        [
+          "CX",
+          13,
+          9
+        ],
+        [
+          "CX",
+          11,
+          8
+        ],
+        [
+          "CX",
+          7,
+          9
+        ],
+        [
+          "CX",
+          13,
+          10
+        ],
+        [
+          "CX",
+          12,
+          8
+        ],
+        [
+          "CX",
+          11,
+          13
+        ],
+        [
+          "CX",
+          14,
+          7
+        ],
+        [
+          "CX",
+          14,
+          12
+        ],
+        [
+          "CX",
+          14,
+          13
+        ],
+        [
+          "MX",
+          14,
+          "verify"
+        ]
+      ],
+      "ops": [
+        [
+          "RX",
+          7
+        ],
+        [
+          "R",
+          8
+        ],
+        [
+          "R",
+          9
+        ],
+        [
+          "R",
+          10
+        ],
+        [
+          "RX",
+          11
+        ],
+        [
+          "RX",
+          12
+        ],
+        [
+          "RX",
+          13
+        ],
+        [
+          "RX",
+          14
+        ],
+        [
+          "CX",
+          7,
+          8
+        ],
+        [
+          "CX",
+          12,
+          10
+        ],
+        [
+          "CX",
+          13,
+          9
+        ],
+        [
+          "CX",
+          11,
+          8
+        ],
+        [
+          "CX",
+          7,
+          9
+        ],
+        [
+          "CX",
+          13,
+          10
+        ],
+        [
+          "CX",
+          12,
+          8
+        ],
+        [
+          "CX",
+          11,
+          13
+        ],
+        [
+          "CX",
+          14,
+          7
+        ],
+        [
+          "CX",
+          14,
+          12
+        ],
+        [
+          "CX",
+          14,
+          13
+        ],
+        [
+          "MX",
+          14,
+          "verify"
+        ]
+      ],
+      "op_metadata": [
+        {
+          "part": "initial_resets",
+          "original_op_index": 0
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 1
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 2
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 3
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 4
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 5
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 6
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 7
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 15
+        },
+        {
+          "part": "verification",
+          "original_op_index": 16
+        },
+        {
+          "part": "verification",
+          "original_op_index": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": 18
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": 19
+        }
+      ],
+      "duration_seconds": null,
+      "standalone_active_ions": 8,
+      "reserved_full_EC_layout_ions": 15,
+      "parameters": {
+        "p_2q": 0.0005
+      },
+      "scope": "Standalone 7-qubit ancilla block + verifier; data 0..6 are untouched and do not accrue B1 noise/time."
+    },
+    "c1_zero": {
+      "preset": "UniformNoise(0.001)",
+      "policy": "timing-free",
+      "basis": "0",
+      "noiseless": {
+        "verification_outcome": 0,
+        "signature": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "geometry_signature": "ec9b86168b7cf72b9e6387fdac84a689fe90b1a9c6083a092c3671a7c287f1f9",
+      "checks": {
+        "catalog": "positive preset-channel payloads",
+        "prep_fault_runs": 174,
+        "accepted_single_fault_runs": 81,
+        "rejected_single_fault_runs": 93,
+        "accepted_dangerous_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "accepted_maxima": {
+          "other_raw": 3,
+          "other_code_reduced": 3,
+          "other_prepared_state_reduced": 1,
+          "dangerous_code_reduced": 1
+        },
+        "by_part": {
+          "initial_resets": {
+            "runs": 8,
+            "accepted": 4,
+            "rejected": 4
+          },
+          "encoder": {
+            "runs": 120,
+            "accepted": 56,
+            "rejected": 64
+          },
+          "verification": {
+            "runs": 45,
+            "accepted": 21,
+            "rejected": 24
+          },
+          "verification_readout": {
+            "runs": 1,
+            "accepted": 0,
+            "rejected": 1
+          }
+        },
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "base_ops": [
+        [
+          "R",
+          7
+        ],
+        [
+          "RX",
+          8
+        ],
+        [
+          "RX",
+          9
+        ],
+        [
+          "RX",
+          10
+        ],
+        [
+          "R",
+          11
+        ],
+        [
+          "R",
+          12
+        ],
+        [
+          "R",
+          13
+        ],
+        [
+          "R",
+          14
+        ],
+        [
+          "CX",
+          8,
+          7
+        ],
+        [
+          "CX",
+          10,
+          12
+        ],
+        [
+          "CX",
+          9,
+          13
+        ],
+        [
+          "CX",
+          8,
+          11
+        ],
+        [
+          "CX",
+          9,
+          7
+        ],
+        [
+          "CX",
+          10,
+          13
+        ],
+        [
+          "CX",
+          8,
+          12
+        ],
+        [
+          "CX",
+          13,
+          11
+        ],
+        [
+          "CX",
+          7,
+          14
+        ],
+        [
+          "CX",
+          12,
+          14
+        ],
+        [
+          "CX",
+          13,
+          14
+        ],
+        [
+          "M",
+          14,
+          "verify"
+        ]
+      ],
+      "ops": [
+        [
+          "R",
+          7
+        ],
+        [
+          "RX",
+          8
+        ],
+        [
+          "RX",
+          9
+        ],
+        [
+          "RX",
+          10
+        ],
+        [
+          "R",
+          11
+        ],
+        [
+          "R",
+          12
+        ],
+        [
+          "R",
+          13
+        ],
+        [
+          "R",
+          14
+        ],
+        [
+          "CX",
+          8,
+          7
+        ],
+        [
+          "CX",
+          10,
+          12
+        ],
+        [
+          "CX",
+          9,
+          13
+        ],
+        [
+          "CX",
+          8,
+          11
+        ],
+        [
+          "CX",
+          9,
+          7
+        ],
+        [
+          "CX",
+          10,
+          13
+        ],
+        [
+          "CX",
+          8,
+          12
+        ],
+        [
+          "CX",
+          13,
+          11
+        ],
+        [
+          "CX",
+          7,
+          14
+        ],
+        [
+          "CX",
+          12,
+          14
+        ],
+        [
+          "CX",
+          13,
+          14
+        ],
+        [
+          "M",
+          14,
+          "verify"
+        ]
+      ],
+      "op_metadata": [
+        {
+          "part": "initial_resets",
+          "original_op_index": 0
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 1
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 2
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 3
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 4
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 5
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 6
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 7
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 15
+        },
+        {
+          "part": "verification",
+          "original_op_index": 16
+        },
+        {
+          "part": "verification",
+          "original_op_index": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": 18
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": 19
+        }
+      ],
+      "duration_seconds": null,
+      "standalone_active_ions": 8,
+      "reserved_full_EC_layout_ions": 15,
+      "parameters": {
+        "p_2q": 0.001
+      },
+      "scope": "Standalone 7-qubit ancilla block + verifier; data 0..6 are untouched and do not accrue B1 noise/time."
+    },
+    "c1_plus": {
+      "preset": "UniformNoise(0.001)",
+      "policy": "timing-free",
+      "basis": "+",
+      "noiseless": {
+        "verification_outcome": 0,
+        "signature": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "geometry_signature": "34cefa3171d4ea0572bb990fb60d3542a9f36151c90104a90f1c1bd6f8fe3db1",
+      "checks": {
+        "catalog": "positive preset-channel payloads",
+        "prep_fault_runs": 174,
+        "accepted_single_fault_runs": 81,
+        "rejected_single_fault_runs": 93,
+        "accepted_dangerous_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "accepted_maxima": {
+          "other_raw": 3,
+          "other_code_reduced": 3,
+          "other_prepared_state_reduced": 1,
+          "dangerous_code_reduced": 1
+        },
+        "by_part": {
+          "initial_resets": {
+            "runs": 8,
+            "accepted": 4,
+            "rejected": 4
+          },
+          "encoder": {
+            "runs": 120,
+            "accepted": 56,
+            "rejected": 64
+          },
+          "verification": {
+            "runs": 45,
+            "accepted": 21,
+            "rejected": 24
+          },
+          "verification_readout": {
+            "runs": 1,
+            "accepted": 0,
+            "rejected": 1
+          }
+        },
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "base_ops": [
+        [
+          "RX",
+          7
+        ],
+        [
+          "R",
+          8
+        ],
+        [
+          "R",
+          9
+        ],
+        [
+          "R",
+          10
+        ],
+        [
+          "RX",
+          11
+        ],
+        [
+          "RX",
+          12
+        ],
+        [
+          "RX",
+          13
+        ],
+        [
+          "RX",
+          14
+        ],
+        [
+          "CX",
+          7,
+          8
+        ],
+        [
+          "CX",
+          12,
+          10
+        ],
+        [
+          "CX",
+          13,
+          9
+        ],
+        [
+          "CX",
+          11,
+          8
+        ],
+        [
+          "CX",
+          7,
+          9
+        ],
+        [
+          "CX",
+          13,
+          10
+        ],
+        [
+          "CX",
+          12,
+          8
+        ],
+        [
+          "CX",
+          11,
+          13
+        ],
+        [
+          "CX",
+          14,
+          7
+        ],
+        [
+          "CX",
+          14,
+          12
+        ],
+        [
+          "CX",
+          14,
+          13
+        ],
+        [
+          "MX",
+          14,
+          "verify"
+        ]
+      ],
+      "ops": [
+        [
+          "RX",
+          7
+        ],
+        [
+          "R",
+          8
+        ],
+        [
+          "R",
+          9
+        ],
+        [
+          "R",
+          10
+        ],
+        [
+          "RX",
+          11
+        ],
+        [
+          "RX",
+          12
+        ],
+        [
+          "RX",
+          13
+        ],
+        [
+          "RX",
+          14
+        ],
+        [
+          "CX",
+          7,
+          8
+        ],
+        [
+          "CX",
+          12,
+          10
+        ],
+        [
+          "CX",
+          13,
+          9
+        ],
+        [
+          "CX",
+          11,
+          8
+        ],
+        [
+          "CX",
+          7,
+          9
+        ],
+        [
+          "CX",
+          13,
+          10
+        ],
+        [
+          "CX",
+          12,
+          8
+        ],
+        [
+          "CX",
+          11,
+          13
+        ],
+        [
+          "CX",
+          14,
+          7
+        ],
+        [
+          "CX",
+          14,
+          12
+        ],
+        [
+          "CX",
+          14,
+          13
+        ],
+        [
+          "MX",
+          14,
+          "verify"
+        ]
+      ],
+      "op_metadata": [
+        {
+          "part": "initial_resets",
+          "original_op_index": 0
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 1
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 2
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 3
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 4
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 5
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 6
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 7
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 15
+        },
+        {
+          "part": "verification",
+          "original_op_index": 16
+        },
+        {
+          "part": "verification",
+          "original_op_index": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": 18
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": 19
+        }
+      ],
+      "duration_seconds": null,
+      "standalone_active_ions": 8,
+      "reserved_full_EC_layout_ions": 15,
+      "parameters": {
+        "p_2q": 0.001
+      },
+      "scope": "Standalone 7-qubit ancilla block + verifier; data 0..6 are untouched and do not accrue B1 noise/time."
+    },
+    "c2_zero": {
+      "preset": "UniformNoise(0.0015)",
+      "policy": "timing-free",
+      "basis": "0",
+      "noiseless": {
+        "verification_outcome": 0,
+        "signature": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "geometry_signature": "ec9b86168b7cf72b9e6387fdac84a689fe90b1a9c6083a092c3671a7c287f1f9",
+      "checks": {
+        "catalog": "positive preset-channel payloads",
+        "prep_fault_runs": 174,
+        "accepted_single_fault_runs": 81,
+        "rejected_single_fault_runs": 93,
+        "accepted_dangerous_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "accepted_maxima": {
+          "other_raw": 3,
+          "other_code_reduced": 3,
+          "other_prepared_state_reduced": 1,
+          "dangerous_code_reduced": 1
+        },
+        "by_part": {
+          "initial_resets": {
+            "runs": 8,
+            "accepted": 4,
+            "rejected": 4
+          },
+          "encoder": {
+            "runs": 120,
+            "accepted": 56,
+            "rejected": 64
+          },
+          "verification": {
+            "runs": 45,
+            "accepted": 21,
+            "rejected": 24
+          },
+          "verification_readout": {
+            "runs": 1,
+            "accepted": 0,
+            "rejected": 1
+          }
+        },
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "base_ops": [
+        [
+          "R",
+          7
+        ],
+        [
+          "RX",
+          8
+        ],
+        [
+          "RX",
+          9
+        ],
+        [
+          "RX",
+          10
+        ],
+        [
+          "R",
+          11
+        ],
+        [
+          "R",
+          12
+        ],
+        [
+          "R",
+          13
+        ],
+        [
+          "R",
+          14
+        ],
+        [
+          "CX",
+          8,
+          7
+        ],
+        [
+          "CX",
+          10,
+          12
+        ],
+        [
+          "CX",
+          9,
+          13
+        ],
+        [
+          "CX",
+          8,
+          11
+        ],
+        [
+          "CX",
+          9,
+          7
+        ],
+        [
+          "CX",
+          10,
+          13
+        ],
+        [
+          "CX",
+          8,
+          12
+        ],
+        [
+          "CX",
+          13,
+          11
+        ],
+        [
+          "CX",
+          7,
+          14
+        ],
+        [
+          "CX",
+          12,
+          14
+        ],
+        [
+          "CX",
+          13,
+          14
+        ],
+        [
+          "M",
+          14,
+          "verify"
+        ]
+      ],
+      "ops": [
+        [
+          "R",
+          7
+        ],
+        [
+          "RX",
+          8
+        ],
+        [
+          "RX",
+          9
+        ],
+        [
+          "RX",
+          10
+        ],
+        [
+          "R",
+          11
+        ],
+        [
+          "R",
+          12
+        ],
+        [
+          "R",
+          13
+        ],
+        [
+          "R",
+          14
+        ],
+        [
+          "CX",
+          8,
+          7
+        ],
+        [
+          "CX",
+          10,
+          12
+        ],
+        [
+          "CX",
+          9,
+          13
+        ],
+        [
+          "CX",
+          8,
+          11
+        ],
+        [
+          "CX",
+          9,
+          7
+        ],
+        [
+          "CX",
+          10,
+          13
+        ],
+        [
+          "CX",
+          8,
+          12
+        ],
+        [
+          "CX",
+          13,
+          11
+        ],
+        [
+          "CX",
+          7,
+          14
+        ],
+        [
+          "CX",
+          12,
+          14
+        ],
+        [
+          "CX",
+          13,
+          14
+        ],
+        [
+          "M",
+          14,
+          "verify"
+        ]
+      ],
+      "op_metadata": [
+        {
+          "part": "initial_resets",
+          "original_op_index": 0
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 1
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 2
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 3
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 4
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 5
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 6
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 7
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 15
+        },
+        {
+          "part": "verification",
+          "original_op_index": 16
+        },
+        {
+          "part": "verification",
+          "original_op_index": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": 18
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": 19
+        }
+      ],
+      "duration_seconds": null,
+      "standalone_active_ions": 8,
+      "reserved_full_EC_layout_ions": 15,
+      "parameters": {
+        "p_2q": 0.0015
+      },
+      "scope": "Standalone 7-qubit ancilla block + verifier; data 0..6 are untouched and do not accrue B1 noise/time."
+    },
+    "c2_plus": {
+      "preset": "UniformNoise(0.0015)",
+      "policy": "timing-free",
+      "basis": "+",
+      "noiseless": {
+        "verification_outcome": 0,
+        "signature": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "geometry_signature": "34cefa3171d4ea0572bb990fb60d3542a9f36151c90104a90f1c1bd6f8fe3db1",
+      "checks": {
+        "catalog": "positive preset-channel payloads",
+        "prep_fault_runs": 174,
+        "accepted_single_fault_runs": 81,
+        "rejected_single_fault_runs": 93,
+        "accepted_dangerous_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "accepted_maxima": {
+          "other_raw": 3,
+          "other_code_reduced": 3,
+          "other_prepared_state_reduced": 1,
+          "dangerous_code_reduced": 1
+        },
+        "by_part": {
+          "initial_resets": {
+            "runs": 8,
+            "accepted": 4,
+            "rejected": 4
+          },
+          "encoder": {
+            "runs": 120,
+            "accepted": 56,
+            "rejected": 64
+          },
+          "verification": {
+            "runs": 45,
+            "accepted": 21,
+            "rejected": 24
+          },
+          "verification_readout": {
+            "runs": 1,
+            "accepted": 0,
+            "rejected": 1
+          }
+        },
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "base_ops": [
+        [
+          "RX",
+          7
+        ],
+        [
+          "R",
+          8
+        ],
+        [
+          "R",
+          9
+        ],
+        [
+          "R",
+          10
+        ],
+        [
+          "RX",
+          11
+        ],
+        [
+          "RX",
+          12
+        ],
+        [
+          "RX",
+          13
+        ],
+        [
+          "RX",
+          14
+        ],
+        [
+          "CX",
+          7,
+          8
+        ],
+        [
+          "CX",
+          12,
+          10
+        ],
+        [
+          "CX",
+          13,
+          9
+        ],
+        [
+          "CX",
+          11,
+          8
+        ],
+        [
+          "CX",
+          7,
+          9
+        ],
+        [
+          "CX",
+          13,
+          10
+        ],
+        [
+          "CX",
+          12,
+          8
+        ],
+        [
+          "CX",
+          11,
+          13
+        ],
+        [
+          "CX",
+          14,
+          7
+        ],
+        [
+          "CX",
+          14,
+          12
+        ],
+        [
+          "CX",
+          14,
+          13
+        ],
+        [
+          "MX",
+          14,
+          "verify"
+        ]
+      ],
+      "ops": [
+        [
+          "RX",
+          7
+        ],
+        [
+          "R",
+          8
+        ],
+        [
+          "R",
+          9
+        ],
+        [
+          "R",
+          10
+        ],
+        [
+          "RX",
+          11
+        ],
+        [
+          "RX",
+          12
+        ],
+        [
+          "RX",
+          13
+        ],
+        [
+          "RX",
+          14
+        ],
+        [
+          "CX",
+          7,
+          8
+        ],
+        [
+          "CX",
+          12,
+          10
+        ],
+        [
+          "CX",
+          13,
+          9
+        ],
+        [
+          "CX",
+          11,
+          8
+        ],
+        [
+          "CX",
+          7,
+          9
+        ],
+        [
+          "CX",
+          13,
+          10
+        ],
+        [
+          "CX",
+          12,
+          8
+        ],
+        [
+          "CX",
+          11,
+          13
+        ],
+        [
+          "CX",
+          14,
+          7
+        ],
+        [
+          "CX",
+          14,
+          12
+        ],
+        [
+          "CX",
+          14,
+          13
+        ],
+        [
+          "MX",
+          14,
+          "verify"
+        ]
+      ],
+      "op_metadata": [
+        {
+          "part": "initial_resets",
+          "original_op_index": 0
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 1
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 2
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 3
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 4
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 5
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 6
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 7
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 15
+        },
+        {
+          "part": "verification",
+          "original_op_index": 16
+        },
+        {
+          "part": "verification",
+          "original_op_index": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": 18
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": 19
+        }
+      ],
+      "duration_seconds": null,
+      "standalone_active_ions": 8,
+      "reserved_full_EC_layout_ions": 15,
+      "parameters": {
+        "p_2q": 0.0015
+      },
+      "scope": "Standalone 7-qubit ancilla block + verifier; data 0..6 are untouched and do not accrue B1 noise/time."
+    },
+    "c3_zero": {
+      "preset": "TWO_QUBIT_ONLY(0.0005)",
+      "policy": "timing-free",
+      "basis": "0",
+      "noiseless": {
+        "verification_outcome": 0,
+        "signature": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "geometry_signature": "ec9b86168b7cf72b9e6387fdac84a689fe90b1a9c6083a092c3671a7c287f1f9",
+      "checks": {
+        "catalog": "positive preset-channel payloads",
+        "prep_fault_runs": 165,
+        "accepted_single_fault_runs": 77,
+        "rejected_single_fault_runs": 88,
+        "accepted_dangerous_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "accepted_maxima": {
+          "other_raw": 3,
+          "other_code_reduced": 3,
+          "other_prepared_state_reduced": 1,
+          "dangerous_code_reduced": 1
+        },
+        "by_part": {
+          "encoder": {
+            "runs": 120,
+            "accepted": 56,
+            "rejected": 64
+          },
+          "verification": {
+            "runs": 45,
+            "accepted": 21,
+            "rejected": 24
+          }
+        },
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "base_ops": [
+        [
+          "R",
+          7
+        ],
+        [
+          "RX",
+          8
+        ],
+        [
+          "RX",
+          9
+        ],
+        [
+          "RX",
+          10
+        ],
+        [
+          "R",
+          11
+        ],
+        [
+          "R",
+          12
+        ],
+        [
+          "R",
+          13
+        ],
+        [
+          "R",
+          14
+        ],
+        [
+          "CX",
+          8,
+          7
+        ],
+        [
+          "CX",
+          10,
+          12
+        ],
+        [
+          "CX",
+          9,
+          13
+        ],
+        [
+          "CX",
+          8,
+          11
+        ],
+        [
+          "CX",
+          9,
+          7
+        ],
+        [
+          "CX",
+          10,
+          13
+        ],
+        [
+          "CX",
+          8,
+          12
+        ],
+        [
+          "CX",
+          13,
+          11
+        ],
+        [
+          "CX",
+          7,
+          14
+        ],
+        [
+          "CX",
+          12,
+          14
+        ],
+        [
+          "CX",
+          13,
+          14
+        ],
+        [
+          "M",
+          14,
+          "verify"
+        ]
+      ],
+      "ops": [
+        [
+          "R",
+          7
+        ],
+        [
+          "RX",
+          8
+        ],
+        [
+          "RX",
+          9
+        ],
+        [
+          "RX",
+          10
+        ],
+        [
+          "R",
+          11
+        ],
+        [
+          "R",
+          12
+        ],
+        [
+          "R",
+          13
+        ],
+        [
+          "R",
+          14
+        ],
+        [
+          "CX",
+          8,
+          7
+        ],
+        [
+          "CX",
+          10,
+          12
+        ],
+        [
+          "CX",
+          9,
+          13
+        ],
+        [
+          "CX",
+          8,
+          11
+        ],
+        [
+          "CX",
+          9,
+          7
+        ],
+        [
+          "CX",
+          10,
+          13
+        ],
+        [
+          "CX",
+          8,
+          12
+        ],
+        [
+          "CX",
+          13,
+          11
+        ],
+        [
+          "CX",
+          7,
+          14
+        ],
+        [
+          "CX",
+          12,
+          14
+        ],
+        [
+          "CX",
+          13,
+          14
+        ],
+        [
+          "M",
+          14,
+          "verify"
+        ]
+      ],
+      "op_metadata": [
+        {
+          "part": "initial_resets",
+          "original_op_index": 0
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 1
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 2
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 3
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 4
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 5
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 6
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 7
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 15
+        },
+        {
+          "part": "verification",
+          "original_op_index": 16
+        },
+        {
+          "part": "verification",
+          "original_op_index": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": 18
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": 19
+        }
+      ],
+      "duration_seconds": null,
+      "standalone_active_ions": 8,
+      "reserved_full_EC_layout_ions": 15,
+      "parameters": {
+        "p_2q": 0.0005
+      },
+      "scope": "Standalone 7-qubit ancilla block + verifier; data 0..6 are untouched and do not accrue B1 noise/time."
+    },
+    "c3_plus": {
+      "preset": "TWO_QUBIT_ONLY(0.0005)",
+      "policy": "timing-free",
+      "basis": "+",
+      "noiseless": {
+        "verification_outcome": 0,
+        "signature": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "geometry_signature": "34cefa3171d4ea0572bb990fb60d3542a9f36151c90104a90f1c1bd6f8fe3db1",
+      "checks": {
+        "catalog": "positive preset-channel payloads",
+        "prep_fault_runs": 165,
+        "accepted_single_fault_runs": 77,
+        "rejected_single_fault_runs": 88,
+        "accepted_dangerous_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "accepted_maxima": {
+          "other_raw": 3,
+          "other_code_reduced": 3,
+          "other_prepared_state_reduced": 1,
+          "dangerous_code_reduced": 1
+        },
+        "by_part": {
+          "encoder": {
+            "runs": 120,
+            "accepted": 56,
+            "rejected": 64
+          },
+          "verification": {
+            "runs": 45,
+            "accepted": 21,
+            "rejected": 24
+          }
+        },
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "base_ops": [
+        [
+          "RX",
+          7
+        ],
+        [
+          "R",
+          8
+        ],
+        [
+          "R",
+          9
+        ],
+        [
+          "R",
+          10
+        ],
+        [
+          "RX",
+          11
+        ],
+        [
+          "RX",
+          12
+        ],
+        [
+          "RX",
+          13
+        ],
+        [
+          "RX",
+          14
+        ],
+        [
+          "CX",
+          7,
+          8
+        ],
+        [
+          "CX",
+          12,
+          10
+        ],
+        [
+          "CX",
+          13,
+          9
+        ],
+        [
+          "CX",
+          11,
+          8
+        ],
+        [
+          "CX",
+          7,
+          9
+        ],
+        [
+          "CX",
+          13,
+          10
+        ],
+        [
+          "CX",
+          12,
+          8
+        ],
+        [
+          "CX",
+          11,
+          13
+        ],
+        [
+          "CX",
+          14,
+          7
+        ],
+        [
+          "CX",
+          14,
+          12
+        ],
+        [
+          "CX",
+          14,
+          13
+        ],
+        [
+          "MX",
+          14,
+          "verify"
+        ]
+      ],
+      "ops": [
+        [
+          "RX",
+          7
+        ],
+        [
+          "R",
+          8
+        ],
+        [
+          "R",
+          9
+        ],
+        [
+          "R",
+          10
+        ],
+        [
+          "RX",
+          11
+        ],
+        [
+          "RX",
+          12
+        ],
+        [
+          "RX",
+          13
+        ],
+        [
+          "RX",
+          14
+        ],
+        [
+          "CX",
+          7,
+          8
+        ],
+        [
+          "CX",
+          12,
+          10
+        ],
+        [
+          "CX",
+          13,
+          9
+        ],
+        [
+          "CX",
+          11,
+          8
+        ],
+        [
+          "CX",
+          7,
+          9
+        ],
+        [
+          "CX",
+          13,
+          10
+        ],
+        [
+          "CX",
+          12,
+          8
+        ],
+        [
+          "CX",
+          11,
+          13
+        ],
+        [
+          "CX",
+          14,
+          7
+        ],
+        [
+          "CX",
+          14,
+          12
+        ],
+        [
+          "CX",
+          14,
+          13
+        ],
+        [
+          "MX",
+          14,
+          "verify"
+        ]
+      ],
+      "op_metadata": [
+        {
+          "part": "initial_resets",
+          "original_op_index": 0
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 1
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 2
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 3
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 4
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 5
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 6
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 7
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 15
+        },
+        {
+          "part": "verification",
+          "original_op_index": 16
+        },
+        {
+          "part": "verification",
+          "original_op_index": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": 18
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": 19
+        }
+      ],
+      "duration_seconds": null,
+      "standalone_active_ions": 8,
+      "reserved_full_EC_layout_ions": 15,
+      "parameters": {
+        "p_2q": 0.0005
+      },
+      "scope": "Standalone 7-qubit ancilla block + verifier; data 0..6 are untouched and do not accrue B1 noise/time."
+    },
+    "c4_zero": {
+      "preset": "TWO_QUBIT_ONLY(0.001)",
+      "policy": "timing-free",
+      "basis": "0",
+      "noiseless": {
+        "verification_outcome": 0,
+        "signature": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "geometry_signature": "ec9b86168b7cf72b9e6387fdac84a689fe90b1a9c6083a092c3671a7c287f1f9",
+      "checks": {
+        "catalog": "positive preset-channel payloads",
+        "prep_fault_runs": 165,
+        "accepted_single_fault_runs": 77,
+        "rejected_single_fault_runs": 88,
+        "accepted_dangerous_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "accepted_maxima": {
+          "other_raw": 3,
+          "other_code_reduced": 3,
+          "other_prepared_state_reduced": 1,
+          "dangerous_code_reduced": 1
+        },
+        "by_part": {
+          "encoder": {
+            "runs": 120,
+            "accepted": 56,
+            "rejected": 64
+          },
+          "verification": {
+            "runs": 45,
+            "accepted": 21,
+            "rejected": 24
+          }
+        },
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "base_ops": [
+        [
+          "R",
+          7
+        ],
+        [
+          "RX",
+          8
+        ],
+        [
+          "RX",
+          9
+        ],
+        [
+          "RX",
+          10
+        ],
+        [
+          "R",
+          11
+        ],
+        [
+          "R",
+          12
+        ],
+        [
+          "R",
+          13
+        ],
+        [
+          "R",
+          14
+        ],
+        [
+          "CX",
+          8,
+          7
+        ],
+        [
+          "CX",
+          10,
+          12
+        ],
+        [
+          "CX",
+          9,
+          13
+        ],
+        [
+          "CX",
+          8,
+          11
+        ],
+        [
+          "CX",
+          9,
+          7
+        ],
+        [
+          "CX",
+          10,
+          13
+        ],
+        [
+          "CX",
+          8,
+          12
+        ],
+        [
+          "CX",
+          13,
+          11
+        ],
+        [
+          "CX",
+          7,
+          14
+        ],
+        [
+          "CX",
+          12,
+          14
+        ],
+        [
+          "CX",
+          13,
+          14
+        ],
+        [
+          "M",
+          14,
+          "verify"
+        ]
+      ],
+      "ops": [
+        [
+          "R",
+          7
+        ],
+        [
+          "RX",
+          8
+        ],
+        [
+          "RX",
+          9
+        ],
+        [
+          "RX",
+          10
+        ],
+        [
+          "R",
+          11
+        ],
+        [
+          "R",
+          12
+        ],
+        [
+          "R",
+          13
+        ],
+        [
+          "R",
+          14
+        ],
+        [
+          "CX",
+          8,
+          7
+        ],
+        [
+          "CX",
+          10,
+          12
+        ],
+        [
+          "CX",
+          9,
+          13
+        ],
+        [
+          "CX",
+          8,
+          11
+        ],
+        [
+          "CX",
+          9,
+          7
+        ],
+        [
+          "CX",
+          10,
+          13
+        ],
+        [
+          "CX",
+          8,
+          12
+        ],
+        [
+          "CX",
+          13,
+          11
+        ],
+        [
+          "CX",
+          7,
+          14
+        ],
+        [
+          "CX",
+          12,
+          14
+        ],
+        [
+          "CX",
+          13,
+          14
+        ],
+        [
+          "M",
+          14,
+          "verify"
+        ]
+      ],
+      "op_metadata": [
+        {
+          "part": "initial_resets",
+          "original_op_index": 0
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 1
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 2
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 3
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 4
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 5
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 6
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 7
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 15
+        },
+        {
+          "part": "verification",
+          "original_op_index": 16
+        },
+        {
+          "part": "verification",
+          "original_op_index": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": 18
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": 19
+        }
+      ],
+      "duration_seconds": null,
+      "standalone_active_ions": 8,
+      "reserved_full_EC_layout_ions": 15,
+      "parameters": {
+        "p_2q": 0.001
+      },
+      "scope": "Standalone 7-qubit ancilla block + verifier; data 0..6 are untouched and do not accrue B1 noise/time."
+    },
+    "c4_plus": {
+      "preset": "TWO_QUBIT_ONLY(0.001)",
+      "policy": "timing-free",
+      "basis": "+",
+      "noiseless": {
+        "verification_outcome": 0,
+        "signature": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "geometry_signature": "34cefa3171d4ea0572bb990fb60d3542a9f36151c90104a90f1c1bd6f8fe3db1",
+      "checks": {
+        "catalog": "positive preset-channel payloads",
+        "prep_fault_runs": 165,
+        "accepted_single_fault_runs": 77,
+        "rejected_single_fault_runs": 88,
+        "accepted_dangerous_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "accepted_maxima": {
+          "other_raw": 3,
+          "other_code_reduced": 3,
+          "other_prepared_state_reduced": 1,
+          "dangerous_code_reduced": 1
+        },
+        "by_part": {
+          "encoder": {
+            "runs": 120,
+            "accepted": 56,
+            "rejected": 64
+          },
+          "verification": {
+            "runs": 45,
+            "accepted": 21,
+            "rejected": 24
+          }
+        },
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "base_ops": [
+        [
+          "RX",
+          7
+        ],
+        [
+          "R",
+          8
+        ],
+        [
+          "R",
+          9
+        ],
+        [
+          "R",
+          10
+        ],
+        [
+          "RX",
+          11
+        ],
+        [
+          "RX",
+          12
+        ],
+        [
+          "RX",
+          13
+        ],
+        [
+          "RX",
+          14
+        ],
+        [
+          "CX",
+          7,
+          8
+        ],
+        [
+          "CX",
+          12,
+          10
+        ],
+        [
+          "CX",
+          13,
+          9
+        ],
+        [
+          "CX",
+          11,
+          8
+        ],
+        [
+          "CX",
+          7,
+          9
+        ],
+        [
+          "CX",
+          13,
+          10
+        ],
+        [
+          "CX",
+          12,
+          8
+        ],
+        [
+          "CX",
+          11,
+          13
+        ],
+        [
+          "CX",
+          14,
+          7
+        ],
+        [
+          "CX",
+          14,
+          12
+        ],
+        [
+          "CX",
+          14,
+          13
+        ],
+        [
+          "MX",
+          14,
+          "verify"
+        ]
+      ],
+      "ops": [
+        [
+          "RX",
+          7
+        ],
+        [
+          "R",
+          8
+        ],
+        [
+          "R",
+          9
+        ],
+        [
+          "R",
+          10
+        ],
+        [
+          "RX",
+          11
+        ],
+        [
+          "RX",
+          12
+        ],
+        [
+          "RX",
+          13
+        ],
+        [
+          "RX",
+          14
+        ],
+        [
+          "CX",
+          7,
+          8
+        ],
+        [
+          "CX",
+          12,
+          10
+        ],
+        [
+          "CX",
+          13,
+          9
+        ],
+        [
+          "CX",
+          11,
+          8
+        ],
+        [
+          "CX",
+          7,
+          9
+        ],
+        [
+          "CX",
+          13,
+          10
+        ],
+        [
+          "CX",
+          12,
+          8
+        ],
+        [
+          "CX",
+          11,
+          13
+        ],
+        [
+          "CX",
+          14,
+          7
+        ],
+        [
+          "CX",
+          14,
+          12
+        ],
+        [
+          "CX",
+          14,
+          13
+        ],
+        [
+          "MX",
+          14,
+          "verify"
+        ]
+      ],
+      "op_metadata": [
+        {
+          "part": "initial_resets",
+          "original_op_index": 0
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 1
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 2
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 3
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 4
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 5
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 6
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 7
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 15
+        },
+        {
+          "part": "verification",
+          "original_op_index": 16
+        },
+        {
+          "part": "verification",
+          "original_op_index": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": 18
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": 19
+        }
+      ],
+      "duration_seconds": null,
+      "standalone_active_ions": 8,
+      "reserved_full_EC_layout_ions": 15,
+      "parameters": {
+        "p_2q": 0.001
+      },
+      "scope": "Standalone 7-qubit ancilla block + verifier; data 0..6 are untouched and do not accrue B1 noise/time."
+    },
+    "c5_zero": {
+      "preset": "TWO_QUBIT_ONLY(0.002)",
+      "policy": "timing-free",
+      "basis": "0",
+      "noiseless": {
+        "verification_outcome": 0,
+        "signature": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "geometry_signature": "ec9b86168b7cf72b9e6387fdac84a689fe90b1a9c6083a092c3671a7c287f1f9",
+      "checks": {
+        "catalog": "positive preset-channel payloads",
+        "prep_fault_runs": 165,
+        "accepted_single_fault_runs": 77,
+        "rejected_single_fault_runs": 88,
+        "accepted_dangerous_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "accepted_maxima": {
+          "other_raw": 3,
+          "other_code_reduced": 3,
+          "other_prepared_state_reduced": 1,
+          "dangerous_code_reduced": 1
+        },
+        "by_part": {
+          "encoder": {
+            "runs": 120,
+            "accepted": 56,
+            "rejected": 64
+          },
+          "verification": {
+            "runs": 45,
+            "accepted": 21,
+            "rejected": 24
+          }
+        },
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "base_ops": [
+        [
+          "R",
+          7
+        ],
+        [
+          "RX",
+          8
+        ],
+        [
+          "RX",
+          9
+        ],
+        [
+          "RX",
+          10
+        ],
+        [
+          "R",
+          11
+        ],
+        [
+          "R",
+          12
+        ],
+        [
+          "R",
+          13
+        ],
+        [
+          "R",
+          14
+        ],
+        [
+          "CX",
+          8,
+          7
+        ],
+        [
+          "CX",
+          10,
+          12
+        ],
+        [
+          "CX",
+          9,
+          13
+        ],
+        [
+          "CX",
+          8,
+          11
+        ],
+        [
+          "CX",
+          9,
+          7
+        ],
+        [
+          "CX",
+          10,
+          13
+        ],
+        [
+          "CX",
+          8,
+          12
+        ],
+        [
+          "CX",
+          13,
+          11
+        ],
+        [
+          "CX",
+          7,
+          14
+        ],
+        [
+          "CX",
+          12,
+          14
+        ],
+        [
+          "CX",
+          13,
+          14
+        ],
+        [
+          "M",
+          14,
+          "verify"
+        ]
+      ],
+      "ops": [
+        [
+          "R",
+          7
+        ],
+        [
+          "RX",
+          8
+        ],
+        [
+          "RX",
+          9
+        ],
+        [
+          "RX",
+          10
+        ],
+        [
+          "R",
+          11
+        ],
+        [
+          "R",
+          12
+        ],
+        [
+          "R",
+          13
+        ],
+        [
+          "R",
+          14
+        ],
+        [
+          "CX",
+          8,
+          7
+        ],
+        [
+          "CX",
+          10,
+          12
+        ],
+        [
+          "CX",
+          9,
+          13
+        ],
+        [
+          "CX",
+          8,
+          11
+        ],
+        [
+          "CX",
+          9,
+          7
+        ],
+        [
+          "CX",
+          10,
+          13
+        ],
+        [
+          "CX",
+          8,
+          12
+        ],
+        [
+          "CX",
+          13,
+          11
+        ],
+        [
+          "CX",
+          7,
+          14
+        ],
+        [
+          "CX",
+          12,
+          14
+        ],
+        [
+          "CX",
+          13,
+          14
+        ],
+        [
+          "M",
+          14,
+          "verify"
+        ]
+      ],
+      "op_metadata": [
+        {
+          "part": "initial_resets",
+          "original_op_index": 0
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 1
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 2
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 3
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 4
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 5
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 6
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 7
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 15
+        },
+        {
+          "part": "verification",
+          "original_op_index": 16
+        },
+        {
+          "part": "verification",
+          "original_op_index": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": 18
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": 19
+        }
+      ],
+      "duration_seconds": null,
+      "standalone_active_ions": 8,
+      "reserved_full_EC_layout_ions": 15,
+      "parameters": {
+        "p_2q": 0.002
+      },
+      "scope": "Standalone 7-qubit ancilla block + verifier; data 0..6 are untouched and do not accrue B1 noise/time."
+    },
+    "c5_plus": {
+      "preset": "TWO_QUBIT_ONLY(0.002)",
+      "policy": "timing-free",
+      "basis": "+",
+      "noiseless": {
+        "verification_outcome": 0,
+        "signature": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "geometry_signature": "34cefa3171d4ea0572bb990fb60d3542a9f36151c90104a90f1c1bd6f8fe3db1",
+      "checks": {
+        "catalog": "positive preset-channel payloads",
+        "prep_fault_runs": 165,
+        "accepted_single_fault_runs": 77,
+        "rejected_single_fault_runs": 88,
+        "accepted_dangerous_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "accepted_maxima": {
+          "other_raw": 3,
+          "other_code_reduced": 3,
+          "other_prepared_state_reduced": 1,
+          "dangerous_code_reduced": 1
+        },
+        "by_part": {
+          "encoder": {
+            "runs": 120,
+            "accepted": 56,
+            "rejected": 64
+          },
+          "verification": {
+            "runs": 45,
+            "accepted": 21,
+            "rejected": 24
+          }
+        },
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "base_ops": [
+        [
+          "RX",
+          7
+        ],
+        [
+          "R",
+          8
+        ],
+        [
+          "R",
+          9
+        ],
+        [
+          "R",
+          10
+        ],
+        [
+          "RX",
+          11
+        ],
+        [
+          "RX",
+          12
+        ],
+        [
+          "RX",
+          13
+        ],
+        [
+          "RX",
+          14
+        ],
+        [
+          "CX",
+          7,
+          8
+        ],
+        [
+          "CX",
+          12,
+          10
+        ],
+        [
+          "CX",
+          13,
+          9
+        ],
+        [
+          "CX",
+          11,
+          8
+        ],
+        [
+          "CX",
+          7,
+          9
+        ],
+        [
+          "CX",
+          13,
+          10
+        ],
+        [
+          "CX",
+          12,
+          8
+        ],
+        [
+          "CX",
+          11,
+          13
+        ],
+        [
+          "CX",
+          14,
+          7
+        ],
+        [
+          "CX",
+          14,
+          12
+        ],
+        [
+          "CX",
+          14,
+          13
+        ],
+        [
+          "MX",
+          14,
+          "verify"
+        ]
+      ],
+      "ops": [
+        [
+          "RX",
+          7
+        ],
+        [
+          "R",
+          8
+        ],
+        [
+          "R",
+          9
+        ],
+        [
+          "R",
+          10
+        ],
+        [
+          "RX",
+          11
+        ],
+        [
+          "RX",
+          12
+        ],
+        [
+          "RX",
+          13
+        ],
+        [
+          "RX",
+          14
+        ],
+        [
+          "CX",
+          7,
+          8
+        ],
+        [
+          "CX",
+          12,
+          10
+        ],
+        [
+          "CX",
+          13,
+          9
+        ],
+        [
+          "CX",
+          11,
+          8
+        ],
+        [
+          "CX",
+          7,
+          9
+        ],
+        [
+          "CX",
+          13,
+          10
+        ],
+        [
+          "CX",
+          12,
+          8
+        ],
+        [
+          "CX",
+          11,
+          13
+        ],
+        [
+          "CX",
+          14,
+          7
+        ],
+        [
+          "CX",
+          14,
+          12
+        ],
+        [
+          "CX",
+          14,
+          13
+        ],
+        [
+          "MX",
+          14,
+          "verify"
+        ]
+      ],
+      "op_metadata": [
+        {
+          "part": "initial_resets",
+          "original_op_index": 0
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 1
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 2
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 3
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 4
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 5
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 6
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 7
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 15
+        },
+        {
+          "part": "verification",
+          "original_op_index": 16
+        },
+        {
+          "part": "verification",
+          "original_op_index": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": 18
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": 19
+        }
+      ],
+      "duration_seconds": null,
+      "standalone_active_ions": 8,
+      "reserved_full_EC_layout_ions": 15,
+      "parameters": {
+        "p_2q": 0.002
+      },
+      "scope": "Standalone 7-qubit ancilla block + verifier; data 0..6 are untouched and do not accrue B1 noise/time."
+    },
+    "c6_zero": {
+      "preset": "H2_LIKE",
+      "policy": "timing-free",
+      "basis": "0",
+      "noiseless": {
+        "verification_outcome": 0,
+        "signature": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "geometry_signature": "ec9b86168b7cf72b9e6387fdac84a689fe90b1a9c6083a092c3671a7c287f1f9",
+      "checks": {
+        "catalog": "positive preset-channel payloads",
+        "prep_fault_runs": 180,
+        "accepted_single_fault_runs": 87,
+        "rejected_single_fault_runs": 93,
+        "accepted_dangerous_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "accepted_maxima": {
+          "other_raw": 3,
+          "other_code_reduced": 3,
+          "other_prepared_state_reduced": 1,
+          "dangerous_code_reduced": 1
+        },
+        "by_part": {
+          "initial_resets": {
+            "runs": 14,
+            "accepted": 10,
+            "rejected": 4
+          },
+          "encoder": {
+            "runs": 120,
+            "accepted": 56,
+            "rejected": 64
+          },
+          "verification": {
+            "runs": 45,
+            "accepted": 21,
+            "rejected": 24
+          },
+          "verification_readout": {
+            "runs": 1,
+            "accepted": 0,
+            "rejected": 1
+          }
+        },
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "base_ops": [
+        [
+          "R",
+          7
+        ],
+        [
+          "RX",
+          8
+        ],
+        [
+          "RX",
+          9
+        ],
+        [
+          "RX",
+          10
+        ],
+        [
+          "R",
+          11
+        ],
+        [
+          "R",
+          12
+        ],
+        [
+          "R",
+          13
+        ],
+        [
+          "R",
+          14
+        ],
+        [
+          "CX",
+          8,
+          7
+        ],
+        [
+          "CX",
+          10,
+          12
+        ],
+        [
+          "CX",
+          9,
+          13
+        ],
+        [
+          "CX",
+          8,
+          11
+        ],
+        [
+          "CX",
+          9,
+          7
+        ],
+        [
+          "CX",
+          10,
+          13
+        ],
+        [
+          "CX",
+          8,
+          12
+        ],
+        [
+          "CX",
+          13,
+          11
+        ],
+        [
+          "CX",
+          7,
+          14
+        ],
+        [
+          "CX",
+          12,
+          14
+        ],
+        [
+          "CX",
+          13,
+          14
+        ],
+        [
+          "M",
+          14,
+          "verify"
+        ]
+      ],
+      "ops": [
+        [
+          "R",
+          7
+        ],
+        [
+          "RX",
+          8
+        ],
+        [
+          "RX",
+          9
+        ],
+        [
+          "RX",
+          10
+        ],
+        [
+          "R",
+          11
+        ],
+        [
+          "R",
+          12
+        ],
+        [
+          "R",
+          13
+        ],
+        [
+          "R",
+          14
+        ],
+        [
+          "CX",
+          8,
+          7
+        ],
+        [
+          "CX",
+          10,
+          12
+        ],
+        [
+          "CX",
+          9,
+          13
+        ],
+        [
+          "CX",
+          8,
+          11
+        ],
+        [
+          "CX",
+          9,
+          7
+        ],
+        [
+          "CX",
+          10,
+          13
+        ],
+        [
+          "CX",
+          8,
+          12
+        ],
+        [
+          "CX",
+          13,
+          11
+        ],
+        [
+          "CX",
+          7,
+          14
+        ],
+        [
+          "CX",
+          12,
+          14
+        ],
+        [
+          "CX",
+          13,
+          14
+        ],
+        [
+          "M",
+          14,
+          "verify"
+        ]
+      ],
+      "op_metadata": [
+        {
+          "part": "initial_resets",
+          "original_op_index": 0
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 1
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 2
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 3
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 4
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 5
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 6
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 7
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 15
+        },
+        {
+          "part": "verification",
+          "original_op_index": 16
+        },
+        {
+          "part": "verification",
+          "original_op_index": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": 18
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": 19
+        }
+      ],
+      "duration_seconds": null,
+      "standalone_active_ions": 8,
+      "reserved_full_EC_layout_ions": 15,
+      "parameters": {
+        "name": "H2_LIKE",
+        "p_2q": 0.00128,
+        "p_1q": 2.9e-05,
+        "p_reset": 4e-05,
+        "p_meas": 0.001,
+        "T2": null,
+        "ms_duration": null,
+        "rotation_duration": null,
+        "measurement_duration": null,
+        "reset_duration": null,
+        "shuttle_duration": null,
+        "split_duration": null,
+        "merge_duration": null,
+        "junction_duration": null,
+        "source": "https://arxiv.org/html/2508.14227v1#S3.T1",
+        "caveat": "Depolarizing-parameter convention unverified (process vs average infidelity). Timing unspecified."
+      },
+      "scope": "Standalone 7-qubit ancilla block + verifier; data 0..6 are untouched and do not accrue B1 noise/time."
+    },
+    "c6_plus": {
+      "preset": "H2_LIKE",
+      "policy": "timing-free",
+      "basis": "+",
+      "noiseless": {
+        "verification_outcome": 0,
+        "signature": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "geometry_signature": "34cefa3171d4ea0572bb990fb60d3542a9f36151c90104a90f1c1bd6f8fe3db1",
+      "checks": {
+        "catalog": "positive preset-channel payloads",
+        "prep_fault_runs": 184,
+        "accepted_single_fault_runs": 87,
+        "rejected_single_fault_runs": 97,
+        "accepted_dangerous_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "accepted_maxima": {
+          "other_raw": 3,
+          "other_code_reduced": 3,
+          "other_prepared_state_reduced": 1,
+          "dangerous_code_reduced": 1
+        },
+        "by_part": {
+          "initial_resets": {
+            "runs": 18,
+            "accepted": 10,
+            "rejected": 8
+          },
+          "encoder": {
+            "runs": 120,
+            "accepted": 56,
+            "rejected": 64
+          },
+          "verification": {
+            "runs": 45,
+            "accepted": 21,
+            "rejected": 24
+          },
+          "verification_readout": {
+            "runs": 1,
+            "accepted": 0,
+            "rejected": 1
+          }
+        },
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "base_ops": [
+        [
+          "RX",
+          7
+        ],
+        [
+          "R",
+          8
+        ],
+        [
+          "R",
+          9
+        ],
+        [
+          "R",
+          10
+        ],
+        [
+          "RX",
+          11
+        ],
+        [
+          "RX",
+          12
+        ],
+        [
+          "RX",
+          13
+        ],
+        [
+          "RX",
+          14
+        ],
+        [
+          "CX",
+          7,
+          8
+        ],
+        [
+          "CX",
+          12,
+          10
+        ],
+        [
+          "CX",
+          13,
+          9
+        ],
+        [
+          "CX",
+          11,
+          8
+        ],
+        [
+          "CX",
+          7,
+          9
+        ],
+        [
+          "CX",
+          13,
+          10
+        ],
+        [
+          "CX",
+          12,
+          8
+        ],
+        [
+          "CX",
+          11,
+          13
+        ],
+        [
+          "CX",
+          14,
+          7
+        ],
+        [
+          "CX",
+          14,
+          12
+        ],
+        [
+          "CX",
+          14,
+          13
+        ],
+        [
+          "MX",
+          14,
+          "verify"
+        ]
+      ],
+      "ops": [
+        [
+          "RX",
+          7
+        ],
+        [
+          "R",
+          8
+        ],
+        [
+          "R",
+          9
+        ],
+        [
+          "R",
+          10
+        ],
+        [
+          "RX",
+          11
+        ],
+        [
+          "RX",
+          12
+        ],
+        [
+          "RX",
+          13
+        ],
+        [
+          "RX",
+          14
+        ],
+        [
+          "CX",
+          7,
+          8
+        ],
+        [
+          "CX",
+          12,
+          10
+        ],
+        [
+          "CX",
+          13,
+          9
+        ],
+        [
+          "CX",
+          11,
+          8
+        ],
+        [
+          "CX",
+          7,
+          9
+        ],
+        [
+          "CX",
+          13,
+          10
+        ],
+        [
+          "CX",
+          12,
+          8
+        ],
+        [
+          "CX",
+          11,
+          13
+        ],
+        [
+          "CX",
+          14,
+          7
+        ],
+        [
+          "CX",
+          14,
+          12
+        ],
+        [
+          "CX",
+          14,
+          13
+        ],
+        [
+          "MX",
+          14,
+          "verify"
+        ]
+      ],
+      "op_metadata": [
+        {
+          "part": "initial_resets",
+          "original_op_index": 0
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 1
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 2
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 3
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 4
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 5
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 6
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 7
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 15
+        },
+        {
+          "part": "verification",
+          "original_op_index": 16
+        },
+        {
+          "part": "verification",
+          "original_op_index": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": 18
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": 19
+        }
+      ],
+      "duration_seconds": null,
+      "standalone_active_ions": 8,
+      "reserved_full_EC_layout_ions": 15,
+      "parameters": {
+        "name": "H2_LIKE",
+        "p_2q": 0.00128,
+        "p_1q": 2.9e-05,
+        "p_reset": 4e-05,
+        "p_meas": 0.001,
+        "T2": null,
+        "ms_duration": null,
+        "rotation_duration": null,
+        "measurement_duration": null,
+        "reset_duration": null,
+        "shuttle_duration": null,
+        "split_duration": null,
+        "merge_duration": null,
+        "junction_duration": null,
+        "source": "https://arxiv.org/html/2508.14227v1#S3.T1",
+        "caveat": "Depolarizing-parameter convention unverified (process vs average infidelity). Timing unspecified."
+      },
+      "scope": "Standalone 7-qubit ancilla block + verifier; data 0..6 are untouched and do not accrue B1 noise/time."
+    },
+    "c7_zero": {
+      "preset": "JONES_MURALI_2026",
+      "policy": "SEQ",
+      "basis": "0",
+      "noiseless": {
+        "verification_outcome": 0,
+        "signature": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "geometry_signature": "075576b12cc1cb2fa1e664d69e3ca6339d9ae324f12b1a4ba8d8f6f85b6ed495",
+      "checks": {
+        "catalog": "positive preset-channel payloads",
+        "prep_fault_runs": 222,
+        "accepted_single_fault_runs": 129,
+        "rejected_single_fault_runs": 93,
+        "accepted_dangerous_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "accepted_maxima": {
+          "other_raw": 3,
+          "other_code_reduced": 3,
+          "other_prepared_state_reduced": 1,
+          "dangerous_code_reduced": 1
+        },
+        "by_part": {
+          "initial_resets": {
+            "runs": 21,
+            "accepted": 17,
+            "rejected": 4
+          },
+          "encoder": {
+            "runs": 140,
+            "accepted": 76,
+            "rejected": 64
+          },
+          "verification": {
+            "runs": 53,
+            "accepted": 29,
+            "rejected": 24
+          },
+          "verification_readout": {
+            "runs": 8,
+            "accepted": 7,
+            "rejected": 1
+          }
+        },
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "base_ops": [
+        [
+          "R",
+          7
+        ],
+        [
+          "RX",
+          8
+        ],
+        [
+          "RX",
+          9
+        ],
+        [
+          "RX",
+          10
+        ],
+        [
+          "R",
+          11
+        ],
+        [
+          "R",
+          12
+        ],
+        [
+          "R",
+          13
+        ],
+        [
+          "R",
+          14
+        ],
+        [
+          "CX",
+          8,
+          7
+        ],
+        [
+          "CX",
+          10,
+          12
+        ],
+        [
+          "CX",
+          9,
+          13
+        ],
+        [
+          "CX",
+          8,
+          11
+        ],
+        [
+          "CX",
+          9,
+          7
+        ],
+        [
+          "CX",
+          10,
+          13
+        ],
+        [
+          "CX",
+          8,
+          12
+        ],
+        [
+          "CX",
+          13,
+          11
+        ],
+        [
+          "CX",
+          7,
+          14
+        ],
+        [
+          "CX",
+          12,
+          14
+        ],
+        [
+          "CX",
+          13,
+          14
+        ],
+        [
+          "M",
+          14,
+          "verify"
+        ]
+      ],
+      "ops": [
+        [
+          "R",
+          7
+        ],
+        [
+          "RX",
+          8
+        ],
+        [
+          "RX",
+          9
+        ],
+        [
+          "RX",
+          10
+        ],
+        [
+          "R",
+          11
+        ],
+        [
+          "R",
+          12
+        ],
+        [
+          "R",
+          13
+        ],
+        [
+          "R",
+          14
+        ],
+        [
+          "IDLE",
+          8,
+          0.0003100000000000001
+        ],
+        [
+          "IDLE",
+          7,
+          0.0003650000000000001
+        ],
+        [
+          "CX",
+          8,
+          7
+        ],
+        [
+          "IDLE",
+          10,
+          0.0002000000000000001
+        ],
+        [
+          "IDLE",
+          10,
+          3.9999999999999996e-05
+        ],
+        [
+          "IDLE",
+          12,
+          0.00010000000000000005
+        ],
+        [
+          "IDLE",
+          12,
+          3.9999999999999996e-05
+        ],
+        [
+          "CX",
+          10,
+          12
+        ],
+        [
+          "IDLE",
+          9,
+          0.0002550000000000001
+        ],
+        [
+          "IDLE",
+          9,
+          7.999999999999999e-05
+        ],
+        [
+          "IDLE",
+          13,
+          5.000000000000002e-05
+        ],
+        [
+          "IDLE",
+          13,
+          7.999999999999999e-05
+        ],
+        [
+          "CX",
+          9,
+          13
+        ],
+        [
+          "IDLE",
+          8,
+          7.999999999999999e-05
+        ],
+        [
+          "IDLE",
+          11,
+          0.00015000000000000007
+        ],
+        [
+          "IDLE",
+          11,
+          0.00011999999999999999
+        ],
+        [
+          "CX",
+          8,
+          11
+        ],
+        [
+          "IDLE",
+          9,
+          3.9999999999999996e-05
+        ],
+        [
+          "IDLE",
+          7,
+          0.00011999999999999999
+        ],
+        [
+          "CX",
+          9,
+          7
+        ],
+        [
+          "IDLE",
+          10,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          13,
+          7.999999999999999e-05
+        ],
+        [
+          "CX",
+          10,
+          13
+        ],
+        [
+          "IDLE",
+          8,
+          7.999999999999999e-05
+        ],
+        [
+          "IDLE",
+          12,
+          0.00015999999999999999
+        ],
+        [
+          "CX",
+          8,
+          12
+        ],
+        [
+          "IDLE",
+          13,
+          3.9999999999999996e-05
+        ],
+        [
+          "IDLE",
+          11,
+          0.00011999999999999999
+        ],
+        [
+          "CX",
+          13,
+          11
+        ],
+        [
+          "IDLE",
+          7,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          14,
+          0.00031999999999999997
+        ],
+        [
+          "CX",
+          7,
+          14
+        ],
+        [
+          "IDLE",
+          12,
+          3.9999999999999996e-05
+        ],
+        [
+          "IDLE",
+          12,
+          3.9999999999999996e-05
+        ],
+        [
+          "CX",
+          12,
+          14
+        ],
+        [
+          "IDLE",
+          13,
+          7.999999999999999e-05
+        ],
+        [
+          "CX",
+          13,
+          14
+        ],
+        [
+          "M",
+          14,
+          "verify"
+        ],
+        [
+          "IDLE",
+          7,
+          7.999999999999999e-05
+        ],
+        [
+          "IDLE",
+          7,
+          0.00039999999999999996
+        ],
+        [
+          "IDLE",
+          8,
+          3.9999999999999996e-05
+        ],
+        [
+          "IDLE",
+          8,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          8,
+          0.00039999999999999996
+        ],
+        [
+          "IDLE",
+          9,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          9,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          9,
+          0.00039999999999999996
+        ],
+        [
+          "IDLE",
+          10,
+          7.999999999999999e-05
+        ],
+        [
+          "IDLE",
+          10,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          10,
+          0.00039999999999999996
+        ],
+        [
+          "IDLE",
+          11,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          11,
+          0.00039999999999999996
+        ],
+        [
+          "IDLE",
+          12,
+          3.9999999999999996e-05
+        ],
+        [
+          "IDLE",
+          12,
+          0.00039999999999999996
+        ],
+        [
+          "IDLE",
+          13,
+          0.00039999999999999996
+        ]
+      ],
+      "op_metadata": [
+        {
+          "part": "initial_resets",
+          "original_op_index": 0
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 1
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 2
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 3
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 4
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 5
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 6
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 7
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 8
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 8
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 9
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 9
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 10
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 11
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 15
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 15
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 15
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 16
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 16
+        },
+        {
+          "part": "verification",
+          "original_op_index": 16
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 18
+        },
+        {
+          "part": "verification",
+          "original_op_index": 18
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": 19
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        }
+      ],
+      "duration_seconds": 0.001255,
+      "standalone_active_ions": 8,
+      "reserved_full_EC_layout_ions": 15,
+      "parameters": {
+        "name": "JONES_MURALI_2026",
+        "p_2q": 0.001,
+        "p_1q": 1e-05,
+        "p_reset": 0.005,
+        "p_meas": 0.001,
+        "T2": 2.2,
+        "ms_duration": 4e-05,
+        "rotation_duration": 5e-06,
+        "measurement_duration": 0.0004,
+        "reset_duration": 5e-05,
+        "shuttle_duration": 5e-06,
+        "split_duration": 8e-05,
+        "merge_duration": 8e-05,
+        "junction_duration": 0.0001,
+        "source": "https://arxiv.org/html/2510.23519v1#S5",
+        "caveat": "Gate probabilities are placeholders pending a heating model."
+      },
+      "scope": "Standalone 7-qubit ancilla block + verifier; data 0..6 are untouched and do not accrue B1 noise/time."
+    },
+    "c7_plus": {
+      "preset": "JONES_MURALI_2026",
+      "policy": "SEQ",
+      "basis": "+",
+      "noiseless": {
+        "verification_outcome": 0,
+        "signature": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "geometry_signature": "8ff63ea4cc38be4256d899e4228c01a4652b37f2c75127f5103c29782945ab52",
+      "checks": {
+        "catalog": "positive preset-channel payloads",
+        "prep_fault_runs": 226,
+        "accepted_single_fault_runs": 111,
+        "rejected_single_fault_runs": 115,
+        "accepted_dangerous_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "accepted_maxima": {
+          "other_raw": 3,
+          "other_code_reduced": 3,
+          "other_prepared_state_reduced": 1,
+          "dangerous_code_reduced": 1
+        },
+        "by_part": {
+          "initial_resets": {
+            "runs": 25,
+            "accepted": 14,
+            "rejected": 11
+          },
+          "encoder": {
+            "runs": 140,
+            "accepted": 63,
+            "rejected": 77
+          },
+          "verification": {
+            "runs": 53,
+            "accepted": 27,
+            "rejected": 26
+          },
+          "verification_readout": {
+            "runs": 8,
+            "accepted": 7,
+            "rejected": 1
+          }
+        },
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "base_ops": [
+        [
+          "RX",
+          7
+        ],
+        [
+          "R",
+          8
+        ],
+        [
+          "R",
+          9
+        ],
+        [
+          "R",
+          10
+        ],
+        [
+          "RX",
+          11
+        ],
+        [
+          "RX",
+          12
+        ],
+        [
+          "RX",
+          13
+        ],
+        [
+          "RX",
+          14
+        ],
+        [
+          "CX",
+          7,
+          8
+        ],
+        [
+          "CX",
+          12,
+          10
+        ],
+        [
+          "CX",
+          13,
+          9
+        ],
+        [
+          "CX",
+          11,
+          8
+        ],
+        [
+          "CX",
+          7,
+          9
+        ],
+        [
+          "CX",
+          13,
+          10
+        ],
+        [
+          "CX",
+          12,
+          8
+        ],
+        [
+          "CX",
+          11,
+          13
+        ],
+        [
+          "CX",
+          14,
+          7
+        ],
+        [
+          "CX",
+          14,
+          12
+        ],
+        [
+          "CX",
+          14,
+          13
+        ],
+        [
+          "MX",
+          14,
+          "verify"
+        ]
+      ],
+      "ops": [
+        [
+          "RX",
+          7
+        ],
+        [
+          "R",
+          8
+        ],
+        [
+          "R",
+          9
+        ],
+        [
+          "R",
+          10
+        ],
+        [
+          "RX",
+          11
+        ],
+        [
+          "RX",
+          12
+        ],
+        [
+          "RX",
+          13
+        ],
+        [
+          "RX",
+          14
+        ],
+        [
+          "IDLE",
+          7,
+          0.00036999999999999994
+        ],
+        [
+          "IDLE",
+          8,
+          0.0003199999999999999
+        ],
+        [
+          "CX",
+          7,
+          8
+        ],
+        [
+          "IDLE",
+          12,
+          0.00010999999999999996
+        ],
+        [
+          "IDLE",
+          12,
+          3.9999999999999996e-05
+        ],
+        [
+          "IDLE",
+          10,
+          0.00021999999999999993
+        ],
+        [
+          "IDLE",
+          10,
+          3.9999999999999996e-05
+        ],
+        [
+          "CX",
+          12,
+          10
+        ],
+        [
+          "IDLE",
+          13,
+          5.499999999999998e-05
+        ],
+        [
+          "IDLE",
+          13,
+          7.999999999999999e-05
+        ],
+        [
+          "IDLE",
+          9,
+          0.00026999999999999995
+        ],
+        [
+          "IDLE",
+          9,
+          7.999999999999999e-05
+        ],
+        [
+          "CX",
+          13,
+          9
+        ],
+        [
+          "IDLE",
+          11,
+          0.00016499999999999994
+        ],
+        [
+          "IDLE",
+          11,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          8,
+          7.999999999999999e-05
+        ],
+        [
+          "CX",
+          11,
+          8
+        ],
+        [
+          "IDLE",
+          7,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          9,
+          3.9999999999999996e-05
+        ],
+        [
+          "CX",
+          7,
+          9
+        ],
+        [
+          "IDLE",
+          13,
+          7.999999999999999e-05
+        ],
+        [
+          "IDLE",
+          10,
+          0.00011999999999999999
+        ],
+        [
+          "CX",
+          13,
+          10
+        ],
+        [
+          "IDLE",
+          12,
+          0.00015999999999999999
+        ],
+        [
+          "IDLE",
+          8,
+          7.999999999999999e-05
+        ],
+        [
+          "CX",
+          12,
+          8
+        ],
+        [
+          "IDLE",
+          11,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          13,
+          3.9999999999999996e-05
+        ],
+        [
+          "CX",
+          11,
+          13
+        ],
+        [
+          "IDLE",
+          14,
+          0.00031999999999999997
+        ],
+        [
+          "IDLE",
+          7,
+          0.00011999999999999999
+        ],
+        [
+          "CX",
+          14,
+          7
+        ],
+        [
+          "IDLE",
+          12,
+          3.9999999999999996e-05
+        ],
+        [
+          "IDLE",
+          12,
+          3.9999999999999996e-05
+        ],
+        [
+          "CX",
+          14,
+          12
+        ],
+        [
+          "IDLE",
+          13,
+          7.999999999999999e-05
+        ],
+        [
+          "CX",
+          14,
+          13
+        ],
+        [
+          "MX",
+          14,
+          "verify"
+        ],
+        [
+          "IDLE",
+          7,
+          7.999999999999999e-05
+        ],
+        [
+          "IDLE",
+          7,
+          0.000405
+        ],
+        [
+          "IDLE",
+          8,
+          3.9999999999999996e-05
+        ],
+        [
+          "IDLE",
+          8,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          8,
+          0.000405
+        ],
+        [
+          "IDLE",
+          9,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          9,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          9,
+          0.000405
+        ],
+        [
+          "IDLE",
+          10,
+          7.999999999999999e-05
+        ],
+        [
+          "IDLE",
+          10,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          10,
+          0.000405
+        ],
+        [
+          "IDLE",
+          11,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          11,
+          0.000405
+        ],
+        [
+          "IDLE",
+          12,
+          3.9999999999999996e-05
+        ],
+        [
+          "IDLE",
+          12,
+          0.000405
+        ],
+        [
+          "IDLE",
+          13,
+          0.000405
+        ]
+      ],
+      "op_metadata": [
+        {
+          "part": "initial_resets",
+          "original_op_index": 0
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 1
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 2
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 3
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 4
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 5
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 6
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 7
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 8
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 8
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 9
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 9
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 10
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 10
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 15
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 15
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 15
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 16
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 16
+        },
+        {
+          "part": "verification",
+          "original_op_index": 16
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 18
+        },
+        {
+          "part": "verification",
+          "original_op_index": 18
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": 19
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        }
+      ],
+      "duration_seconds": 0.0012699999999999999,
+      "standalone_active_ions": 8,
+      "reserved_full_EC_layout_ions": 15,
+      "parameters": {
+        "name": "JONES_MURALI_2026",
+        "p_2q": 0.001,
+        "p_1q": 1e-05,
+        "p_reset": 0.005,
+        "p_meas": 0.001,
+        "T2": 2.2,
+        "ms_duration": 4e-05,
+        "rotation_duration": 5e-06,
+        "measurement_duration": 0.0004,
+        "reset_duration": 5e-05,
+        "shuttle_duration": 5e-06,
+        "split_duration": 8e-05,
+        "merge_duration": 8e-05,
+        "junction_duration": 0.0001,
+        "source": "https://arxiv.org/html/2510.23519v1#S5",
+        "caveat": "Gate probabilities are placeholders pending a heating model."
+      },
+      "scope": "Standalone 7-qubit ancilla block + verifier; data 0..6 are untouched and do not accrue B1 noise/time."
+    },
+    "c8_zero": {
+      "preset": "JONES_MURALI_2026",
+      "policy": "PAR_MR",
+      "basis": "0",
+      "noiseless": {
+        "verification_outcome": 0,
+        "signature": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "geometry_signature": "78a40733e9dae365f7166d8baa0d9bbfcc0ee53bcf02d87f1a2ab20f4e373676",
+      "checks": {
+        "catalog": "positive preset-channel payloads",
+        "prep_fault_runs": 220,
+        "accepted_single_fault_runs": 127,
+        "rejected_single_fault_runs": 93,
+        "accepted_dangerous_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "accepted_maxima": {
+          "other_raw": 3,
+          "other_code_reduced": 3,
+          "other_prepared_state_reduced": 1,
+          "dangerous_code_reduced": 1
+        },
+        "by_part": {
+          "initial_resets": {
+            "runs": 19,
+            "accepted": 15,
+            "rejected": 4
+          },
+          "encoder": {
+            "runs": 140,
+            "accepted": 76,
+            "rejected": 64
+          },
+          "verification": {
+            "runs": 53,
+            "accepted": 29,
+            "rejected": 24
+          },
+          "verification_readout": {
+            "runs": 8,
+            "accepted": 7,
+            "rejected": 1
+          }
+        },
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "base_ops": [
+        [
+          "R",
+          7
+        ],
+        [
+          "RX",
+          8
+        ],
+        [
+          "RX",
+          9
+        ],
+        [
+          "RX",
+          10
+        ],
+        [
+          "R",
+          11
+        ],
+        [
+          "R",
+          12
+        ],
+        [
+          "R",
+          13
+        ],
+        [
+          "R",
+          14
+        ],
+        [
+          "CX",
+          8,
+          7
+        ],
+        [
+          "CX",
+          10,
+          12
+        ],
+        [
+          "CX",
+          9,
+          13
+        ],
+        [
+          "CX",
+          8,
+          11
+        ],
+        [
+          "CX",
+          9,
+          7
+        ],
+        [
+          "CX",
+          10,
+          13
+        ],
+        [
+          "CX",
+          8,
+          12
+        ],
+        [
+          "CX",
+          13,
+          11
+        ],
+        [
+          "CX",
+          7,
+          14
+        ],
+        [
+          "CX",
+          12,
+          14
+        ],
+        [
+          "CX",
+          13,
+          14
+        ],
+        [
+          "M",
+          14,
+          "verify"
+        ]
+      ],
+      "ops": [
+        [
+          "R",
+          7
+        ],
+        [
+          "RX",
+          8
+        ],
+        [
+          "RX",
+          9
+        ],
+        [
+          "RX",
+          10
+        ],
+        [
+          "R",
+          11
+        ],
+        [
+          "R",
+          12
+        ],
+        [
+          "R",
+          13
+        ],
+        [
+          "R",
+          14
+        ],
+        [
+          "IDLE",
+          7,
+          4.9999999999999996e-06
+        ],
+        [
+          "CX",
+          8,
+          7
+        ],
+        [
+          "IDLE",
+          10,
+          4e-05
+        ],
+        [
+          "IDLE",
+          12,
+          4.9999999999999996e-06
+        ],
+        [
+          "IDLE",
+          12,
+          4e-05
+        ],
+        [
+          "CX",
+          10,
+          12
+        ],
+        [
+          "IDLE",
+          9,
+          7.999999999999999e-05
+        ],
+        [
+          "IDLE",
+          13,
+          4.9999999999999996e-06
+        ],
+        [
+          "IDLE",
+          13,
+          7.999999999999999e-05
+        ],
+        [
+          "CX",
+          9,
+          13
+        ],
+        [
+          "IDLE",
+          8,
+          7.999999999999999e-05
+        ],
+        [
+          "IDLE",
+          11,
+          4.9999999999999996e-06
+        ],
+        [
+          "IDLE",
+          11,
+          0.00011999999999999999
+        ],
+        [
+          "CX",
+          8,
+          11
+        ],
+        [
+          "IDLE",
+          9,
+          3.9999999999999996e-05
+        ],
+        [
+          "IDLE",
+          7,
+          0.00011999999999999999
+        ],
+        [
+          "CX",
+          9,
+          7
+        ],
+        [
+          "IDLE",
+          10,
+          0.00012000000000000002
+        ],
+        [
+          "IDLE",
+          13,
+          8.000000000000002e-05
+        ],
+        [
+          "CX",
+          10,
+          13
+        ],
+        [
+          "IDLE",
+          8,
+          8.000000000000002e-05
+        ],
+        [
+          "IDLE",
+          12,
+          0.00016
+        ],
+        [
+          "CX",
+          8,
+          12
+        ],
+        [
+          "IDLE",
+          13,
+          3.9999999999999996e-05
+        ],
+        [
+          "IDLE",
+          11,
+          0.00012000000000000002
+        ],
+        [
+          "CX",
+          13,
+          11
+        ],
+        [
+          "IDLE",
+          7,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          14,
+          4.9999999999999996e-06
+        ],
+        [
+          "IDLE",
+          14,
+          0.00032
+        ],
+        [
+          "CX",
+          7,
+          14
+        ],
+        [
+          "IDLE",
+          12,
+          3.9999999999999996e-05
+        ],
+        [
+          "IDLE",
+          12,
+          3.9999999999999996e-05
+        ],
+        [
+          "CX",
+          12,
+          14
+        ],
+        [
+          "IDLE",
+          13,
+          7.999999999999999e-05
+        ],
+        [
+          "CX",
+          13,
+          14
+        ],
+        [
+          "M",
+          14,
+          "verify"
+        ],
+        [
+          "IDLE",
+          7,
+          7.999999999999999e-05
+        ],
+        [
+          "IDLE",
+          7,
+          0.00039999999999999996
+        ],
+        [
+          "IDLE",
+          8,
+          3.9999999999999996e-05
+        ],
+        [
+          "IDLE",
+          8,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          8,
+          0.00039999999999999996
+        ],
+        [
+          "IDLE",
+          9,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          9,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          9,
+          0.00039999999999999996
+        ],
+        [
+          "IDLE",
+          10,
+          7.999999999999999e-05
+        ],
+        [
+          "IDLE",
+          10,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          10,
+          0.00039999999999999996
+        ],
+        [
+          "IDLE",
+          11,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          11,
+          0.00039999999999999996
+        ],
+        [
+          "IDLE",
+          12,
+          3.9999999999999996e-05
+        ],
+        [
+          "IDLE",
+          12,
+          0.00039999999999999996
+        ],
+        [
+          "IDLE",
+          13,
+          0.00039999999999999996
+        ]
+      ],
+      "op_metadata": [
+        {
+          "part": "initial_resets",
+          "original_op_index": 0
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 1
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 2
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 3
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 4
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 5
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 6
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 7
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 9
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 10
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 11
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 15
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 15
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 15
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 16
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 16
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 16
+        },
+        {
+          "part": "verification",
+          "original_op_index": 16
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 18
+        },
+        {
+          "part": "verification",
+          "original_op_index": 18
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": 19
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        }
+      ],
+      "duration_seconds": 0.000895,
+      "standalone_active_ions": 8,
+      "reserved_full_EC_layout_ions": 15,
+      "parameters": {
+        "name": "JONES_MURALI_2026",
+        "p_2q": 0.001,
+        "p_1q": 1e-05,
+        "p_reset": 0.005,
+        "p_meas": 0.001,
+        "T2": 2.2,
+        "ms_duration": 4e-05,
+        "rotation_duration": 5e-06,
+        "measurement_duration": 0.0004,
+        "reset_duration": 5e-05,
+        "shuttle_duration": 5e-06,
+        "split_duration": 8e-05,
+        "merge_duration": 8e-05,
+        "junction_duration": 0.0001,
+        "source": "https://arxiv.org/html/2510.23519v1#S5",
+        "caveat": "Gate probabilities are placeholders pending a heating model."
+      },
+      "scope": "Standalone 7-qubit ancilla block + verifier; data 0..6 are untouched and do not accrue B1 noise/time."
+    },
+    "c8_plus": {
+      "preset": "JONES_MURALI_2026",
+      "policy": "PAR_MR",
+      "basis": "+",
+      "noiseless": {
+        "verification_outcome": 0,
+        "signature": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "geometry_signature": "da59d8a5984e8b37ae2b9dd036273515604abf597948a18942fdaa68a67d6522",
+      "checks": {
+        "catalog": "positive preset-channel payloads",
+        "prep_fault_runs": 222,
+        "accepted_single_fault_runs": 110,
+        "rejected_single_fault_runs": 112,
+        "accepted_dangerous_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "accepted_maxima": {
+          "other_raw": 3,
+          "other_code_reduced": 3,
+          "other_prepared_state_reduced": 1,
+          "dangerous_code_reduced": 1
+        },
+        "by_part": {
+          "initial_resets": {
+            "runs": 21,
+            "accepted": 13,
+            "rejected": 8
+          },
+          "encoder": {
+            "runs": 140,
+            "accepted": 63,
+            "rejected": 77
+          },
+          "verification": {
+            "runs": 53,
+            "accepted": 27,
+            "rejected": 26
+          },
+          "verification_readout": {
+            "runs": 8,
+            "accepted": 7,
+            "rejected": 1
+          }
+        },
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "base_ops": [
+        [
+          "RX",
+          7
+        ],
+        [
+          "R",
+          8
+        ],
+        [
+          "R",
+          9
+        ],
+        [
+          "R",
+          10
+        ],
+        [
+          "RX",
+          11
+        ],
+        [
+          "RX",
+          12
+        ],
+        [
+          "RX",
+          13
+        ],
+        [
+          "RX",
+          14
+        ],
+        [
+          "CX",
+          7,
+          8
+        ],
+        [
+          "CX",
+          12,
+          10
+        ],
+        [
+          "CX",
+          13,
+          9
+        ],
+        [
+          "CX",
+          11,
+          8
+        ],
+        [
+          "CX",
+          7,
+          9
+        ],
+        [
+          "CX",
+          13,
+          10
+        ],
+        [
+          "CX",
+          12,
+          8
+        ],
+        [
+          "CX",
+          11,
+          13
+        ],
+        [
+          "CX",
+          14,
+          7
+        ],
+        [
+          "CX",
+          14,
+          12
+        ],
+        [
+          "CX",
+          14,
+          13
+        ],
+        [
+          "MX",
+          14,
+          "verify"
+        ]
+      ],
+      "ops": [
+        [
+          "RX",
+          7
+        ],
+        [
+          "R",
+          8
+        ],
+        [
+          "R",
+          9
+        ],
+        [
+          "R",
+          10
+        ],
+        [
+          "RX",
+          11
+        ],
+        [
+          "RX",
+          12
+        ],
+        [
+          "RX",
+          13
+        ],
+        [
+          "RX",
+          14
+        ],
+        [
+          "IDLE",
+          8,
+          4.9999999999999996e-06
+        ],
+        [
+          "CX",
+          7,
+          8
+        ],
+        [
+          "IDLE",
+          12,
+          4e-05
+        ],
+        [
+          "IDLE",
+          10,
+          4.9999999999999996e-06
+        ],
+        [
+          "IDLE",
+          10,
+          4e-05
+        ],
+        [
+          "CX",
+          12,
+          10
+        ],
+        [
+          "IDLE",
+          13,
+          7.999999999999999e-05
+        ],
+        [
+          "IDLE",
+          9,
+          4.9999999999999996e-06
+        ],
+        [
+          "IDLE",
+          9,
+          7.999999999999999e-05
+        ],
+        [
+          "CX",
+          13,
+          9
+        ],
+        [
+          "IDLE",
+          11,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          8,
+          7.999999999999999e-05
+        ],
+        [
+          "CX",
+          11,
+          8
+        ],
+        [
+          "IDLE",
+          7,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          9,
+          3.9999999999999996e-05
+        ],
+        [
+          "CX",
+          7,
+          9
+        ],
+        [
+          "IDLE",
+          13,
+          8.000000000000002e-05
+        ],
+        [
+          "IDLE",
+          10,
+          0.00012000000000000002
+        ],
+        [
+          "CX",
+          13,
+          10
+        ],
+        [
+          "IDLE",
+          12,
+          0.00016
+        ],
+        [
+          "IDLE",
+          8,
+          8.000000000000002e-05
+        ],
+        [
+          "CX",
+          12,
+          8
+        ],
+        [
+          "IDLE",
+          11,
+          0.00012000000000000002
+        ],
+        [
+          "IDLE",
+          13,
+          3.9999999999999996e-05
+        ],
+        [
+          "CX",
+          11,
+          13
+        ],
+        [
+          "IDLE",
+          14,
+          0.00032
+        ],
+        [
+          "IDLE",
+          7,
+          0.00011999999999999999
+        ],
+        [
+          "CX",
+          14,
+          7
+        ],
+        [
+          "IDLE",
+          12,
+          3.9999999999999996e-05
+        ],
+        [
+          "IDLE",
+          12,
+          3.9999999999999996e-05
+        ],
+        [
+          "CX",
+          14,
+          12
+        ],
+        [
+          "IDLE",
+          13,
+          7.999999999999999e-05
+        ],
+        [
+          "CX",
+          14,
+          13
+        ],
+        [
+          "MX",
+          14,
+          "verify"
+        ],
+        [
+          "IDLE",
+          7,
+          7.999999999999999e-05
+        ],
+        [
+          "IDLE",
+          7,
+          0.000405
+        ],
+        [
+          "IDLE",
+          8,
+          3.9999999999999996e-05
+        ],
+        [
+          "IDLE",
+          8,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          8,
+          0.000405
+        ],
+        [
+          "IDLE",
+          9,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          9,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          9,
+          0.000405
+        ],
+        [
+          "IDLE",
+          10,
+          7.999999999999999e-05
+        ],
+        [
+          "IDLE",
+          10,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          10,
+          0.000405
+        ],
+        [
+          "IDLE",
+          11,
+          0.00011999999999999999
+        ],
+        [
+          "IDLE",
+          11,
+          0.000405
+        ],
+        [
+          "IDLE",
+          12,
+          3.9999999999999996e-05
+        ],
+        [
+          "IDLE",
+          12,
+          0.000405
+        ],
+        [
+          "IDLE",
+          13,
+          0.000405
+        ]
+      ],
+      "op_metadata": [
+        {
+          "part": "initial_resets",
+          "original_op_index": 0
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 1
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 2
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 3
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 4
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 5
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 6
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": 7
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 8
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 9
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 9
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 10
+        },
+        {
+          "part": "initial_resets",
+          "original_op_index": null,
+          "before_original_op": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 10
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 11
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 12
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 13
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 14
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 15
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 15
+        },
+        {
+          "part": "encoder",
+          "original_op_index": 15
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 16
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 16
+        },
+        {
+          "part": "verification",
+          "original_op_index": 16
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": 17
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 18
+        },
+        {
+          "part": "verification",
+          "original_op_index": 18
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": 19
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "encoder",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        },
+        {
+          "part": "verification_readout",
+          "original_op_index": null,
+          "before_original_op": 20
+        }
+      ],
+      "duration_seconds": 0.0009,
+      "standalone_active_ions": 8,
+      "reserved_full_EC_layout_ions": 15,
+      "parameters": {
+        "name": "JONES_MURALI_2026",
+        "p_2q": 0.001,
+        "p_1q": 1e-05,
+        "p_reset": 0.005,
+        "p_meas": 0.001,
+        "T2": 2.2,
+        "ms_duration": 4e-05,
+        "rotation_duration": 5e-06,
+        "measurement_duration": 0.0004,
+        "reset_duration": 5e-05,
+        "shuttle_duration": 5e-06,
+        "split_duration": 8e-05,
+        "merge_duration": 8e-05,
+        "junction_duration": 0.0001,
+        "source": "https://arxiv.org/html/2510.23519v1#S5",
+        "caveat": "Gate probabilities are placeholders pending a heating model."
+      },
+      "scope": "Standalone 7-qubit ancilla block + verifier; data 0..6 are untouched and do not accrue B1 noise/time."
+    }
+  },
+  "complete": true
+}

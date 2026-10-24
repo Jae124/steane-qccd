@@ -1,0 +1,46 @@
+{
+  "configuration": {
+    "simulation_fingerprint": "808a7c69c2748940b88cba9729860f7491b25d665cffdee33d0c7e4265eed0ed",
+    "seed": 211701,
+    "chunk_size": 1000000,
+    "max_attempts": null,
+    "numpy_version": "2.0.2",
+    "basis": "+",
+    "policy": "SEQ"
+  },
+  "counts": {
+    "shots": 5000000,
+    "accepted": 4865594,
+    "rejected": 134406,
+    "accepted_dangerous": 626,
+    "verification_rejection_cause_counts": {
+      "reset": 98458,
+      "measurement": 5075,
+      "2q": 28564,
+      "idle": 2309,
+      "mixed": 0
+    },
+    "verification_contributing_type_counts": {
+      "reset": 98458,
+      "measurement": 5075,
+      "2q": 28564,
+      "idle": 2309
+    },
+    "verification_fractional_type_counts": {
+      "reset": 98458.0,
+      "measurement": 5075.0,
+      "2q": 28564.0,
+      "idle": 2309.0
+    }
+  },
+  "rng_state": {
+    "bit_generator": "PCG64",
+    "state": {
+      "state": 80861585028446867958224011233448998465,
+      "inc": 316159819945710015284092188269322862477
+    },
+    "has_uint32": 0,
+    "uinteger": 4031968228
+  },
+  "chunks": 5
+}

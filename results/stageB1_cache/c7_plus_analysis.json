@@ -1,0 +1,44 @@
+{
+  "simulation_fingerprint": "808a7c69c2748940b88cba9729860f7491b25d665cffdee33d0c7e4265eed0ed",
+  "exact_finite_rate": {
+    "acceptance": 0.9732864285427557,
+    "rejection": 0.02671357145724429,
+    "accepted_dangerous_probability": 0.00011424021174717417,
+    "dangerous_given_acceptance": 0.00011737573688171046,
+    "method": "Exact independent-location Pauli XOR convolution; no truncation."
+  },
+  "pairs": {
+    "definition": "Per-attempt probability mass of accepted preparations with dangerous component reduced weight >1; not full-EC p_L.",
+    "P1": 0.0,
+    "P2": 0.00011608766109541318,
+    "P2_survival_corrected": 0.00011081492465897035,
+    "P2_survival_mean_approx": 0.00011021244856673623,
+    "positive_payload_pair_trials": 24255,
+    "malignant_payload_pairs": 3203,
+    "P2_by_location_type_pair": {
+      "reset*reset": 5.013208712000002e-05,
+      "idle*reset": 6.0132385560411836e-06,
+      "2q*reset": 4.2722986666666726e-05,
+      "measurement*reset": 5.039910578666668e-06,
+      "idle*idle": 3.942101099703812e-07,
+      "2q*idle": 2.4959044012165887e-06,
+      "2q*2q": 7.324444444444292e-06,
+      "idle*measurement": 8.579299618378989e-08,
+      "2q*measurement": 1.8790862222222228e-06
+    },
+    "P2_by_prep_part_pair": {
+      "initial_resets*initial_resets": 5.074290689641984e-05,
+      "encoder*initial_resets": 3.1432078548720384e-05,
+      "initial_resets*verification": 1.4229678448748154e-05,
+      "initial_resets*verification_readout": 7.837955278113457e-06,
+      "encoder*encoder": 3.570843606150869e-06,
+      "encoder*verification": 4.279604058279492e-06,
+      "encoder*verification_readout": 2.7488329989040653e-06,
+      "verification*verification": 5.507956985314996e-07,
+      "verification*verification_readout": 5.170786316705959e-07,
+      "verification_readout*verification_readout": 1.778869298734659e-07
+    },
+    "n_locations": 62,
+    "mean_location_fault_probability": 0.0008652213311221151
+  }
+}

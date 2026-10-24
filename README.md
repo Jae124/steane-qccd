@@ -356,3 +356,40 @@ the independently fitted R≥4 trend, and R≥4/R≥8 sensitivity fits. The R≥
 are shown for all cases, including every R=2 point outside its one-sigma error
 bar. Inspect goodness of fit before interpreting a fitted finite-window metric
 as a stationary rate. Stage B has not started.
+
+### Stage B1: standalone verified ancilla preparation
+
+`src/verified_prep.py` implements Goto's eight-CNOT encoder followed by a
+three-CNOT logical verification measurement, plus its Hadamard dual. It prepares
+|0_L> with dangerous X errors checked, and |+_L> with dangerous Z errors checked.
+The published circuit uses the same stabilizer row span as the frozen code;
+no flag circuit or decoder is modified. The correct source is
+[Goto, Scientific Reports 6, 19578 (2016), Fig. 1(c)](https://doi.org/10.1038/srep19578).
+The arXiv identifier in the attached design prompt belongs to a different paper.
+
+```bash
+.venv/bin/python src/prep_experiment.py --part checks
+.venv/bin/python src/prep_experiment.py --part mc --retry-caps 3 4
+MPLCONFIGDIR=/tmp/steane_matplotlib .venv/bin/python src/prep_experiment.py --part report --retry-caps 3 4 --retry-cap-selection "Both total-attempt caps are standalone diagnostics; the max_retries convention remains for review before B2."
+.venv/bin/python -m pytest -q
+```
+
+The report is `results/stageB1_preparation.json`, with the checkpoint in
+`docs/STAGE_LOG.md` and an annotated circuit diagram in
+`figures/verified_prep_circuits.png`. Each of 18 state/preset/policy rows has 5M
+single-attempt MC samples. Exact finite-rate Pauli convolution is an independent
+benchmark. Raw and survival-corrected P2 refer only to an accepted preparation's
+dangerous-component error; they are not a full-EC p_L or memory epsilon.
+
+The layout reserves data 0..6, ancilla block 7..13 and verifier 14. B1 executes
+only the latter eight ions. Its timing includes block waiting during verifier
+readout and every rejected retry. **Data waiting must be added when embedding
+this gadget in B2.** `sample_attempts(..., return_arrays=True)` supplies full
+output Pauli frames. Acceptance uses only the reported verification bit, never
+an ideal error-weight test. Retry sampling takes an explicit total-attempt cap;
+three- and four-attempt diagnostics expose the ambiguous “max_retries=3” wording.
+
+Recorded for later B3, with no comparisons run in B1: include XXXZZZ as the
+“flag, best order” arm under every preset, regardless of significance; run
+Steane-style in both half-orders; use A3 epsilon_tot as primary and always
+report epsilon_X and epsilon_Z. B2/B3 assembly and sampling have not started.
