@@ -1,0 +1,365 @@
+{
+  "configuration": {
+    "simulation_fingerprint": "3a9866465cc0d817e0268015f8caf19f2f2aa54d98a3869afa541e31165fc63f",
+    "rounds": 8,
+    "seed": 103034,
+    "chunk_size": 250000,
+    "numpy_version": "2.0.2",
+    "rng": "numpy.PCG64",
+    "round_order": [
+      [
+        "X",
+        0
+      ],
+      [
+        "X",
+        1
+      ],
+      [
+        "X",
+        2
+      ],
+      [
+        "Z",
+        0
+      ],
+      [
+        "Z",
+        1
+      ],
+      [
+        "Z",
+        2
+      ]
+    ],
+    "timing_policy": "timing-free",
+    "parameters": {
+      "uniform_p": 0.001
+    }
+  },
+  "counts": {
+    "shots": 1000000,
+    "rounds": 8,
+    "fails": 6585,
+    "fails_X": 3782,
+    "fails_Z": 3380,
+    "aborted": 0,
+    "logical_failure_counts": {
+      "X_only": 3205,
+      "Z_only": 2803,
+      "both_XZ": 577
+    },
+    "any_branch_shots": 370458,
+    "failures_through_any_branch": 6581,
+    "failures_through_last_branch": 1777,
+    "round_totals": {
+      "triggers": 459506,
+      "trigger_circuit_counts": [
+        83639,
+        75667,
+        74025,
+        81113,
+        73480,
+        71582
+      ],
+      "trigger_cause_counts": {
+        "reset": 92740,
+        "measurement": 93001,
+        "2q": 233893,
+        "idle": 0,
+        "carry": 39255,
+        "mixed": 617
+      },
+      "trigger_contributing_type_counts": {
+        "reset": 93078,
+        "measurement": 93322,
+        "2q": 234337,
+        "idle": 0,
+        "carry": 39386
+      },
+      "trigger_fractional_type_counts": {
+        "reset": 92909.0,
+        "measurement": 93161.5,
+        "2q": 234115.0,
+        "idle": 0.0,
+        "carry": 39320.5
+      }
+    },
+    "per_round": [
+      {
+        "triggers": 52596,
+        "trigger_circuit_counts": [
+          8002,
+          8561,
+          8616,
+          9699,
+          8921,
+          8797
+        ],
+        "trigger_cause_counts": {
+          "reset": 11624,
+          "measurement": 11551,
+          "2q": 29344,
+          "idle": 0,
+          "carry": 0,
+          "mixed": 77
+        },
+        "trigger_contributing_type_counts": {
+          "reset": 11669,
+          "measurement": 11598,
+          "2q": 29406,
+          "idle": 0,
+          "carry": 0
+        },
+        "trigger_fractional_type_counts": {
+          "reset": 11646.5,
+          "measurement": 11574.5,
+          "2q": 29375.0,
+          "idle": 0.0,
+          "carry": 0.0
+        }
+      },
+      {
+        "triggers": 58045,
+        "trigger_circuit_counts": [
+          10746,
+          9576,
+          9243,
+          10158,
+          9270,
+          9052
+        ],
+        "trigger_cause_counts": {
+          "reset": 11610,
+          "measurement": 11656,
+          "2q": 29116,
+          "idle": 0,
+          "carry": 5588,
+          "mixed": 75
+        },
+        "trigger_contributing_type_counts": {
+          "reset": 11649,
+          "measurement": 11694,
+          "2q": 29171,
+          "idle": 0,
+          "carry": 5606
+        },
+        "trigger_fractional_type_counts": {
+          "reset": 11629.5,
+          "measurement": 11675.0,
+          "2q": 29143.5,
+          "idle": 0.0,
+          "carry": 5597.0
+        }
+      },
+      {
+        "triggers": 58198,
+        "trigger_circuit_counts": [
+          10649,
+          9543,
+          9441,
+          10217,
+          9260,
+          9088
+        ],
+        "trigger_cause_counts": {
+          "reset": 11503,
+          "measurement": 11662,
+          "2q": 29390,
+          "idle": 0,
+          "carry": 5564,
+          "mixed": 79
+        },
+        "trigger_contributing_type_counts": {
+          "reset": 11547,
+          "measurement": 11703,
+          "2q": 29443,
+          "idle": 0,
+          "carry": 5584
+        },
+        "trigger_fractional_type_counts": {
+          "reset": 11525.0,
+          "measurement": 11682.5,
+          "2q": 29416.5,
+          "idle": 0.0,
+          "carry": 5574.0
+        }
+      },
+      {
+        "triggers": 58241,
+        "trigger_circuit_counts": [
+          10949,
+          9525,
+          9240,
+          10176,
+          9361,
+          8990
+        ],
+        "trigger_cause_counts": {
+          "reset": 11651,
+          "measurement": 11713,
+          "2q": 29258,
+          "idle": 0,
+          "carry": 5540,
+          "mixed": 79
+        },
+        "trigger_contributing_type_counts": {
+          "reset": 11701,
+          "measurement": 11751,
+          "2q": 29311,
+          "idle": 0,
+          "carry": 5557
+        },
+        "trigger_fractional_type_counts": {
+          "reset": 11676.0,
+          "measurement": 11732.0,
+          "2q": 29284.5,
+          "idle": 0.0,
+          "carry": 5548.5
+        }
+      },
+      {
+        "triggers": 57765,
+        "trigger_circuit_counts": [
+          10776,
+          9559,
+          9301,
+          10095,
+          9080,
+          8954
+        ],
+        "trigger_cause_counts": {
+          "reset": 11394,
+          "measurement": 11484,
+          "2q": 29130,
+          "idle": 0,
+          "carry": 5689,
+          "mixed": 68
+        },
+        "trigger_contributing_type_counts": {
+          "reset": 11427,
+          "measurement": 11520,
+          "2q": 29182,
+          "idle": 0,
+          "carry": 5704
+        },
+        "trigger_fractional_type_counts": {
+          "reset": 11410.5,
+          "measurement": 11502.0,
+          "2q": 29156.0,
+          "idle": 0.0,
+          "carry": 5696.5
+        }
+      },
+      {
+        "triggers": 58095,
+        "trigger_circuit_counts": [
+          10854,
+          9590,
+          9410,
+          10128,
+          9203,
+          8910
+        ],
+        "trigger_cause_counts": {
+          "reset": 11646,
+          "measurement": 11591,
+          "2q": 29232,
+          "idle": 0,
+          "carry": 5544,
+          "mixed": 82
+        },
+        "trigger_contributing_type_counts": {
+          "reset": 11693,
+          "measurement": 11630,
+          "2q": 29289,
+          "idle": 0,
+          "carry": 5565
+        },
+        "trigger_fractional_type_counts": {
+          "reset": 11669.5,
+          "measurement": 11610.5,
+          "2q": 29260.5,
+          "idle": 0.0,
+          "carry": 5554.5
+        }
+      },
+      {
+        "triggers": 58267,
+        "trigger_circuit_counts": [
+          10838,
+          9669,
+          9416,
+          10272,
+          9210,
+          8862
+        ],
+        "trigger_cause_counts": {
+          "reset": 11667,
+          "measurement": 11613,
+          "2q": 29285,
+          "idle": 0,
+          "carry": 5620,
+          "mixed": 82
+        },
+        "trigger_contributing_type_counts": {
+          "reset": 11710,
+          "measurement": 11655,
+          "2q": 29345,
+          "idle": 0,
+          "carry": 5639
+        },
+        "trigger_fractional_type_counts": {
+          "reset": 11688.5,
+          "measurement": 11634.0,
+          "2q": 29315.0,
+          "idle": 0.0,
+          "carry": 5629.5
+        }
+      },
+      {
+        "triggers": 58299,
+        "trigger_circuit_counts": [
+          10825,
+          9644,
+          9358,
+          10368,
+          9175,
+          8929
+        ],
+        "trigger_cause_counts": {
+          "reset": 11645,
+          "measurement": 11731,
+          "2q": 29138,
+          "idle": 0,
+          "carry": 5710,
+          "mixed": 75
+        },
+        "trigger_contributing_type_counts": {
+          "reset": 11682,
+          "measurement": 11771,
+          "2q": 29190,
+          "idle": 0,
+          "carry": 5731
+        },
+        "trigger_fractional_type_counts": {
+          "reset": 11663.5,
+          "measurement": 11751.0,
+          "2q": 29164.0,
+          "idle": 0.0,
+          "carry": 5720.5
+        }
+      }
+    ]
+  },
+  "rng_state": {
+    "bit_generator": "PCG64",
+    "state": {
+      "state": 9675220011118843198868038736471752167,
+      "inc": 95816416969895680301438949387591763663
+    },
+    "has_uint32": 0,
+    "uinteger": 2067378740
+  },
+  "chunks": 4
+}

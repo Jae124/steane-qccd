@@ -5,6 +5,7 @@ requires matching simulation/configuration fingerprints. Old artifacts are read
 only. No Steane-style extraction is implemented here.
 """
 import argparse
+import ast
 from copy import deepcopy
 from dataclasses import asdict
 import hashlib
@@ -31,7 +32,19 @@ CHUNK=1_000_000
 def simulation_fingerprint():
     names=('design_mc.py','flag_design.py','steane_ft.py','steane_noise.py',
            'ion_noise.py','ion_timing.py','ion_transport.py','ion_params.py')
-    return hashlib.sha256(b'\n'.join((ROOT/'src'/n).read_bytes() for n in names)).hexdigest()
+    sources=[(ROOT/'src'/n).read_bytes() for n in names]
+    before,marker,after=sources[-1].partition(b'# Stage A3 analysis-only memory lengths')
+    if marker:
+        try:
+            statements=ast.parse(marker+after).body
+            a=statements[0]
+            if (len(statements)==1 and isinstance(a,ast.Assign) and len(a.targets)==1
+                    and isinstance(a.targets[0],ast.Name) and a.targets[0].id=='MEMORY_ROUNDS'
+                    and isinstance(ast.literal_eval(a.value),tuple)
+                    and all(type(r) is int and r>0 for r in ast.literal_eval(a.value))):
+                sources[-1]=before
+        except (SyntaxError,ValueError,TypeError,AttributeError,IndexError):pass
+    return hashlib.sha256(b'\n'.join(sources)).hexdigest()
 
 
 def studies():

@@ -1,0 +1,134 @@
+{
+  "configuration": {
+    "simulation_fingerprint": "3a9866465cc0d817e0268015f8caf19f2f2aa54d98a3869afa541e31165fc63f",
+    "rounds": 1,
+    "seed": 103027,
+    "chunk_size": 250000,
+    "numpy_version": "2.0.2",
+    "rng": "numpy.PCG64",
+    "round_order": [
+      [
+        "X",
+        0
+      ],
+      [
+        "X",
+        1
+      ],
+      [
+        "X",
+        2
+      ],
+      [
+        "Z",
+        0
+      ],
+      [
+        "Z",
+        1
+      ],
+      [
+        "Z",
+        2
+      ]
+    ],
+    "timing_policy": "timing-free",
+    "parameters": {
+      "uniform_p": 0.001
+    }
+  },
+  "counts": {
+    "shots": 1000000,
+    "rounds": 1,
+    "fails": 735,
+    "fails_X": 413,
+    "fails_Z": 388,
+    "aborted": 0,
+    "logical_failure_counts": {
+      "X_only": 347,
+      "Z_only": 322,
+      "both_XZ": 66
+    },
+    "any_branch_shots": 52405,
+    "failures_through_any_branch": 728,
+    "failures_through_last_branch": 728,
+    "round_totals": {
+      "triggers": 52405,
+      "trigger_circuit_counts": [
+        8189,
+        8465,
+        8559,
+        9560,
+        8884,
+        8748
+      ],
+      "trigger_cause_counts": {
+        "reset": 11663,
+        "measurement": 11372,
+        "2q": 29304,
+        "idle": 0,
+        "carry": 0,
+        "mixed": 66
+      },
+      "trigger_contributing_type_counts": {
+        "reset": 11699,
+        "measurement": 11416,
+        "2q": 29356,
+        "idle": 0,
+        "carry": 0
+      },
+      "trigger_fractional_type_counts": {
+        "reset": 11681.0,
+        "measurement": 11394.0,
+        "2q": 29330.0,
+        "idle": 0.0,
+        "carry": 0.0
+      }
+    },
+    "per_round": [
+      {
+        "triggers": 52405,
+        "trigger_circuit_counts": [
+          8189,
+          8465,
+          8559,
+          9560,
+          8884,
+          8748
+        ],
+        "trigger_cause_counts": {
+          "reset": 11663,
+          "measurement": 11372,
+          "2q": 29304,
+          "idle": 0,
+          "carry": 0,
+          "mixed": 66
+        },
+        "trigger_contributing_type_counts": {
+          "reset": 11699,
+          "measurement": 11416,
+          "2q": 29356,
+          "idle": 0,
+          "carry": 0
+        },
+        "trigger_fractional_type_counts": {
+          "reset": 11681.0,
+          "measurement": 11394.0,
+          "2q": 29330.0,
+          "idle": 0.0,
+          "carry": 0.0
+        }
+      }
+    ]
+  },
+  "rng_state": {
+    "bit_generator": "PCG64",
+    "state": {
+      "state": 137028271226325496997075601088810207421,
+      "inc": 304068053001353537492203947414735861191
+    },
+    "has_uint32": 0,
+    "uinteger": 1117173983
+  },
+  "chunks": 4
+}

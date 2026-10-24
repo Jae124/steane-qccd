@@ -121,3 +121,5 @@ DESIGN_TWO_QUBIT_P = (5e-4, 1e-3, 2e-3)
 # Approved Stage 3 grid is reused; these points bracket lower-error targets.
 DESIGN_CALIBRATION_EXTENSION_P = (0.00015, 0.00025, 0.00035, 0.00045,
                                   0.00055, 0.00065, 0.00075)
+# Stage A3 analysis-only memory lengths (requested round counts, not hardware).
+MEMORY_ROUNDS = (1, 2, 4, 8, 16)

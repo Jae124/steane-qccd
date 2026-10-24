@@ -1,0 +1,248 @@
+{
+  "configuration": {
+    "simulation_fingerprint": "3a9866465cc0d817e0268015f8caf19f2f2aa54d98a3869afa541e31165fc63f",
+    "rounds": 4,
+    "seed": 133030,
+    "chunk_size": 250000,
+    "numpy_version": "2.0.2",
+    "rng": "numpy.PCG64",
+    "round_order": [
+      [
+        "X",
+        0
+      ],
+      [
+        "X",
+        1
+      ],
+      [
+        "X",
+        2
+      ],
+      [
+        "Z",
+        0
+      ],
+      [
+        "Z",
+        1
+      ],
+      [
+        "Z",
+        2
+      ]
+    ],
+    "timing_policy": "PAR_MR",
+    "parameters": {
+      "name": "JONES_MURALI_2026",
+      "p_2q": 0.001,
+      "p_1q": 1e-05,
+      "p_reset": 0.005,
+      "p_meas": 0.001,
+      "T2": 2.2,
+      "ms_duration": 4e-05,
+      "rotation_duration": 5e-06,
+      "measurement_duration": 0.0004,
+      "reset_duration": 5e-05,
+      "shuttle_duration": 5e-06,
+      "split_duration": 8e-05,
+      "merge_duration": 8e-05,
+      "junction_duration": 0.0001,
+      "source": "https://arxiv.org/html/2510.23519v1#S5",
+      "caveat": "Gate probabilities are placeholders pending a heating model."
+    }
+  },
+  "counts": {
+    "shots": 1000000,
+    "rounds": 4,
+    "fails": 8112,
+    "fails_X": 3885,
+    "fails_Z": 4713,
+    "aborted": 0,
+    "logical_failure_counts": {
+      "X_only": 3399,
+      "Z_only": 4227,
+      "both_XZ": 486
+    },
+    "any_branch_shots": 357976,
+    "failures_through_any_branch": 8077,
+    "failures_through_last_branch": 4442,
+    "round_totals": {
+      "triggers": 433608,
+      "trigger_circuit_counts": [
+        83530,
+        76239,
+        73684,
+        70312,
+        66010,
+        63833
+      ],
+      "trigger_cause_counts": {
+        "reset": 226192,
+        "measurement": 45009,
+        "2q": 113056,
+        "idle": 7253,
+        "carry": 40992,
+        "mixed": 1106
+      },
+      "trigger_contributing_type_counts": {
+        "reset": 227086,
+        "measurement": 45385,
+        "2q": 113648,
+        "idle": 7305,
+        "carry": 41292
+      },
+      "trigger_fractional_type_counts": {
+        "reset": 226638.83333333334,
+        "measurement": 45197.0,
+        "2q": 113351.83333333333,
+        "idle": 7278.666666666666,
+        "carry": 41141.666666666664
+      }
+    },
+    "per_round": [
+      {
+        "triggers": 98701,
+        "trigger_circuit_counts": [
+          16337,
+          16957,
+          16904,
+          16880,
+          15995,
+          15628
+        ],
+        "trigger_cause_counts": {
+          "reset": 56909,
+          "measurement": 11275,
+          "2q": 28447,
+          "idle": 1867,
+          "carry": 0,
+          "mixed": 203
+        },
+        "trigger_contributing_type_counts": {
+          "reset": 57089,
+          "measurement": 11354,
+          "2q": 28581,
+          "idle": 1880,
+          "carry": 0
+        },
+        "trigger_fractional_type_counts": {
+          "reset": 56999.0,
+          "measurement": 11314.5,
+          "2q": 28514.0,
+          "idle": 1873.5,
+          "carry": 0.0
+        }
+      },
+      {
+        "triggers": 110935,
+        "trigger_circuit_counts": [
+          22068,
+          19872,
+          18966,
+          17651,
+          16414,
+          15964
+        ],
+        "trigger_cause_counts": {
+          "reset": 56105,
+          "measurement": 11120,
+          "2q": 28321,
+          "idle": 1791,
+          "carry": 13305,
+          "mixed": 293
+        },
+        "trigger_contributing_type_counts": {
+          "reset": 56343,
+          "measurement": 11219,
+          "2q": 28462,
+          "idle": 1802,
+          "carry": 13403
+        },
+        "trigger_fractional_type_counts": {
+          "reset": 56223.833333333336,
+          "measurement": 11169.5,
+          "2q": 28391.5,
+          "idle": 1796.3333333333333,
+          "carry": 13353.833333333332
+        }
+      },
+      {
+        "triggers": 112101,
+        "trigger_circuit_counts": [
+          22684,
+          19621,
+          18874,
+          17908,
+          16751,
+          16263
+        ],
+        "trigger_cause_counts": {
+          "reset": 56793,
+          "measurement": 11242,
+          "2q": 28157,
+          "idle": 1777,
+          "carry": 13848,
+          "mixed": 284
+        },
+        "trigger_contributing_type_counts": {
+          "reset": 57013,
+          "measurement": 11327,
+          "2q": 28309,
+          "idle": 1789,
+          "carry": 13948
+        },
+        "trigger_fractional_type_counts": {
+          "reset": 56903.0,
+          "measurement": 11284.5,
+          "2q": 28232.833333333332,
+          "idle": 1782.8333333333333,
+          "carry": 13897.833333333334
+        }
+      },
+      {
+        "triggers": 111871,
+        "trigger_circuit_counts": [
+          22441,
+          19789,
+          18940,
+          17873,
+          16850,
+          15978
+        ],
+        "trigger_cause_counts": {
+          "reset": 56385,
+          "measurement": 11372,
+          "2q": 28131,
+          "idle": 1818,
+          "carry": 13839,
+          "mixed": 326
+        },
+        "trigger_contributing_type_counts": {
+          "reset": 56641,
+          "measurement": 11485,
+          "2q": 28296,
+          "idle": 1834,
+          "carry": 13941
+        },
+        "trigger_fractional_type_counts": {
+          "reset": 56513.0,
+          "measurement": 11428.5,
+          "2q": 28213.5,
+          "idle": 1826.0,
+          "carry": 13890.0
+        }
+      }
+    ]
+  },
+  "rng_state": {
+    "bit_generator": "PCG64",
+    "state": {
+      "state": 249102892414737408545171338440478467149,
+      "inc": 333733030427877931218684893397201899405
+    },
+    "has_uint32": 0,
+    "uinteger": 3358590358
+  },
+  "chunks": 4
+}

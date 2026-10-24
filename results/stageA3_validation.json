@@ -1,0 +1,50 @@
+{
+  "stage": "A3",
+  "data_and_code_checks_passed": true,
+  "primary_metric": "epsilon_tot",
+  "union_is_fitted": false,
+  "approved_artifacts": {
+    "artifact_count": 68,
+    "all_byte_identical": true,
+    "mismatches": []
+  },
+  "designs": 12,
+  "R_points": 60,
+  "endpoint_trajectories": 60000000,
+  "noisy_round_executions": 372000000,
+  "marginal_fit_count": 24,
+  "derived_epsilon_tot_count": 12,
+  "max_relative_marginal_stderr": 0.008916122724900007,
+  "max_relative_epsilon_tot_stderr": 0.006606690907346972,
+  "estimator_correlation_range": [
+    0.10809308513483355,
+    0.24500014430293912
+  ],
+  "stderr_inflation_from_covariance_range": [
+    1.052142736711517,
+    1.1155096220521354
+  ],
+  "marginal_GOF_p_below_0_05": 13,
+  "marginal_GOF_p_below_0_0027": 7,
+  "R2_outside_own_1sigma_errorbar_marginals": 12,
+  "Rge4_report_required_designs": 8,
+  "all_Rge4_fits_reported": true,
+  "max_R1_A2_agreement_sigma": 1.6730962812974703,
+  "pair_payload_trials_per_design": 431280,
+  "positive_pair_classes": 282,
+  "negative_pair_classes": 132,
+  "tests": {
+    "distinct_nodes_covered": 119,
+    "final_fast_run": "111 passed, 8 slow deselected in 58.73 s",
+    "full_regression_run": "115 passed in 414.70 s; all eight slow nodes passed",
+    "focused_memory_run": "20 passed in 9.28 s, including joint uncertainty and R2 diagnostic tests"
+  },
+  "figures_visually_inspected": [
+    "memory_epsilon_tot.png",
+    "memory_rounds_union.png",
+    "memory_rounds_logical_X_basis_0.png",
+    "memory_rounds_logical_Z_basis_plus.png"
+  ],
+  "simulation_fingerprint": "3a9866465cc0d817e0268015f8caf19f2f2aa54d98a3869afa541e31165fc63f",
+  "interpretation": "Basis fits and combined comparisons are finite-window summaries. Poor marginal fit quality prevents an unqualified stationary-rate or infinite-R convergence claim."
+}

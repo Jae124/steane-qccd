@@ -1,0 +1,23 @@
+{
+  "rounds": 16,
+  "placement_rounds_one_based": [
+    1,
+    8,
+    16
+  ],
+  "payload_runs": 3330,
+  "both_basis_runs": 6660,
+  "payload_runs_by_placement": {
+    "1": 1110,
+    "8": 1110,
+    "16": 1110
+  },
+  "flagged_payload_runs": 1998,
+  "bare_only_payload_runs": 1332,
+  "failures_union": 0,
+  "failures_X": 0,
+  "failures_Z": 0,
+  "incoming_runs": 42,
+  "incoming_failures": 0,
+  "simulation_fingerprint": "3a9866465cc0d817e0268015f8caf19f2f2aa54d98a3869afa541e31165fc63f"
+}

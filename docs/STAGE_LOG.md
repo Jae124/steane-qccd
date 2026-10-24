@@ -943,3 +943,360 @@ Assumptions made:
 Open questions for the human:
 - Review the Jones XXXZZZ improvement and the significant losses for alternating orders, including in timing-free noise. The prompt's interleaving/unbiased-noise expectations are not borne out by this unchanged gadget.
 - Stop here. Stage B1 (verified ancilla preparation), B2 and B3 have **not started**. No decoder/circuit has been changed, and no Steane-style comparison or paper-matching claim is made.
+
+
+## Stage A3 — Multi-round memory and alternating-order mechanism
+
+Changes:
+- `src/memory_mc.py`: reusable `RoundAdapter`/`RoundStep` driver, arbitrary incoming frames, final endpoint scoring only, current/carry trigger attribution, absorbing-abort interface and count merging. Only the flag adapter is implemented.
+- `src/memory_fit.py`: separate marginal binomial fits for epsilon_X/epsilon_Z, observed-curvature MC sampling errors, epsilon_tot with propagated X/Z covariance, goodness of fit, held-out R2 diagnostic and later-window fits.
+- `src/memory_experiment.py`: 12 design/preset-policy cases × five R points, cached independent streams, every design-pair contrast and four scientific figures. Union endpoints are descriptive; **no union fit** is included.
+- `src/pair_mechanism.py`: exact matched-physical-pair classes, full positive/negative contributions by types/positions/trigger paths, and scalar propagation traces.
+- `src/ion_params.py`: user-requested analysis round lengths {1,2,4,8,16}, no hardware values. `src/check_order.py` / `src/order_experiment.py`: old source identity compatibility for validated literal analysis assignments only.
+- `tests/test_memory.py`, `tests/fixtures/stageA2_artifacts.json`: carry/tableau/endpoint, single-fault, cache, fit/covariance, R2 diagnostic and pair-conservation checks, plus all 68 approved hashes.
+- `results/stageA3_memory.json`, `stageA3_pair_mechanism.json`, `stageA3_validation.json`, `stageA3_cache/`, `figures/memory_*.png`, README and noise-model docs: new A3 checkpoint outputs and methods. No Stage B implementation.
+
+Frozen-result checks:
+- All **68 approved Stage 0–A2 result/figure/cache files remain SHA-256 byte-identical**. A1/A2 source identities still match approved values. Existing flag circuits, decoder, timing builders and scalar kernels are unchanged.
+- All **119 test nodes** are covered by passing runs: **111 fast tests passed in 58.73 s**; all **8 slow nodes passed in the 115-test full run (414.70 s)**. The focused memory run has **20 passing tests**, including covariance propagation and the R2 trend check. `git diff --check` passes.
+- Original flagged FT 0/1218, ignoring-flags 48/1218 and frame/tableau 0/1176 — pass. Uniform malignant count 92840 and all exact A dictionaries — pass; uniform seed 2026 remains exactly 542/3M.
+- Jones seed 3326 remains exactly 6121/3M, including trigger metrics and Stage 4 empty replay/pair counts. Approved report reconstruction, idle limits and synthetic transport regressions pass.
+
+FT checks: inject every supported physical payload alone in round 1, 8 or 16 of a 16-round chain and evaluate both endpoint bases. Counts below are **per order**, with all three orders passing each family. Bare-only faults are separate because they do not execute on ideal input without a trigger. Every incoming single data Pauli also traverses 16 noiseless rounds with zero failures in 42 basis trials per design.
+
+| Preset / policy | Flagged failures / basis runs | Bare-only failures / basis runs | Incoming failures / basis runs |
+| --- | ---: | ---: | ---: |
+| UniformNoise(0.001) / timing-free | 0/3384 | 0/2232 | 0/42 |
+| H2_LIKE / timing-free | 0/3456 | 0/2268 | 0/42 |
+| JONES_MURALI_2026 / SEQ | 0/3996 | 0/2664 | 0/42 |
+| JONES_MURALI_2026 / PAR_MR | 0/3978 | 0/2664 | 0/42 |
+
+Cross-check:
+- Six Jones order/policy cases × 90 explicit mixed-fault trajectories × four rounds × both bases = **4,320 tableau round-state/log comparisons** matching scalar and batched frames, syndromes, triggers, corrections and logical decisions.
+- Five current/carry trigger components are separately replayed with the scalar primitive through the actual prefix, including cancellations; zero mismatches. R=1 matches frozen A2 on the same injected shots under every preset/policy and each A3 order.
+- A toy adapter leaves X0 in round one and adds X1 in round two: final ideal decoding reports failure, while an erroneous intermediate ideal correction would make it pass. Two logical X changes also cancel at R=2, so logical failure is not scored as absorbing first passage. Pre-existing logical frames persist.
+- Singletons, incoming errors, generic abort handling, cache/RNG resumption, MLE influence derivatives, covariance propagation and pair-weight conservation pass. No circuit/decoder change was needed.
+
+### Metric definition and sampling
+
+The user's clarification is implemented exactly:
+
+- Fit **epsilon_X** (logical-X marginal / |0_L>) and **epsilon_Z** (logical-Z marginal / |+_L>) separately to p_b(R)=[1-(1-2 epsilon_b)^R]/2 on **R={2,4,8,16}**.
+- Primary headline and design-comparison metric: **epsilon_tot=1-(1-epsilon_X)(1-epsilon_Z)**, with propagated uncertainty **including shared-trajectory X/Z covariance**. It is a derived metric, not a fit to union data.
+- Union p_L(R) is descriptive at every R, with R=1 retained for continuity. **The union is not fitted.**
+- Each marginal has goodness of fit. Compare held-out R=2 with the R≥4 trend; if it is outside its one-sigma MC error bar, report R≥4 too. All R≥4 fits are shown regardless, and R≥8 is an additional sensitivity diagnostic.
+- Stage B3 must use this multi-round epsilon_tot as primary, with one-round union p_L secondary. Epsilon_X/Z and fit quality remain required diagnostics.
+
+There are **60 independent R-point samples**, 1M trajectories each: **60M endpoints / 372M noisy rounds**. The full output Pauli frame becomes the next round's input; there is no ideal cleanup or added inter-round time. Actual noisy protocol corrections occur each round; one ideal decoder scores the endpoint. H2 uses timing-free Stage 1 channels; no timing is invented. Jones runs all three orders under both SEQ and PAR_MR, nominal parameters and empty transport.
+
+Sampling stderr for each marginal uses its observed likelihood curvature and endpoint-binomial variance. Within the same R, Cov(k_X,k_Z)=N(p_XZ-p_X p_Z), propagated through both MLE influence functions. Then Var(epsilon_tot) includes the cross term 2(1-epsilon_X)(1-epsilon_Z) Cov(epsilon_X,epsilon_Z). Across designs and R points the streams are independent. Expected-Fisher errors are secondary checks, and Pearson inflation is only diagnostic. Maximum relative sampling stderr across primary marginal/combined metrics is below **0.90%**, satisfying ≤3%. Positive fitted X/Z estimator correlation is 0.108–0.245; retaining covariance increases headline stderr by **5.2–11.6%** over the independence approximation.
+
+### Prediction test: epsilon_Z and epsilon_tot
+
+**Near-equality of grouped orders is not established over R≤16.** Under Jones, XXXZZZ retains lower epsilon_Z by 12.31% (SEQ) / 11.68% (PAR_MR), and lower epsilon_tot by 4.55% / 3.50%. The totals are closer than their one-round product-summary counterparts, but epsilon_Z does not converge near zero difference in this fit window. Later-window results are explicitly reported below. The grouped check lists are cyclic shifts when all checks execute; the actual adaptive protocol can terminate a flagged prefix, run bare checks and restart flagged checks at a boundary, so cyclic equivalence of the full stochastic process is not assumed.
+
+Fit quality limits stationary interpretation: **13 of 24 primary marginal fits have GOF p<0.05**, including seven with p<0.0027. Some R≥4 fits also remain poor. These are model diagnostics, not code/FT failures. Deltas and sigmas quantify finite-window fitted metrics; the data do not establish an infinite-R limit.
+
+For a consistent boundary comparison, the R1 product summary below uses 1-(1-p_X(1))(1-p_Z(1)) from approved A2 marginal counts; it is not a union fit. Prior one-round union differences are also retained for continuity.
+
+| Jones policy | Metric | R1 corresponding marginal/product relative difference | Memory relative difference [95% sampling CI] | Δepsilon ± combined stderr | σ | R≥4 relative difference |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| SEQ | epsilon_Z | -20.8026% | -12.3134% [-13.5000%, -11.1267%] | -0.0001895288183 ± 9.953e-06 | -19.0424 | -11.8038% |
+| SEQ | epsilon_tot | -10.5204% | -4.5524% [-5.5963%, -3.5086%] | -0.0001130520662 ± 1.35377e-05 | -8.3509 | -4.1967% |
+| PAR_MR | epsilon_Z | -17.2916% | -11.6820% [-12.9489%, -10.4152%] | -0.0001589444678 ± 9.3587e-06 | -16.9836 | -11.6580% |
+| PAR_MR | epsilon_tot | -6.5924% | -3.4970% [-4.5935%, -2.4004%] | -8.022579968e-05 ± 1.30659e-05 | -6.1401 | -3.5815% |
+
+The earlier A2 union differences were -9.9426% SEQ and -7.0673% PAR_MR; those are historical one-round descriptive numbers, not the definition of the new combined metric. Uniform/H2 epsilon_tot grouped-order comparisons remain below 3σ; ZXZXZX raises epsilon_tot under every family. Epsilon_X moves in the opposite direction to epsilon_Z when the grouped order is reversed, so a small combined difference alone does not imply marginal convergence.
+
+### Primary epsilon_tot, R1 continuity, and R≥4 result
+
+All errors below are propagated sampling stderr. Epsilon_tot has no standalone decay-curve goodness-of-fit statistic: the required quality belongs to its two marginal fits, reported in the next table. R1 is descriptive union p_L.
+
+| Preset / policy / order | Union p_L(1) ± stderr | epsilon_tot ± stderr | Relative stderr | X/Z estimator correlation | R≥4 epsilon_tot ± stderr |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| UniformNoise(0.001) / timing-free / ZZZXXX | 0.000739 ± 2.7175e-05 | 0.0008951398211 ± 5.9139e-06 | 0.6607% | 0.16286 | 0.0008959284581 ± 6.1259e-06 |
+| UniformNoise(0.001) / timing-free / XXXZZZ | 0.000735 ± 2.7101e-05 | 0.0009094372086 ± 5.9571e-06 | 0.6550% | 0.16136 | 0.0009134215839 ± 6.1831e-06 |
+| UniformNoise(0.001) / timing-free / ZXZXZX | 0.000889 ± 2.9803e-05 | 0.001040955505 ± 6.5466e-06 | 0.6289% | 0.22389 | 0.00104266555 ± 6.7864e-06 |
+| H2_LIKE / timing-free / ZZZXXX | 0.000836 ± 2.8902e-05 | 0.001055299128 ± 6.5081e-06 | 0.6167% | 0.19333 | 0.001057177067 ± 6.7461e-06 |
+| H2_LIKE / timing-free / XXXZZZ | 0.000794 ± 2.8167e-05 | 0.001053202721 ± 6.4851e-06 | 0.6157% | 0.18717 | 0.001058364265 ± 6.7305e-06 |
+| H2_LIKE / timing-free / ZXZXZX | 0.000927 ± 3.0433e-05 | 0.001199683679 ± 7.0928e-06 | 0.5912% | 0.24500 | 0.001200069269 ± 7.3457e-06 |
+| JONES_MURALI_2026 / SEQ / ZZZXXX | 0.002037 ± 4.5087e-05 | 0.002483326068 ± 9.6893e-06 | 0.3902% | 0.11061 | 0.002489353591 ± 1.0051e-05 |
+| JONES_MURALI_2026 / SEQ / XXXZZZ | 0.001819 ± 4.2611e-05 | 0.002370274002 ± 9.4544e-06 | 0.3989% | 0.10809 | 0.002384883362 ± 9.8234e-06 |
+| JONES_MURALI_2026 / SEQ / ZXZXZX | 0.002243 ± 4.7307e-05 | 0.002836071493 ± 1.0654e-05 | 0.3756% | 0.17243 | 0.002848657861 ± 1.1068e-05 |
+| JONES_MURALI_2026 / PAR_MR / ZZZXXX | 0.001883 ± 4.3353e-05 | 0.00229414475 ± 9.326e-06 | 0.4065% | 0.11510 | 0.002306870085 ± 9.6898e-06 |
+| JONES_MURALI_2026 / PAR_MR / XXXZZZ | 0.001768 ± 4.201e-05 | 0.00221391895 ± 9.1511e-06 | 0.4133% | 0.11257 | 0.002224250022 ± 9.501e-06 |
+| JONES_MURALI_2026 / PAR_MR / ZXZXZX | 0.002145 ± 4.6264e-05 | 0.002633287736 ± 1.0268e-05 | 0.3899% | 0.17415 | 0.002635485343 ± 1.0633e-05 |
+
+### Marginal fits and goodness of fit (R≥2)
+
+Chi-square has three degrees of freedom; the p-value and binomial deviance are also stored with standardized per-point residuals in JSON. Marginal fits are separate likelihood fits; their estimators are not assumed statistically independent.
+
+| Preset / policy / order | epsilon_X ± stderr | X chi²/3, GOF p | epsilon_Z ± stderr | Z chi²/3, GOF p |
+| --- | ---: | ---: | ---: | ---: |
+| UniformNoise(0.001) / timing-free / ZZZXXX | 0.0004228076906 ± 3.7698e-06 | 0.41312/3, 0.93752 | 0.0004725319206 ± 3.9873e-06 | 0.17539/3, 0.98146 |
+| UniformNoise(0.001) / timing-free / XXXZZZ | 0.0004838091815 ± 4.0347e-06 | 14.156/3, 0.0026999 | 0.0004258340495 ± 3.7833e-06 | 1.0867/3, 0.78029 |
+| UniformNoise(0.001) / timing-free / ZXZXZX | 0.0004938097111 ± 4.0768e-06 | 3.2998/3, 0.34768 | 0.0005474161132 ± 4.2945e-06 | 7.0204/3, 0.071251 |
+| H2_LIKE / timing-free / ZZZXXX | 0.0004817218839 ± 4.026e-06 | 5.3248/3, 0.1495 | 0.0005738536824 ± 4.3981e-06 | 7.7983/3, 0.050369 |
+| H2_LIKE / timing-free / XXXZZZ | 0.0005684571717 ± 4.3772e-06 | 13.205/3, 0.0042132 | 0.0004850212626 ± 4.0399e-06 | 9.9704/3, 0.018819 |
+| H2_LIKE / timing-free / ZXZXZX | 0.0005572613086 ± 4.3336e-06 | 4.022/3, 0.2591 | 0.0006427805673 ± 4.658e-06 | 4.6842/3, 0.19644 |
+| JONES_MURALI_2026 / SEQ / ZZZXXX | 0.0009455690772 ± 5.6665e-06 | 9.5511/3, 0.022794 | 0.001539212423 ± 7.2718e-06 | 12.522/3, 0.0057928 |
+| JONES_MURALI_2026 / SEQ / XXXZZZ | 0.001021969733 ± 5.895e-06 | 18.919/3, 0.00028411 | 0.001349683604 ± 6.7958e-06 | 50.005/3, 7.9689e-11 |
+| JONES_MURALI_2026 / SEQ / ZXZXZX | 0.001136013493 ± 6.2224e-06 | 13.231/3, 0.0041618 | 0.001701991486 ± 7.6589e-06 | 16.967/3, 0.0007179 |
+| JONES_MURALI_2026 / PAR_MR / ZZZXXX | 0.0009348293304 ± 5.6336e-06 | 15.561/3, 0.0013951 | 0.001360587337 ± 6.8249e-06 | 22.796/3, 4.4541e-05 |
+| JONES_MURALI_2026 / PAR_MR / XXXZZZ | 0.001013493939 ± 5.8701e-06 | 13.068/3, 0.0044908 | 0.001201642869 ± 6.4036e-06 | 21.333/3, 8.9755e-05 |
+| JONES_MURALI_2026 / PAR_MR / ZXZXZX | 0.001107460887 ± 6.1422e-06 | 4.6595/3, 0.1985 | 0.001527518516 ± 7.244e-06 | 3.8031/3, 0.28353 |
+
+### Held-out R=2 diagnostic and R≥4 marginal fits
+
+Compare R=2 with the independent R≥4 trend. “Outside” means beyond the R2 point's reported **one-sigma MC error bar**; combined sigma also propagates trend-fit uncertainty. Twelve of 24 marginals meet this criterion, covering eight of 12 designs. Every required R≥4 fit is reported, and the remaining ones are shown too. The R≥4 fit has two degrees of freedom. R≥8 sensitivities are retained in JSON without replacing the requested primary R≥2 fit.
+
+| Preset / policy / order | Marginal | R2 deviation / own error bar | Combined trend σ | Outside R2 bar? | R≥4 epsilon ± stderr | R≥4 chi²/2, GOF p |
+| --- | --- | ---: | ---: | --- | ---: | ---: |
+| UniformNoise(0.001) / timing-free / ZZZXXX | epsilon_X | -0.4181 | -0.4036 | no | 0.000423213522 ± 3.9051e-06 | 0.252/2, 0.88162 |
+| UniformNoise(0.001) / timing-free / ZZZXXX | epsilon_Z | -0.3726 | -0.3597 | no | 0.0004729150801 ± 4.1302e-06 | 0.047293/2, 0.97663 |
+| UniformNoise(0.001) / timing-free / XXXZZZ | epsilon_X | -3.1132 | -2.9961 | yes | 0.0004869190645 ± 4.1913e-06 | 5.8835/2, 0.052772 |
+| UniformNoise(0.001) / timing-free / XXXZZZ | epsilon_Z | -0.9064 | -0.8745 | no | 0.0004267102928 ± 3.9213e-06 | 0.34143/2, 0.84306 |
+| UniformNoise(0.001) / timing-free / ZXZXZX | epsilon_X | -0.9744 | -0.9401 | no | 0.0004948254219 ± 4.2257e-06 | 2.4344/2, 0.29606 |
+| UniformNoise(0.001) / timing-free / ZXZXZX | epsilon_Z | -0.6293 | -0.6073 | no | 0.0005481113471 ± 4.4498e-06 | 6.6492/2, 0.035987 |
+| H2_LIKE / timing-free / ZZZXXX | epsilon_X | -1.3755 | -1.3264 | yes | 0.0004831288952 ± 4.1749e-06 | 3.621/2, 0.16357 |
+| H2_LIKE / timing-free / ZZZXXX | epsilon_Z | -0.4157 | -0.4013 | no | 0.000574325645 ± 4.5562e-06 | 7.6327/2, 0.022007 |
+| H2_LIKE / timing-free / XXXZZZ | epsilon_X | -3.8700 | -3.7222 | yes | 0.0005726259993 ± 4.5496e-06 | 0.64815/2, 0.72319 |
+| H2_LIKE / timing-free / XXXZZZ | epsilon_Z | -0.9636 | -0.9296 | no | 0.0004860165716 ± 4.1874e-06 | 9.1104/2, 0.010512 |
+| H2_LIKE / timing-free / ZXZXZX | epsilon_X | 0.2275 | 0.2197 | no | 0.0005570046589 ± 4.4863e-06 | 3.9753/2, 0.13702 |
+| H2_LIKE / timing-free / ZXZXZX | epsilon_Z | -0.5346 | -0.5160 | no | 0.0006434229999 ± 4.826e-06 | 4.417/2, 0.10987 |
+| JONES_MURALI_2026 / SEQ / ZZZXXX | epsilon_X | -3.3106 | -3.1878 | yes | 0.0009502864242 ± 5.8843e-06 | 0.03267/2, 0.9838 |
+| JONES_MURALI_2026 / SEQ / ZZZXXX | epsilon_Z | -0.6962 | -0.6716 | no | 0.001540531113 ± 7.5383e-06 | 12.066/2, 0.0023986 |
+| JONES_MURALI_2026 / SEQ / XXXZZZ | epsilon_X | -3.8025 | -3.6602 | yes | 0.001027590165 ± 6.1235e-06 | 6.4217/2, 0.040323 |
+| JONES_MURALI_2026 / SEQ / XXXZZZ | epsilon_Z | -5.3125 | -5.1091 | yes | 0.001358689373 ± 7.0655e-06 | 25.924/2, 2.3476e-06 |
+| JONES_MURALI_2026 / SEQ / ZXZXZX | epsilon_X | -3.3660 | -3.2414 | yes | 0.001141303703 ± 6.4614e-06 | 3.3284/2, 0.18934 |
+| JONES_MURALI_2026 / SEQ / ZXZXZX | epsilon_Z | -3.7490 | -3.6095 | yes | 0.001709304994 ± 7.955e-06 | 4.6176/2, 0.099378 |
+| JONES_MURALI_2026 / PAR_MR / ZZZXXX | epsilon_X | -3.5065 | -3.3758 | yes | 0.0009397847839 ± 5.851e-06 | 4.9064/2, 0.086018 |
+| JONES_MURALI_2026 / PAR_MR / ZZZXXX | epsilon_Z | -4.5402 | -4.3687 | yes | 0.001368371276 ± 7.0923e-06 | 5.0544/2, 0.079881 |
+| JONES_MURALI_2026 / PAR_MR / XXXZZZ | epsilon_X | -2.0958 | -2.0201 | yes | 0.001016632566 ± 6.0901e-06 | 9.12/2, 0.010462 |
+| JONES_MURALI_2026 / PAR_MR / XXXZZZ | epsilon_Z | -4.4945 | -4.3245 | yes | 0.001208846408 ± 6.6545e-06 | 4.0235/2, 0.13375 |
+| JONES_MURALI_2026 / PAR_MR / ZXZXZX | epsilon_X | -0.6775 | -0.6537 | no | 0.001108539425 ± 6.3657e-06 | 4.2333/2, 0.12043 |
+| JONES_MURALI_2026 / PAR_MR / ZXZXZX | epsilon_Z | -0.5943 | -0.5733 | no | 0.001528640477 ± 7.509e-06 | 3.4749/2, 0.17597 |
+
+### Every design pair: primary epsilon_tot and prediction metric epsilon_Z
+
+Direction is second minus first under the same preset/policy; combined uncertainty uses independent design streams, after the X/Z covariance has already been propagated inside each epsilon_tot. Three-sigma labels concern sampling comparisons of finite-window metrics, not proof of stationarity. No family-wise multiplicity correction is claimed.
+
+| Family | First → second | Δepsilon_tot ± stderr | σ_tot | R≥4 Δepsilon_tot ± stderr (σ) | Δepsilon_Z ± stderr | σ_Z | R≥4 Δepsilon_Z ± stderr (σ) |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| UniformNoise(0.001) / timing-free | ZZZXXX → XXXZZZ | 1.42973875e-05 ± 8.3941e-06 | 1.7033 | 1.74931259e-05 ± 8.7039e-06 (2.010) | -4.66978711e-05 ± 5.4965e-06 | -8.4959 | -4.62047873e-05 ± 5.6952e-06 (-8.113) |
+| UniformNoise(0.001) / timing-free | ZZZXXX → ZXZXZX | 0.000145815684 ± 8.8223e-06 | 16.5281 | 0.000146737091 ± 9.1423e-06 (16.050) | 7.48841926e-05 ± 5.8601e-06 | 12.7786 | 7.5196267e-05 ± 6.0712e-06 (12.386) |
+| UniformNoise(0.001) / timing-free | XXXZZZ → ZXZXZX | 0.000131518296 ± 8.8513e-06 | 14.8587 | 0.000129243966 ± 9.1807e-06 (14.078) | 0.000121582064 ± 5.7233e-06 | 21.2432 | 0.000121401054 ± 5.931e-06 (20.469) |
+| H2_LIKE / timing-free | ZZZXXX → XXXZZZ | -2.09640782e-06 ± 9.1875e-06 | -0.2282 | 1.18719832e-06 ± 9.5294e-06 (0.125) | -8.88324198e-05 ± 5.9719e-06 | -14.8750 | -8.83090734e-05 ± 6.1881e-06 (-14.271) |
+| H2_LIKE / timing-free | ZZZXXX → ZXZXZX | 0.000144384551 ± 9.6262e-06 | 14.9992 | 0.000142892202 ± 9.9735e-06 (14.327) | 6.8926885e-05 ± 6.4063e-06 | 10.7593 | 6.90973549e-05 ± 6.6369e-06 (10.411) |
+| H2_LIKE / timing-free | XXXZZZ → ZXZXZX | 0.000146480959 ± 9.6106e-06 | 15.2416 | 0.000141705004 ± 9.9629e-06 (14.223) | 0.000157759305 ± 6.1658e-06 | 25.5861 | 0.000157406428 ± 6.3894e-06 (24.636) |
+| JONES_MURALI_2026 / SEQ | ZZZXXX → XXXZZZ | -0.000113052066 ± 1.3538e-05 | -8.3509 | -0.000104470229 ± 1.4054e-05 (-7.434) | -0.000189528818 ± 9.953e-06 | -19.0424 | -0.00018184174 ± 1.0332e-05 (-17.600) |
+| JONES_MURALI_2026 / SEQ | ZZZXXX → ZXZXZX | 0.000352745425 ± 1.4401e-05 | 24.4949 | 0.00035930427 ± 1.4951e-05 (24.033) | 0.000162779063 ± 1.0561e-05 | 15.4131 | 0.000168773881 ± 1.0959e-05 (15.400) |
+| JONES_MURALI_2026 / SEQ | XXXZZZ → ZXZXZX | 0.000465797491 ± 1.4244e-05 | 32.7018 | 0.000463774499 ± 1.4799e-05 (31.339) | 0.000352307882 ± 1.0239e-05 | 34.4077 | 0.000350615621 ± 1.064e-05 (32.954) |
+| JONES_MURALI_2026 / PAR_MR | ZZZXXX → XXXZZZ | -8.02257997e-05 ± 1.3066e-05 | -6.1401 | -8.26200633e-05 ± 1.3571e-05 (-6.088) | -0.000158944468 ± 9.3587e-06 | -16.9836 | -0.000159524868 ± 9.7254e-06 (-16.403) |
+| JONES_MURALI_2026 / PAR_MR | ZZZXXX → ZXZXZX | 0.000339142986 ± 1.3871e-05 | 24.4500 | 0.000328615258 ± 1.4386e-05 (22.843) | 0.00016693118 ± 9.9526e-06 | 16.7726 | 0.000160269201 ± 1.0329e-05 (15.517) |
+| JONES_MURALI_2026 / PAR_MR | XXXZZZ → ZXZXZX | 0.000419368786 ± 1.3754e-05 | 30.4909 | 0.000411235321 ± 1.4259e-05 (28.840) | 0.000325875647 ± 9.6686e-06 | 33.7045 | 0.000319794068 ± 1.0033e-05 (31.873) |
+
+| Family | First → second | Δepsilon_X ± combined stderr | σ_X |
+| --- | --- | ---: | ---: |
+| UniformNoise(0.001) / timing-free | ZZZXXX → XXXZZZ | 6.10014909e-05 ± 5.5218e-06 | 11.0474 |
+| UniformNoise(0.001) / timing-free | ZZZXXX → ZXZXZX | 7.10020205e-05 ± 5.5526e-06 | 12.7872 |
+| UniformNoise(0.001) / timing-free | XXXZZZ → ZXZXZX | 1.00005296e-05 ± 5.7358e-06 | 1.7435 |
+| H2_LIKE / timing-free | ZZZXXX → XXXZZZ | 8.67352879e-05 ± 5.9472e-06 | 14.5843 |
+| H2_LIKE / timing-free | ZZZXXX → ZXZXZX | 7.55394247e-05 ± 5.9152e-06 | 12.7705 |
+| H2_LIKE / timing-free | XXXZZZ → ZXZXZX | -1.11958632e-05 ± 6.1596e-06 | -1.8176 |
+| JONES_MURALI_2026 / SEQ | ZZZXXX → XXXZZZ | 7.64006562e-05 ± 8.1768e-06 | 9.3436 |
+| JONES_MURALI_2026 / SEQ | ZZZXXX → ZXZXZX | 0.000190444416 ± 8.4159e-06 | 22.6291 |
+| JONES_MURALI_2026 / SEQ | XXXZZZ → ZXZXZX | 0.000114043759 ± 8.5714e-06 | 13.3051 |
+| JONES_MURALI_2026 / PAR_MR | ZZZXXX → XXXZZZ | 7.86646089e-05 ± 8.1361e-06 | 9.6686 |
+| JONES_MURALI_2026 / PAR_MR | ZZZXXX → ZXZXZX | 0.000172631557 ± 8.3345e-06 | 20.7130 |
+| JONES_MURALI_2026 / PAR_MR | XXXZZZ → ZXZXZX | 9.39669477e-05 ± 8.4962e-06 | 11.0599 |
+
+### Endpoint Monte Carlo, all R: union descriptive only
+
+Each row has 1M independent trajectories. There is no intermediate ideal correction, no union fit and no absorbing first-logical-failure count. X/Z marginals can fail together; their overlap is retained in the covariance calculation. The generic abort hook is unused in this flag study.
+
+| Preset / policy / order | R | Union p_L ± stderr | X / 0_L marginal ± stderr | Z / +_L marginal ± stderr |
+| --- | ---: | ---: | ---: | ---: |
+| UniformNoise(0.001) / timing-free / ZZZXXX | 1 | 0.000739 ± 2.7175e-05 | 0.000364 ± 1.9075e-05 | 0.000425 ± 2.0611e-05 |
+| UniformNoise(0.001) / timing-free / ZZZXXX | 2 | 0.001623 ± 4.0254e-05 | 0.000834 ± 2.8867e-05 | 0.000934 ± 3.0547e-05 |
+| UniformNoise(0.001) / timing-free / ZZZXXX | 4 | 0.00329 ± 5.7264e-05 | 0.001683 ± 4.099e-05 | 0.001896 ± 4.3502e-05 |
+| UniformNoise(0.001) / timing-free / ZZZXXX | 8 | 0.006569 ± 8.0783e-05 | 0.0034 ± 5.821e-05 | 0.003762 ± 6.122e-05 |
+| UniformNoise(0.001) / timing-free / ZZZXXX | 16 | 0.013024 ± 0.00011338 | 0.006712 ± 8.1651e-05 | 0.007515 ± 8.6363e-05 |
+| UniformNoise(0.001) / timing-free / XXXZZZ | 1 | 0.000735 ± 2.7101e-05 | 0.000413 ± 2.0318e-05 | 0.000388 ± 1.9694e-05 |
+| UniformNoise(0.001) / timing-free / XXXZZZ | 2 | 0.001576 ± 3.9668e-05 | 0.000881 ± 2.9669e-05 | 0.000827 ± 2.8746e-05 |
+| UniformNoise(0.001) / timing-free / XXXZZZ | 4 | 0.003286 ± 5.7229e-05 | 0.001906 ± 4.3616e-05 | 0.001697 ± 4.116e-05 |
+| UniformNoise(0.001) / timing-free / XXXZZZ | 8 | 0.006585 ± 8.088e-05 | 0.003782 ± 6.1382e-05 | 0.00338 ± 5.8039e-05 |
+| UniformNoise(0.001) / timing-free / XXXZZZ | 16 | 0.013468 ± 0.00011527 | 0.007873 ± 8.838e-05 | 0.006815 ± 8.2271e-05 |
+| UniformNoise(0.001) / timing-free / ZXZXZX | 1 | 0.000889 ± 2.9803e-05 | 0.000463 ± 2.1512e-05 | 0.000536 ± 2.3145e-05 |
+| UniformNoise(0.001) / timing-free / ZXZXZX | 2 | 0.001816 ± 4.2576e-05 | 0.000959 ± 3.0953e-05 | 0.001075 ± 3.277e-05 |
+| UniformNoise(0.001) / timing-free / ZXZXZX | 4 | 0.00361 ± 5.9975e-05 | 0.001943 ± 4.4037e-05 | 0.002142 ± 4.6232e-05 |
+| UniformNoise(0.001) / timing-free / ZXZXZX | 8 | 0.007232 ± 8.4733e-05 | 0.003888 ± 6.2232e-05 | 0.004258 ± 6.5114e-05 |
+| UniformNoise(0.001) / timing-free / ZXZXZX | 16 | 0.014866 ± 0.00012102 | 0.007949 ± 8.8802e-05 | 0.008855 ± 9.3683e-05 |
+| H2_LIKE / timing-free / ZZZXXX | 1 | 0.000836 ± 2.8902e-05 | 0.000407 ± 2.017e-05 | 0.000504 ± 2.2444e-05 |
+| H2_LIKE / timing-free / ZZZXXX | 2 | 0.001865 ± 4.3145e-05 | 0.000924 ± 3.0383e-05 | 0.001134 ± 3.3656e-05 |
+| H2_LIKE / timing-free / ZZZXXX | 4 | 0.003689 ± 6.0625e-05 | 0.00187 ± 4.3203e-05 | 0.002193 ± 4.6778e-05 |
+| H2_LIKE / timing-free / ZZZXXX | 8 | 0.007533 ± 8.6465e-05 | 0.003811 ± 6.1616e-05 | 0.004523 ± 6.7101e-05 |
+| H2_LIKE / timing-free / ZZZXXX | 16 | 0.015298 ± 0.00012274 | 0.007775 ± 8.7833e-05 | 0.009264 ± 9.5803e-05 |
+| H2_LIKE / timing-free / XXXZZZ | 1 | 0.000794 ± 2.8167e-05 | 0.000478 ± 2.1858e-05 | 0.000395 ± 1.9871e-05 |
+| H2_LIKE / timing-free / XXXZZZ | 2 | 0.001772 ± 4.2058e-05 | 0.001021 ± 3.1937e-05 | 0.000942 ± 3.0678e-05 |
+| H2_LIKE / timing-free / XXXZZZ | 4 | 0.003704 ± 6.0748e-05 | 0.002251 ± 4.7391e-05 | 0.001841 ± 4.2867e-05 |
+| H2_LIKE / timing-free / XXXZZZ | 8 | 0.007612 ± 8.6914e-05 | 0.004575 ± 6.7484e-05 | 0.00382 ± 6.1688e-05 |
+| H2_LIKE / timing-free / XXXZZZ | 16 | 0.015335 ± 0.00012288 | 0.009107 ± 9.4995e-05 | 0.007875 ± 8.8391e-05 |
+| H2_LIKE / timing-free / ZXZXZX | 1 | 0.000927 ± 3.0433e-05 | 0.0005 ± 2.2355e-05 | 0.000542 ± 2.3275e-05 |
+| H2_LIKE / timing-free / ZXZXZX | 2 | 0.002094 ± 4.5712e-05 | 0.001121 ± 3.3463e-05 | 0.001267 ± 3.5572e-05 |
+| H2_LIKE / timing-free / ZXZXZX | 4 | 0.00406 ± 6.3589e-05 | 0.002148 ± 4.6297e-05 | 0.002495 ± 4.9888e-05 |
+| H2_LIKE / timing-free / ZXZXZX | 8 | 0.008383 ± 9.1174e-05 | 0.004516 ± 6.7049e-05 | 0.005068 ± 7.1009e-05 |
+| H2_LIKE / timing-free / ZXZXZX | 16 | 0.016778 ± 0.00012844 | 0.008837 ± 9.3589e-05 | 0.010326 ± 0.00010109 |
+| JONES_MURALI_2026 / SEQ / ZZZXXX | 1 | 0.002037 ± 4.5087e-05 | 0.000826 ± 2.8728e-05 | 0.001336 ± 3.6527e-05 |
+| JONES_MURALI_2026 / SEQ / ZZZXXX | 2 | 0.004533 ± 6.7175e-05 | 0.00176 ± 4.1915e-05 | 0.003038 ± 5.5034e-05 |
+| JONES_MURALI_2026 / SEQ / ZZZXXX | 4 | 0.009125 ± 9.5088e-05 | 0.003784 ± 6.1398e-05 | 0.005907 ± 7.663e-05 |
+| JONES_MURALI_2026 / SEQ / ZZZXXX | 8 | 0.018562 ± 0.00013497 | 0.007544 ± 8.6528e-05 | 0.012137 ± 0.0001095 |
+| JONES_MURALI_2026 / SEQ / ZZZXXX | 16 | 0.036941 ± 0.00018862 | 0.015004 ± 0.00012157 | 0.024369 ± 0.00015419 |
+| JONES_MURALI_2026 / SEQ / XXXZZZ | 1 | 0.001819 ± 4.2611e-05 | 0.000873 ± 2.9534e-05 | 0.001051 ± 3.2402e-05 |
+| JONES_MURALI_2026 / SEQ / XXXZZZ | 2 | 0.004085 ± 6.3783e-05 | 0.001888 ± 4.341e-05 | 0.002451 ± 4.9447e-05 |
+| JONES_MURALI_2026 / SEQ / XXXZZZ | 4 | 0.00858 ± 9.223e-05 | 0.004003 ± 6.3143e-05 | 0.005094 ± 7.119e-05 |
+| JONES_MURALI_2026 / SEQ / XXXZZZ | 8 | 0.017708 ± 0.00013189 | 0.00805 ± 8.936e-05 | 0.01071 ± 0.00010293 |
+| JONES_MURALI_2026 / SEQ / XXXZZZ | 16 | 0.035719 ± 0.00018559 | 0.016397 ± 0.000127 | 0.021677 ± 0.00014563 |
+| JONES_MURALI_2026 / SEQ / ZXZXZX | 1 | 0.002243 ± 4.7307e-05 | 0.00102 ± 3.1921e-05 | 0.001441 ± 3.7933e-05 |
+| JONES_MURALI_2026 / SEQ / ZXZXZX | 2 | 0.004902 ± 6.9842e-05 | 0.002125 ± 4.6049e-05 | 0.003201 ± 5.6487e-05 |
+| JONES_MURALI_2026 / SEQ / ZXZXZX | 4 | 0.010211 ± 0.00010053 | 0.004513 ± 6.7027e-05 | 0.006696 ± 8.1555e-05 |
+| JONES_MURALI_2026 / SEQ / ZXZXZX | 8 | 0.020376 ± 0.00014128 | 0.008937 ± 9.4112e-05 | 0.013395 ± 0.00011496 |
+| JONES_MURALI_2026 / SEQ / ZXZXZX | 16 | 0.04075 ± 0.00019771 | 0.018109 ± 0.00013335 | 0.026882 ± 0.00016174 |
+| JONES_MURALI_2026 / PAR_MR / ZZZXXX | 1 | 0.001883 ± 4.3353e-05 | 0.000776 ± 2.7846e-05 | 0.001244 ± 3.5248e-05 |
+| JONES_MURALI_2026 / PAR_MR / ZZZXXX | 2 | 0.004 ± 6.3119e-05 | 0.001732 ± 4.1581e-05 | 0.002506 ± 4.9997e-05 |
+| JONES_MURALI_2026 / PAR_MR / ZZZXXX | 4 | 0.008393 ± 9.1228e-05 | 0.003637 ± 6.0198e-05 | 0.005309 ± 7.2669e-05 |
+| JONES_MURALI_2026 / PAR_MR / ZZZXXX | 8 | 0.0174 ± 0.00013076 | 0.007577 ± 8.6716e-05 | 0.010961 ± 0.00010412 |
+| JONES_MURALI_2026 / PAR_MR / ZZZXXX | 16 | 0.034009 ± 0.00018125 | 0.01483 ± 0.00012087 | 0.021474 ± 0.00014496 |
+| JONES_MURALI_2026 / PAR_MR / XXXZZZ | 1 | 0.001768 ± 4.201e-05 | 0.000876 ± 2.9584e-05 | 0.000983 ± 3.1337e-05 |
+| JONES_MURALI_2026 / PAR_MR / XXXZZZ | 2 | 0.003896 ± 6.2296e-05 | 0.001939 ± 4.3991e-05 | 0.002204 ± 4.6895e-05 |
+| JONES_MURALI_2026 / PAR_MR / XXXZZZ | 4 | 0.008112 ± 8.9701e-05 | 0.003885 ± 6.2209e-05 | 0.004713 ± 6.8489e-05 |
+| JONES_MURALI_2026 / PAR_MR / XXXZZZ | 8 | 0.016606 ± 0.00012779 | 0.008066 ± 8.9448e-05 | 0.009533 ± 9.7171e-05 |
+| JONES_MURALI_2026 / PAR_MR / XXXZZZ | 16 | 0.033033 ± 0.00017872 | 0.016199 ± 0.00012624 | 0.019156 ± 0.00013707 |
+| JONES_MURALI_2026 / PAR_MR / ZXZXZX | 1 | 0.002145 ± 4.6264e-05 | 0.001004 ± 3.167e-05 | 0.001347 ± 3.6677e-05 |
+| JONES_MURALI_2026 / PAR_MR / ZXZXZX | 2 | 0.004675 ± 6.8214e-05 | 0.002183 ± 4.6672e-05 | 0.00302 ± 5.4871e-05 |
+| JONES_MURALI_2026 / PAR_MR / ZXZXZX | 4 | 0.00938 ± 9.6395e-05 | 0.004318 ± 6.5569e-05 | 0.005971 ± 7.7041e-05 |
+| JONES_MURALI_2026 / PAR_MR / ZXZXZX | 8 | 0.019122 ± 0.00013695 | 0.008741 ± 9.3084e-05 | 0.012222 ± 0.00010988 |
+| JONES_MURALI_2026 / PAR_MR / ZXZXZX | 16 | 0.037616 ± 0.00019027 | 0.017605 ± 0.00013151 | 0.023898 ± 0.00015273 |
+
+### Trigger and bare-round metrics
+
+R=16 summary below; JSON provides every R, every round index, positional histograms, exclusive causes, overlapping contributors, fractional credits and raw counts. Rates are per executed round; `carry` is incoming residual-frame signal, not a current location. Any-bare probability is per whole trajectory. Memory failure share through any bare round and through the last bare round are separate.
+
+| Preset / policy / order | Trigger/round | Reset | Measurement | 2q | Idle | Carry | Mixed | Any-bare probability | Failure share any bare | Failure share last bare |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| UniformNoise(0.001) / timing-free / ZZZXXX | 0.05772944 | 0.01161937 | 0.01157725 | 0.02920556 | 0 | 0.005255125 | 7.2125e-05 | 0.605539 | 0.9996929 | 0.1628532 |
+| UniformNoise(0.001) / timing-free / XXXZZZ | 0.05775913 | 0.01162206 | 0.01157394 | 0.02922687 | 0 | 0.0052615 | 7.475e-05 | 0.605055 | 0.9998515 | 0.1647609 |
+| UniformNoise(0.001) / timing-free / ZXZXZX | 0.05795031 | 0.01155187 | 0.01164425 | 0.03003531 | 0 | 0.004646687 | 7.21875e-05 | 0.606022 | 0.9996637 | 0.1652092 |
+| H2_LIKE / timing-free / ZZZXXX | 0.05597837 | 0.000581625 | 0.01171594 | 0.03741738 | 0 | 0.006216562 | 4.6875e-05 | 0.594033 | 0.9996732 | 0.1615244 |
+| H2_LIKE / timing-free / XXXZZZ | 0.05605456 | 0.0005729375 | 0.01176231 | 0.0374495 | 0 | 0.006221875 | 4.79375e-05 | 0.59441 | 0.9994131 | 0.1627649 |
+| H2_LIKE / timing-free / ZXZXZX | 0.05616213 | 0.000578 | 0.01168219 | 0.03841825 | 0 | 0.00544025 | 4.34375e-05 | 0.594617 | 0.9994636 | 0.1630707 |
+| JONES_MURALI_2026 / SEQ / ZZZXXX | 0.1153734 | 0.05639437 | 0.01126012 | 0.02835987 | 0.007924125 | 0.01111112 | 0.00032375 | 0.846203 | 0.9997834 | 0.2127446 |
+| JONES_MURALI_2026 / SEQ / XXXZZZ | 0.1148024 | 0.05613488 | 0.01120888 | 0.02817569 | 0.00312175 | 0.01583794 | 0.0003233125 | 0.846234 | 0.9996081 | 0.2138638 |
+| JONES_MURALI_2026 / SEQ / ZXZXZX | 0.1154029 | 0.05635431 | 0.01123769 | 0.02899556 | 0.006944625 | 0.01154481 | 0.0003259375 | 0.846996 | 0.9997546 | 0.2123190 |
+| JONES_MURALI_2026 / PAR_MR / ZZZXXX | 0.1111816 | 0.05649688 | 0.01125531 | 0.02834288 | 0.00471775 | 0.01007525 | 0.0002935 | 0.83523 | 0.9999412 | 0.2174130 |
+| JONES_MURALI_2026 / PAR_MR / XXXZZZ | 0.1111188 | 0.05636581 | 0.01125856 | 0.02828931 | 0.001812438 | 0.01309531 | 0.0002973125 | 0.835113 | 0.9997881 | 0.2149669 |
+| JONES_MURALI_2026 / PAR_MR / ZXZXZX | 0.1115096 | 0.05655113 | 0.01129156 | 0.02901431 | 0.004143625 | 0.01021681 | 0.000292125 | 0.835768 | 0.9998937 | 0.2124894 |
+
+All Jones rows include actual-path mean idle seconds and summed Z probability for every data qubit, normalized per executed round. Independent-round exposure stderr is omitted because round paths within one trajectory can correlate. H2 remains timing-free.
+
+### One-round P2 and survival correction (secondary only)
+
+These are the unchanged one-round A2 pair tables, compared to fresh A3 R=1 MC. They are **not** multi-round P2 estimates or epsilon estimates. Raw and corrected values and both ratios are reported for every design/preset. No P2×R approximation is substituted for the memory simulation.
+
+| Preset / policy / order | Raw P2 | Exact survival-corrected P2 | Raw/R1 MC | Corrected/R1 MC |
+| --- | ---: | ---: | ---: | ---: |
+| UniformNoise(0.001) / timing-free / ZZZXXX | 0.00076791111111 | 0.00069898337247 | 1.039122 | 0.945850 |
+| UniformNoise(0.001) / timing-free / XXXZZZ | 0.00076791111111 | 0.00069898337247 | 1.044777 | 0.950998 |
+| UniformNoise(0.001) / timing-free / ZXZXZX | 0.00087614666666 | 0.0007975036993 | 0.985542 | 0.897080 |
+| H2_LIKE / timing-free / ZZZXXX | 0.00088465601772 | 0.00080565603442 | 1.058201 | 0.963703 |
+| H2_LIKE / timing-free / XXXZZZ | 0.00088442199291 | 0.00080544293281 | 1.113882 | 1.014412 |
+| H2_LIKE / timing-free / ZXZXZX | 0.00099130739442 | 0.0009027778934 | 1.069372 | 0.973870 |
+| JONES_MURALI_2026 / SEQ / ZZZXXX | 0.0021817914988 | 0.0018200903519 | 1.071081 | 0.893515 |
+| JONES_MURALI_2026 / SEQ / XXXZZZ | 0.0019630253544 | 0.0016379584086 | 1.079178 | 0.900472 |
+| JONES_MURALI_2026 / SEQ / ZXZXZX | 0.0024456846756 | 0.0020404169837 | 1.090363 | 0.909682 |
+| JONES_MURALI_2026 / PAR_MR / ZZZXXX | 0.0020168313463 | 0.0016910443022 | 1.071073 | 0.898059 |
+| JONES_MURALI_2026 / PAR_MR / XXXZZZ | 0.0018683411658 | 0.0015668293773 | 1.056754 | 0.886216 |
+| JONES_MURALI_2026 / PAR_MR / ZXZXZX | 0.0022955787993 | 0.0019248823815 | 1.070200 | 0.897381 |
+
+### Exact Uniform(0.001) alternating-order mechanism
+
+All **431280 distinct-location payload pairs per design** are evaluated. Identity matches stage, actual check kind/support, original operation index and payload; execution position is remapped. A3 reproduces the approved raw pair sums exactly within floating-point enumeration precision:
+
+- ZZZXXX P2 = 0.000767911111111; survival-corrected = 0.000698983372468.
+- ZXZXZX P2 = 0.000876146666667; survival-corrected = 0.000797503699298.
+- Delta P2 = 0.000108235555556; corrected delta = 9.85203268302e-05. Survival factor is (1-0.001)^94 = 0.910239951414, including the approved potential-location convention.
+
+| Matched physical payload-pair partition | Pair count | Raw P2 weight | Corrected weight |
+| --- | ---: | ---: | ---: |
+| new_only | 18846 | 0.000157182222222 | 0.000143073538319 |
+| removed | 9949 | 4.89466666667e-05 | 4.45532114885e-05 |
+| common | 82891 | 0.000718964444444 | 0.00065443016098 |
+
+`new_only - removed` equals the net delta; common cases are not double-counted. The complete JSON lists **282 positive classes and 132 negative classes**, each with location/operation types, both circuit-position maps and both trigger paths. This includes countervailing improvements, rather than reporting only newly malignant examples. Pure SPAM pair weights have zero net order penalty here; every positive broad-type excess involves a CX fault.
+
+| Location types | ZZZXXX P2 | ZXZXZX P2 | Delta P2 | Share of net excess |
+| --- | ---: | ---: | ---: | ---: |
+| 2q*2q | 0.00038884444444 | 0.00042348 | 3.4635555555e-05 | 32.0002% |
+| 2q*meas | 0.00017753333333 | 0.00021433333333 | 3.68e-05 | 33.9999% |
+| 2q*reset | 0.00017753333333 | 0.00021433333333 | 3.68e-05 | 33.9999% |
+| meas*meas | 6e-06 | 6e-06 | 0 | 0.0000% |
+| meas*reset | 1.2e-05 | 1.2e-05 | 0 | 0.0000% |
+| reset*reset | 6e-06 | 6e-06 | 0 | 0.0000% |
+
+Top positive joint classes (physical identities held fixed, with both actual trigger paths):
+
+| Rank | Types / ops | Physical checks | Positions ZZZXXX → ZXZXZX | Baseline trigger path | Alternating trigger path | Delta P2 | New-only / removed payload cases |
+| --- | --- | --- | --- | --- | --- | ---: | ---: |
+| 1 | 2q*reset / RX*CX | F:Z2 + B:Z2 | F2,B2 → F4,B4 | F2:Z2:flag1:synd0->bare | F4:Z2:flag1:synd0->bare | 1.4e-06 | 21 / 0 |
+| 2 | 2q*meas / MX*CX | F:Z2 + B:Z2 | F2,B2 → F4,B4 | F2:Z2:flag1:synd0->bare | F4:Z2:flag1:synd0->bare | 1.4e-06 | 21 / 0 |
+| 3 | 2q*2q / CX*CX | F:X2 + B:Z2 | F5,B2 → F5,B4 | F5:X2:flag0:synd1->bare | F5:X2:flag0:synd1->bare | 1.333333333e-06 | 372 / 72 |
+| 4 | 2q*reset / RX*CX | F:Z2 + B:X0 | F2,B3 → F4,B1 | F2:Z2:flag1:synd0->bare | F4:Z2:flag1:synd0->bare | 1.133333333e-06 | 17 / 0 |
+| 5 | 2q*meas / MX*CX | F:Z2 + B:X0 | F2,B3 → F4,B1 | F2:Z2:flag1:synd0->bare | F4:Z2:flag1:synd0->bare | 1.133333333e-06 | 17 / 0 |
+| 6 | 2q*2q / CX*CX | F:Z2 + B:Z2 | F2,B2 → F4,B4 | F2:Z2:flag0:synd1->bare | F4:Z2:flag0:synd1->bare | 1.12e-06 | 336 / 84 |
+| 7 | 2q*reset / RX*CX | F:Z0 + B:X0 | F0,B3 → F0,B1 | F0:Z0:flag1:synd0->bare | F0:Z0:flag1:synd0->bare | 1.066666667e-06 | 16 / 0 |
+| 8 | 2q*meas / MX*CX | F:Z0 + B:X0 | F0,B3 → F0,B1 | F0:Z0:flag1:synd0->bare | F0:Z0:flag1:synd0->bare | 1.066666667e-06 | 16 / 0 |
+| 9 | 2q*reset / RX*CX | F:Z1 + B:X0 | F1,B3 → F2,B1 | F1:Z1:flag1:synd0->bare | F2:Z1:flag1:synd0->bare | 1.066666667e-06 | 16 / 0 |
+| 10 | 2q*meas / MX*CX | F:Z1 + B:X0 | F1,B3 → F2,B1 | F1:Z1:flag1:synd0->bare | F2:Z1:flag1:synd0->bare | 1.066666667e-06 | 16 / 0 |
+
+Top positive position-aligned aggregates (the JSON additionally maps each physical check identity, so equal positions are not mistaken for equal checks):
+
+| Types | Executed positions | ZZZXXX P2 | ZXZXZX P2 | Delta P2 |
+| --- | --- | ---: | ---: | ---: |
+| 2q*2q | F4 + B3 | 7.653333333e-06 | 1.297777778e-05 | 5.324444444e-06 |
+| 2q*reset | F4 + B3 | 4.133333333e-06 | 9.333333333e-06 | 5.2e-06 |
+| 2q*meas | F4 + B3 | 4.133333333e-06 | 9.333333333e-06 | 5.2e-06 |
+| 2q*2q | F4 + B1 | 7.933333333e-06 | 1.280444444e-05 | 4.871111111e-06 |
+| 2q*2q | F1 + B4 | 7.831111111e-06 | 1.268444444e-05 | 4.853333333e-06 |
+| 2q*reset | F5 + B2 | 3.6e-06 | 8.333333333e-06 | 4.733333333e-06 |
+| 2q*meas | F5 + B2 | 3.6e-06 | 8.333333333e-06 | 4.733333333e-06 |
+| 2q*reset | F1 + B4 | 4.333333333e-06 | 8.8e-06 | 4.466666667e-06 |
+| 2q*meas | F1 + B4 | 4.333333333e-06 | 8.8e-06 | 4.466666667e-06 |
+| 2q*2q | F5 + B2 | 6.915555556e-06 | 1.126666667e-05 | 4.351111111e-06 |
+
+#### Propagation of the top contributors
+
+All qubit and op indices below are **zero-based**; support labels Z2/X0 refer to the original Hamming check rows, not execution positions. Faults act at the existing post-gate/reset locations or flip the reported measurement. Full scalar per-operation frames/readouts, actual executed prefixes, syndromes, corrections and endpoint logical decisions are stored in `top_examples` in `results/stageA3_pair_mechanism.json`.
+
+1. **False flag plus a late bare Z2 hook (top classes 1 and 2).** A Z fault after `RX(8)` at flagged Z2 op 1, or a `FLIP` of its flag `MX(8)` at op 9, produces a spurious flag with syndrome 0. It triggers flagged position F2 in ZZZXXX or F4 in ZXZXZX. Pair it with `IY` after bare Z2 op 2, `CX(2,7)` (B2 versus B4). The syndrome ancilla's Z component propagates through the remaining CNOTs to data **Z4 Z6**; its X component also flips that Z-check readout. Under ZZZXXX all three bare X-checks follow the hook, giving s_z=2; the unchanged flagged table applies Z4 Z6. A residual X0 from s_x=1 is weight one and is removed by the final ideal decoder. Under ZXZXZX, X0 and X1 were read before the hook and X2 sees even parity, giving stale/incomplete s_z=0 and no Z correction. The final residual contains Z4 Z6; ideal decoding adds Z1 and leaves logical Z1 Z4 Z6. The reset and measurement classes each add 21 newly malignant payload combinations with no removals, delta P2=1.4e-6 per class.
+
+2. **False flag plus an X4 error between bare Z readouts (classes 4 and 5).** Use the same spurious flagged Z2 signal, paired with `IX` after bare X0 op 2, `CX(7,4)` (B3 in grouped order, B1 in alternating order). It leaves data X4. Grouped ZZZXXX has already read all bare Z checks, so s_x=0 and X4 remains a correctable single error at the endpoint. Alternating ZXZXZX has read Z0 but not Z1/Z2; subsequent readouts produce incomplete s_x=1. The standard X decoder applies X0, converting X4 into X0 X4, and the final ideal decoder adds X3, leaving logical X0 X3 X4. This example directly shows the one-round boundary asymmetry: one design defers a weight-one error, while the other creates an inconsistent correction. It is not a single-fault FT violation, since the false trigger and gate fault are two faults. Each corresponding reset/measurement class contributes 17 new payload cases with no removals, delta P2=1.133333e-6.
+
+3. **Two-CX stale-syndrome case (class 3).** A `YI` fault after flagged X2 op 2, `CX(7,0)`, is paired with `YI` after bare Z2 op 2, `CX(2,7)`. The first makes the actual F5 X2 syndrome trigger (flag 0); the second adds a late Z2 component during the bare round. Both designs have s_x=1, but grouped order reads all bare X checks afterward and obtains s_z=3, applying Z2. Alternating order has already read X0/X1 and obtains s_z=1, applying Z0 instead. Its Z0 Z2 residual becomes logical Z0 Z1 Z2 after ideal decoding. This joint class contains 372 newly malignant and 72 removed payload combinations, net delta P2=1.333333e-6; the removals are retained in the class accounting.
+
+These traces explain the main mechanism as **syndrome bits collected on different sides of a later data error**, together with the unchanged flagged-table/standard-decoder response. It is not an invented extra idle penalty: this attribution uses timing-free uniform noise and identical physical fault pairs. Carrying errors into later rounds removes the free boundary treatment for some cases, but does not imply that all alternating-order losses or adaptive ordering differences must vanish.
+
+For the one-round mechanism attribution, approved high-shot one-round MC supplies the reference; its raw/corrected P2 comparisons are stored in the mechanism JSON. Epsilon_tot remains primary for design comparisons. The full noisy memory MC includes cross-round faults and higher-order events.
+
+Assumptions made:
+- The user's A3 request overrides the earlier one-round-only scope. No added waiting, hardware timing, layout, recooling or transport is introduced; H2 retains timing-free channels.
+- Actual protocol corrections occur each round. The frame is carried throughout and ideal decoding is only at the last endpoint. Logical changes can cancel; only an explicit preparation abort would be absorbing for a future adapter.
+- Per the user's clarification, primary fits are epsilon_X/Z marginals, and every primary design contrast uses the derived epsilon_tot with joint propagated uncertainty. Union data remain descriptive, including R=1; no union decay is fitted.
+- R2 error bars mean one-sigma MC stderr, with separate combined trend uncertainty shown. All R≥4 fits are supplied, not selected only when they improve conclusions. Poor goodness of fit limits stationary interpretation even if statistical precision is high.
+- Three-sigma statements concern the specified independent-design sampling contrast. Fit quality and heuristic dispersion diagnostics do not authorize an infinite-R conclusion or a bias correction.
+- One-round P2 is always accompanied by exact survival correction and comparison to one-round MC. No multi-round P2×R approximation or repurposed one-round memory p_eff is claimed.
+- Stage B3's primary metric is epsilon_tot from these marginal memory fits; one-round union p_L is secondary. The reusable harness is ready, but no Steane-style ancilla/circuit work has started.
+
+Open questions for the human:
+- Review the persistent epsilon_Z difference and the smaller epsilon_tot difference for grouped orders, including the explicitly reported R≥4 results and fit quality. The tested finite windows do not establish grouped-order stationary equivalence.
+- Some fits remain poor after excluding R=2; the report preserves this limitation rather than silently treating a precise finite-window estimate as an asymptotic rate.
+- Stop here. Stage B1 and all later Stage B work await approval.

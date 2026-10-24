@@ -667,3 +667,119 @@ A1's source identity excludes only the appended A2 analysis-grid section of
 fingerprint includes the entire parameter file and the new sampler. All 16
 Stage 0–4 artifacts and four approved A1 JSONs are SHA-256 checked and untouched.
 No decoder, check circuit, physical timing value or hardware schedule is changed.
+
+## Stage A3: carried-frame memory and marginal error metrics
+
+The user extends the earlier one-round scope to R={1,2,4,8,16}, flag orders
+ZZZXXX/XXXZZZ/ZXZXZX, Uniform(0.001), H2 with timing-free Stage 1 channels,
+and Jones–Murali under SEQ/PAR_MR. Each trajectory starts with ideal encoded
+data and zero error frame. The exact output frame becomes the next round's
+input. There is no re-preparation, ideal cleanup, frame normalization or added
+waiting between rounds. Actual noisy protocol corrections occur each round;
+one ideal decoder is used only for final observation. The same Pauli trajectory
+evaluates both bases: logical X parity fails |0_L>, logical Z parity fails
+|+_L>. Logical changes can cancel across rounds; first-passage failure is not
+an absorbing logical-failure criterion.
+
+### Reusable harness and sampling
+
+A `RoundAdapter` supplies `initial_state(shots)` and `step(state,rng)` returning
+`RoundStep(state,branch_taken,aborted,diagnostics)`. The `memory_trial` driver
+carries this opaque state and calls a scorer once at the endpoint. An abort
+can be recorded as an absorbing failure by a future retry/preparation adapter;
+that adapter must retain its abort status. No Stage B circuit or verification
+implementation is included in A3.
+
+`FlagMemoryRound` reuses the approved circuits, channels and decoder tables.
+Its sparse shortcut skips only shots with both zero incoming frame and no new
+faults; carried errors are never discarded. Ancillas reset only through actual
+circuit reset operations. Noise is sampled at every potential location in every
+round; the unchanged adaptive protocol ignores latent unexecuted faults. This
+is full finite-rate MC, with no pair-order truncation. Existing live-ion idle
+insertion covers every executed check; there is no extra round-boundary time.
+
+Four current-round components (reset, measurement, 2q, idle) and a fifth incoming
+`carry` frame are replayed through the actual flagged prefix. Exclusive mixed
+causes, overlapping contributors and fractional credits are saved. Historical
+noise types behind a nonlinear earlier correction are not arbitrarily assigned
+to current locations. Trigger rates are per executed round; any-bare probability
+is per trajectory. Failure shares through any bare round and the last bare
+round are both reported. Data idle exposure is averaged over actual round paths;
+independent-round exposure stderr is omitted because paths within a trajectory
+can correlate.
+
+Every design/R uses an independent NumPy stream. One million trajectories per
+point gives 60M endpoints and 372M noisy rounds. Atomic 250k-trajectory caches
+store counts and RNG state. Identity includes the memory kernel, physical
+parameters/channels, order, R, seed, NumPy version and chunk size. All 68 approved
+Stage 0–A2 artifacts remain SHA-256 identical. Older source identities exclude
+only validated literal later analysis lengths, never physical/runtime overrides.
+Fit code has a separate source hash; the user's metric clarification requires
+no new noise sampling.
+
+### Primary marginal fits and combined metric
+
+As clarified by the user, fit epsilon_X and epsilon_Z **separately** to
+q_b(R)=[1-(1-2 epsilon_b)^R]/2 for R={2,4,8,16}, with binomial likelihood.
+R=1 is reported but excluded. The union p_L is descriptive at every R and is
+**not fitted**. Epsilon_tot is defined as
+
+    epsilon_tot = 1 - (1-epsilon_X)(1-epsilon_Z).
+
+This user-defined combined metric is used for every primary design delta and
+sigma; it is not substituted for an observed union endpoint probability.
+Stage B3's primary design metric is now epsilon_tot from the marginal memory
+fits, with one-round union p_L secondary. Epsilon_X/Z and their fit quality
+remain required diagnostics.
+
+The two marginal fits share the same Pauli trajectories. Their covariance must
+therefore be propagated. Let H_b be the observed negative log-likelihood
+curvature and w_bR = q'_b(R)/[H_b q_b(R)(1-q_b(R))]. Independent R samples give
+
+    Var(epsilon_b) = sum_R w_bR^2 N_R p_bR(1-p_bR)
+    Cov(epsilon_X,epsilon_Z) = sum_R w_XR w_ZR N_R (p_XZR-p_XR p_ZR).
+
+Here p_XZR is the observed probability of failure in both bases. The marginal
+stderr uses this delta-method variance of the finite-window MLE; the expected
+Fisher stderr is retained as a secondary check. Then
+
+    Var(epsilon_tot) = (1-epsilon_Z)^2 Var(epsilon_X)
+                    + (1-epsilon_X)^2 Var(epsilon_Z)
+                    + 2(1-epsilon_X)(1-epsilon_Z) Cov(epsilon_X,epsilon_Z).
+
+This retains positive X/Z sampling correlation instead of assuming independent
+marginal estimators. Normal 95% intervals, covariance and correlation are saved.
+The reported sampling error concerns the fitted finite-window metric; poor
+fit quality still limits a stationary-rate interpretation. No one-round p_eff
+calibration is repurposed as a memory calibration.
+
+### Fit quality and the R=2 boundary check
+
+Each marginal fit reports Pearson chi-square (3 degrees of freedom), its
+p-value, binomial deviance and standardized residuals. An independent R≥4 fit
+predicts the held-out R=2 point. The report gives the deviation in R=2 MC
+error bars and also the combined uncertainty including the trend prediction.
+One error bar means the reported one-sigma MC stderr. Every case outside that
+bar has its R≥4 fit reported; all other R≥4 fits are shown too, avoiding
+selective comparison windows. R≥8 is an additional diagnostic, not a replacement
+for the requested R≥2 primary metric. Pairwise epsilon_tot and epsilon_Z
+comparisons are supplied for both primary and later windows.
+
+Dropping R=1 alone is not asserted to eliminate all residual-syndrome boundary
+effects. Fits with poor goodness of fit are reported as such. A Pearson-scaled
+stderr is only a heuristic diagnostic, not a validated bias correction. Primary
+deltas use independent-design combined propagated sampling stderr and the
+specified 3-sigma rule, without a simultaneous/family-wise claim. No infinite-R
+extrapolation is established by this experiment.
+
+### Exact one-round alternating-order mechanism
+
+`pair_mechanism.py` evaluates all 431,280 distinct-location payload pairs under
+Uniform(0.001) for both ZZZXXX and ZXZXZX. Physical identity is matched by stage,
+kind/support, original operation index and payload, remapping executed positions.
+Every class retains location/operation types, both position maps, both trigger
+paths, and new/removed/common malignant weights. Full positive and negative
+classes plus scalar propagation traces are saved. Raw P2 reproduces A2;
+exact survival correction is (1-0.001)^94 under the approved full potential-
+location convention. These one-round attributions are compared only against
+one-round MC; they are not multiplied by R or used as epsilon estimates.

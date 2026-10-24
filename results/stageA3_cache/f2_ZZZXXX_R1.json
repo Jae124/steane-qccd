@@ -1,0 +1,149 @@
+{
+  "configuration": {
+    "simulation_fingerprint": "3a9866465cc0d817e0268015f8caf19f2f2aa54d98a3869afa541e31165fc63f",
+    "rounds": 1,
+    "seed": 122027,
+    "chunk_size": 250000,
+    "numpy_version": "2.0.2",
+    "rng": "numpy.PCG64",
+    "round_order": [
+      [
+        "Z",
+        0
+      ],
+      [
+        "Z",
+        1
+      ],
+      [
+        "Z",
+        2
+      ],
+      [
+        "X",
+        0
+      ],
+      [
+        "X",
+        1
+      ],
+      [
+        "X",
+        2
+      ]
+    ],
+    "timing_policy": "SEQ",
+    "parameters": {
+      "name": "JONES_MURALI_2026",
+      "p_2q": 0.001,
+      "p_1q": 1e-05,
+      "p_reset": 0.005,
+      "p_meas": 0.001,
+      "T2": 2.2,
+      "ms_duration": 4e-05,
+      "rotation_duration": 5e-06,
+      "measurement_duration": 0.0004,
+      "reset_duration": 5e-05,
+      "shuttle_duration": 5e-06,
+      "split_duration": 8e-05,
+      "merge_duration": 8e-05,
+      "junction_duration": 0.0001,
+      "source": "https://arxiv.org/html/2510.23519v1#S5",
+      "caveat": "Gate probabilities are placeholders pending a heating model."
+    }
+  },
+  "counts": {
+    "shots": 1000000,
+    "rounds": 1,
+    "fails": 2037,
+    "fails_X": 826,
+    "fails_Z": 1336,
+    "aborted": 0,
+    "logical_failure_counts": {
+      "X_only": 701,
+      "Z_only": 1211,
+      "both_XZ": 125
+    },
+    "any_branch_shots": 104725,
+    "failures_through_any_branch": 2014,
+    "failures_through_last_branch": 2014,
+    "round_totals": {
+      "triggers": 104725,
+      "trigger_circuit_counts": [
+        16255,
+        16311,
+        16288,
+        20035,
+        18271,
+        17565
+      ],
+      "trigger_cause_counts": {
+        "reset": 56643,
+        "measurement": 11303,
+        "2q": 28631,
+        "idle": 7909,
+        "carry": 0,
+        "mixed": 239
+      },
+      "trigger_contributing_type_counts": {
+        "reset": 56840,
+        "measurement": 11387,
+        "2q": 28769,
+        "idle": 7968,
+        "carry": 0
+      },
+      "trigger_fractional_type_counts": {
+        "reset": 56741.5,
+        "measurement": 11345.0,
+        "2q": 28700.0,
+        "idle": 7938.5,
+        "carry": 0.0
+      }
+    },
+    "per_round": [
+      {
+        "triggers": 104725,
+        "trigger_circuit_counts": [
+          16255,
+          16311,
+          16288,
+          20035,
+          18271,
+          17565
+        ],
+        "trigger_cause_counts": {
+          "reset": 56643,
+          "measurement": 11303,
+          "2q": 28631,
+          "idle": 7909,
+          "carry": 0,
+          "mixed": 239
+        },
+        "trigger_contributing_type_counts": {
+          "reset": 56840,
+          "measurement": 11387,
+          "2q": 28769,
+          "idle": 7968,
+          "carry": 0
+        },
+        "trigger_fractional_type_counts": {
+          "reset": 56741.5,
+          "measurement": 11345.0,
+          "2q": 28700.0,
+          "idle": 7938.5,
+          "carry": 0.0
+        }
+      }
+    ]
+  },
+  "rng_state": {
+    "bit_generator": "PCG64",
+    "state": {
+      "state": 146557663754478868273080870831693861492,
+      "inc": 80280342117193170230989638794138610185
+    },
+    "has_uint32": 1,
+    "uinteger": 3979639478
+  },
+  "chunks": 4
+}

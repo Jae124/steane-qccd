@@ -319,3 +319,40 @@ fingerprints. Interrupted runs resume from the last complete chunk. The approved
 Stage 3 uniform calibration is read unchanged and extended below its original
 range with seven 5M-shot points; p_eff uses log-log MC interpolation with joint
 target/calibration bootstrap intervals and no extrapolation. Stage B is deferred.
+
+### Stage A3: multi-round memory (primary metric for Stage B3)
+
+Stage B3 must use **epsilon_tot = 1 - (1-epsilon_X)(1-epsilon_Z)** as its
+primary design metric. Epsilon_X and epsilon_Z are fitted separately to the
+two logical-basis marginals over R≥2. Propagated uncertainty includes their
+shared-trajectory covariance. One-round union p_L is secondary; union endpoint
+probabilities at every R are descriptive and are **not fitted**.
+
+```bash
+.venv/bin/python src/memory_experiment.py --part mc
+.venv/bin/python src/pair_mechanism.py
+MPLCONFIGDIR=/tmp/steane_matplotlib .venv/bin/python src/memory_experiment.py --part report
+.venv/bin/python -m pytest -q
+```
+
+A3 chains R={1,2,4,8,16} noisy rounds, carrying the output Pauli frame without
+intermediate ideal decoding or extra time. It covers ZZZXXX, XXXZZZ, ZXZXZX;
+Uniform(0.001), timing-free H2, and Jones–Murali SEQ/PAR_MR. Results and exact
+matched-pair mechanisms are in `results/stageA3_memory.json` and
+`results/stageA3_pair_mechanism.json`; the checkpoint is in `docs/STAGE_LOG.md`.
+`figures/memory_epsilon_tot.png` shows the primary metric. Three
+`memory_rounds_*.png` figures show basis-fit curves and descriptive union data.
+
+`src/memory_mc.py` provides the reusable `RoundAdapter`/`RoundStep` interface
+and `memory_trial` driver. The adapter supplies one noisy round; the driver
+carries opaque state and scores only at the final endpoint. Only the flag
+adapter is implemented here. An absorbing abort hook is available for future
+verified-preparation adapters. Current-round reset/readout/2q/idle trigger
+signals are distinguished from incoming `carry`; any-bare and last-bare failure
+shares are separate. Caches save 250k-trajectory chunks and RNG state atomically.
+
+`src/memory_fit.py` reports marginal goodness of fit, an R=2 comparison with
+the independently fitted R≥4 trend, and R≥4/R≥8 sensitivity fits. The R≥4 fits
+are shown for all cases, including every R=2 point outside its one-sigma error
+bar. Inspect goodness of fit before interpreting a fitted finite-window metric
+as a stationary rate. Stage B has not started.

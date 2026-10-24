@@ -1,0 +1,182 @@
+{
+  "configuration": {
+    "simulation_fingerprint": "3a9866465cc0d817e0268015f8caf19f2f2aa54d98a3869afa541e31165fc63f",
+    "rounds": 2,
+    "seed": 112028,
+    "chunk_size": 250000,
+    "numpy_version": "2.0.2",
+    "rng": "numpy.PCG64",
+    "round_order": [
+      [
+        "Z",
+        0
+      ],
+      [
+        "Z",
+        1
+      ],
+      [
+        "Z",
+        2
+      ],
+      [
+        "X",
+        0
+      ],
+      [
+        "X",
+        1
+      ],
+      [
+        "X",
+        2
+      ]
+    ],
+    "timing_policy": "timing-free",
+    "parameters": {
+      "name": "H2_LIKE",
+      "p_2q": 0.00128,
+      "p_1q": 2.9e-05,
+      "p_reset": 4e-05,
+      "p_meas": 0.001,
+      "T2": null,
+      "ms_duration": null,
+      "rotation_duration": null,
+      "measurement_duration": null,
+      "reset_duration": null,
+      "shuttle_duration": null,
+      "split_duration": null,
+      "merge_duration": null,
+      "junction_duration": null,
+      "source": "https://arxiv.org/html/2508.14227v1#S3.T1",
+      "caveat": "Depolarizing-parameter convention unverified (process vs average infidelity). Timing unspecified."
+    }
+  },
+  "counts": {
+    "shots": 1000000,
+    "rounds": 2,
+    "fails": 1865,
+    "fails_X": 924,
+    "fails_Z": 1134,
+    "aborted": 0,
+    "logical_failure_counts": {
+      "X_only": 731,
+      "Z_only": 941,
+      "both_XZ": 193
+    },
+    "any_branch_shots": 102534,
+    "failures_through_any_branch": 1851,
+    "failures_through_last_branch": 1671,
+    "round_totals": {
+      "triggers": 106429,
+      "trigger_circuit_counts": [
+        18212,
+        17414,
+        16932,
+        19374,
+        17517,
+        16980
+      ],
+      "trigger_cause_counts": {
+        "reset": 1110,
+        "measurement": 23756,
+        "2q": 74924,
+        "idle": 0,
+        "carry": 6558,
+        "mixed": 81
+      },
+      "trigger_contributing_type_counts": {
+        "reset": 1119,
+        "measurement": 23826,
+        "2q": 74994,
+        "idle": 0,
+        "carry": 6571
+      },
+      "trigger_fractional_type_counts": {
+        "reset": 1114.5,
+        "measurement": 23791.0,
+        "2q": 74959.0,
+        "idle": 0.0,
+        "carry": 6564.5
+      }
+    },
+    "per_round": [
+      {
+        "triggers": 50057,
+        "trigger_circuit_counts": [
+          7506,
+          8060,
+          8005,
+          9358,
+          8670,
+          8458
+        ],
+        "trigger_cause_counts": {
+          "reset": 558,
+          "measurement": 11960,
+          "2q": 37501,
+          "idle": 0,
+          "carry": 0,
+          "mixed": 38
+        },
+        "trigger_contributing_type_counts": {
+          "reset": 562,
+          "measurement": 11996,
+          "2q": 37537,
+          "idle": 0,
+          "carry": 0
+        },
+        "trigger_fractional_type_counts": {
+          "reset": 560.0,
+          "measurement": 11978.0,
+          "2q": 37519.0,
+          "idle": 0.0,
+          "carry": 0.0
+        }
+      },
+      {
+        "triggers": 56372,
+        "trigger_circuit_counts": [
+          10706,
+          9354,
+          8927,
+          10016,
+          8847,
+          8522
+        ],
+        "trigger_cause_counts": {
+          "reset": 552,
+          "measurement": 11796,
+          "2q": 37423,
+          "idle": 0,
+          "carry": 6558,
+          "mixed": 43
+        },
+        "trigger_contributing_type_counts": {
+          "reset": 557,
+          "measurement": 11830,
+          "2q": 37457,
+          "idle": 0,
+          "carry": 6571
+        },
+        "trigger_fractional_type_counts": {
+          "reset": 554.5,
+          "measurement": 11813.0,
+          "2q": 37440.0,
+          "idle": 0.0,
+          "carry": 6564.5
+        }
+      }
+    ]
+  },
+  "rng_state": {
+    "bit_generator": "PCG64",
+    "state": {
+      "state": 248356928513014096402472268663819731533,
+      "inc": 130589727606560061542675476025539242831
+    },
+    "has_uint32": 0,
+    "uinteger": 3074931178
+  },
+  "chunks": 4
+}

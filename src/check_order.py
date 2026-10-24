@@ -27,19 +27,22 @@ def save(path, data):
 def source_fingerprint():
     names=('flag_design.py','steane_ft.py','steane_noise.py','ion_noise.py','ion_timing.py','ion_transport.py','ion_params.py')
     sources=[(ROOT/'src'/p).read_bytes() for p in names]
-    # A2 appends analysis-only grid inputs; they do not affect any A1 experiment.
+    # Later stages append analysis-only grids; they do not affect A1 inputs.
     # Keep the approved A1 identity for exactly its original parameter prefix.
     before,marker,after=sources[-1].partition(b'# Stage A2 analysis-only calibration extension')
     if marker:
         # Exclude only a literal analysis-grid assignment, never runtime overrides.
         try:
             statements=ast.parse(marker+after).body
-            assignment=statements[0]
-            value=ast.literal_eval(assignment.value)
-            if (len(statements)==1 and isinstance(assignment,ast.Assign)
-                    and len(assignment.targets)==1 and isinstance(assignment.targets[0],ast.Name)
-                    and assignment.targets[0].id=='DESIGN_CALIBRATION_EXTENSION_P'
-                    and isinstance(value,tuple) and all(type(p) is float and 0<p<1 for p in value)):
+            allowed={'DESIGN_CALIBRATION_EXTENSION_P':float,'MEMORY_ROUNDS':int}
+            def analysis_only(assignment):
+                if not (isinstance(assignment,ast.Assign) and len(assignment.targets)==1
+                        and isinstance(assignment.targets[0],ast.Name)
+                        and assignment.targets[0].id in allowed):return False
+                value=ast.literal_eval(assignment.value)
+                return (isinstance(value,tuple) and bool(value)
+                        and all(type(p) is allowed[assignment.targets[0].id] and p>0 for p in value))
+            if statements and all(analysis_only(a) for a in statements):
                 sources[-1]=before
         except (SyntaxError,ValueError,TypeError,AttributeError,IndexError):
             pass
