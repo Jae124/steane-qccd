@@ -1,0 +1,1007 @@
+{
+  "stage": 2,
+  "primary_estimate": "Monte Carlo",
+  "presets": {
+    "JONES_MURALI_2026": {
+      "stage": 2,
+      "primary_estimate": "Monte Carlo",
+      "parameters": {
+        "name": "JONES_MURALI_2026",
+        "p_2q": 0.001,
+        "p_1q": 1e-05,
+        "p_reset": 0.005,
+        "p_meas": 0.001,
+        "T2": 2.2,
+        "ms_duration": 4e-05,
+        "rotation_duration": 5e-06,
+        "measurement_duration": 0.0004,
+        "reset_duration": 5e-05,
+        "shuttle_duration": 5e-06,
+        "split_duration": 8e-05,
+        "merge_duration": 8e-05,
+        "junction_duration": 0.0001,
+        "source": "https://arxiv.org/html/2510.23519v1#S5",
+        "caveat": "Gate probabilities are placeholders pending a heating model."
+      },
+      "checks": {
+        "single_fault_runs": 2220,
+        "flagged_fault_runs": 1332,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 180,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2220,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "counts": {
+        "n_locations": 252,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "IDLE": 156,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 128568,
+        "P1": 0.0,
+        "P2": 0.0021817914988133515,
+        "P2_survival_corrected": 0.0018200903518558653,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.001641358807581539,
+          "FF": 0.00017873154427420275
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.000742207439099646,
+          "idle*reset": 0.00014168070192940592,
+          "reset*reset": 0.00012600572103030905,
+          "meas*reset": 5.0334262634744894e-05,
+          "idle*idle": 5.154253542960544e-05,
+          "2q*idle": 0.0002030872693896451,
+          "idle*meas": 2.8351427174305223e-05,
+          "2q*2q": 0.0003236029546179161,
+          "2q*meas": 0.00014825137226705257,
+          "meas*meas": 5.0266682838459715e-06
+        },
+        "mean_location_fault_probability": 0.0007356994800435424,
+        "P2_survival_mean_approx": 0.0018151239689499442,
+        "P2_by_logical_type": {
+          "X": 0.0008822663473841938,
+          "Z": 0.001412985049316845,
+          "any": 0.0021817914988133515
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0019670291388950646,
+          "FF": 0.00021476235991864186
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0008882681466666308,
+          "idle*reset": 0.00016970213075375595,
+          "reset*reset": 0.00015019813068000004,
+          "meas*reset": 6.0239463472e-05,
+          "idle*idle": 6.203411945503259e-05,
+          "2q*idle": 0.0002442299879565231,
+          "idle*meas": 3.409534880863858e-05,
+          "2q*2q": 0.0003888444444436227,
+          "2q*meas": 0.00017813967377777637,
+          "meas*meas": 6.040052800533333e-06
+        }
+      },
+      "monte_carlo": {
+        "shots": 3000000,
+        "fails": 6021,
+        "p_L": 0.002007,
+        "stderr": 2.5839065714533876e-05,
+        "triggers": 315088,
+        "trigger_rate": 0.10502933333333334,
+        "trigger_rate_stderr": 0.00017701051990667006,
+        "trigger_cause_counts": {
+          "reset": 170769,
+          "measurement": 34035,
+          "2q": 85562,
+          "idle": 23992,
+          "mixed": 730
+        },
+        "trigger_cause_rates": {
+          "reset": 0.056923,
+          "measurement": 0.011345,
+          "2q": 0.028520666666666666,
+          "idle": 0.007997333333333334,
+          "mixed": 0.00024333333333333333
+        },
+        "trigger_contributing_type_rates": {
+          "reset": 0.05712766666666667,
+          "measurement": 0.011429,
+          "2q": 0.028660333333333333,
+          "idle": 0.008056
+        },
+        "trigger_fractional_type_rates": {
+          "reset": 0.05702527777777777,
+          "measurement": 0.011386944444444443,
+          "2q": 0.028590444444444446,
+          "idle": 0.008026666666666666
+        },
+        "failures_through_bare": 5944,
+        "failure_share_through_bare": 0.9872114266733101,
+        "failure_share_through_bare_stderr": 0.00144804421238306,
+        "seed": 2026
+      },
+      "comparison": {
+        "P2": {
+          "estimate_over_MC": 1.0870909311476589,
+          "estimate_minus_MC_in_stderr": 6.764621474492215
+        },
+        "P2_survival_corrected": {
+          "estimate_over_MC": 0.9068711269834904,
+          "estimate_minus_MC_in_stderr": -7.233607058749127
+        },
+        "P2_survival_mean_approx": {
+          "estimate_over_MC": 0.9043965963876154,
+          "estimate_minus_MC_in_stderr": -7.425811489079114
+        }
+      },
+      "status": "PASS",
+      "stage1_reference": {
+        "stage": 1,
+        "primary_estimate": "Monte Carlo",
+        "parameters": {
+          "name": "JONES_MURALI_2026",
+          "p_2q": 0.001,
+          "p_1q": 1e-05,
+          "p_reset": 0.005,
+          "p_meas": 0.001,
+          "T2": 2.2,
+          "ms_duration": 4e-05,
+          "rotation_duration": 5e-06,
+          "measurement_duration": 0.0004,
+          "reset_duration": 5e-05,
+          "shuttle_duration": 5e-06,
+          "split_duration": 8e-05,
+          "merge_duration": 8e-05,
+          "junction_duration": 0.0001,
+          "source": "https://arxiv.org/html/2510.23519v1#S5",
+          "caveat": "Gate probabilities are placeholders pending a heating model."
+        },
+        "checks": {
+          "single_fault_runs": 1908,
+          "flagged_fault_runs": 1152,
+          "bare_only_fault_runs": 756,
+          "incoming_runs": 42,
+          "flagged_fault_failures": 0,
+          "bare_only_fault_failures": 0,
+          "incoming_failures": 0,
+          "flagged_idle_fault_runs": 0,
+          "bare_only_idle_fault_runs": 0,
+          "single_fault_failures": 0,
+          "cross_check_runs": 1908,
+          "bare_triggered_pair_cross_check_runs": 756,
+          "mismatches": 0,
+          "failure_details": [],
+          "mismatch_details": []
+        },
+        "counts": {
+          "n_locations": 96,
+          "location_counts": {
+            "R": 9,
+            "RX": 9,
+            "CX": 60,
+            "M": 9,
+            "MX": 9
+          },
+          "single_fault_failures": 0,
+          "malignant_pairs": 94222,
+          "P1": 0.0,
+          "P2": 0.0016717299118395137,
+          "P2_survival_corrected": 0.0014197062329883898,
+          "P2_survival_by_stage_pair": {
+            "FB": 0.001340383586143803,
+            "FF": 7.932264684442498e-05
+          },
+          "P2_survival_by_type_pair": {
+            "2q*reset": 0.0007551204446728027,
+            "reset*reset": 0.0001281979822395099,
+            "meas*reset": 5.120998359856794e-05,
+            "2q*2q": 0.00032923303394166747,
+            "2q*meas": 0.00015083066573066763,
+            "meas*meas": 5.11412280416529e-06
+          },
+          "mean_location_fault_probability": 0.0017515550000000003,
+          "P2_survival_mean_approx": 0.0014177462085350173,
+          "P2_by_logical_type": {
+            "X": 0.0008451392853326173,
+            "Z": 0.0009252223011736044,
+            "any": 0.0016717299118395137
+          },
+          "P2_by_stage_pair": {
+            "FB": 0.0015781389607287433,
+            "FF": 9.359095111112052e-05
+          },
+          "P2_by_type_pair": {
+            "2q*reset": 0.0008882681466666308,
+            "reset*reset": 0.00015019813068000004,
+            "meas*reset": 6.0239463472e-05,
+            "2q*2q": 0.0003888444444436227,
+            "2q*meas": 0.00017813967377777637,
+            "meas*meas": 6.040052800533333e-06
+          }
+        },
+        "monte_carlo": {
+          "shots": 3000000,
+          "fails": 4776,
+          "p_L": 0.001592,
+          "stderr": 2.3017859269126948e-05,
+          "triggers": 292063,
+          "trigger_rate": 0.09735433333333333,
+          "trigger_rate_stderr": 0.00017114951272163137,
+          "trigger_cause_counts": {
+            "reset": 171552,
+            "measurement": 34109,
+            "2q": 85813,
+            "idle": 0,
+            "mixed": 589
+          },
+          "trigger_cause_rates": {
+            "reset": 0.057184,
+            "measurement": 0.011369666666666667,
+            "2q": 0.028604333333333332,
+            "idle": 0.0,
+            "mixed": 0.00019633333333333333
+          },
+          "trigger_contributing_type_rates": {
+            "reset": 0.05735933333333333,
+            "measurement": 0.011455333333333333,
+            "2q": 0.028736,
+            "idle": 0.0
+          },
+          "trigger_fractional_type_rates": {
+            "reset": 0.057271666666666665,
+            "measurement": 0.0114125,
+            "2q": 0.028670166666666667,
+            "idle": 0.0
+          },
+          "failures_through_bare": 4743,
+          "failure_share_through_bare": 0.9930904522613065,
+          "failure_share_through_bare_stderr": 0.001198635276519979,
+          "seed": 2026
+        },
+        "comparison": {
+          "P2": {
+            "estimate_over_MC": 1.0500816029142672,
+            "estimate_minus_MC_in_stderr": 3.463828278177568
+          },
+          "P2_survival_corrected": {
+            "estimate_over_MC": 0.8917752719776317,
+            "estimate_minus_MC_in_stderr": -7.485221149244834
+          },
+          "P2_survival_mean_approx": {
+            "estimate_over_MC": 0.8905441008385786,
+            "estimate_minus_MC_in_stderr": -7.570373483806262
+          }
+        },
+        "status": "PASS"
+      },
+      "timing_applied": true,
+      "idle_sanity": {
+        "measurement_duration": 0.0004,
+        "measurement_wait_probability": 9.090082694713475e-05,
+        "largest_idle_location": [
+          "F",
+          0,
+          18,
+          [
+            "IDLE",
+            0,
+            0.00115
+          ]
+        ],
+        "largest_idle_duration": 0.00115,
+        "largest_idle_probability": 0.0002612953373143334
+      },
+      "T2_sweep": {
+        "2.2": {
+          "counts": {
+            "n_locations": 252,
+            "location_counts": {
+              "R": 9,
+              "RX": 9,
+              "IDLE": 156,
+              "CX": 60,
+              "M": 9,
+              "MX": 9
+            },
+            "single_fault_failures": 0,
+            "malignant_pairs": 128568,
+            "P1": 0.0,
+            "P2": 0.0021817914988133515,
+            "P2_survival_corrected": 0.0018200903518558653,
+            "P2_survival_by_stage_pair": {
+              "FB": 0.001641358807581539,
+              "FF": 0.00017873154427420275
+            },
+            "P2_survival_by_type_pair": {
+              "2q*reset": 0.000742207439099646,
+              "idle*reset": 0.00014168070192940592,
+              "reset*reset": 0.00012600572103030905,
+              "meas*reset": 5.0334262634744894e-05,
+              "idle*idle": 5.154253542960544e-05,
+              "2q*idle": 0.0002030872693896451,
+              "idle*meas": 2.8351427174305223e-05,
+              "2q*2q": 0.0003236029546179161,
+              "2q*meas": 0.00014825137226705257,
+              "meas*meas": 5.0266682838459715e-06
+            },
+            "mean_location_fault_probability": 0.0007356994800435424,
+            "P2_survival_mean_approx": 0.0018151239689499442,
+            "P2_by_logical_type": {
+              "X": 0.0008822663473841938,
+              "Z": 0.001412985049316845,
+              "any": 0.0021817914988133515
+            },
+            "P2_by_stage_pair": {
+              "FB": 0.0019670291388950646,
+              "FF": 0.00021476235991864186
+            },
+            "P2_by_type_pair": {
+              "2q*reset": 0.0008882681466666308,
+              "idle*reset": 0.00016970213075375595,
+              "reset*reset": 0.00015019813068000004,
+              "meas*reset": 6.0239463472e-05,
+              "idle*idle": 6.203411945503259e-05,
+              "2q*idle": 0.0002442299879565231,
+              "idle*meas": 3.409534880863858e-05,
+              "2q*2q": 0.0003888444444436227,
+              "2q*meas": 0.00017813967377777637,
+              "meas*meas": 6.040052800533333e-06
+            }
+          },
+          "monte_carlo": {
+            "shots": 3000000,
+            "fails": 6021,
+            "p_L": 0.002007,
+            "stderr": 2.5839065714533876e-05,
+            "triggers": 315088,
+            "trigger_rate": 0.10502933333333334,
+            "trigger_rate_stderr": 0.00017701051990667006,
+            "trigger_cause_counts": {
+              "reset": 170769,
+              "measurement": 34035,
+              "2q": 85562,
+              "idle": 23992,
+              "mixed": 730
+            },
+            "trigger_cause_rates": {
+              "reset": 0.056923,
+              "measurement": 0.011345,
+              "2q": 0.028520666666666666,
+              "idle": 0.007997333333333334,
+              "mixed": 0.00024333333333333333
+            },
+            "trigger_contributing_type_rates": {
+              "reset": 0.05712766666666667,
+              "measurement": 0.011429,
+              "2q": 0.028660333333333333,
+              "idle": 0.008056
+            },
+            "trigger_fractional_type_rates": {
+              "reset": 0.05702527777777777,
+              "measurement": 0.011386944444444443,
+              "2q": 0.028590444444444446,
+              "idle": 0.008026666666666666
+            },
+            "failures_through_bare": 5944,
+            "failure_share_through_bare": 0.9872114266733101,
+            "failure_share_through_bare_stderr": 0.00144804421238306,
+            "seed": 2026
+          },
+          "comparison": {
+            "P2": {
+              "estimate_over_MC": 1.0870909311476589,
+              "estimate_minus_MC_in_stderr": 6.764621474492215
+            },
+            "P2_survival_corrected": {
+              "estimate_over_MC": 0.9068711269834904,
+              "estimate_minus_MC_in_stderr": -7.233607058749127
+            },
+            "P2_survival_mean_approx": {
+              "estimate_over_MC": 0.9043965963876154,
+              "estimate_minus_MC_in_stderr": -7.425811489079114
+            }
+          }
+        },
+        "0.1": {
+          "stage": 2,
+          "primary_estimate": "Monte Carlo",
+          "parameters": {
+            "name": "JONES_MURALI_2026",
+            "p_2q": 0.001,
+            "p_1q": 1e-05,
+            "p_reset": 0.005,
+            "p_meas": 0.001,
+            "T2": 0.1,
+            "ms_duration": 4e-05,
+            "rotation_duration": 5e-06,
+            "measurement_duration": 0.0004,
+            "reset_duration": 5e-05,
+            "shuttle_duration": 5e-06,
+            "split_duration": 8e-05,
+            "merge_duration": 8e-05,
+            "junction_duration": 0.0001,
+            "source": "https://arxiv.org/html/2510.23519v1#S5",
+            "caveat": "Gate probabilities are placeholders pending a heating model."
+          },
+          "checks": {
+            "single_fault_runs": 2220,
+            "flagged_fault_runs": 1332,
+            "bare_only_fault_runs": 888,
+            "incoming_runs": 42,
+            "flagged_fault_failures": 0,
+            "bare_only_fault_failures": 0,
+            "incoming_failures": 0,
+            "flagged_idle_fault_runs": 180,
+            "bare_only_idle_fault_runs": 132,
+            "single_fault_failures": 0,
+            "cross_check_runs": 2220,
+            "bare_triggered_pair_cross_check_runs": 888,
+            "mismatches": 0,
+            "failure_details": [],
+            "mismatch_details": []
+          },
+          "counts": {
+            "n_locations": 252,
+            "location_counts": {
+              "R": 9,
+              "RX": 9,
+              "IDLE": 156,
+              "CX": 60,
+              "M": 9,
+              "MX": 9
+            },
+            "single_fault_failures": 0,
+            "malignant_pairs": 128568,
+            "P1": 0.0,
+            "P2": 0.04127334363754072,
+            "P2_survival_corrected": 0.02406821420650214,
+            "P2_survival_by_stage_pair": {
+              "FB": 0.01290709783323424,
+              "FF": 0.011161116373274684
+            },
+            "P2_survival_by_type_pair": {
+              "2q*reset": 0.0005170326537373386,
+              "idle*reset": 0.0021713184649973303,
+              "reset*reset": 8.777744455030034e-05,
+              "meas*reset": 3.506359005984206e-05,
+              "idle*idle": 0.017377923328551197,
+              "2q*idle": 0.003112398418442693,
+              "idle*meas": 0.00043449796831780907,
+              "2q*2q": 0.00022542659311895055,
+              "2q*meas": 0.00010327409344807888,
+              "meas*meas": 3.5016512976574404e-06
+            },
+            "mean_location_fault_probability": 0.0021674450249977656,
+            "P2_survival_mean_approx": 0.023993129671654585,
+            "P2_by_logical_type": {
+              "X": 0.0016584888999762462,
+              "Z": 0.04003826143274985,
+              "any": 0.04127334363754072
+            },
+            "P2_by_stage_pair": {
+              "FB": 0.022159119054547538,
+              "FF": 0.01911422458299153
+            },
+            "P2_by_type_pair": {
+              "2q*reset": 0.0008882681466666308,
+              "idle*reset": 0.003719908043538212,
+              "reset*reset": 0.00015019813068000004,
+              "meas*reset": 6.0239463472e-05,
+              "idle*idle": 0.029782417263160194,
+              "2q*idle": 0.005351911801547918,
+              "idle*meas": 0.000747376617454299,
+              "2q*2q": 0.0003888444444436227,
+              "2q*meas": 0.00017813967377777637,
+              "meas*meas": 6.040052800533333e-06
+            }
+          },
+          "monte_carlo": {
+            "shots": 1000000,
+            "fails": 30785,
+            "p_L": 0.030785,
+            "stderr": 0.0001727347208148958,
+            "triggers": 252216,
+            "trigger_rate": 0.252216,
+            "trigger_rate_stderr": 0.00043428457184661764,
+            "trigger_cause_counts": {
+              "reset": 53524,
+              "measurement": 10691,
+              "2q": 27231,
+              "idle": 159430,
+              "mixed": 1340
+            },
+            "trigger_cause_rates": {
+              "reset": 0.053524,
+              "measurement": 0.010691,
+              "2q": 0.027231,
+              "idle": 0.15943,
+              "mixed": 0.00134
+            },
+            "trigger_contributing_type_rates": {
+              "reset": 0.054521,
+              "measurement": 0.010913,
+              "2q": 0.02752,
+              "idle": 0.160607
+            },
+            "trigger_fractional_type_rates": {
+              "reset": 0.05402166666666666,
+              "measurement": 0.010801833333333333,
+              "2q": 0.027374833333333334,
+              "idle": 0.1600176666666667
+            },
+            "failures_through_bare": 28793,
+            "failure_share_through_bare": 0.9352931622543447,
+            "failure_share_through_bare_stderr": 0.0014021012896582592,
+            "seed": 2026
+          },
+          "comparison": {
+            "P2": {
+              "estimate_over_MC": 1.3406965612324417,
+              "estimate_minus_MC_in_stderr": 60.719371230409024
+            },
+            "P2_survival_corrected": {
+              "estimate_over_MC": 0.781816280867375,
+              "estimate_minus_MC_in_stderr": -38.8849778539639
+            },
+            "P2_survival_mean_approx": {
+              "estimate_over_MC": 0.7793772834709951,
+              "estimate_minus_MC_in_stderr": -39.31965904888138
+            }
+          },
+          "status": "PASS"
+        },
+        "0.5": {
+          "stage": 2,
+          "primary_estimate": "Monte Carlo",
+          "parameters": {
+            "name": "JONES_MURALI_2026",
+            "p_2q": 0.001,
+            "p_1q": 1e-05,
+            "p_reset": 0.005,
+            "p_meas": 0.001,
+            "T2": 0.5,
+            "ms_duration": 4e-05,
+            "rotation_duration": 5e-06,
+            "measurement_duration": 0.0004,
+            "reset_duration": 5e-05,
+            "shuttle_duration": 5e-06,
+            "split_duration": 8e-05,
+            "merge_duration": 8e-05,
+            "junction_duration": 0.0001,
+            "source": "https://arxiv.org/html/2510.23519v1#S5",
+            "caveat": "Gate probabilities are placeholders pending a heating model."
+          },
+          "checks": {
+            "single_fault_runs": 2220,
+            "flagged_fault_runs": 1332,
+            "bare_only_fault_runs": 888,
+            "incoming_runs": 42,
+            "flagged_fault_failures": 0,
+            "bare_only_fault_failures": 0,
+            "incoming_failures": 0,
+            "flagged_idle_fault_runs": 180,
+            "bare_only_idle_fault_runs": 132,
+            "single_fault_failures": 0,
+            "cross_check_runs": 2220,
+            "bare_triggered_pair_cross_check_runs": 888,
+            "mismatches": 0,
+            "failure_details": [],
+            "mismatch_details": []
+          },
+          "counts": {
+            "n_locations": 252,
+            "location_counts": {
+              "R": 9,
+              "RX": 9,
+              "IDLE": 156,
+              "CX": 60,
+              "M": 9,
+              "MX": 9
+            },
+            "single_fault_failures": 0,
+            "malignant_pairs": 128568,
+            "P1": 0.0,
+            "P2": 0.004841242429742205,
+            "P2_survival_corrected": 0.003805273998124995,
+            "P2_survival_by_stage_pair": {
+              "FB": 0.002894427170795207,
+              "FF": 0.0009108468273296101
+            },
+            "P2_survival_by_type_pair": {
+              "2q*reset": 0.0006999482590468928,
+              "idle*reset": 0.0005879006157714431,
+              "reset*reset": 0.0001188313137525322,
+              "meas*reset": 4.7468372917869396e-05,
+              "idle*idle": 0.0009410474892515318,
+              "2q*idle": 0.0008427056440887214,
+              "idle*meas": 0.00011764355529574585,
+              "2q*2q": 0.0003051779230104175,
+              "2q*meas": 0.00013981036089521384,
+              "meas*meas": 4.740464092292474e-06
+            },
+            "mean_location_fault_probability": 0.0009682183085709655,
+            "P2_survival_mean_approx": 0.00379999425342457,
+            "P2_by_logical_type": {
+              "X": 0.001008386481813681,
+              "Z": 0.003996684856483765,
+              "any": 0.004841242429742205
+            },
+            "P2_by_stage_pair": {
+              "FB": 0.003680846818369977,
+              "FF": 0.0011603956113729798
+            },
+            "P2_by_type_pair": {
+              "2q*reset": 0.0008882681466666308,
+              "idle*reset": 0.0007462499027309563,
+              "reset*reset": 0.00015019813068000004,
+              "meas*reset": 6.0239463472e-05,
+              "idle*idle": 0.0011994060006391232,
+              "2q*idle": 0.0010739254057217428,
+              "idle*meas": 0.00014993120881091375,
+              "2q*2q": 0.0003888444444436227,
+              "2q*meas": 0.00017813967377777637,
+              "meas*meas": 6.040052800533333e-06
+            }
+          },
+          "monte_carlo": {
+            "shots": 1000000,
+            "fails": 4392,
+            "p_L": 0.004392,
+            "stderr": 6.612647227850584e-05,
+            "triggers": 130454,
+            "trigger_rate": 0.130454,
+            "trigger_rate_stderr": 0.0003368022474449955,
+            "trigger_cause_counts": {
+              "reset": 56277,
+              "measurement": 11194,
+              "2q": 28016,
+              "idle": 34509,
+              "mixed": 458
+            },
+            "trigger_cause_rates": {
+              "reset": 0.056277,
+              "measurement": 0.011194,
+              "2q": 0.028016,
+              "idle": 0.034509,
+              "mixed": 0.000458
+            },
+            "trigger_contributing_type_rates": {
+              "reset": 0.056637,
+              "measurement": 0.011309,
+              "2q": 0.028218,
+              "idle": 0.034749
+            },
+            "trigger_fractional_type_rates": {
+              "reset": 0.05645683333333333,
+              "measurement": 0.0112515,
+              "2q": 0.028116833333333337,
+              "idle": 0.03462883333333333
+            },
+            "failures_through_bare": 4279,
+            "failure_share_through_bare": 0.974271402550091,
+            "failure_share_through_bare_stderr": 0.0023890039500212424,
+            "seed": 2026
+          },
+          "comparison": {
+            "P2": {
+              "estimate_over_MC": 1.1022865277190814,
+              "estimate_minus_MC_in_stderr": 6.793685104660117
+            },
+            "P2_survival_corrected": {
+              "estimate_over_MC": 0.8664102910120662,
+              "estimate_minus_MC_in_stderr": -8.87278546183263
+            },
+            "P2_survival_mean_approx": {
+              "estimate_over_MC": 0.8652081633480351,
+              "estimate_minus_MC_in_stderr": -8.952628594522185
+            }
+          },
+          "status": "PASS"
+        },
+        "10.0": {
+          "stage": 2,
+          "primary_estimate": "Monte Carlo",
+          "parameters": {
+            "name": "JONES_MURALI_2026",
+            "p_2q": 0.001,
+            "p_1q": 1e-05,
+            "p_reset": 0.005,
+            "p_meas": 0.001,
+            "T2": 10.0,
+            "ms_duration": 4e-05,
+            "rotation_duration": 5e-06,
+            "measurement_duration": 0.0004,
+            "reset_duration": 5e-05,
+            "shuttle_duration": 5e-06,
+            "split_duration": 8e-05,
+            "merge_duration": 8e-05,
+            "junction_duration": 0.0001,
+            "source": "https://arxiv.org/html/2510.23519v1#S5",
+            "caveat": "Gate probabilities are placeholders pending a heating model."
+          },
+          "checks": {
+            "single_fault_runs": 2220,
+            "flagged_fault_runs": 1332,
+            "bare_only_fault_runs": 888,
+            "incoming_runs": 42,
+            "flagged_fault_failures": 0,
+            "bare_only_fault_failures": 0,
+            "incoming_failures": 0,
+            "flagged_idle_fault_runs": 180,
+            "bare_only_idle_fault_runs": 132,
+            "single_fault_failures": 0,
+            "cross_check_runs": 2220,
+            "bare_triggered_pair_cross_check_runs": 888,
+            "mismatches": 0,
+            "failure_details": [],
+            "mismatch_details": []
+          },
+          "counts": {
+            "n_locations": 252,
+            "location_counts": {
+              "R": 9,
+              "RX": 9,
+              "IDLE": 156,
+              "CX": 60,
+              "M": 9,
+              "MX": 9
+            },
+            "single_fault_failures": 0,
+            "malignant_pairs": 128568,
+            "P1": 0.0,
+            "P2": 0.00177331324753356,
+            "P2_survival_corrected": 0.0015000552929029705,
+            "P2_survival_by_stage_pair": {
+              "FB": 0.0014037322612688375,
+              "FF": 9.63230316350925e-05
+            },
+            "P2_survival_by_type_pair": {
+              "2q*reset": 0.0007522602481674245,
+              "idle*reset": 3.1591932702306464e-05,
+              "reset*reset": 0.00012771240219278766,
+              "meas*reset": 5.101601372639021e-05,
+              "idle*idle": 2.528447621953453e-06,
+              "2q*idle": 4.528435608932183e-05,
+              "idle*meas": 6.32179518532344e-06,
+              "2q*2q": 0.00032798598629557574,
+              "2q*meas": 0.00015025935906550863,
+              "meas*meas": 5.094751859733801e-06
+            },
+            "mean_location_fault_probability": 0.0006823179930577007,
+            "P2_survival_mean_approx": 0.001495128219269239,
+            "P2_by_logical_type": {
+              "X": 0.0008533085230927793,
+              "Z": 0.0010218991470926832,
+              "any": 0.00177331324753356
+            },
+            "P2_by_stage_pair": {
+              "FB": 0.0016591970076295106,
+              "FF": 0.0001141162399043952
+            },
+            "P2_by_type_pair": {
+              "2q*reset": 0.0008882681466666308,
+              "idle*reset": 3.733951270327944e-05,
+              "reset*reset": 0.00015019813068000004,
+              "meas*reset": 6.0239463472e-05,
+              "idle*idle": 3.003355348272579e-06,
+              "2q*idle": 5.373847716526676e-05,
+              "idle*meas": 7.50199047714003e-06,
+              "2q*2q": 0.0003888444444436227,
+              "2q*meas": 0.00017813967377777637,
+              "meas*meas": 6.040052800533333e-06
+            }
+          },
+          "monte_carlo": {
+            "shots": 1000000,
+            "fails": 1611,
+            "p_L": 0.001611,
+            "stderr": 4.010492088260492e-05,
+            "triggers": 99156,
+            "trigger_rate": 0.099156,
+            "trigger_rate_stderr": 0.00029887135637929574,
+            "trigger_cause_counts": {
+              "reset": 57142,
+              "measurement": 11350,
+              "2q": 28718,
+              "idle": 1760,
+              "mixed": 186
+            },
+            "trigger_cause_rates": {
+              "reset": 0.057142,
+              "measurement": 0.01135,
+              "2q": 0.028718,
+              "idle": 0.00176,
+              "mixed": 0.000186
+            },
+            "trigger_contributing_type_rates": {
+              "reset": 0.057308,
+              "measurement": 0.011409,
+              "2q": 0.028853,
+              "idle": 0.001772
+            },
+            "trigger_fractional_type_rates": {
+              "reset": 0.057225,
+              "measurement": 0.0113795,
+              "2q": 0.0287855,
+              "idle": 0.001766
+            },
+            "failures_through_bare": 1590,
+            "failure_share_through_bare": 0.9869646182495344,
+            "failure_share_through_bare_stderr": 0.0028259527678266495,
+            "seed": 2026
+          },
+          "comparison": {
+            "P2": {
+              "estimate_over_MC": 1.1007531021313222,
+              "estimate_minus_MC_in_stderr": 4.047215253426957
+            },
+            "P2_survival_corrected": {
+              "estimate_over_MC": 0.9311330185617446,
+              "estimate_minus_MC_in_stderr": -2.7663614503014924
+            },
+            "P2_survival_mean_approx": {
+              "estimate_over_MC": 0.9280746240032519,
+              "estimate_minus_MC_in_stderr": -2.889216040842989
+            }
+          },
+          "status": "PASS"
+        }
+      }
+    },
+    "H2_LIKE": {
+      "stage": 1,
+      "primary_estimate": "Monte Carlo",
+      "parameters": {
+        "name": "H2_LIKE",
+        "p_2q": 0.00128,
+        "p_1q": 2.9e-05,
+        "p_reset": 4e-05,
+        "p_meas": 0.001,
+        "T2": null,
+        "ms_duration": null,
+        "rotation_duration": null,
+        "measurement_duration": null,
+        "reset_duration": null,
+        "shuttle_duration": null,
+        "split_duration": null,
+        "merge_duration": null,
+        "junction_duration": null,
+        "source": "https://arxiv.org/html/2508.14227v1#S3.T1",
+        "caveat": "Depolarizing-parameter convention unverified (process vs average infidelity). Timing unspecified."
+      },
+      "checks": {
+        "single_fault_runs": 1908,
+        "flagged_fault_runs": 1152,
+        "bare_only_fault_runs": 756,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1908,
+        "bare_triggered_pair_cross_check_runs": 756,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 94222,
+        "P1": 0.0,
+        "P2": 0.0008846560177199771,
+        "P2_survival_corrected": 0.0008056560344211786,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0007020728157990893,
+          "FF": 0.00010358321862249579
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 1.031998733731941e-05,
+          "reset*reset": 1.3956209308516569e-08,
+          "meas*reset": 5.482550572332624e-07,
+          "2q*2q": 0.0005802436673059948,
+          "2q*meas": 0.00020896203112144498,
+          "meas*meas": 5.568137390757861e-06
+        },
+        "mean_location_fault_probability": 0.0009995274800000014,
+        "P2_survival_mean_approx": 0.0008052850538368528,
+        "P2_by_logical_type": {
+          "X": 0.0004388230449560098,
+          "Z": 0.000534450747440625,
+          "any": 0.0008846560177199771
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0007709240815552521,
+          "FF": 0.00011373193616495484
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 1.1344772469190874e-05,
+          "reset*reset": 1.5360782727176536e-08,
+          "meas*reset": 6.028594422788268e-07,
+          "2q*2q": 0.0006370827377770853,
+          "2q*meas": 0.00022949340239644648,
+          "meas*meas": 6.116884852485333e-06
+        }
+      },
+      "monte_carlo": {
+        "shots": 3000000,
+        "fails": 2610,
+        "p_L": 0.00087,
+        "stderr": 1.7021976970963156e-05,
+        "triggers": 149851,
+        "trigger_rate": 0.04995033333333333,
+        "trigger_rate_stderr": 0.0001257713501202642,
+        "trigger_cause_counts": {
+          "reset": 1741,
+          "measurement": 35173,
+          "2q": 112843,
+          "idle": 0,
+          "mixed": 94
+        },
+        "trigger_cause_rates": {
+          "reset": 0.0005803333333333333,
+          "measurement": 0.011724333333333333,
+          "2q": 0.03761433333333333,
+          "idle": 0.0,
+          "mixed": 3.1333333333333334e-05
+        },
+        "trigger_contributing_type_rates": {
+          "reset": 0.0005826666666666667,
+          "measurement": 0.011754333333333334,
+          "2q": 0.03764466666666667,
+          "idle": 0.0
+        },
+        "trigger_fractional_type_rates": {
+          "reset": 0.0005815,
+          "measurement": 0.011739333333333333,
+          "2q": 0.0376295,
+          "idle": 0.0
+        },
+        "failures_through_bare": 2552,
+        "failure_share_through_bare": 0.9777777777777777,
+        "failure_share_through_bare_stderr": 0.0028853172406524547,
+        "seed": 2026
+      },
+      "comparison": {
+        "P2": {
+          "estimate_over_MC": 1.016845997379284,
+          "estimate_minus_MC_in_stderr": 0.8610056132127308
+        },
+        "P2_survival_corrected": {
+          "estimate_over_MC": 0.9260414188749179,
+          "estimate_minus_MC_in_stderr": -3.7800524397713757
+        },
+        "P2_survival_mean_approx": {
+          "estimate_over_MC": 0.9256150044101756,
+          "estimate_minus_MC_in_stderr": -3.8018466523330874
+        }
+      },
+      "status": "PASS",
+      "scope": "Stage 1 only",
+      "timing_applied": false
+    }
+  }
+}

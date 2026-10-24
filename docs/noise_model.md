@@ -166,3 +166,115 @@ exact pair weighting nor a general lower-bound guarantee. Raw P2 can over- or
 underestimate full Monte Carlo because it also omits survival and higher orders.
 Reports give both estimates, their ratios to Monte Carlo, and differences in
 Monte Carlo standard errors; disagreement does not imply a tolerance failure.
+
+## Stage 2: sequential idle dephasing and reporting decisions
+
+Stage 2 applies timing **only to JONES_MURALI_2026**. H2_LIKE remains timing-free,
+with results marked **Stage 1 only**, pending a sourced timing preset. Its
+unspecified timing fields remain None. No transport schedule or heating model
+is introduced.
+
+### Timing and idle placement
+
+`src/ion_timing.py` assumes one chain executing one operation at a time.
+Durations come exclusively from `ion_params.py`: CX uses one MS duration;
+RX uses reset plus rotation; MX uses rotation plus measurement; R and M use
+their own durations. An operation's own participating ions are active for its
+whole duration and receive the Stage 1 operation channel. All other live ions
+wait. This is an operation-level timing abstraction, without overlapping gates
+or pulse-level subdivisions of RX/MX.
+
+Data are live throughout each executed circuit/round. Ancillas become live at
+their reset and stop being live at their terminal measurement. No idle noise is
+charged before preparation or after measurement. Gates and measurements are
+ideal apart from their specified local channels and waiting noise.
+
+Each uninterrupted wait on a qubit within a circuit becomes one
+`('IDLE', qubit, duration)` marker immediately before its next operation. At
+circuit end, outstanding data waits are closed with trailing markers, including
+full-circuit waits on data outside that stabilizer's support. Markers add no
+time and apply no noiseless operation. They export as identity gates in Stim;
+the durations are retained in the Python ops, not in Stim's TICK instruction.
+The only permitted idle payload is Z, in both simulators and `fault_list`.
+
+**Boundary subdivision:** The fixed location representation cuts an untouched
+data gap at each circuit boundary, which is a possible adaptive termination
+point. The suffix of an executed circuit and the prefix of its successor are
+both charged. No part of a skipped circuit is charged in the execution.
+Thus a maximal physical gap can have more than one marker across boundaries;
+within a circuit, gaps are lumped rather than inserting noise after every op.
+For Z dephasing this boundary subdivision is exact, not a timing approximation:
+
+```
+p_idle(t) = (1 - exp(-t/T2))/2
+p_idle(t1+t2) = p_idle(t1) + p_idle(t2) - 2*p_idle(t1)*p_idle(t2)
+```
+
+Z commutes with all intervening operations not touching the ion, so delaying a
+wait's fault to its marker has the same action. Tests compare injection at the
+beginning and end of every generated gap and verify time conservation for
+every data ion in every circuit. This subdivision keeps fixed stage/circuit/op
+fault IDs and independent local channels across adaptive branches. The primary
+Monte Carlo channel is exact under this abstraction. As with any splitting or
+combining of effective locations, raw and survival-corrected P2 attribution
+refer to this particular location representation; they are not universal
+finite-rate observables.
+
+`T2 = infinity` removes idle markers entirely, reproducing Stage 1's location
+indices, all pair-count outputs and seeded sampling exactly. Noiseless runs
+with finite-T2 markers preserve trivial syndromes, no flags and the encoded
+logical state. Both flagged and bare circuits have waiting locations.
+
+The 400 microsecond measurement wait at T2=2.2 s has p_idle ≈ 9.0901e-5. A whole
+gap can contain multiple operations, so the largest probability need not equal
+that single-operation example. In this representation the largest gap is a
+whole flagged circuit (1150 microseconds) for a data ion outside its support.
+The result file records that gap and its probability. The requested T2 sweep
+(0.1, 0.5, 2.2, 10 seconds) is a sensitivity study, with values centralized in
+`ion_params.py`; it does not assert measured device parameters at every point.
+
+### Monte Carlo and trigger metrics (all stages/presets)
+
+Monte Carlo is the primary p_L estimate from Stage 2 onward. P2, with and
+without survival factors, is retained for attribution/comparison only. In
+Stage 3, p_eff must be computed from Monte Carlo, with a P2-derived value as
+a secondary check; Stage 3 is not implemented at this checkpoint.
+
+`monte_carlo(..., return_details=True)` reports p_L, its binomial standard
+error, trigger rate (bare-round execution probability), its standard error,
+and the fraction of failed shots that executed the bare round. The latter is
+`failures_through_bare / fails`, with None when there were no failures. Failure
+rate samples the union of logical X/Z failure events, as before. Optional
+reporting does not consume random numbers or change the sampled faults.
+
+Trigger attribution is **signal provenance at the observed first trigger**,
+not a claim of a unique counterfactual cause in every multifault shot. Propagate
+each fault category separately through the executed flagged prefix, suppressing
+intermediate stopping while evaluating that contribution. Pauli-frame
+propagation, resets, and measured-bit flips are linear over GF(2). Credit a
+category if its contribution is nonzero in at least one of the syndrome/flag
+bits that is actually 1 at the trigger. Ignore bare-round and later flagged
+faults. Ignore category contributions that cancel completely or affect only a
+zero bit at the actual trigger.
+
+Reports provide three complementary splits:
+
+- `trigger_cause_rates`: reset, measurement, 2q, idle, plus mixed. A shot with
+  one contributing category goes to that category; more than one goes to mixed.
+  These mutually exclusive rates sum to the trigger rate.
+- `trigger_contributing_type_rates`: include each category that contributes;
+  these overlap in mixed shots and need not sum to the trigger rate.
+- `trigger_fractional_type_rates`: divide mixed shots equally among their
+  contributing categories. These four rates sum to the trigger rate. Equal
+  sharing is an explicit reporting convention, not uniquely identified causality.
+
+RX/MX mechanisms retain their Stage 1 grouping: an RX rotation fault is in
+reset; an MX rotation fault is in measurement. Counts of single-fault trials
+and failures explicitly separate flagged locations, bare-only locations
+(skipped on noiseless input), and incoming errors. Forced-trigger bare tests
+are cross-checks, not added to the single-fault FT headline.
+
+The Stage 2 output also reruns Stage 1 Jones–Murali and timing-free H2-like with
+these metrics. `results/stage0_trigger_metrics.json` backfills the same metrics
+for the Stage 0 uniform benchmark without changing its exact 542/3M result.
+Historical Stage 0/1 result files remain as originally approved.

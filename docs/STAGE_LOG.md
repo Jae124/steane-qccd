@@ -135,3 +135,120 @@ Open questions for the human:
 - H2 timing and an appropriate stochastic T2 will need an explicit assumption or source when Stage 2 starts; the cited H2-like paper supplies a coherent dephasing model rather than the requested T2 model.
 - The H2 depolarizing convention and Jones–Murali heating-dependent gate fidelities remain unverified/placeholder as specified.
 - Stage 2 has not started; stop here for review.
+
+
+## Stage 2 — Sequential idle Z noise and primary Monte Carlo reporting
+
+Scope: Stage 1 approved. Timing and idle noise enabled for Jones–Murali only;
+H2-like is explicitly Stage 1 only. Stage 3 has not started.
+
+Changes:
+- `src/ion_timing.py`: sequential durations, live windows, lumped local waits, exact boundary subdivision, stable idle probability formula.
+- `src/ion_params.py`: centralized requested T2 sensitivity sweep; H2 timing remains unspecified.
+- `src/steane_ft.py`: IDLE execution/fault enumeration/Stim export, optional circuit map, trigger diagnostics; original circuit generation and decoder unchanged.
+- `src/steane_noise.py`: timed circuit maps in frame/counting/Monte Carlo, idle type, optional detailed trigger and bare-failure metrics; legacy integer Monte Carlo API retained. Uniform CLI now reports the same metrics.
+- `src/ion_noise.py`: Stage 2 CLI and T2 sweep, timing-free H2 marker, Stage 1 references with new metrics, separate flagged/bare-only/incoming fault totals.
+- `tests/test_ion_timing.py`: time conservation, noiseless preservation, exact idle movement/composition, all idle faults, infinite-T2 regressions, trigger attribution including mixed/cancelled cases, reporting preserves seeded sampling.
+- `results/stage2_ion_noise.json`: primary Monte Carlo estimates, pair attribution, sweep, trigger splits and bare-failure share for nominal/sweep/reference cases.
+- `results/stage0_trigger_metrics.json`: Stage 0 uniform trigger backfill, separate fault counts and pair comparisons; previous approved result files left intact.
+- `docs/noise_model.md`, `README.md`: timing and boundary assumptions, primary-estimate policy, trigger attribution convention and run instructions.
+
+Checks:
+- Jones–Murali flagged single faults: 0 / 1332, including 0 / 180 idle-Z runs (both logical bases).
+- Bare-round-only single faults: 0 / 888, including 132 idle-Z runs; these locations do not execute on noiseless input and are excluded from the executed-single-fault headline.
+- Incoming single data errors: 0 / 42.
+- Frame/tableau cross-check: 0 mismatches / 2220 channel fault runs plus 42 incoming runs. Another 888 forced-trigger bare-fault trials exercise actual bare execution with 0 mismatches; these are two-fault agreement tests, not FT single-fault trials.
+- All finite T2 sweep points have identical support and pass the same fault checks; P1 = 0 throughout.
+- Noiseless IDLE-inserted run: no trigger, trivial syndromes, all six stabilizers and encoded logical sign preserved for both bases.
+- Infinite T2: original location map returned, all Stage 1 pair/count values exactly match the approved JSON; seeded sampling (including new metrics) exactly equals Stage 1.
+- Uniform regressions: original 0/1218 flags on, 48/1218 flags ignored, 0/1176 frame/tableau mismatches, exact A dictionaries/92840 malignant pairs, and exactly 542/3M failures at p=5e-4 pass.
+- Full suite: 36 tests passed in 119.48 s; the subsequently added all-gap movement test passed separately. Final fast suite: 32 passed in 29.18 s (5 slow deselected). Total current tests covered: 37.
+- `compileall` and `git diff --check` pass. Stage 1 Jones/H2 counts and seeded failure totals are independently checked against the approved results when generating this report.
+
+Timing sanity:
+- Measurement-only wait: 0.0004 s, p_idle = 9.09008269471e-05.
+- Largest represented gap: 0.00115 s, p_idle = 0.000261295337314; location ['F', 0, 18, ['IDLE', 0, 0.00115]].
+- A gap can span multiple operations. The largest gap is a full 1150 microsecond flagged circuit for an unused data ion, rather than a single 400 microsecond measurement. Its probability is correspondingly larger and consistent with the same T2 formula.
+- 252 potential locations: 96 original operation locations plus 156 idle locations (90 flagged, 66 bare).
+
+Numbers: Monte Carlo is primary; P2 values are attribution only. Standard errors are one binomial standard error.
+
+| Preset/stage | Shots | Monte Carlo p_L ± stderr | Raw P2 | Exact survival-corrected P2 |
+| --- | ---: | ---: | ---: | ---: |
+| Uniform p=5e-4, Stage 0 | 3000000 | 0.000180666666667 ± 7.7595968e-06 | 0.000191977777777 | 0.000183161425518 |
+| Jones–Murali, Stage 1 reference | 3000000 | 0.001592 ± 2.3017859e-05 | 0.00167172991184 | 0.00141970623299 |
+| Jones–Murali, Stage 2 (T2=2.2 s) | 3000000 | 0.002007 ± 2.5839066e-05 | 0.00218179149881 | 0.00182009035186 |
+| H2_LIKE, Stage 1 only | 3000000 | 0.00087 ± 1.7021977e-05 | 0.00088465601772 | 0.000805656034421 |
+
+### Trigger metrics
+
+All entries are probabilities per shot; the last column is conditional on logical failure.
+
+| Preset/stage | Trigger rate ± stderr | Failures through bare / failures | Failure share through bare |
+| --- | ---: | ---: | ---: |
+| Uniform p=5e-4, Stage 0 | 0.0267566666667 ± 9.3167855e-05 | 541 / 542 | 0.99815498155 |
+| Jones–Murali, Stage 1 reference | 0.0973543333333 ± 0.00017114951 | 4743 / 4776 | 0.993090452261 |
+| Jones–Murali, Stage 2 (T2=2.2 s) | 0.105029333333 ± 0.00017701052 | 5944 / 6021 | 0.987211426673 |
+| H2_LIKE, Stage 1 only | 0.0499503333333 ± 0.00012577135 | 2552 / 2610 | 0.977777777778 |
+
+Exclusive trigger causes: categories are credited only when they contribute to an actually nonzero bit at the first trigger. Multicategory contributions go in mixed. Rows sum to the trigger rate.
+
+| Preset/stage | Reset | Measurement | 2q | Idle | Mixed |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Uniform p=5e-4, Stage 0 | 0.005869 | 0.005966 | 0.014906 | 0 | 1.566666667e-05 |
+| Jones–Murali, Stage 1 reference | 0.057184 | 0.01136966667 | 0.02860433333 | 0 | 0.0001963333333 |
+| Jones–Murali, Stage 2 (T2=2.2 s) | 0.056923 | 0.011345 | 0.02852066667 | 0.007997333333 | 0.0002433333333 |
+| H2_LIKE, Stage 1 only | 0.0005803333333 | 0.01172433333 | 0.03761433333 | 0 | 3.133333333e-05 |
+
+The JSON also provides overlapping contributing-type rates and an equal-share allocation of mixed shots over the four types. This convention preserves four-way totals without claiming a unique cause for mixed events. RX/MX rotation contributions retain their reset/measurement grouping.
+
+### Nominal Stage 2 pair attribution
+
+P1 = 0. Raw and corrected pair sums are compared against the primary Monte Carlo estimate without requiring agreement at finite rates.
+
+- Raw P2: 0.00218179149881; value/MC = 1.087091; (value − MC)/stderr = +6.765.
+- Exact survival correction: 0.00182009035186; value/MC = 0.906871; (value − MC)/stderr = -7.234.
+- Mean-rate correction: 0.00181512396895; value/MC = 0.904397; (value − MC)/stderr = -7.426.
+
+| Location type pair | Raw P2 | Survival-corrected contribution |
+| --- | ---: | ---: |
+| 2q*2q | 0.000388844444444 | 0.000323602954618 |
+| 2q*idle | 0.000244229987957 | 0.00020308726939 |
+| 2q*meas | 0.000178139673778 | 0.000148251372267 |
+| 2q*reset | 0.000888268146667 | 0.0007422074391 |
+| idle*idle | 6.2034119455e-05 | 5.15425354296e-05 |
+| idle*meas | 3.40953488086e-05 | 2.83514271743e-05 |
+| idle*reset | 0.000169702130754 | 0.000141680701929 |
+| meas*meas | 6.04005280053e-06 | 5.02666828385e-06 |
+| meas*reset | 6.0239463472e-05 | 5.03342626347e-05 |
+| reset*reset | 0.00015019813068 | 0.00012600572103 |
+
+| Stage pair | Raw P2 | Survival-corrected contribution |
+| --- | ---: | ---: |
+| FB | 0.0019670291389 | 0.00164135880758 |
+| FF | 0.000214762359919 | 0.000178731544274 |
+
+### Jones–Murali T2 sensitivity sweep
+
+Nominal point: 3M shots; other points: 1M shots each. Each uses `random.Random(2026)`. All P1 terms and single-fault failures are zero. Detailed attribution and trigger-cause splits for every point are in the JSON.
+
+| T2 (s) | MC p_L ± stderr (primary) | Raw P2 | Survival-corrected P2 | Trigger rate | Failure share through bare |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 0.1 | 0.030785 ± 0.00017273472 | 0.0412733436375 | 0.0240682142065 | 0.252216 | 0.935293162254 |
+| 0.5 | 0.004392 ± 6.6126472e-05 | 0.00484124242974 | 0.00380527399812 | 0.130454 | 0.97427140255 |
+| 2.2 | 0.002007 ± 2.5839066e-05 | 0.00218179149881 | 0.00182009035186 | 0.105029333333 | 0.987211426673 |
+| 10.0 | 0.001611 ± 4.0104921e-05 | 0.00177331324753 | 0.0015000552929 | 0.099156 | 0.98696461825 |
+
+Assumptions made:
+- Sequential operation timing, no transport. Data live throughout; ancilla waiting only between reset and measurement. RX/MX include their rotation duration as active time for that ion.
+- Boundary subdivision explicitly cuts a maximal cross-circuit data gap at possible termination points. Within each circuit each untouched wait is lumped once. The dephasing semigroup identity and commutation make the resulting Monte Carlo channel exact; P2 attribution depends on this effective-location representation.
+- All 252 potential locations enter each survival product outside the pair, including inactive locations; corrected P2 is a two-assignment subset contribution, not the primary p_L estimate. More faults (including faults on skipped circuits) explain why Monte Carlo need not equal it.
+- H2_LIKE remains Stage 1 only with timing fields None; no H2 T2 sweep is invented.
+- Trigger categories describe observed signal provenance. Mixed shots have no forced unique cause; equal sharing is reported as an optional four-category convention alongside the exclusive mixed category.
+- Monte Carlo is primary from this stage onward. Stage 3 p_eff must be computed from Monte Carlo; P2-derived p_eff is only a secondary check. Stage 3 work has not begun.
+- Published input rates and the existing gate-fidelity placeholders/convention caveats are unchanged.
+
+Open questions for the human:
+- No decision blocks completion of Stage 2. H2 timing stays deferred until a sourced preset is supplied.
+- Boundary subdivision and mixed-trigger allocation are explicit modeling/reporting conventions for checkpoint review.
+- Stop here for Stage 2 review.

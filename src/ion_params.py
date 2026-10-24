@@ -40,7 +40,7 @@ JONES_MURALI_2026 = IonParams(
     p_1q=1e-5,  # PLACEHOLDER requested for this study; not their heating model.
     p_reset=5e-3,  # Section 5.1, reset bit-flip probability.
     p_meas=1e-3,  # Section 5.1, measurement error probability.
-    T2=2.2,  # Section 5.1, coherence time (unused in Stage 1).
+    T2=2.2,  # Section 5.1, coherence time; used from Stage 2 onward.
     ms_duration=40e-6,  # Table 1, two-qubit MS gate.
     rotation_duration=5e-6,  # Table 1, one-qubit rotation.
     measurement_duration=400e-6,  # Table 1, measurement.
@@ -93,3 +93,6 @@ def fidelity_to_depolarizing(f_avg, n_qubits):
     if p > 1:
         raise ValueError('Fidelity is outside the range of this Pauli channel')
     return p
+
+# Sensitivity values explicitly requested in the staged study prompt, in seconds.
+T2_SWEEP = (0.1, 0.5, 2.2, 10.0)

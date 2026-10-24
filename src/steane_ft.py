@@ -92,6 +92,8 @@ def ops_to_stim(ops):
             c.append(op[0], [op[1]])
         elif op[0] == 'CX':
             c.append('CX', [op[1], op[2]])
+        elif op[0] == 'IDLE':
+            c.append('I', [op[1]])
         c.append('TICK')
     return c
 
@@ -129,6 +131,8 @@ def run_ops(sim, ops, fault=None, *, faults=None):
             sim.reset(op[1])
         elif kind == 'RX':
             sim.reset_x(op[1])
+        elif kind == 'IDLE':
+            pass
         elif kind == 'CX':
             sim.cnot(op[1], op[2])
         elif kind in ('M', 'MX'):
@@ -143,7 +147,7 @@ def run_ops(sim, ops, fault=None, *, faults=None):
             results[op[2]] = int(bit)
             continue
         if hit:
-            qubits = [op[1]] if kind in ('R', 'RX') else [op[1], op[2]]
+            qubits = [op[1]] if kind in ('R', 'RX', 'IDLE') else [op[1], op[2]]
             apply_pauli(sim, qubits, injected[i])
     return results
 
@@ -159,6 +163,8 @@ def fault_list(ops):
                        if (p1, p2) != ('I', 'I')]
         elif op[0] in ('M', 'MX'):
             faults.append((i, 'FLIP'))
+        elif op[0] == 'IDLE':
+            faults.append((i, 'Z'))
     return faults
 
 
@@ -193,7 +199,7 @@ def syndrome_value(bits):
 # One full adaptive EC round
 # ---------------------------------------------------------------------------
 
-def ec_round(sim, fault_at=None, use_flags=True, *, faults=None):
+def ec_round(sim, fault_at=None, use_flags=True, *, faults=None, circuits=None):
     """
     fault_at = (circuit_index in ROUND, fault) or None.
     Alternatively faults = {(stage, circuit_index): {op_index: payload}}.
@@ -205,13 +211,15 @@ def ec_round(sim, fault_at=None, use_flags=True, *, faults=None):
     if fault_at is not None:
         idx, (op_idx, payload) = fault_at
         injected = {('F', idx): {op_idx: payload}}
-    log = {'trigger': None}
+    log = {'trigger': None, 'trigger_index': None}
     trigger = None
     for idx, (kind, k) in enumerate(ROUND):
-        ops = stabilizer_circuit(kind, SUPPORTS[k], flagged=True)
+        ops = (circuits[('F', idx)] if circuits is not None else
+               stabilizer_circuit(kind, SUPPORTS[k], flagged=True))
         r = run_ops(sim, ops, faults=injected.get(('F', idx), {}))
         if r['flag'] or r['synd']:
             trigger = (kind, k, r['flag'])
+            log.update(trigger_index=idx, trigger_bits=r)
             break
     log['trigger'] = trigger
     if trigger is None:
@@ -220,8 +228,9 @@ def ec_round(sim, fault_at=None, use_flags=True, *, faults=None):
     # Bare follow-up round; accepts explicit injections for noise cross-checks.
     bits = {'Z': [], 'X': []}
     for idx, (kind, k) in enumerate(ROUND):
-        r = run_ops(sim, stabilizer_circuit(kind, SUPPORTS[k], flagged=False),
-                    faults=injected.get(('B', idx), {}))
+        ops = (circuits[('B', idx)] if circuits is not None else
+               stabilizer_circuit(kind, SUPPORTS[k], flagged=False))
+        r = run_ops(sim, ops, faults=injected.get(('B', idx), {}))
         bits[kind].append(r['synd'])
     s_x = syndrome_value(bits['Z'])  # Z-checks see X errors
     s_z = syndrome_value(bits['X'])  # X-checks see Z errors

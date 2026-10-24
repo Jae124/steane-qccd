@@ -81,6 +81,9 @@ def run_ops_frame(fx, fz, ops, faults):
                 fz ^= 1 << c
             if i in faults:
                 fx, fz = _apply_payload(fx, fz, [c, t], faults[i])
+        elif kind == 'IDLE':
+            if i in faults:
+                fx, fz = _apply_payload(fx, fz, [op[1]], faults[i])
         else:  # M (Z basis: sees X frame) or MX (X basis: sees Z frame)
             q = op[1]
             bit = (fx >> q) & 1 if kind == 'M' else (fz >> q) & 1
@@ -90,27 +93,34 @@ def run_ops_frame(fx, fz, ops, faults):
     return fx, fz, results
 
 
-def ec_round_frame(fx, fz, faults):
+def ec_round_frame(fx, fz, faults, *, circuits=None, log=None):
     """
     faults: dict (stage, circuit_index) -> {op_index: payload}
     stage 'F' = flagged round, 'B' = bare round (only runs if triggered).
     Returns the data frame after correction.
     """
+    circuits = CIRCUITS if circuits is None else circuits
+    if log is not None:
+        log.update(trigger=None, trigger_index=None)
     trigger = None
     for i, (kind, k) in enumerate(ROUND):
-        fx, fz, r = run_ops_frame(fx, fz, CIRCUITS[('F', i)], faults.get(('F', i), {}))
+        fx, fz, r = run_ops_frame(fx, fz, circuits[('F', i)], faults.get(('F', i), {}))
         if r['flag'] or r['synd']:
             trigger = (kind, k, r['flag'])
+            if log is not None:
+                log.update(trigger=trigger, trigger_index=i, trigger_bits=r)
             break
     if trigger is None:
         return fx, fz
 
     bits = {'Z': [], 'X': []}
     for i, (kind, k) in enumerate(ROUND):
-        fx, fz, r = run_ops_frame(fx, fz, CIRCUITS[('B', i)], faults.get(('B', i), {}))
+        fx, fz, r = run_ops_frame(fx, fz, circuits[('B', i)], faults.get(('B', i), {}))
         bits[kind].append(r['synd'])
     s_x, s_z = syndrome_value(bits['Z']), syndrome_value(bits['X'])
 
+    if log is not None:
+        log.update(s_x=s_x, s_z=s_z)
     kind, k, flag = trigger
     if flag and kind == 'Z':
         z_fix, x_fix = flagged_decode(s_z, SUPPORTS[k]), standard_decode(s_x)
@@ -118,6 +128,8 @@ def ec_round_frame(fx, fz, faults):
         z_fix, x_fix = standard_decode(s_z), flagged_decode(s_x, SUPPORTS[k])
     else:
         z_fix, x_fix = standard_decode(s_z), standard_decode(s_x)
+    if log is not None:
+        log.update(x_fix=x_fix, z_fix=z_fix)
     for q in x_fix:
         fx ^= 1 << q
     for q in z_fix:
@@ -156,23 +168,28 @@ def physical_variants(op):
         return ['X']                      # prepared |1> instead of |0>
     if op[0] == 'RX':
         return ['Z']                      # prepared |-> instead of |+>
+    if op[0] == 'IDLE':
+        return ['Z']
     if op[0] == 'CX':
         return [a + b for a, b in itertools.product('IXYZ', repeat=2) if a + b != 'II']
     return ['FLIP']                       # measurement reports the wrong bit
 
 
-def all_locations():
+def all_locations(circuits=None):
     """Every fault location in the gadget: (stage, circuit_index, op_index, op)."""
+    circuits = CIRCUITS if circuits is None else circuits
     locs = []
     for stage in ('F', 'B'):
         for i in range(len(ROUND)):
-            for j, op in enumerate(CIRCUITS[(stage, i)]):
+            for j, op in enumerate(circuits[(stage, i)]):
                 locs.append((stage, i, j, op))
     return locs
 
 
 def loc_type(loc):
     op = loc[3][0]
+    if op == 'IDLE':
+        return 'idle'
     return '2q' if op == 'CX' else ('reset' if op in ('R', 'RX') else 'meas')
 
 
@@ -252,7 +269,8 @@ def count_faults(noise=None):
     no-fault factors. A is retained for uniform models and the no-argument API.
     """
     noise = UniformNoise(1.0) if noise is None else noise
-    locs = all_locations()
+    circuits = getattr(noise, 'circuits', CIRCUITS)
+    locs = all_locations(circuits)
     channels = [validated_channel(noise, loc) for loc in locs]
     variants = [list(channel) for channel in channels]
     uniform = (type(noise) in (NoiseModel, UniformNoise)
@@ -268,7 +286,7 @@ def count_faults(noise=None):
     single_fail = 0
     for loc, vs, channel in zip(locs, variants, channels):
         for v in vs:
-            fx, fz = ec_round_frame(0, 0, {(loc[0], loc[1]): {loc[2]: v}})
+            fx, fz = ec_round_frame(0, 0, {(loc[0], loc[1]): {loc[2]: v}}, circuits=circuits)
             if any(logical_failure(fx, fz)):
                 single_fail += 1
                 P1 += channel[v]
@@ -291,7 +309,7 @@ def count_faults(noise=None):
                 faults = {}
                 faults.setdefault((la[0], la[1]), {})[la[2]] = va
                 faults.setdefault((lb[0], lb[1]), {})[lb[2]] = vb
-                fx, fz = ec_round_frame(0, 0, faults)
+                fx, fz = ec_round_frame(0, 0, faults, circuits=circuits)
                 xf, zf = logical_failure(fx, fz)
                 pw = channels[a][va] * channels[b][vb]
                 if xf or zf:
@@ -339,14 +357,48 @@ def count_faults(noise=None):
 # 3. Monte Carlo
 # ---------------------------------------------------------------------------
 
-def monte_carlo(noise, shots, rng):
-    locs = all_locations()
+TRIGGER_TYPES = ('reset', 'measurement', '2q', 'idle')
+
+
+def trigger_contributors(faults, circuits, log):
+    """Categories contributing to the nonzero bit(s) at the actual trigger.
+
+    Propagation is linear over GF(2). Replay each category through the executed
+    flagged prefix without taking intermediate branches; do not credit faults
+    whose contributions cancel or only affect a zero bit at the trigger.
+    """
+    groups = {}
+    stop = log['trigger_index']
+    for key, hits in faults.items():
+        if key[0] != 'F' or key[1] > stop:
+            continue
+        for idx, payload in hits.items():
+            kind = loc_type((*key, idx, circuits[key][idx]))
+            kind = 'measurement' if kind == 'meas' else kind
+            groups.setdefault(kind, {}).setdefault(key, {})[idx] = payload
+    contributors = []
+    for kind, subset in groups.items():
+        fx = fz = 0
+        for idx in range(stop + 1):
+            fx, fz, bits = run_ops_frame(fx, fz, circuits[('F', idx)],
+                                        subset.get(('F', idx), {}))
+        if any(log['trigger_bits'][tag] and bits[tag] for tag in ('synd', 'flag')):
+            contributors.append(kind)
+    return contributors
+
+
+def monte_carlo(noise, shots, rng, *, return_details=False):
+    circuits = getattr(noise, 'circuits', CIRCUITS)
+    locs = all_locations(circuits)
     channels = [validated_channel(noise, loc) for loc in locs]
     probs = [min(1.0, sum(ch.values())) for ch in channels]
     variants = [list(ch) for ch in channels]
     equal_weights = [len(set(ch.values())) <= 1 for ch in channels]
     cumulative = [np.cumsum(list(ch.values())).tolist() for ch in channels]
-    fails = 0
+    fails = triggers = bare_fails = 0
+    causes = dict.fromkeys((*TRIGGER_TYPES, 'mixed'), 0)
+    contributed = dict.fromkeys(TRIGGER_TYPES, 0)
+    fractional = dict.fromkeys(TRIGGER_TYPES, 0.0)
     for _ in range(shots):
         faults = {}
         for l, p, vs, equal, edges in zip(locs, probs, variants, equal_weights, cumulative):
@@ -360,10 +412,38 @@ def monte_carlo(noise, shots, rng):
                 faults.setdefault((l[0], l[1]), {})[l[2]] = payload
         if not faults:
             continue
-        fx, fz = ec_round_frame(0, 0, faults)
-        if any(logical_failure(fx, fz)):
-            fails += 1
-    return fails
+        log = {} if return_details else None
+        fx, fz = ec_round_frame(0, 0, faults, circuits=circuits, log=log)
+        failed = any(logical_failure(fx, fz))
+        fails += int(failed)
+        if return_details and log['trigger'] is not None:
+            triggers += 1
+            bare_fails += int(failed)
+            contributors = trigger_contributors(faults, circuits, log)
+            if not contributors:
+                raise RuntimeError('A triggered noiseless-input shot has no signal contributor')
+            causes[contributors[0] if len(contributors) == 1 else 'mixed'] += 1
+            for kind in contributors:
+                contributed[kind] += 1
+                fractional[kind] += 1 / len(contributors)
+    if not return_details:
+        return fails
+    rate = triggers / shots
+    pl = fails / shots
+    return {
+        'shots': shots, 'fails': fails, 'p_L': pl,
+        'stderr': math.sqrt(max(pl, 1 / shots) * (1 - pl) / shots),
+        'triggers': triggers, 'trigger_rate': rate,
+        'trigger_rate_stderr': math.sqrt(rate * (1 - rate) / shots),
+        'trigger_cause_counts': causes,
+        'trigger_cause_rates': {k: v / shots for k, v in causes.items()},
+        'trigger_contributing_type_rates': {k: v / shots for k, v in contributed.items()},
+        'trigger_fractional_type_rates': {k: v / shots for k, v in fractional.items()},
+        'failures_through_bare': bare_fails,
+        'failure_share_through_bare': bare_fails / fails if fails else None,
+        'failure_share_through_bare_stderr': (math.sqrt(
+            (bare_fails / fails) * (1 - bare_fails / fails) / fails) if fails else None),
+    }
 
 
 if __name__ == '__main__':
@@ -380,13 +460,20 @@ if __name__ == '__main__':
         shots = {5e-4: 3_000_000, 1e-3: 1_500_000, 2e-3: 500_000}.get(
             p, 200_000 if p < 1e-2 else 50_000)
         t0 = time.time()
-        f = monte_carlo(NoiseModel(p), shots, rng)
+        metrics = monte_carlo(NoiseModel(p), shots, rng, return_details=True)
+        f = metrics['fails']
         pl = f / shots
         err = np.sqrt(max(pl, 1 / shots) * (1 - pl) / shots)
-        mc.append({'p': p, 'shots': shots, 'fails': f, 'p_L': pl, 'stderr': err})
+        pair_term = counts['A']['any'] * p * p
+        mc.append({'p': p, **metrics, 'P2': pair_term,
+                   'P2_survival_corrected': pair_term * (1-p)**(counts['n_locations']-2)})
         print(f"MC p={p:.0e}: p_L={pl:.3e} +- {err:.1e}  "
               f"(A p^2 = {counts['A']['any'] * p * p:.3e})  [{time.time() - t0:.0f} s]")
 
+        print(f"  trigger rate={metrics['trigger_rate']:.6g}; "
+              f"trigger causes={metrics['trigger_cause_rates']}; "
+              f"failure share through bare={metrics['failure_share_through_bare']}")
+
     with open('../results/steane_ec_results.json', 'w') as fh:
-        json.dump({'counts': counts, 'monte_carlo': mc}, fh, indent=2)
+        json.dump({'primary_estimate': 'Monte Carlo', 'counts': counts, 'monte_carlo': mc}, fh, indent=2)
     print("\nWrote results/steane_ec_results.json")
