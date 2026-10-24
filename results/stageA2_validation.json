@@ -1,0 +1,42 @@
+{
+  "stage": "A2",
+  "rows": 36,
+  "all_row_accounting_passed": true,
+  "new_target_MC_shots": 932000000,
+  "new_calibration_shots": 35000000,
+  "approved_calibration_shots_reused": 11000000,
+  "max_combined_stderr_fraction": 0.014718534867514246,
+  "stage0_4_artifacts": {
+    "frozen_commit": "d298328beb86d96699a2f3c8804eff3268419e9a",
+    "artifact_count": 16,
+    "all_byte_identical": true,
+    "mismatches": []
+  },
+  "A1_artifacts_unchanged": {
+    "results/stageA1_fault_checks.json": true,
+    "results/stageA1_reference_PAR_MR.json": true,
+    "results/stageA1_reference_SEQ.json": true,
+    "results/stageA1_validation.json": true
+  },
+  "A1_independent_baseline_MC_agreement": {
+    "SEQ": {
+      "new_minus_A1_p_L": 2.0166666666666597e-05,
+      "combined_stderr": 2.7382867088662765e-05,
+      "sigma": 0.7364702389040968
+    },
+    "PAR_MR": {
+      "new_minus_A1_p_L": -1.886666666666651e-05,
+      "combined_stderr": 2.638060384293593e-05,
+      "sigma": -0.7151719035316371
+    }
+  },
+  "tests": {
+    "full_run": "95 passed in 427.58 s (before 4 final test nodes were added)",
+    "final_fast_run": "91 passed, 8 slow deselected in 52.95 s",
+    "focused_A2_run": "18 passed in 4.54 s",
+    "distinct_test_nodes_covered": 99,
+    "slow_nodes_passed_in_full_run": 8
+  },
+  "figure_visually_inspected": true,
+  "simulation_fingerprint": "ec959bd9cca81dc01e74cea62676ff25c3ee7fb10f8201e195af01dfcbb27272"
+}

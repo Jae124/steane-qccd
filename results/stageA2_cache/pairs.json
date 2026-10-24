@@ -1,0 +1,3948 @@
+{
+  "configuration": {
+    "simulation_fingerprint": "ec959bd9cca81dc01e74cea62676ff25c3ee7fb10f8201e195af01dfcbb27272",
+    "stage": "A2",
+    "empty_transport": true
+  },
+  "rows": {
+    "c0_ZZZXXX": {
+      "order_name": "ZZZXXX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.0005)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 92840,
+        "A": {
+          "X": 385.06666666666246,
+          "Z": 447.0222222223297,
+          "any": 767.9111111103565
+        },
+        "A_by_stage_pair": {
+          "FB": 693.0133333328097,
+          "FF": 74.89777777778669
+        },
+        "A_by_type_pair": {
+          "2q*reset": 177.5333333333284,
+          "reset*reset": 6.0,
+          "meas*reset": 12.0,
+          "2q*2q": 388.8444444445192,
+          "2q*meas": 177.5333333333284,
+          "meas*meas": 6.0
+        },
+        "P1": 0.0,
+        "P2": 0.00019197777777742268,
+        "P2_survival_corrected": 0.0001831614255179514,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.00016529687902630395,
+          "FF": 1.7864546491674017e-05
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 4.234508127284237e-05,
+          "reset*reset": 1.4311142750866732e-06,
+          "meas*reset": 2.8622285501733473e-06,
+          "2q*2q": 9.274680587197903e-05,
+          "2q*meas": 4.234508127284237e-05,
+          "meas*meas": 1.4311142750866732e-06
+        },
+        "mean_location_fault_probability": 0.0005000000000000003,
+        "P2_survival_mean_approx": 0.00018316142551779119,
+        "P2_by_logical_type": {
+          "X": 9.626666666658294e-05,
+          "Z": 0.00011175555555539954,
+          "any": 0.00019197777777742268
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.00017325333333304436,
+          "FF": 1.8724444444446678e-05
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 4.438333333333459e-05,
+          "reset*reset": 1.4999999999999998e-06,
+          "meas*reset": 3.0000000000000005e-06,
+          "2q*2q": 9.721111111090567e-05,
+          "2q*meas": 4.438333333333459e-05,
+          "meas*meas": 1.4999999999999998e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact exhaustive pair enumeration.",
+      "p_2q": 0.0005,
+      "parameters": {
+        "p_2q": 0.0005
+      },
+      "geometry_signature": "bca165104779a726f7d0350708cffcc74c8e211818c621b001ca581e302fb5f3"
+    },
+    "c0_XXXZZZ": {
+      "order_name": "XXXZZZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.0005)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "RX": 9,
+          "R": 9,
+          "CX": 60,
+          "MX": 9,
+          "M": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 92840,
+        "P1": 0.0,
+        "P2": 0.00019197777777742268,
+        "P2_survival_corrected": 0.0001831614255179514,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.00016529687902630395,
+          "FF": 1.7864546491674017e-05
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 4.234508127284237e-05,
+          "reset*reset": 1.4311142750866732e-06,
+          "meas*reset": 2.8622285501733473e-06,
+          "2q*2q": 9.274680587197903e-05,
+          "2q*meas": 4.234508127284237e-05,
+          "meas*meas": 1.4311142750866732e-06
+        },
+        "mean_location_fault_probability": 0.0005000000000000003,
+        "P2_survival_mean_approx": 0.00018316142551779119,
+        "P2_by_logical_type": {
+          "X": 0.00011175555555539954,
+          "Z": 9.626666666658294e-05,
+          "any": 0.00019197777777742268
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.00017325333333304436,
+          "FF": 1.8724444444446678e-05
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 4.438333333333459e-05,
+          "reset*reset": 1.4999999999999998e-06,
+          "meas*reset": 3.0000000000000005e-06,
+          "2q*2q": 9.721111111090567e-05,
+          "2q*meas": 4.438333333333459e-05,
+          "meas*meas": 1.4999999999999998e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact exhaustive pair enumeration.",
+      "p_2q": 0.0005,
+      "parameters": {
+        "p_2q": 0.0005
+      },
+      "geometry_signature": "1d6e185d912c958d1d6b2a295a2d6474f85898f9d47237a8da984da5003581cd"
+    },
+    "c0_ZXZXZX": {
+      "order_name": "ZXZXZX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.0005)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 101737,
+        "P1": 0.0,
+        "P2": 0.00021903666666624985,
+        "P2_survival_corrected": 0.00020897766695584464,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.00019325025111499082,
+          "FF": 1.572741584087607e-05
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 5.1122582160040636e-05,
+          "reset*reset": 1.4311142750866732e-06,
+          "meas*reset": 2.8622285501733473e-06,
+          "2q*2q": 0.00010100804553548029,
+          "2q*meas": 5.1122582160040636e-05,
+          "meas*meas": 1.4311142750866732e-06
+        },
+        "mean_location_fault_probability": 0.0005000000000000003,
+        "P2_survival_mean_approx": 0.0002089776669556477,
+        "P2_by_logical_type": {
+          "X": 0.00011659777777762057,
+          "Z": 0.00013025777777757747,
+          "any": 0.00021903666666624985
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.00020255222222187975,
+          "FF": 1.6484444444446395e-05
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 5.358333333333606e-05,
+          "reset*reset": 1.4999999999999998e-06,
+          "meas*reset": 3.0000000000000005e-06,
+          "2q*2q": 0.00010586999999974314,
+          "2q*meas": 5.358333333333606e-05,
+          "meas*meas": 1.4999999999999998e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact exhaustive pair enumeration.",
+      "p_2q": 0.0005,
+      "parameters": {
+        "p_2q": 0.0005
+      },
+      "geometry_signature": "ee503cc525c6257475a944739240f4bed64a3db0a0fff05fa3303690c2d3a714"
+    },
+    "c0_XZXZXZ": {
+      "order_name": "XZXZXZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.0005)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "RX": 9,
+          "R": 9,
+          "CX": 60,
+          "MX": 9,
+          "M": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 101737,
+        "P1": 0.0,
+        "P2": 0.00021903666666624985,
+        "P2_survival_corrected": 0.00020897766695584464,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.00019325025111499082,
+          "FF": 1.572741584087607e-05
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 5.1122582160040636e-05,
+          "reset*reset": 1.4311142750866732e-06,
+          "meas*reset": 2.8622285501733473e-06,
+          "2q*2q": 0.00010100804553548029,
+          "2q*meas": 5.1122582160040636e-05,
+          "meas*meas": 1.4311142750866732e-06
+        },
+        "mean_location_fault_probability": 0.0005000000000000003,
+        "P2_survival_mean_approx": 0.0002089776669556477,
+        "P2_by_logical_type": {
+          "X": 0.00013025777777757747,
+          "Z": 0.00011659777777762057,
+          "any": 0.00021903666666624985
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.00020255222222187975,
+          "FF": 1.6484444444446395e-05
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 5.358333333333606e-05,
+          "reset*reset": 1.4999999999999998e-06,
+          "meas*reset": 3.0000000000000005e-06,
+          "2q*2q": 0.00010586999999974314,
+          "2q*meas": 5.358333333333606e-05,
+          "meas*meas": 1.4999999999999998e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact exhaustive pair enumeration.",
+      "p_2q": 0.0005,
+      "parameters": {
+        "p_2q": 0.0005
+      },
+      "geometry_signature": "9be0bf5855796dfad579b39e4c9a3cb9710a0700042193213ac2534bf1995d4f"
+    },
+    "c1_ZZZXXX": {
+      "order_name": "ZZZXXX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.001)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 92840,
+        "A": {
+          "X": 385.06666666666246,
+          "Z": 447.0222222223297,
+          "any": 767.9111111103565
+        },
+        "A_by_stage_pair": {
+          "FB": 693.0133333328097,
+          "FF": 74.89777777778669
+        },
+        "A_by_type_pair": {
+          "2q*reset": 177.5333333333284,
+          "reset*reset": 6.0,
+          "meas*reset": 12.0,
+          "2q*2q": 388.8444444445192,
+          "2q*meas": 177.5333333333284,
+          "meas*meas": 6.0
+        },
+        "P1": 0.0,
+        "P2": 0.0007679111111096907,
+        "P2_survival_corrected": 0.0006989833724668118,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.000630808422861586,
+          "FF": 6.817494960547462e-05
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.00016159793270771635,
+          "reset*reset": 5.461439708484438e-06,
+          "meas*reset": 1.092287941696888e-05,
+          "2q*2q": 0.00035394174821799535,
+          "2q*meas": 0.00016159793270771635,
+          "meas*meas": 5.461439708484438e-06
+        },
+        "mean_location_fault_probability": 0.001,
+        "P2_survival_mean_approx": 0.0006989833724668118,
+        "P2_by_logical_type": {
+          "X": 0.0003850666666663318,
+          "Z": 0.00044702222222159816,
+          "any": 0.0007679111111096907
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0006930133333321774,
+          "FF": 7.489777777778671e-05
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.00017753333333333837,
+          "reset*reset": 5.999999999999999e-06,
+          "meas*reset": 1.2000000000000002e-05,
+          "2q*2q": 0.0003888444444436227,
+          "2q*meas": 0.00017753333333333837,
+          "meas*meas": 5.999999999999999e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact p^2 reweighting of identical equal-p active payloads; survival product recomputed.",
+      "p_2q": 0.001,
+      "parameters": {
+        "p_2q": 0.001
+      },
+      "geometry_signature": "bca165104779a726f7d0350708cffcc74c8e211818c621b001ca581e302fb5f3"
+    },
+    "c1_XXXZZZ": {
+      "order_name": "XXXZZZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.001)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "RX": 9,
+          "R": 9,
+          "CX": 60,
+          "MX": 9,
+          "M": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 92840,
+        "P1": 0.0,
+        "P2": 0.0007679111111096907,
+        "P2_survival_corrected": 0.0006989833724668118,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.000630808422861586,
+          "FF": 6.817494960547462e-05
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.00016159793270771635,
+          "reset*reset": 5.461439708484438e-06,
+          "meas*reset": 1.092287941696888e-05,
+          "2q*2q": 0.00035394174821799535,
+          "2q*meas": 0.00016159793270771635,
+          "meas*meas": 5.461439708484438e-06
+        },
+        "mean_location_fault_probability": 0.001,
+        "P2_survival_mean_approx": 0.0006989833724668118,
+        "P2_by_logical_type": {
+          "X": 0.00044702222222159816,
+          "Z": 0.0003850666666663318,
+          "any": 0.0007679111111096907
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0006930133333321774,
+          "FF": 7.489777777778671e-05
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.00017753333333333837,
+          "reset*reset": 5.999999999999999e-06,
+          "meas*reset": 1.2000000000000002e-05,
+          "2q*2q": 0.0003888444444436227,
+          "2q*meas": 0.00017753333333333837,
+          "meas*meas": 5.999999999999999e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact p^2 reweighting of identical equal-p active payloads; survival product recomputed.",
+      "p_2q": 0.001,
+      "parameters": {
+        "p_2q": 0.001
+      },
+      "geometry_signature": "1d6e185d912c958d1d6b2a295a2d6474f85898f9d47237a8da984da5003581cd"
+    },
+    "c1_ZXZXZX": {
+      "order_name": "ZXZXZX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.001)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 101737,
+        "P1": 0.0,
+        "P2": 0.0008761466666649994,
+        "P2_survival_corrected": 0.0007975036992967511,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0007374844996562254,
+          "FF": 6.001919964080349e-05
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0001950947629197596,
+          "reset*reset": 5.461439708484438e-06,
+          "meas*reset": 1.092287941696888e-05,
+          "2q*2q": 0.00038546841462389644,
+          "2q*meas": 0.0001950947629197596,
+          "meas*meas": 5.461439708484438e-06
+        },
+        "mean_location_fault_probability": 0.001,
+        "P2_survival_mean_approx": 0.0007975036992967511,
+        "P2_by_logical_type": {
+          "X": 0.0004663911111104823,
+          "Z": 0.0005210311111103099,
+          "any": 0.0008761466666649994
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.000810208888887519,
+          "FF": 6.593777777778558e-05
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.00021433333333334425,
+          "reset*reset": 5.999999999999999e-06,
+          "meas*reset": 1.2000000000000002e-05,
+          "2q*2q": 0.00042347999999897256,
+          "2q*meas": 0.00021433333333334425,
+          "meas*meas": 5.999999999999999e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact p^2 reweighting of identical equal-p active payloads; survival product recomputed.",
+      "p_2q": 0.001,
+      "parameters": {
+        "p_2q": 0.001
+      },
+      "geometry_signature": "ee503cc525c6257475a944739240f4bed64a3db0a0fff05fa3303690c2d3a714"
+    },
+    "c1_XZXZXZ": {
+      "order_name": "XZXZXZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.001)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "RX": 9,
+          "R": 9,
+          "CX": 60,
+          "MX": 9,
+          "M": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 101737,
+        "P1": 0.0,
+        "P2": 0.0008761466666649994,
+        "P2_survival_corrected": 0.0007975036992967511,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0007374844996562254,
+          "FF": 6.001919964080349e-05
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0001950947629197596,
+          "reset*reset": 5.461439708484438e-06,
+          "meas*reset": 1.092287941696888e-05,
+          "2q*2q": 0.00038546841462389644,
+          "2q*meas": 0.0001950947629197596,
+          "meas*meas": 5.461439708484438e-06
+        },
+        "mean_location_fault_probability": 0.001,
+        "P2_survival_mean_approx": 0.0007975036992967511,
+        "P2_by_logical_type": {
+          "X": 0.0005210311111103099,
+          "Z": 0.0004663911111104823,
+          "any": 0.0008761466666649994
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.000810208888887519,
+          "FF": 6.593777777778558e-05
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.00021433333333334425,
+          "reset*reset": 5.999999999999999e-06,
+          "meas*reset": 1.2000000000000002e-05,
+          "2q*2q": 0.00042347999999897256,
+          "2q*meas": 0.00021433333333334425,
+          "meas*meas": 5.999999999999999e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact p^2 reweighting of identical equal-p active payloads; survival product recomputed.",
+      "p_2q": 0.001,
+      "parameters": {
+        "p_2q": 0.001
+      },
+      "geometry_signature": "9be0bf5855796dfad579b39e4c9a3cb9710a0700042193213ac2534bf1995d4f"
+    },
+    "c2_ZZZXXX": {
+      "order_name": "ZZZXXX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.0015)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 92840,
+        "A": {
+          "X": 385.06666666666246,
+          "Z": 447.0222222223297,
+          "any": 767.9111111103565
+        },
+        "A_by_stage_pair": {
+          "FB": 693.0133333328097,
+          "FF": 74.89777777778669
+        },
+        "A_by_type_pair": {
+          "2q*reset": 177.5333333333284,
+          "reset*reset": 6.0,
+          "meas*reset": 12.0,
+          "2q*2q": 388.8444444445192,
+          "2q*meas": 177.5333333333284,
+          "meas*meas": 6.0
+        },
+        "P1": 0.0,
+        "P2": 0.001727799999996804,
+        "P2_survival_corrected": 0.0015004169963965472,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0013540746696039086,
+          "FF": 0.00014634232679317283
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.00034688133418898394,
+          "reset*reset": 1.1723364655278883e-05,
+          "meas*reset": 2.3446729310557772e-05,
+          "2q*2q": 0.0007597608693986533,
+          "2q*meas": 0.00034688133418898394,
+          "meas*meas": 1.1723364655278883e-05
+        },
+        "mean_location_fault_probability": 0.0015000000000000002,
+        "P2_survival_mean_approx": 0.0015004169963965472,
+        "P2_by_logical_type": {
+          "X": 0.0008663999999992465,
+          "Z": 0.0010057999999985958,
+          "any": 0.001727799999996804
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0015592799999973991,
+          "FF": 0.0001685200000000201
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.00039945000000001136,
+          "reset*reset": 1.3499999999999998e-05,
+          "meas*reset": 2.7000000000000006e-05,
+          "2q*2q": 0.0008748999999981511,
+          "2q*meas": 0.00039945000000001136,
+          "meas*meas": 1.3499999999999998e-05
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact p^2 reweighting of identical equal-p active payloads; survival product recomputed.",
+      "p_2q": 0.0015,
+      "parameters": {
+        "p_2q": 0.0015
+      },
+      "geometry_signature": "bca165104779a726f7d0350708cffcc74c8e211818c621b001ca581e302fb5f3"
+    },
+    "c2_XXXZZZ": {
+      "order_name": "XXXZZZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.0015)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "RX": 9,
+          "R": 9,
+          "CX": 60,
+          "MX": 9,
+          "M": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 92840,
+        "P1": 0.0,
+        "P2": 0.001727799999996804,
+        "P2_survival_corrected": 0.0015004169963965472,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0013540746696039086,
+          "FF": 0.00014634232679317283
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.00034688133418898394,
+          "reset*reset": 1.1723364655278883e-05,
+          "meas*reset": 2.3446729310557772e-05,
+          "2q*2q": 0.0007597608693986533,
+          "2q*meas": 0.00034688133418898394,
+          "meas*meas": 1.1723364655278883e-05
+        },
+        "mean_location_fault_probability": 0.0015000000000000002,
+        "P2_survival_mean_approx": 0.0015004169963965472,
+        "P2_by_logical_type": {
+          "X": 0.0010057999999985958,
+          "Z": 0.0008663999999992465,
+          "any": 0.001727799999996804
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0015592799999973991,
+          "FF": 0.0001685200000000201
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.00039945000000001136,
+          "reset*reset": 1.3499999999999998e-05,
+          "meas*reset": 2.7000000000000006e-05,
+          "2q*2q": 0.0008748999999981511,
+          "2q*meas": 0.00039945000000001136,
+          "meas*meas": 1.3499999999999998e-05
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact p^2 reweighting of identical equal-p active payloads; survival product recomputed.",
+      "p_2q": 0.0015,
+      "parameters": {
+        "p_2q": 0.0015
+      },
+      "geometry_signature": "1d6e185d912c958d1d6b2a295a2d6474f85898f9d47237a8da984da5003581cd"
+    },
+    "c2_ZXZXZX": {
+      "order_name": "ZXZXZX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.0015)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 101737,
+        "P1": 0.0,
+        "P2": 0.0019713299999962485,
+        "P2_survival_corrected": 0.0017118978108034773,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0015830623752294529,
+          "FF": 0.00012883543557462083
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0004187846374080392,
+          "reset*reset": 1.1723364655278883e-05,
+          "meas*reset": 2.3446729310557772e-05,
+          "2q*2q": 0.0008274350773675762,
+          "2q*meas": 0.0004187846374080392,
+          "meas*meas": 1.1723364655278883e-05
+        },
+        "mean_location_fault_probability": 0.0015000000000000002,
+        "P2_survival_mean_approx": 0.0017118978108034773,
+        "P2_by_logical_type": {
+          "X": 0.001049379999998585,
+          "Z": 0.0011723199999981973,
+          "any": 0.0019713299999962485
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0018229699999969178,
+          "FF": 0.00014836000000001756
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.00048225000000002454,
+          "reset*reset": 1.3499999999999998e-05,
+          "meas*reset": 2.7000000000000006e-05,
+          "2q*2q": 0.0009528299999976883,
+          "2q*meas": 0.00048225000000002454,
+          "meas*meas": 1.3499999999999998e-05
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact p^2 reweighting of identical equal-p active payloads; survival product recomputed.",
+      "p_2q": 0.0015,
+      "parameters": {
+        "p_2q": 0.0015
+      },
+      "geometry_signature": "ee503cc525c6257475a944739240f4bed64a3db0a0fff05fa3303690c2d3a714"
+    },
+    "c2_XZXZXZ": {
+      "order_name": "XZXZXZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.0015)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "RX": 9,
+          "R": 9,
+          "CX": 60,
+          "MX": 9,
+          "M": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 101737,
+        "P1": 0.0,
+        "P2": 0.0019713299999962485,
+        "P2_survival_corrected": 0.0017118978108034773,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0015830623752294529,
+          "FF": 0.00012883543557462083
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0004187846374080392,
+          "reset*reset": 1.1723364655278883e-05,
+          "meas*reset": 2.3446729310557772e-05,
+          "2q*2q": 0.0008274350773675762,
+          "2q*meas": 0.0004187846374080392,
+          "meas*meas": 1.1723364655278883e-05
+        },
+        "mean_location_fault_probability": 0.0015000000000000002,
+        "P2_survival_mean_approx": 0.0017118978108034773,
+        "P2_by_logical_type": {
+          "X": 0.0011723199999981973,
+          "Z": 0.001049379999998585,
+          "any": 0.0019713299999962485
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0018229699999969178,
+          "FF": 0.00014836000000001756
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.00048225000000002454,
+          "reset*reset": 1.3499999999999998e-05,
+          "meas*reset": 2.7000000000000006e-05,
+          "2q*2q": 0.0009528299999976883,
+          "2q*meas": 0.00048225000000002454,
+          "meas*meas": 1.3499999999999998e-05
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact p^2 reweighting of identical equal-p active payloads; survival product recomputed.",
+      "p_2q": 0.0015,
+      "parameters": {
+        "p_2q": 0.0015
+      },
+      "geometry_signature": "9be0bf5855796dfad579b39e4c9a3cb9710a0700042193213ac2534bf1995d4f"
+    },
+    "c3_ZZZXXX": {
+      "order_name": "ZZZXXX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.0005)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 92840,
+        "P1": 0.0,
+        "P2": 9.721111111090567e-05,
+        "P2_survival_corrected": 9.443178900113224e-05,
+        "P2_survival_by_stage_pair": {
+          "FB": 7.850930927384459e-05,
+          "FF": 1.5922479727342145e-05
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 9.443178900113224e-05,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        },
+        "mean_location_fault_probability": 0.0003125000000000002,
+        "P2_survival_mean_approx": 9.439663496639631e-05,
+        "P2_by_logical_type": {
+          "X": 4.7800000000007294e-05,
+          "Z": 6.115555555556425e-05,
+          "any": 9.721111111090567e-05
+        },
+        "P2_by_stage_pair": {
+          "FB": 8.081999999989191e-05,
+          "FF": 1.6391111111113385e-05
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 9.721111111090567e-05,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact exhaustive pair enumeration.",
+      "p_2q": 0.0005,
+      "parameters": {
+        "p_2q": 0.0005
+      },
+      "geometry_signature": "67a590052ec5f9545149bd353531334e3d4eeb3da8e92656fafc971ba2e2b828"
+    },
+    "c3_XXXZZZ": {
+      "order_name": "XXXZZZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.0005)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "RX": 9,
+          "R": 9,
+          "CX": 60,
+          "MX": 9,
+          "M": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 92840,
+        "P1": 0.0,
+        "P2": 9.721111111090567e-05,
+        "P2_survival_corrected": 9.443178900113224e-05,
+        "P2_survival_by_stage_pair": {
+          "FB": 7.850930927384459e-05,
+          "FF": 1.5922479727342145e-05
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 9.443178900113224e-05,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        },
+        "mean_location_fault_probability": 0.0003125000000000002,
+        "P2_survival_mean_approx": 9.439663496639631e-05,
+        "P2_by_logical_type": {
+          "X": 6.115555555556425e-05,
+          "Z": 4.7800000000007294e-05,
+          "any": 9.721111111090567e-05
+        },
+        "P2_by_stage_pair": {
+          "FB": 8.081999999989191e-05,
+          "FF": 1.6391111111113385e-05
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 9.721111111090567e-05,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact exhaustive pair enumeration.",
+      "p_2q": 0.0005,
+      "parameters": {
+        "p_2q": 0.0005
+      },
+      "geometry_signature": "78f342629562e992823f7bd6925bc372049d2c3b805bbee85aeb6713de9037c6"
+    },
+    "c3_ZXZXZX": {
+      "order_name": "ZXZXZX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.0005)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 101737,
+        "P1": 0.0,
+        "P2": 0.00010586999999974314,
+        "P2_survival_corrected": 0.00010284311522908457,
+        "P2_survival_by_stage_pair": {
+          "FB": 8.877278946139735e-05,
+          "FF": 1.4070325767735894e-05
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.00010284311522908457,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        },
+        "mean_location_fault_probability": 0.0003125000000000002,
+        "P2_survival_mean_approx": 0.0001028048299177086,
+        "P2_by_logical_type": {
+          "X": 5.5431111111119625e-05,
+          "Z": 6.652444444442125e-05,
+          "any": 0.00010586999999974314
+        },
+        "P2_by_stage_pair": {
+          "FB": 9.138555555538472e-05,
+          "FF": 1.4484444444446414e-05
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.00010586999999974314,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact exhaustive pair enumeration.",
+      "p_2q": 0.0005,
+      "parameters": {
+        "p_2q": 0.0005
+      },
+      "geometry_signature": "d91fbc6952cb7299174a1926044155f31b360fc46877770afa4c2504d0cdb1f2"
+    },
+    "c3_XZXZXZ": {
+      "order_name": "XZXZXZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.0005)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "RX": 9,
+          "R": 9,
+          "CX": 60,
+          "MX": 9,
+          "M": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 101737,
+        "P1": 0.0,
+        "P2": 0.00010586999999974314,
+        "P2_survival_corrected": 0.00010284311522908457,
+        "P2_survival_by_stage_pair": {
+          "FB": 8.877278946139735e-05,
+          "FF": 1.4070325767735894e-05
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.00010284311522908457,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        },
+        "mean_location_fault_probability": 0.0003125000000000002,
+        "P2_survival_mean_approx": 0.0001028048299177086,
+        "P2_by_logical_type": {
+          "X": 6.652444444442125e-05,
+          "Z": 5.5431111111119625e-05,
+          "any": 0.00010586999999974314
+        },
+        "P2_by_stage_pair": {
+          "FB": 9.138555555538472e-05,
+          "FF": 1.4484444444446414e-05
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.00010586999999974314,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact exhaustive pair enumeration.",
+      "p_2q": 0.0005,
+      "parameters": {
+        "p_2q": 0.0005
+      },
+      "geometry_signature": "c31045164fe1c12043b14c88b4acbe9b5269193f0366e2cb08eccb7a5c0b5be9"
+    },
+    "c4_ZZZXXX": {
+      "order_name": "ZZZXXX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.001)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 92840,
+        "P1": 0.0,
+        "P2": 0.0003888444444436227,
+        "P2_survival_corrected": 0.00036692239155730464,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0003050543024015994,
+          "FF": 6.186808915608125e-05
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.00036692239155730464,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        },
+        "mean_location_fault_probability": 0.000625,
+        "P2_survival_mean_approx": 0.00036665120859978877,
+        "P2_by_logical_type": {
+          "X": 0.00019120000000002918,
+          "Z": 0.000244622222222257,
+          "any": 0.0003888444444436227
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.00032327999999956763,
+          "FF": 6.556444444445354e-05
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.0003888444444436227,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact p^2 reweighting of identical equal-p active payloads; survival product recomputed.",
+      "p_2q": 0.001,
+      "parameters": {
+        "p_2q": 0.001
+      },
+      "geometry_signature": "67a590052ec5f9545149bd353531334e3d4eeb3da8e92656fafc971ba2e2b828"
+    },
+    "c4_XXXZZZ": {
+      "order_name": "XXXZZZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.001)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "RX": 9,
+          "R": 9,
+          "CX": 60,
+          "MX": 9,
+          "M": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 92840,
+        "P1": 0.0,
+        "P2": 0.0003888444444436227,
+        "P2_survival_corrected": 0.00036692239155730464,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0003050543024015994,
+          "FF": 6.186808915608125e-05
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.00036692239155730464,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        },
+        "mean_location_fault_probability": 0.000625,
+        "P2_survival_mean_approx": 0.00036665120859978877,
+        "P2_by_logical_type": {
+          "X": 0.000244622222222257,
+          "Z": 0.00019120000000002918,
+          "any": 0.0003888444444436227
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.00032327999999956763,
+          "FF": 6.556444444445354e-05
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.0003888444444436227,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact p^2 reweighting of identical equal-p active payloads; survival product recomputed.",
+      "p_2q": 0.001,
+      "parameters": {
+        "p_2q": 0.001
+      },
+      "geometry_signature": "78f342629562e992823f7bd6925bc372049d2c3b805bbee85aeb6713de9037c6"
+    },
+    "c4_ZXZXZX": {
+      "order_name": "ZXZXZX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.001)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 101737,
+        "P1": 0.0,
+        "P2": 0.00042347999999897256,
+        "P2_survival_corrected": 0.00039960528328658953,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0003449338888835409,
+          "FF": 5.4671394403380756e-05
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.00039960528328658953,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        },
+        "mean_location_fault_probability": 0.000625,
+        "P2_survival_mean_approx": 0.00039930994523948725,
+        "P2_by_logical_type": {
+          "X": 0.0002217244444444785,
+          "Z": 0.000266097777777685,
+          "any": 0.00042347999999897256
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.00036554222222153886,
+          "FF": 5.7937777777785656e-05
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.00042347999999897256,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact p^2 reweighting of identical equal-p active payloads; survival product recomputed.",
+      "p_2q": 0.001,
+      "parameters": {
+        "p_2q": 0.001
+      },
+      "geometry_signature": "d91fbc6952cb7299174a1926044155f31b360fc46877770afa4c2504d0cdb1f2"
+    },
+    "c4_XZXZXZ": {
+      "order_name": "XZXZXZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.001)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "RX": 9,
+          "R": 9,
+          "CX": 60,
+          "MX": 9,
+          "M": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 101737,
+        "P1": 0.0,
+        "P2": 0.00042347999999897256,
+        "P2_survival_corrected": 0.00039960528328658953,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0003449338888835409,
+          "FF": 5.4671394403380756e-05
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.00039960528328658953,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        },
+        "mean_location_fault_probability": 0.000625,
+        "P2_survival_mean_approx": 0.00039930994523948725,
+        "P2_by_logical_type": {
+          "X": 0.000266097777777685,
+          "Z": 0.0002217244444444785,
+          "any": 0.00042347999999897256
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.00036554222222153886,
+          "FF": 5.7937777777785656e-05
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.00042347999999897256,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact p^2 reweighting of identical equal-p active payloads; survival product recomputed.",
+      "p_2q": 0.001,
+      "parameters": {
+        "p_2q": 0.001
+      },
+      "geometry_signature": "c31045164fe1c12043b14c88b4acbe9b5269193f0366e2cb08eccb7a5c0b5be9"
+    },
+    "c5_ZZZXXX": {
+      "order_name": "ZZZXXX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.002)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 92840,
+        "P1": 0.0,
+        "P2": 0.0015553777777744908,
+        "P2_survival_corrected": 0.0013848645058361785,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0011513575771584194,
+          "FF": 0.00023350692867917834
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.0013848645058361785,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        },
+        "mean_location_fault_probability": 0.00125,
+        "P2_survival_mean_approx": 0.0013828477519656538,
+        "P2_by_logical_type": {
+          "X": 0.0007648000000001167,
+          "Z": 0.000978488888889028,
+          "any": 0.0015553777777744908
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0012931199999982705,
+          "FF": 0.00026225777777781417
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.0015553777777744908,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact p^2 reweighting of identical equal-p active payloads; survival product recomputed.",
+      "p_2q": 0.002,
+      "parameters": {
+        "p_2q": 0.002
+      },
+      "geometry_signature": "67a590052ec5f9545149bd353531334e3d4eeb3da8e92656fafc971ba2e2b828"
+    },
+    "c5_XXXZZZ": {
+      "order_name": "XXXZZZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.002)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "RX": 9,
+          "R": 9,
+          "CX": 60,
+          "MX": 9,
+          "M": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 92840,
+        "P1": 0.0,
+        "P2": 0.0015553777777744908,
+        "P2_survival_corrected": 0.0013848645058361785,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0011513575771584194,
+          "FF": 0.00023350692867917834
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.0013848645058361785,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        },
+        "mean_location_fault_probability": 0.00125,
+        "P2_survival_mean_approx": 0.0013828477519656538,
+        "P2_by_logical_type": {
+          "X": 0.000978488888889028,
+          "Z": 0.0007648000000001167,
+          "any": 0.0015553777777744908
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0012931199999982705,
+          "FF": 0.00026225777777781417
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.0015553777777744908,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact p^2 reweighting of identical equal-p active payloads; survival product recomputed.",
+      "p_2q": 0.002,
+      "parameters": {
+        "p_2q": 0.002
+      },
+      "geometry_signature": "78f342629562e992823f7bd6925bc372049d2c3b805bbee85aeb6713de9037c6"
+    },
+    "c5_ZXZXZX": {
+      "order_name": "ZXZXZX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.002)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 101737,
+        "P1": 0.0,
+        "P2": 0.0016939199999958902,
+        "P2_survival_corrected": 0.0015082185930911797,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0013018739400106978,
+          "FF": 0.00020634465308173538
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.0015082185930911797,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        },
+        "mean_location_fault_probability": 0.00125,
+        "P2_survival_mean_approx": 0.0015060222008286908,
+        "P2_by_logical_type": {
+          "X": 0.000886897777777914,
+          "Z": 0.00106439111111074,
+          "any": 0.0016939199999958902
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0014621688888861555,
+          "FF": 0.00023175111111114262
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.0016939199999958902,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact p^2 reweighting of identical equal-p active payloads; survival product recomputed.",
+      "p_2q": 0.002,
+      "parameters": {
+        "p_2q": 0.002
+      },
+      "geometry_signature": "d91fbc6952cb7299174a1926044155f31b360fc46877770afa4c2504d0cdb1f2"
+    },
+    "c5_XZXZXZ": {
+      "order_name": "XZXZXZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.002)",
+      "timing_policy": "timing-free",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "RX": 9,
+          "R": 9,
+          "CX": 60,
+          "MX": 9,
+          "M": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 101737,
+        "P1": 0.0,
+        "P2": 0.0016939199999958902,
+        "P2_survival_corrected": 0.0015082185930911797,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0013018739400106978,
+          "FF": 0.00020634465308173538
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.0015082185930911797,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        },
+        "mean_location_fault_probability": 0.00125,
+        "P2_survival_mean_approx": 0.0015060222008286908,
+        "P2_by_logical_type": {
+          "X": 0.00106439111111074,
+          "Z": 0.000886897777777914,
+          "any": 0.0016939199999958902
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0014621688888861555,
+          "FF": 0.00023175111111114262
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0,
+          "reset*reset": 0.0,
+          "meas*reset": 0.0,
+          "2q*2q": 0.0016939199999958902,
+          "2q*meas": 0.0,
+          "meas*meas": 0.0
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact p^2 reweighting of identical equal-p active payloads; survival product recomputed.",
+      "p_2q": 0.002,
+      "parameters": {
+        "p_2q": 0.002
+      },
+      "geometry_signature": "c31045164fe1c12043b14c88b4acbe9b5269193f0366e2cb08eccb7a5c0b5be9"
+    },
+    "c6_ZZZXXX": {
+      "order_name": "ZZZXXX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "H2_LIKE",
+      "timing_policy": "timing-free",
+      "scope": "Stage 1 only",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 94222,
+        "P1": 0.0,
+        "P2": 0.0008846560177199771,
+        "P2_survival_corrected": 0.0008056560344211786,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0007020728157990893,
+          "FF": 0.00010358321862249579
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 1.031998733731941e-05,
+          "reset*reset": 1.3956209308516569e-08,
+          "meas*reset": 5.482550572332624e-07,
+          "2q*2q": 0.0005802436673059948,
+          "2q*meas": 0.00020896203112144498,
+          "meas*meas": 5.568137390757861e-06
+        },
+        "mean_location_fault_probability": 0.0009995274800000014,
+        "P2_survival_mean_approx": 0.0008052850538368528,
+        "P2_by_logical_type": {
+          "X": 0.0004388230449560098,
+          "Z": 0.000534450747440625,
+          "any": 0.0008846560177199771
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0007709240815552521,
+          "FF": 0.00011373193616495484
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 1.1344772469190874e-05,
+          "reset*reset": 1.5360782727176536e-08,
+          "meas*reset": 6.028594422788268e-07,
+          "2q*2q": 0.0006370827377770853,
+          "2q*meas": 0.00022949340239644648,
+          "meas*meas": 6.116884852485333e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1908,
+        "flagged_fault_runs": 1152,
+        "bare_only_fault_runs": 756,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1908,
+        "bare_triggered_pair_cross_check_runs": 756,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact exhaustive pair enumeration.",
+      "p_2q": 0.00128,
+      "parameters": {
+        "name": "H2_LIKE",
+        "p_2q": 0.00128,
+        "p_1q": 2.9e-05,
+        "p_reset": 4e-05,
+        "p_meas": 0.001,
+        "T2": null,
+        "ms_duration": null,
+        "rotation_duration": null,
+        "measurement_duration": null,
+        "reset_duration": null,
+        "shuttle_duration": null,
+        "split_duration": null,
+        "merge_duration": null,
+        "junction_duration": null,
+        "source": "https://arxiv.org/html/2508.14227v1#S3.T1",
+        "caveat": "Depolarizing-parameter convention unverified (process vs average infidelity). Timing unspecified."
+      },
+      "geometry_signature": "8e78a59bbc6541a5957317d400b1aef28f37ceca6c21d505ecaf2a827ad2a030"
+    },
+    "c6_XXXZZZ": {
+      "order_name": "XXXZZZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "H2_LIKE",
+      "timing_policy": "timing-free",
+      "scope": "Stage 1 only",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "RX": 9,
+          "R": 9,
+          "CX": 60,
+          "MX": 9,
+          "M": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 94151,
+        "P1": 0.0,
+        "P2": 0.000884421992914702,
+        "P2_survival_corrected": 0.0008054429328120589,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0007018296998788272,
+          "FF": 0.00010361323293364077
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 1.0213434897856873e-05,
+          "reset*reset": 1.3956209308516562e-08,
+          "meas*reset": 5.482550572332623e-07,
+          "2q*2q": 0.0005802436673059948,
+          "2q*meas": 0.00020885548195177976,
+          "meas*meas": 5.568137390757864e-06
+        },
+        "mean_location_fault_probability": 0.0009995274800000014,
+        "P2_survival_mean_approx": 0.0008050720256381628,
+        "P2_by_logical_type": {
+          "X": 0.0005320298005113976,
+          "Z": 0.0004410330399481091,
+          "any": 0.000884421992914702
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0007706570955098028,
+          "FF": 0.00011376489740513241
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 1.1227647617706637e-05,
+          "reset*reset": 1.5360782727176536e-08,
+          "meas*reset": 6.028594422788265e-07,
+          "2q*2q": 0.0006370827377770853,
+          "2q*meas": 0.0002293765024426695,
+          "meas*meas": 6.1168848524853325e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1908,
+        "flagged_fault_runs": 1152,
+        "bare_only_fault_runs": 756,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1908,
+        "bare_triggered_pair_cross_check_runs": 756,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact exhaustive pair enumeration.",
+      "p_2q": 0.00128,
+      "parameters": {
+        "name": "H2_LIKE",
+        "p_2q": 0.00128,
+        "p_1q": 2.9e-05,
+        "p_reset": 4e-05,
+        "p_meas": 0.001,
+        "T2": null,
+        "ms_duration": null,
+        "rotation_duration": null,
+        "measurement_duration": null,
+        "reset_duration": null,
+        "shuttle_duration": null,
+        "split_duration": null,
+        "merge_duration": null,
+        "junction_duration": null,
+        "source": "https://arxiv.org/html/2508.14227v1#S3.T1",
+        "caveat": "Depolarizing-parameter convention unverified (process vs average infidelity). Timing unspecified."
+      },
+      "geometry_signature": "971082a51dd0d1a4b3d073bf0d3529de696812e55e87df6167bbb42425c6bfd6"
+    },
+    "c6_ZXZXZX": {
+      "order_name": "ZXZXZX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "H2_LIKE",
+      "timing_policy": "timing-free",
+      "scope": "Stage 1 only",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 103397,
+        "P1": 0.0,
+        "P2": 0.0009913073944189561,
+        "P2_survival_corrected": 0.0009027778933990483,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0008113894180546503,
+          "FF": 9.138847534483883e-05
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 1.2451124201985885e-05,
+          "reset*reset": 1.395620930851657e-08,
+          "meas*reset": 5.482550572332625e-07,
+          "2q*2q": 0.0006319277329053857,
+          "2q*meas": 0.0002522686876353891,
+          "meas*meas": 5.56813739075786e-06
+        },
+        "mean_location_fault_probability": 0.0009995274800000014,
+        "P2_survival_mean_approx": 0.000902367714109896,
+        "P2_by_logical_type": {
+          "X": 0.0005233587375215253,
+          "Z": 0.0006051891944045666,
+          "any": 0.0009913073944189561
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0008909650478355769,
+          "FF": 0.00010034234658359018
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 1.3687534000355266e-05,
+          "reset*reset": 1.5360782727176536e-08,
+          "meas*reset": 6.028594422788268e-07,
+          "2q*2q": 0.0006938296319991841,
+          "2q*meas": 0.0002770551233422331,
+          "meas*meas": 6.116884852485333e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1908,
+        "flagged_fault_runs": 1152,
+        "bare_only_fault_runs": 756,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1908,
+        "bare_triggered_pair_cross_check_runs": 756,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact exhaustive pair enumeration.",
+      "p_2q": 0.00128,
+      "parameters": {
+        "name": "H2_LIKE",
+        "p_2q": 0.00128,
+        "p_1q": 2.9e-05,
+        "p_reset": 4e-05,
+        "p_meas": 0.001,
+        "T2": null,
+        "ms_duration": null,
+        "rotation_duration": null,
+        "measurement_duration": null,
+        "reset_duration": null,
+        "shuttle_duration": null,
+        "split_duration": null,
+        "merge_duration": null,
+        "junction_duration": null,
+        "source": "https://arxiv.org/html/2508.14227v1#S3.T1",
+        "caveat": "Depolarizing-parameter convention unverified (process vs average infidelity). Timing unspecified."
+      },
+      "geometry_signature": "becf5f3f1a22b062b0b28ddc143b7ee60eee4afa5b66a95630d520b0f8174bcc"
+    },
+    "c6_XZXZXZ": {
+      "order_name": "XZXZXZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "H2_LIKE",
+      "timing_policy": "timing-free",
+      "scope": "Stage 1 only",
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "RX": 9,
+          "R": 9,
+          "CX": 60,
+          "MX": 9,
+          "M": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 103322,
+        "P1": 0.0,
+        "P2": 0.0009910601851176243,
+        "P2_survival_corrected": 0.0009025527860654667,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0008111523049966076,
+          "FF": 9.140048106929681e-05
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 1.2338568808187408e-05,
+          "reset*reset": 1.3956209308516567e-08,
+          "meas*reset": 5.482550572332624e-07,
+          "2q*2q": 0.0006319277329053857,
+          "2q*meas": 0.0002521561356955939,
+          "meas*meas": 5.568137390757863e-06
+        },
+        "mean_location_fault_probability": 0.0009995274800000014,
+        "P2_survival_mean_approx": 0.0009021426843225612,
+        "P2_by_logical_type": {
+          "X": 0.00060289350018801,
+          "Z": 0.0005254006301887108,
+          "any": 0.0009910601851176243
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0008907046540381707,
+          "FF": 0.00010035553107966124
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 1.3563810565688846e-05,
+          "reset*reset": 1.5360782727176536e-08,
+          "meas*reset": 6.028594422788265e-07,
+          "2q*2q": 0.0006938296319991841,
+          "2q*meas": 0.0002769316374755639,
+          "meas*meas": 6.116884852485334e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 1908,
+        "flagged_fault_runs": 1152,
+        "bare_only_fault_runs": 756,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1908,
+        "bare_triggered_pair_cross_check_runs": 756,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact exhaustive pair enumeration.",
+      "p_2q": 0.00128,
+      "parameters": {
+        "name": "H2_LIKE",
+        "p_2q": 0.00128,
+        "p_1q": 2.9e-05,
+        "p_reset": 4e-05,
+        "p_meas": 0.001,
+        "T2": null,
+        "ms_duration": null,
+        "rotation_duration": null,
+        "measurement_duration": null,
+        "reset_duration": null,
+        "shuttle_duration": null,
+        "split_duration": null,
+        "merge_duration": null,
+        "junction_duration": null,
+        "source": "https://arxiv.org/html/2508.14227v1#S3.T1",
+        "caveat": "Depolarizing-parameter convention unverified (process vs average infidelity). Timing unspecified."
+      },
+      "geometry_signature": "9fa3b3387a96c1f280fd426c4a76c8d3f6496be5b7efbd8ffa8ea120aa7e53ba"
+    },
+    "c7_ZZZXXX": {
+      "order_name": "ZZZXXX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "JONES_MURALI_2026",
+      "timing_policy": "SEQ",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 252,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "IDLE": 156,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 128568,
+        "P1": 0.0,
+        "P2": 0.0021817914988133515,
+        "P2_survival_corrected": 0.0018200903518558653,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.001641358807581539,
+          "FF": 0.00017873154427420275
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.000742207439099646,
+          "idle*reset": 0.00014168070192940592,
+          "reset*reset": 0.00012600572103030905,
+          "meas*reset": 5.0334262634744894e-05,
+          "idle*idle": 5.154253542960544e-05,
+          "2q*idle": 0.0002030872693896451,
+          "idle*meas": 2.8351427174305223e-05,
+          "2q*2q": 0.0003236029546179161,
+          "2q*meas": 0.00014825137226705257,
+          "meas*meas": 5.0266682838459715e-06
+        },
+        "mean_location_fault_probability": 0.0007356994800435424,
+        "P2_survival_mean_approx": 0.0018151239689499442,
+        "P2_by_logical_type": {
+          "X": 0.0008822663473841938,
+          "Z": 0.001412985049316845,
+          "any": 0.0021817914988133515
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0019670291388950646,
+          "FF": 0.00021476235991864186
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0008882681466666308,
+          "idle*reset": 0.00016970213075375595,
+          "reset*reset": 0.00015019813068000004,
+          "meas*reset": 6.0239463472e-05,
+          "idle*idle": 6.203411945503259e-05,
+          "2q*idle": 0.0002442299879565231,
+          "idle*meas": 3.409534880863858e-05,
+          "2q*2q": 0.0003888444444436227,
+          "2q*meas": 0.00017813967377777637,
+          "meas*meas": 6.040052800533333e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 2220,
+        "flagged_fault_runs": 1332,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 180,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2220,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Approved A1 SEQ baseline counts, exact same circuits/channels.",
+      "p_2q": 0.001,
+      "parameters": {
+        "name": "JONES_MURALI_2026",
+        "p_2q": 0.001,
+        "p_1q": 1e-05,
+        "p_reset": 0.005,
+        "p_meas": 0.001,
+        "T2": 2.2,
+        "ms_duration": 4e-05,
+        "rotation_duration": 5e-06,
+        "measurement_duration": 0.0004,
+        "reset_duration": 5e-05,
+        "shuttle_duration": 5e-06,
+        "split_duration": 8e-05,
+        "merge_duration": 8e-05,
+        "junction_duration": 0.0001,
+        "source": "https://arxiv.org/html/2510.23519v1#S5",
+        "caveat": "Gate probabilities are placeholders pending a heating model."
+      },
+      "geometry_signature": "fb68add76d7ea6924e7e962e9f871735868f550316e6f6479205b83760633093"
+    },
+    "c7_XXXZZZ": {
+      "order_name": "XXXZZZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "JONES_MURALI_2026",
+      "timing_policy": "SEQ",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 252,
+        "location_counts": {
+          "RX": 9,
+          "R": 9,
+          "IDLE": 156,
+          "CX": 60,
+          "MX": 9,
+          "M": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 112586,
+        "P1": 0.0,
+        "P2": 0.0019630253544087157,
+        "P2_survival_corrected": 0.0016379584085929825,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0014514241043609155,
+          "FF": 0.00018653430423296478
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.000742181138443208,
+          "idle*reset": 8.280641924194717e-05,
+          "reset*reset": 0.00012600572103030913,
+          "meas*reset": 5.0334262634744915e-05,
+          "2q*idle": 0.00011253195887291131,
+          "idle*idle": 3.068285709952798e-05,
+          "idle*meas": 1.6561291059330645e-05,
+          "2q*2q": 0.0003236029546179161,
+          "2q*meas": 0.00014822513731010207,
+          "meas*meas": 5.026668283845973e-06
+        },
+        "mean_location_fault_probability": 0.0007356994800435424,
+        "P2_survival_mean_approx": 0.0016331232266610545,
+        "P2_by_logical_type": {
+          "X": 0.0009383407693705397,
+          "Z": 0.001126492461164654,
+          "any": 0.0019630253544087157
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0017389003785615615,
+          "FF": 0.00022412497584760056
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0008882369066666298,
+          "idle*reset": 9.918581762230313e-05,
+          "reset*reset": 0.00015019813068000007,
+          "meas*reset": 6.023946347199999e-05,
+          "2q*idle": 0.00013532852918538913,
+          "idle*idle": 3.692686026829678e-05,
+          "idle*meas": 1.9916967937757263e-05,
+          "2q*2q": 0.0003888444444436227,
+          "2q*meas": 0.00017810818133333006,
+          "meas*meas": 6.040052800533335e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 2220,
+        "flagged_fault_runs": 1332,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 180,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2220,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact exhaustive pair enumeration.",
+      "p_2q": 0.001,
+      "parameters": {
+        "name": "JONES_MURALI_2026",
+        "p_2q": 0.001,
+        "p_1q": 1e-05,
+        "p_reset": 0.005,
+        "p_meas": 0.001,
+        "T2": 2.2,
+        "ms_duration": 4e-05,
+        "rotation_duration": 5e-06,
+        "measurement_duration": 0.0004,
+        "reset_duration": 5e-05,
+        "shuttle_duration": 5e-06,
+        "split_duration": 8e-05,
+        "merge_duration": 8e-05,
+        "junction_duration": 0.0001,
+        "source": "https://arxiv.org/html/2510.23519v1#S5",
+        "caveat": "Gate probabilities are placeholders pending a heating model."
+      },
+      "geometry_signature": "377bc734193273ee1aa783b9ce3c5490cec3c70d804360e16feeacdd634b3324"
+    },
+    "c7_ZXZXZX": {
+      "order_name": "ZXZXZX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "JONES_MURALI_2026",
+      "timing_policy": "SEQ",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 252,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "IDLE": 156,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 136882,
+        "P1": 0.0,
+        "P2": 0.0024456846756233715,
+        "P2_survival_corrected": 0.002040416983664346,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0018770640254573688,
+          "FF": 0.00016335295820589065
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0008960539356529574,
+          "idle*reset": 0.00016563259179318225,
+          "reset*reset": 0.00012600572103030908,
+          "meas*reset": 5.033426263474492e-05,
+          "idle*idle": 4.1738208915536786e-05,
+          "2q*idle": 0.0001910915210084273,
+          "idle*meas": 3.3127141374695746e-05,
+          "2q*2q": 0.0003524272525415251,
+          "2q*meas": 0.00017897968042874547,
+          "meas*meas": 5.026668283845972e-06
+        },
+        "mean_location_fault_probability": 0.0007356994800435424,
+        "P2_survival_mean_approx": 0.002034667784539442,
+        "P2_by_logical_type": {
+          "X": 0.0010792977365705692,
+          "Z": 0.0015899264431909175,
+          "any": 0.0024456846756233715
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0022493947254518198,
+          "FF": 0.0001962899501719917
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0010723904666666104,
+          "idle*reset": 0.00019839574106203826,
+          "reset*reset": 0.00015019813068000004,
+          "meas*reset": 6.023946347199999e-05,
+          "idle*idle": 5.023336687257576e-05,
+          "2q*idle": 0.0002298049629468239,
+          "idle*meas": 3.983950890281437e-05,
+          "2q*2q": 0.00042347999999897256,
+          "2q*meas": 0.00021506298222222114,
+          "meas*meas": 6.040052800533334e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 2220,
+        "flagged_fault_runs": 1332,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 180,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2220,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact exhaustive pair enumeration.",
+      "p_2q": 0.001,
+      "parameters": {
+        "name": "JONES_MURALI_2026",
+        "p_2q": 0.001,
+        "p_1q": 1e-05,
+        "p_reset": 0.005,
+        "p_meas": 0.001,
+        "T2": 2.2,
+        "ms_duration": 4e-05,
+        "rotation_duration": 5e-06,
+        "measurement_duration": 0.0004,
+        "reset_duration": 5e-05,
+        "shuttle_duration": 5e-06,
+        "split_duration": 8e-05,
+        "merge_duration": 8e-05,
+        "junction_duration": 0.0001,
+        "source": "https://arxiv.org/html/2510.23519v1#S5",
+        "caveat": "Gate probabilities are placeholders pending a heating model."
+      },
+      "geometry_signature": "66dc51073129cd106dd9e04fce62026164f643098fa62c3f26550e84ec50f1c1"
+    },
+    "c7_XZXZXZ": {
+      "order_name": "XZXZXZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "JONES_MURALI_2026",
+      "timing_policy": "SEQ",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 252,
+        "location_counts": {
+          "RX": 9,
+          "R": 9,
+          "IDLE": 156,
+          "CX": 60,
+          "MX": 9,
+          "M": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 129820,
+        "P1": 0.0,
+        "P2": 0.002371951887797111,
+        "P2_survival_corrected": 0.0019790467478748843,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0018048622081129058,
+          "FF": 0.0001741845397619264
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0008960261532693971,
+          "idle*reset": 0.0001493622607712972,
+          "reset*reset": 0.00012600572103030913,
+          "meas*reset": 5.0334262634744915e-05,
+          "2q*idle": 0.00015630739007933153,
+          "idle*idle": 3.4736219269903335e-05,
+          "idle*meas": 2.986885254930279e-05,
+          "2q*2q": 0.0003524272525415251,
+          "2q*meas": 0.00017895196744605136,
+          "meas*meas": 5.026668283845969e-06
+        },
+        "mean_location_fault_probability": 0.0007356994800435424,
+        "P2_survival_mean_approx": 0.0019733263820480786,
+        "P2_by_logical_type": {
+          "X": 0.0011427005330133441,
+          "Z": 0.0014438013480628602,
+          "any": 0.002371951887797111
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0021626574643018683,
+          "FF": 0.00020929442349562052
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0010723574666666063,
+          "idle*reset": 0.00017890712932289225,
+          "reset*reset": 0.00015019813068000007,
+          "meas*reset": 6.023946347199999e-05,
+          "2q*idle": 0.00018797321059325746,
+          "idle*idle": 4.1805692555998956e-05,
+          "idle*meas": 3.592102615246975e-05,
+          "2q*2q": 0.00042347999999897256,
+          "2q*meas": 0.00021502971555555458,
+          "meas*meas": 6.040052800533334e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 2220,
+        "flagged_fault_runs": 1332,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 180,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2220,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact exhaustive pair enumeration.",
+      "p_2q": 0.001,
+      "parameters": {
+        "name": "JONES_MURALI_2026",
+        "p_2q": 0.001,
+        "p_1q": 1e-05,
+        "p_reset": 0.005,
+        "p_meas": 0.001,
+        "T2": 2.2,
+        "ms_duration": 4e-05,
+        "rotation_duration": 5e-06,
+        "measurement_duration": 0.0004,
+        "reset_duration": 5e-05,
+        "shuttle_duration": 5e-06,
+        "split_duration": 8e-05,
+        "merge_duration": 8e-05,
+        "junction_duration": 0.0001,
+        "source": "https://arxiv.org/html/2510.23519v1#S5",
+        "caveat": "Gate probabilities are placeholders pending a heating model."
+      },
+      "geometry_signature": "2c79d8f94db04e10da898e85f5386aa391a3a0ce2c1a371512f9da86faed9760"
+    },
+    "c8_ZZZXXX": {
+      "order_name": "ZZZXXX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "JONES_MURALI_2026",
+      "timing_policy": "PAR_MR",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 249,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "IDLE": 153,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 128187,
+        "P1": 0.0,
+        "P2": 0.0020168313462503866,
+        "P2_survival_corrected": 0.001691044302165995,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0015591657034254123,
+          "FF": 0.00013187859874113486
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0007458593803782526,
+          "idle*reset": 0.00010300517673558655,
+          "reset*reset": 0.00012662571682896376,
+          "meas*reset": 5.0581926241657e-05,
+          "idle*idle": 2.387338394641712e-05,
+          "2q*idle": 0.00014126510901876665,
+          "idle*meas": 2.0606179012569137e-05,
+          "2q*2q": 0.00032519520353121545,
+          "2q*meas": 0.00014898082508235644,
+          "meas*meas": 5.051401392721766e-06
+        },
+        "mean_location_fault_probability": 0.0007248543544461329,
+        "P2_survival_mean_approx": 0.00168610931405257,
+        "P2_by_logical_type": {
+          "X": 0.0008670954626229956,
+          "Z": 0.0012572735653631618,
+          "any": 0.0020168313462503866
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0018591869150305278,
+          "FF": 0.000157644431220209
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0008882681466666308,
+          "idle*reset": 0.00012278090130657607,
+          "reset*reset": 0.00015019813068000004,
+          "meas*reset": 6.0239463472e-05,
+          "idle*idle": 2.859623766386796e-05,
+          "2q*idle": 0.00016906317585459204,
+          "idle*meas": 2.4661119585792386e-05,
+          "2q*2q": 0.0003888444444436227,
+          "2q*meas": 0.00017813967377777637,
+          "meas*meas": 6.040052800533333e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 2214,
+        "flagged_fault_runs": 1326,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 174,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2214,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Approved A1 PAR_MR baseline counts, exact same circuits/channels.",
+      "p_2q": 0.001,
+      "parameters": {
+        "name": "JONES_MURALI_2026",
+        "p_2q": 0.001,
+        "p_1q": 1e-05,
+        "p_reset": 0.005,
+        "p_meas": 0.001,
+        "T2": 2.2,
+        "ms_duration": 4e-05,
+        "rotation_duration": 5e-06,
+        "measurement_duration": 0.0004,
+        "reset_duration": 5e-05,
+        "shuttle_duration": 5e-06,
+        "split_duration": 8e-05,
+        "merge_duration": 8e-05,
+        "junction_duration": 0.0001,
+        "source": "https://arxiv.org/html/2510.23519v1#S5",
+        "caveat": "Gate probabilities are placeholders pending a heating model."
+      },
+      "geometry_signature": "d15d8a39bcb3ed8f1bf4ead41c2e6bbc023bb95cd79a108d4907819008eacbc5"
+    },
+    "c8_XXXZZZ": {
+      "order_name": "XXXZZZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "JONES_MURALI_2026",
+      "timing_policy": "PAR_MR",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 249,
+        "location_counts": {
+          "RX": 9,
+          "R": 9,
+          "IDLE": 153,
+          "CX": 60,
+          "MX": 9,
+          "M": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 112205,
+        "P1": 0.0,
+        "P2": 0.0018683411658240627,
+        "P2_survival_corrected": 0.0015668293773353854,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.001430324117709813,
+          "FF": 0.00013650525962611017
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0007458329503126232,
+          "idle*reset": 6.54603732948598e-05,
+          "reset*reset": 0.00012662571682896367,
+          "meas*reset": 5.0581926241656984e-05,
+          "idle*idle": 1.1386716572360452e-05,
+          "2q*idle": 7.465315376055852e-05,
+          "idle*meas": 1.3087474363103851e-05,
+          "2q*2q": 0.00032519520353121545,
+          "2q*meas": 0.00014895446103949488,
+          "meas*meas": 5.0514013927217614e-06
+        },
+        "mean_location_fault_probability": 0.0007248543544461329,
+        "P2_survival_mean_approx": 0.0015619687027279541,
+        "P2_by_logical_type": {
+          "X": 0.000932330331163831,
+          "Z": 0.0010365047021094309,
+          "any": 0.0018683411658240627
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.001705171966547409,
+          "FF": 0.00016316919927693323
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0008882369066666298,
+          "idle*reset": 7.802848253406984e-05,
+          "reset*reset": 0.00015019813068000007,
+          "meas*reset": 6.023946347199999e-05,
+          "idle*idle": 1.3639207560189538e-05,
+          "2q*idle": 8.934333348838098e-05,
+          "idle*meas": 1.566296284627396e-05,
+          "2q*2q": 0.0003888444444436227,
+          "2q*meas": 0.00017810818133333006,
+          "meas*meas": 6.040052800533335e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 2214,
+        "flagged_fault_runs": 1326,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 174,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2214,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact exhaustive pair enumeration.",
+      "p_2q": 0.001,
+      "parameters": {
+        "name": "JONES_MURALI_2026",
+        "p_2q": 0.001,
+        "p_1q": 1e-05,
+        "p_reset": 0.005,
+        "p_meas": 0.001,
+        "T2": 2.2,
+        "ms_duration": 4e-05,
+        "rotation_duration": 5e-06,
+        "measurement_duration": 0.0004,
+        "reset_duration": 5e-05,
+        "shuttle_duration": 5e-06,
+        "split_duration": 8e-05,
+        "merge_duration": 8e-05,
+        "junction_duration": 0.0001,
+        "source": "https://arxiv.org/html/2510.23519v1#S5",
+        "caveat": "Gate probabilities are placeholders pending a heating model."
+      },
+      "geometry_signature": "8ad0e4872bfb5dcdfa399f857cde649c52f3e0c1773bcec592ae281e3d5fd70c"
+    },
+    "c8_ZXZXZX": {
+      "order_name": "ZXZXZX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "JONES_MURALI_2026",
+      "timing_policy": "PAR_MR",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 249,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "IDLE": 153,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 136318,
+        "P1": 0.0,
+        "P2": 0.002295578799273744,
+        "P2_survival_corrected": 0.001924882381524849,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0018059823100745726,
+          "FF": 0.00011890007145079349
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0009004628598742558,
+          "idle*reset": 0.0001309883214745066,
+          "reset*reset": 0.00012662571682896376,
+          "meas*reset": 5.0581926241657e-05,
+          "idle*idle": 1.8120554317253265e-05,
+          "2q*idle": 0.00013284085767910575,
+          "idle*meas": 2.6189087677711408e-05,
+          "2q*2q": 0.0003541613279012214,
+          "2q*meas": 0.00017986032814062137,
+          "meas*meas": 5.051401392721765e-06
+        },
+        "mean_location_fault_probability": 0.0007248543544461329,
+        "P2_survival_mean_approx": 0.001919147479432594,
+        "P2_by_logical_type": {
+          "X": 0.0010583193554100378,
+          "Z": 0.0014533892044076868,
+          "any": 0.002295578799273744
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.002153443599676576,
+          "FF": 0.00014213519959736733
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0010723904666666104,
+          "idle*reset": 0.00015613781326970601,
+          "reset*reset": 0.00015019813068000004,
+          "meas*reset": 6.023946347199999e-05,
+          "idle*idle": 2.1705273383168967e-05,
+          "2q*idle": 0.0001589817091393052,
+          "idle*meas": 3.134290764209645e-05,
+          "2q*2q": 0.00042347999999897256,
+          "2q*meas": 0.00021506298222222114,
+          "meas*meas": 6.040052800533334e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 2214,
+        "flagged_fault_runs": 1326,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 174,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2214,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact exhaustive pair enumeration.",
+      "p_2q": 0.001,
+      "parameters": {
+        "name": "JONES_MURALI_2026",
+        "p_2q": 0.001,
+        "p_1q": 1e-05,
+        "p_reset": 0.005,
+        "p_meas": 0.001,
+        "T2": 2.2,
+        "ms_duration": 4e-05,
+        "rotation_duration": 5e-06,
+        "measurement_duration": 0.0004,
+        "reset_duration": 5e-05,
+        "shuttle_duration": 5e-06,
+        "split_duration": 8e-05,
+        "merge_duration": 8e-05,
+        "junction_duration": 0.0001,
+        "source": "https://arxiv.org/html/2510.23519v1#S5",
+        "caveat": "Gate probabilities are placeholders pending a heating model."
+      },
+      "geometry_signature": "8b057c7271236cb9dab86b55cc3c76215fd27a2dc2035d8f1617867e1333b8ef"
+    },
+    "c8_XZXZXZ": {
+      "order_name": "XZXZXZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "JONES_MURALI_2026",
+      "timing_policy": "PAR_MR",
+      "scope": "One adaptive EC round",
+      "counts": {
+        "n_locations": 249,
+        "location_counts": {
+          "RX": 9,
+          "R": 9,
+          "IDLE": 153,
+          "CX": 60,
+          "MX": 9,
+          "M": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 129256,
+        "P1": 0.0,
+        "P2": 0.0022461323001242038,
+        "P2_survival_corrected": 0.0018835286732531592,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0017581818842155271,
+          "FF": 0.00012534678903813792
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0009004349407908418,
+          "idle*reset": 0.00012065121146050019,
+          "reset*reset": 0.00012662571682896376,
+          "meas*reset": 5.0581926241656984e-05,
+          "idle*idle": 1.3913826346258136e-05,
+          "2q*idle": 0.00010815686059829896,
+          "idle*meas": 2.4118982896181443e-05,
+          "2q*2q": 0.0003541613279012214,
+          "2q*meas": 0.00017983247879957258,
+          "meas*meas": 5.051401392721762e-06
+        },
+        "mean_location_fault_probability": 0.0007248543544461329,
+        "P2_survival_mean_approx": 0.0018778092669348885,
+        "P2_by_logical_type": {
+          "X": 0.0011264934330882782,
+          "Z": 0.0013303627930468479,
+          "any": 0.0022461323001242038
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.002096294726007462,
+          "FF": 0.00014983757411695127
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0010723574666666063,
+          "idle*reset": 0.00014381580460781396,
+          "reset*reset": 0.00015019813068000007,
+          "meas*reset": 6.023946347199999e-05,
+          "idle*idle": 1.666626898829692e-05,
+          "2q*idle": 0.0001294400175489456,
+          "idle*meas": 2.8865379806543206e-05,
+          "2q*2q": 0.00042347999999897256,
+          "2q*meas": 0.00021502971555555458,
+          "meas*meas": 6.040052800533334e-06
+        }
+      },
+      "fault_checks": {
+        "single_fault_runs": 2214,
+        "flagged_fault_runs": 1326,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 174,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2214,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "pair_provenance": "Exact exhaustive pair enumeration.",
+      "p_2q": 0.001,
+      "parameters": {
+        "name": "JONES_MURALI_2026",
+        "p_2q": 0.001,
+        "p_1q": 1e-05,
+        "p_reset": 0.005,
+        "p_meas": 0.001,
+        "T2": 2.2,
+        "ms_duration": 4e-05,
+        "rotation_duration": 5e-06,
+        "measurement_duration": 0.0004,
+        "reset_duration": 5e-05,
+        "shuttle_duration": 5e-06,
+        "split_duration": 8e-05,
+        "merge_duration": 8e-05,
+        "junction_duration": 0.0001,
+        "source": "https://arxiv.org/html/2510.23519v1#S5",
+        "caveat": "Gate probabilities are placeholders pending a heating model."
+      },
+      "geometry_signature": "c3b7394e60b739f44ef725a74a85ed82767ecca95a05763548390713616b2ed1"
+    }
+  }
+}

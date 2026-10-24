@@ -1,6 +1,7 @@
 """Stage A1 checkpoint only. A2 order Monte Carlo comparisons are not implemented here."""
 
 import argparse
+import ast
 from dataclasses import asdict
 import hashlib
 import json
@@ -25,7 +26,24 @@ def save(path, data):
 
 def source_fingerprint():
     names=('flag_design.py','steane_ft.py','steane_noise.py','ion_noise.py','ion_timing.py','ion_transport.py','ion_params.py')
-    return hashlib.sha256(b'\n'.join((ROOT/'src'/p).read_bytes() for p in names)).hexdigest()
+    sources=[(ROOT/'src'/p).read_bytes() for p in names]
+    # A2 appends analysis-only grid inputs; they do not affect any A1 experiment.
+    # Keep the approved A1 identity for exactly its original parameter prefix.
+    before,marker,after=sources[-1].partition(b'# Stage A2 analysis-only calibration extension')
+    if marker:
+        # Exclude only a literal analysis-grid assignment, never runtime overrides.
+        try:
+            statements=ast.parse(marker+after).body
+            assignment=statements[0]
+            value=ast.literal_eval(assignment.value)
+            if (len(statements)==1 and isinstance(assignment,ast.Assign)
+                    and len(assignment.targets)==1 and isinstance(assignment.targets[0],ast.Name)
+                    and assignment.targets[0].id=='DESIGN_CALIBRATION_EXTENSION_P'
+                    and isinstance(value,tuple) and all(type(p) is float and 0<p<1 for p in value)):
+                sources[-1]=before
+        except (SyntaxError,ValueError,TypeError,AttributeError,IndexError):
+            pass
+    return hashlib.sha256(b'\n'.join(sources)).hexdigest()
 
 
 def frozen_artifacts():

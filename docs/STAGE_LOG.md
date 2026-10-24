@@ -622,3 +622,324 @@ Assumptions made:
 Open questions for the human:
 - None blocks A1. Review the order/timing interfaces and PAR_MR assumption before A2.
 - Stop here. Stage A2 and all Stage B work await approval.
+
+
+## Stage A2 — Stabilizer-check order experiment
+
+Changes:
+- `src/order_experiment.py`: 36-row experiment, exact pair attribution/reweighting, independent-stream MC allocation, resumable atomic caches, extended calibration, same-policy comparisons and nine-panel figure.
+- `src/design_mc.py`: exact sparse batched independent-location Monte Carlo, original decoder tables, four linear trigger-attribution component frames and logical-X/Z split. No approved scalar kernel changes.
+- `src/ion_params.py`: seven lower analysis-only uniform calibration points, no hardware parameters.
+- `src/check_order.py`: A1 fingerprint compatibility for only the appended literal A2 grid assignment; runtime overrides are never excluded.
+- `tests/test_design_mc.py`, `tests/test_order_experiment.py`, `tests/fixtures/stageA1_artifacts.json`: payload/mixed-fault scalar/tableau oracles, sampling probabilities, resumability, pair reweighting and four-file A1 freeze manifest.
+- `results/stageA_check_order.json`, `results/stageA2_validation.json`, `results/stageA2_cache/`, `figures/check_order_comparison.png`: complete results, validation, reproducible caches and visually inspected figure.
+- `README.md`, `docs/noise_model.md`, this log: instructions, statistical methods, assumptions and results.
+
+Frozen-result checks:
+- All 16 approved Stage 0–4 result/figure files and all four approved A1 JSON files remain SHA-256 byte-identical. Original flag circuit, decoder, scalar MC and timing builders are unchanged.
+- Validation covers all **99 distinct test nodes**: final fast run **91 passed, 8 slow deselected in 52.95 s**; all **eight slow nodes passed in the 95-test full run (427.58 s)**. Focused A2 run: 18 passed. `git diff --check` passes.
+- Original flagged FT: 0/1218; ignoring flags: 48/1218; original frame/tableau: 0/1176 — pass.
+- Uniform 92840 malignant pairs and A dictionaries — exact pass; uniform seed 2026: exactly 542/3M failures.
+- Jones seed 3326: exactly 6121/3M failures; full MC/trigger dictionary and default pair counts match Stage 3/empty Stage 4. Stage 4 empty replay, report reconstruction and synthetic monotonicity regressions — pass.
+- Independent new baseline MC agrees with approved A1: +0.7365σ under SEQ and -0.7152σ under PAR_MR, using combined MC errors. Frozen scalar RNG streams remain intact.
+
+FT checks: circuit/channel supports are identical to A1. Every P1 and single-fault failure count remains zero. The approved 36-row A1 matrix is checked against its unchanged source signature and artifact hashes. Counts below apply to every one of the four orders and each scan value; bare-only faults are separate because they never execute on noiseless input.
+
+| Preset | Policy | Flagged failures/runs | Bare-only failures/runs | Incoming failures/runs | Frame/tableau mismatches/runs | Forced-trigger bare cross-check |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| Uniform p={0.0005,0.001,0.0015} | timing-free | 0/1128 | 0/744 | 0/42 | 0/1872 | 0/744 |
+| TWO_QUBIT_ONLY p={0.0005,0.001,0.002} | timing-free | 0/1080 | 0/720 | 0/42 | 0/1800 | 0/720 |
+| H2_LIKE, Stage 1 only | timing-free | 0/1152 | 0/756 | 0/42 | 0/1908 | 0/756 |
+| JONES_MURALI_2026 | SEQ | 0/1332 | 0/888 | 0/42 | 0/2220 | 0/888 |
+| JONES_MURALI_2026 | PAR_MR | 0/1326 | 0/888 | 0/42 | 0/2214 | 0/888 |
+
+Cross-check: the new batch engine replays every positive single-fault payload and forced-trigger bare payload against the original scalar simulator across all 20 distinct support geometries. Mixed-fault tests include cancellations, all categories and changed flagged corrections; 50 explicit multi-fault shots per order/policy are also checked with tableau in both bases (800 both-basis trials). Zero frame/log/trigger/attribution/residual/logical-decision mismatches in the completed validation. Sparse sampling tests check independent locations, uniform and unequal payload probabilities, and deterministic cache resumption.
+
+Numbers: 932,000,000 new target MC shots across 36 rows, plus 35,000,000 new calibration shots. All four Jones orders run under **both SEQ and PAR_MR**, nominal sourced parameters and empty transport. The other seven families remain timing-free; H2 remains **Stage 1 only**. No A2 comparison crosses timing policies.
+
+### Findings
+
+- For Jones–Murali, **XXXZZZ improves p_L under both timing policies**. It is the only tested order with a significant improvement over the same-policy baseline. SEQ improves by 9.94%; PAR_MR by 7.07% (point reductions). Exact differences and errors are below.
+- Both alternating orders **increase** p_L in all nine families, each at >3σ. Raw P2 differences have the same sign. Interleaving does not improve this unchanged adaptive gadget/decoder.
+- Under all uniform/CX-only rates, XXXZZZ versus ZZZXXX is a null result (|σ|≤0.514). H2's XXXZZZ difference is -1.782σ, also below the 3σ rule. No improvement claim is made for these seven families.
+- The first-X trigger spike is reduced by X-first ordering: in SEQ the baseline F3 rate is 0.0200145, while XXXZZZ's X positions F0–F2 are 0.0163193, 0.0173970, 0.0176290. Under PAR_MR, baseline F3 is 0.0187693, while X-first F0–F2 are 0.0163158, 0.0169565, 0.0170650. Histograms below retain every position. Earlier X detection alone does not predict p_L: alternating orders also move X checks earlier but perform worse.
+- The logical-Z-only share among Jones MC failures decreases from 58.55% to 51.43% under SEQ and 57.28% to 49.81% under PAR_MR when moving to XXXZZZ. Both-XZ failures are reported separately, not double-counted. These are descriptive shares, not additional significance claims.
+
+| Jones policy | Baseline MC p_L ± stderr | XXXZZZ MC p_L ± stderr | Δp_L ± combined stderr | σ | ΔP2 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| SEQ | 0.002060166667 ± 1.85109e-05 | 0.001855333333 ± 1.75684e-05 | -0.000204833333 ± 2.55206e-05 | -8.0262 | -0.0002187661444 |
+| PAR_MR | 0.001891333333 ± 1.77377e-05 | 0.001757666667 ± 1.71006e-05 | -0.000133666667 ± 2.46385e-05 | -5.4251 | -0.0001484901804 |
+
+### All MC comparisons
+
+Differences are order minus ZZZXXX in the same preset/policy. Error is combined **one-sigma** stderr, not the 95% bars used in the figure. Significance is |σ|≥3 per comparison, without a multiple-comparison/family-wise claim. Largest combined stderr / smaller p_L = 1.4719%, below 2%. Shot counts were fixed initially using deterministic P2 with a variance margin; no MC-driven extension was needed.
+
+| Preset / policy / order | M shots | MC p_L ± stderr | Δp_L ± combined stderr | σ | ≥3σ |
+| --- | ---: | ---: | ---: | ---: | --- |
+| UniformNoise(0.0005) / timing-free / ZZZXXX | 53 | 0.000188754717 ± 1.887e-06 | 0 ± 0 | 0.000 | no |
+| UniformNoise(0.0005) / timing-free / XXXZZZ | 53 | 0.000189113208 ± 1.8888e-06 | 3.584906e-07 ± 2.6699e-06 | 0.134 | no |
+| UniformNoise(0.0005) / timing-free / ZXZXZX | 53 | 0.000217075472 ± 2.0236e-06 | 2.832075e-05 ± 2.7669e-06 | 10.236 | yes |
+| UniformNoise(0.0005) / timing-free / XZXZXZ | 53 | 0.000214245283 ± 2.0103e-06 | 2.549057e-05 ± 2.7572e-06 | 9.245 | yes |
+| UniformNoise(0.001) / timing-free / ZZZXXX | 14 | 0.000742 ± 7.2774e-06 | 0 ± 0 | 0.000 | no |
+| UniformNoise(0.001) / timing-free / XXXZZZ | 14 | 0.000743214286 ± 7.2834e-06 | 1.214286e-06 ± 1.0296e-05 | 0.118 | no |
+| UniformNoise(0.001) / timing-free / ZXZXZX | 14 | 0.000854428571 ± 7.8089e-06 | 0.0001124286 ± 1.0674e-05 | 10.533 | yes |
+| UniformNoise(0.001) / timing-free / XZXZXZ | 14 | 0.000851285714 ± 7.7945e-06 | 0.0001092857 ± 1.0664e-05 | 10.248 | yes |
+| UniformNoise(0.0015) / timing-free / ZZZXXX | 6 | 0.00164983333 ± 1.6569e-05 | 0 ± 0 | 0.000 | no |
+| UniformNoise(0.0015) / timing-free / XXXZZZ | 6 | 0.00165083333 ± 1.6574e-05 | 1e-06 ± 2.3435e-05 | 0.043 | no |
+| UniformNoise(0.0015) / timing-free / ZXZXZX | 6 | 0.0018945 ± 1.7753e-05 | 0.0002446667 ± 2.4283e-05 | 10.076 | yes |
+| UniformNoise(0.0015) / timing-free / XZXZXZ | 6 | 0.00186683333 ± 1.7623e-05 | 0.000217 ± 2.4188e-05 | 8.971 | yes |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / ZZZXXX | 103 | 9.60873786e-05 ± 9.6581e-07 | 0 ± 0 | 0.000 | no |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / XXXZZZ | 103 | 9.64271845e-05 ± 9.6752e-07 | 3.398058e-07 ± 1.3671e-06 | 0.249 | no |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / ZXZXZX | 103 | 0.000105533981 ± 1.0122e-06 | 9.446602e-06 ± 1.399e-06 | 6.752 | yes |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / XZXZXZ | 103 | 0.000106058252 ± 1.0147e-06 | 9.970874e-06 ± 1.4008e-06 | 7.118 | yes |
+| TWO_QUBIT_ONLY(0.001) / timing-free / ZZZXXX | 26 | 0.000381923077 ± 3.8319e-06 | 0 ± 0 | 0.000 | no |
+| TWO_QUBIT_ONLY(0.001) / timing-free / XXXZZZ | 26 | 0.000380615385 ± 3.8254e-06 | -1.307692e-06 ± 5.4145e-06 | -0.242 | no |
+| TWO_QUBIT_ONLY(0.001) / timing-free / ZXZXZX | 26 | 0.000413961538 ± 3.9894e-06 | 3.203846e-05 ± 5.5316e-06 | 5.792 | yes |
+| TWO_QUBIT_ONLY(0.001) / timing-free / XZXZXZ | 26 | 0.000421192308 ± 4.024e-06 | 3.926923e-05 ± 5.5567e-06 | 7.067 | yes |
+| TWO_QUBIT_ONLY(0.002) / timing-free / ZZZXXX | 7 | 0.00148285714 ± 1.4544e-05 | 0 ± 0 | 0.000 | no |
+| TWO_QUBIT_ONLY(0.002) / timing-free / XXXZZZ | 7 | 0.00149342857 ± 1.4595e-05 | 1.057143e-05 ± 2.0605e-05 | 0.513 | no |
+| TWO_QUBIT_ONLY(0.002) / timing-free / ZXZXZX | 7 | 0.00159857143 ± 1.51e-05 | 0.0001157143 ± 2.0965e-05 | 5.519 | yes |
+| TWO_QUBIT_ONLY(0.002) / timing-free / XZXZXZ | 7 | 0.00160742857 ± 1.5141e-05 | 0.0001245714 ± 2.0995e-05 | 5.933 | yes |
+| H2_LIKE / timing-free / ZZZXXX | 12 | 0.000864416667 ± 8.4837e-06 | 0 ± 0 | 0.000 | no |
+| H2_LIKE / timing-free / XXXZZZ | 12 | 0.000843166667 ± 8.3788e-06 | -2.125e-05 ± 1.1924e-05 | -1.782 | no |
+| H2_LIKE / timing-free / ZXZXZX | 12 | 0.000963833333 ± 8.9578e-06 | 9.941667e-05 ± 1.2338e-05 | 8.058 | yes |
+| H2_LIKE / timing-free / XZXZXZ | 12 | 0.000960166667 ± 8.9408e-06 | 9.575e-05 ± 1.2325e-05 | 7.769 | yes |
+| JONES_MURALI_2026 / SEQ / ZZZXXX | 6 | 0.00206016667 ± 1.8511e-05 | 0 ± 0 | 0.000 | no |
+| JONES_MURALI_2026 / SEQ / XXXZZZ | 6 | 0.00185533333 ± 1.7568e-05 | -0.0002048333 ± 2.5521e-05 | -8.026 | yes |
+| JONES_MURALI_2026 / SEQ / ZXZXZX | 6 | 0.00229 ± 1.9514e-05 | 0.0002298333 ± 2.6897e-05 | 8.545 | yes |
+| JONES_MURALI_2026 / SEQ / XZXZXZ | 6 | 0.0022375 ± 1.9289e-05 | 0.0001773333 ± 2.6735e-05 | 6.633 | yes |
+| JONES_MURALI_2026 / PAR_MR / ZZZXXX | 6 | 0.00189133333 ± 1.7738e-05 | 0 ± 0 | 0.000 | no |
+| JONES_MURALI_2026 / PAR_MR / XXXZZZ | 6 | 0.00175766667 ± 1.7101e-05 | -0.0001336667 ± 2.4638e-05 | -5.425 | yes |
+| JONES_MURALI_2026 / PAR_MR / ZXZXZX | 6 | 0.00214316667 ± 1.8879e-05 | 0.0002518333 ± 2.5905e-05 | 9.722 | yes |
+| JONES_MURALI_2026 / PAR_MR / XZXZXZ | 6 | 0.00208166667 ± 1.8607e-05 | 0.0001903333 ± 2.5707e-05 | 7.404 | yes |
+
+### Secondary pair attribution, including survival correction
+
+P1=0 for all rows. Raw P2 and exact survival-corrected P2 remain attribution; neither is used as the primary logical error estimate. Both are compared to MC below; discrepancies in MC stderr and the mean-probability survival approximation are also in JSON. Survival is the product over all other potential locations, including latent unexecuted locations, matching the approved convention.
+
+| Preset / policy / order | Raw P2 | Corrected P2 | ΔP2 vs baseline | Δcorrected P2 | Raw/MC | Corrected/MC |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| UniformNoise(0.0005) / timing-free / ZZZXXX | 0.0001919777778 | 0.0001831614255 | 0 | 0 | 1.01708 | 0.97037 |
+| UniformNoise(0.0005) / timing-free / XXXZZZ | 0.0001919777778 | 0.0001831614255 | 0 | 0 | 1.01515 | 0.96853 |
+| UniformNoise(0.0005) / timing-free / ZXZXZX | 0.0002190366667 | 0.000208977667 | 2.705889e-05 | 2.581624e-05 | 1.00903 | 0.96270 |
+| UniformNoise(0.0005) / timing-free / XZXZXZ | 0.0002190366667 | 0.000208977667 | 2.705889e-05 | 2.581624e-05 | 1.02236 | 0.97541 |
+| UniformNoise(0.001) / timing-free / ZZZXXX | 0.0007679111111 | 0.0006989833725 | 0 | 0 | 1.03492 | 0.94203 |
+| UniformNoise(0.001) / timing-free / XXXZZZ | 0.0007679111111 | 0.0006989833725 | 0 | 0 | 1.03323 | 0.94049 |
+| UniformNoise(0.001) / timing-free / ZXZXZX | 0.0008761466667 | 0.0007975036993 | 0.0001082356 | 9.852033e-05 | 1.02542 | 0.93338 |
+| UniformNoise(0.001) / timing-free / XZXZXZ | 0.0008761466667 | 0.0007975036993 | 0.0001082356 | 9.852033e-05 | 1.02920 | 0.93682 |
+| UniformNoise(0.0015) / timing-free / ZZZXXX | 0.0017278 | 0.001500416996 | 0 | 0 | 1.04726 | 0.90944 |
+| UniformNoise(0.0015) / timing-free / XXXZZZ | 0.0017278 | 0.001500416996 | 0 | 0 | 1.04662 | 0.90888 |
+| UniformNoise(0.0015) / timing-free / ZXZXZX | 0.00197133 | 0.001711897811 | 0.00024353 | 0.0002114808 | 1.04055 | 0.90361 |
+| UniformNoise(0.0015) / timing-free / XZXZXZ | 0.00197133 | 0.001711897811 | 0.00024353 | 0.0002114808 | 1.05598 | 0.91701 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / ZZZXXX | 9.721111111e-05 | 9.4431789e-05 | 0 | 0 | 1.01169 | 0.98277 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / XXXZZZ | 9.721111111e-05 | 9.4431789e-05 | 0 | 0 | 1.00813 | 0.97931 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / ZXZXZX | 0.00010587 | 0.0001028431152 | 8.658889e-06 | 8.411326e-06 | 1.00318 | 0.97450 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / XZXZXZ | 0.00010587 | 0.0001028431152 | 8.658889e-06 | 8.411326e-06 | 0.99823 | 0.96969 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / ZZZXXX | 0.0003888444444 | 0.0003669223916 | 0 | 0 | 1.01812 | 0.96072 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / XXXZZZ | 0.0003888444444 | 0.0003669223916 | 0 | 0 | 1.02162 | 0.96402 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / ZXZXZX | 0.00042348 | 0.0003996052833 | 3.463556e-05 | 3.268289e-05 | 1.02299 | 0.96532 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / XZXZXZ | 0.00042348 | 0.0003996052833 | 3.463556e-05 | 3.268289e-05 | 1.00543 | 0.94875 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / ZZZXXX | 0.001555377778 | 0.001384864506 | 0 | 0 | 1.04891 | 0.93392 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / XXXZZZ | 0.001555377778 | 0.001384864506 | 0 | 0 | 1.04148 | 0.92731 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / ZXZXZX | 0.00169392 | 0.001508218593 | 0.0001385422 | 0.0001233541 | 1.05965 | 0.94348 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / XZXZXZ | 0.00169392 | 0.001508218593 | 0.0001385422 | 0.0001233541 | 1.05381 | 0.93828 |
+| H2_LIKE / timing-free / ZZZXXX | 0.0008846560177 | 0.0008056560344 | 0 | 0 | 1.02341 | 0.93202 |
+| H2_LIKE / timing-free / XXXZZZ | 0.0008844219929 | 0.0008054429328 | -2.340248e-07 | -2.131016e-07 | 1.04893 | 0.95526 |
+| H2_LIKE / timing-free / ZXZXZX | 0.0009913073944 | 0.0009027778934 | 0.0001066514 | 9.712186e-05 | 1.02850 | 0.93665 |
+| H2_LIKE / timing-free / XZXZXZ | 0.0009910601851 | 0.0009025527861 | 0.0001064042 | 9.689675e-05 | 1.03218 | 0.94000 |
+| JONES_MURALI_2026 / SEQ / ZZZXXX | 0.002181791499 | 0.001820090352 | 0 | 0 | 1.05904 | 0.88347 |
+| JONES_MURALI_2026 / SEQ / XXXZZZ | 0.001963025354 | 0.001637958409 | -0.0002187661 | -0.0001821319 | 1.05804 | 0.88284 |
+| JONES_MURALI_2026 / SEQ / ZXZXZX | 0.002445684676 | 0.002040416984 | 0.0002638932 | 0.0002203266 | 1.06798 | 0.89101 |
+| JONES_MURALI_2026 / SEQ / XZXZXZ | 0.002371951888 | 0.001979046748 | 0.0001901604 | 0.0001589564 | 1.06009 | 0.88449 |
+| JONES_MURALI_2026 / PAR_MR / ZZZXXX | 0.002016831346 | 0.001691044302 | 0 | 0 | 1.06635 | 0.89410 |
+| JONES_MURALI_2026 / PAR_MR / XXXZZZ | 0.001868341166 | 0.001566829377 | -0.0001484902 | -0.0001242149 | 1.06297 | 0.89143 |
+| JONES_MURALI_2026 / PAR_MR / ZXZXZX | 0.002295578799 | 0.001924882382 | 0.0002787475 | 0.0002338381 | 1.07112 | 0.89815 |
+| JONES_MURALI_2026 / PAR_MR / XZXZXZ | 0.0022461323 | 0.001883528673 | 0.000229301 | 0.0001924844 | 1.07901 | 0.90482 |
+
+### MC effective rates and uniform pseudothreshold
+
+The original 11-point, ≥1M-shot Stage 3 calibration is unchanged. Seven lower points at p={0.00015,0.00025,0.00035,0.00045,0.00055,0.00065,0.00075} have 5M shots each. All targets and their bootstrap intervals are bracketed, with no extrapolation. Each reported neighborhood has at least six points with ≥1M shots. The primary p_eff uses log-log MC interpolation and a 20,000-draw joint target/calibration binomial bootstrap. Grid draws are shared for threshold ratios. Individual ratio CIs and bracketing neighborhoods are in JSON.
+
+Uniform MC pseudothreshold p_L=p: **0.00133488898353**, 95% CI **[0.00129094142128, 0.00145101331547]**. P2-based p_eff uses the original uniform A only as a secondary check.
+
+| Preset / policy / order | MC p_eff [95% CI] | p_eff/p_2q | p_eff/pseudothreshold | P2 p_eff (secondary) |
+| --- | ---: | ---: | ---: | ---: |
+| UniformNoise(0.0005) / timing-free / ZZZXXX | 0.000496520911 [0.000485021362, 0.000507517852] | 0.993042 | 0.371957 | 0.0005 |
+| UniformNoise(0.0005) / timing-free / XXXZZZ | 0.000496941379 [0.00048557676, 0.000507975684] | 0.993883 | 0.372272 | 0.0005 |
+| UniformNoise(0.0005) / timing-free / ZXZXZX | 0.000528472418 [0.000517289775, 0.000542212636] | 1.056945 | 0.395892 | 0.000534075843 |
+| UniformNoise(0.0005) / timing-free / XZXZXZ | 0.000525387476 [0.000514404965, 0.000538681817] | 1.050775 | 0.393581 | 0.000534075843 |
+| UniformNoise(0.001) / timing-free / ZZZXXX | 0.000993711916 [0.00096715895, 0.00101756425] | 0.993712 | 0.744415 | 0.001 |
+| UniformNoise(0.001) / timing-free / XXXZZZ | 0.000994388588 [0.000967800198, 0.00101816736] | 0.994389 | 0.744922 | 0.001 |
+| UniformNoise(0.001) / timing-free / ZXZXZX | 0.00105757277 [0.00102930567, 0.00110223742] | 1.057573 | 0.792255 | 0.00106815169 |
+| UniformNoise(0.001) / timing-free / XZXZXZ | 0.00105437034 [0.00102769623, 0.00109909031] | 1.054370 | 0.789856 | 0.00106815169 |
+| UniformNoise(0.0015) / timing-free / ZZZXXX | 0.0015263118 [0.00149388549, 0.0015621277] | 1.017541 | 1.143400 | 0.0015 |
+| UniformNoise(0.0015) / timing-free / XXXZZZ | 0.00152681718 [0.00149400936, 0.00156202883] | 1.017878 | 1.143778 | 0.0015 |
+| UniformNoise(0.0015) / timing-free / ZXZXZX | 0.00162073867 [0.00159634901, 0.00165244409] | 1.080492 | 1.214137 | 0.00160222753 |
+| UniformNoise(0.0015) / timing-free / XZXZXZ | 0.00161110236 [0.0015854094, 0.00164047594] | 1.074068 | 1.206919 | 0.00160222753 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / ZZZXXX | 0.000360563418 [0.000345337357, 0.000374017211] | 0.721127 | 0.270107 | 0.00035579716 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / XXXZZZ | 0.000361184272 [0.000345909003, 0.000374666049] | 0.722369 | 0.270573 | 0.00035579716 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / ZXZXZX | 0.000377423771 [0.000363355107, 0.000389591416] | 0.754848 | 0.282738 | 0.000371305157 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / XZXZXZ | 0.000378336365 [0.000364364236, 0.000390691287] | 0.756673 | 0.283422 | 0.000371305157 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / ZZZXXX | 0.000710507773 [0.00069299658, 0.000729936658] | 0.710508 | 0.532260 | 0.000711594321 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / XXXZZZ | 0.000708913222 [0.000691373233, 0.00072820475] | 0.708913 | 0.531065 | 0.000711594321 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / ZXZXZX | 0.000749006563 [0.000729571514, 0.000763308439] | 0.749007 | 0.561100 | 0.000742610313 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / XZXZXZ | 0.000754886084 [0.000737226081, 0.000768807211] | 0.754886 | 0.565505 | 0.000742610313 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / ZZZXXX | 0.00143584705 [0.00139151664, 0.00147537813] | 0.717924 | 1.075630 | 0.00142318864 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / XXXZZZ | 0.00144366814 [0.00139940188, 0.00148012513] | 0.721834 | 1.081489 | 0.00142318864 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / ZXZXZX | 0.00150021573 [0.00146129604, 0.0015393221] | 0.750108 | 1.123851 | 0.00148522063 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / XZXZXZ | 0.0015047515 [0.00146776411, 0.0015476182] | 0.752376 | 1.127248 | 0.00148522063 |
+| H2_LIKE / timing-free / ZZZXXX | 0.00106773642 [0.00103319184, 0.00111453394] | 0.834169 | 0.799869 | 0.00107332623 |
+| H2_LIKE / timing-free / XXXZZZ | 0.00104801909 [0.00102414417, 0.00109235873] | 0.818765 | 0.785098 | 0.00107318425 |
+| H2_LIKE / timing-free / ZXZXZX | 0.00115892877 [0.00111980014, 0.00118329091] | 0.905413 | 0.868184 | 0.00113618407 |
+| H2_LIKE / timing-free / XZXZXZ | 0.0011571009 [0.00111706018, 0.00118220283] | 0.903985 | 0.866814 | 0.0011360424 |
+| JONES_MURALI_2026 / SEQ / ZZZXXX | 0.00168402644 [0.00164593346, 0.00171519138] | 1.684026 | 1.261548 | 0.0016855869 |
+| JONES_MURALI_2026 / SEQ / XXXZZZ | 0.00160707193 [0.00158170179, 0.00163476771] | 1.607072 | 1.203899 | 0.00159884911 |
+| JONES_MURALI_2026 / SEQ / ZXZXZX | 0.00178026283 [0.00174067405, 0.00181353101] | 1.780263 | 1.333641 | 0.00178461589 |
+| JONES_MURALI_2026 / SEQ / XZXZXZ | 0.00175760529 [0.00172412473, 0.00179129852] | 1.757605 | 1.316668 | 0.00175750861 |
+| JONES_MURALI_2026 / PAR_MR / ZZZXXX | 0.00161963997 [0.00159556139, 0.00165137082] | 1.619640 | 1.213314 | 0.00162061299 |
+| JONES_MURALI_2026 / PAR_MR / XXXZZZ | 0.0015722272 [0.0015404283, 0.00159641671] | 1.572227 | 1.177796 | 0.00155981329 |
+| JONES_MURALI_2026 / PAR_MR / ZXZXZX | 0.00171858448 [0.00168741803, 0.00175758691] | 1.718584 | 1.287436 | 0.00172898262 |
+| JONES_MURALI_2026 / PAR_MR / XZXZXZ | 0.00169304215 [0.00165403923, 0.00172649834] | 1.693042 | 1.268302 | 0.00171026021 |
+
+### Trigger rates and failure share through bare
+
+Rates below are per shot and exclusive by trigger cause; reset + measurement + 2q + idle + mixed = total. Mixed-category fractional and overlapping contributor rates, count errors and raw counts are retained in JSON. Bare failure share is conditional on a logical failure, not on a shot.
+
+| Preset / policy / order | Trigger | Reset | Measurement | 2q | Idle | Mixed | Failure share through bare |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| UniformNoise(0.0005) / timing-free / ZZZXXX | 0.026705396 | 0.005912566 | 0.0059039811 | 0.014874623 | 0 | 1.4226415e-05 | 0.9856058 |
+| UniformNoise(0.0005) / timing-free / XXXZZZ | 0.026730151 | 0.005917434 | 0.0059152264 | 0.01488334 | 0 | 1.4150943e-05 | 0.9854335 |
+| UniformNoise(0.0005) / timing-free / ZXZXZX | 0.027086679 | 0.0059019057 | 0.0058843585 | 0.015284585 | 0 | 1.5830189e-05 | 0.9877445 |
+| UniformNoise(0.0005) / timing-free / XZXZXZ | 0.027081302 | 0.0059057925 | 0.0059130377 | 0.01524766 | 0 | 1.4811321e-05 | 0.9888155 |
+| UniformNoise(0.001) / timing-free / ZZZXXX | 0.052745143 | 0.0116925 | 0.011678214 | 0.029315929 | 0 | 5.85e-05 | 0.9847901 |
+| UniformNoise(0.001) / timing-free / XXXZZZ | 0.052641214 | 0.011656071 | 0.011629 | 0.029298429 | 0 | 5.7714286e-05 | 0.9872177 |
+| UniformNoise(0.001) / timing-free / ZXZXZX | 0.053393929 | 0.011655214 | 0.0116275 | 0.030051929 | 0 | 5.9285714e-05 | 0.9902190 |
+| UniformNoise(0.001) / timing-free / XZXZXZ | 0.053325571 | 0.011630143 | 0.011676786 | 0.029957429 | 0 | 6.1214286e-05 | 0.9902668 |
+| UniformNoise(0.0015) / timing-free / ZZZXXX | 0.0780675 | 0.017178 | 0.0172745 | 0.043491333 | 0 | 0.00012366667 | 0.9855541 |
+| UniformNoise(0.0015) / timing-free / XXXZZZ | 0.078035 | 0.0172175 | 0.0172245 | 0.043455167 | 0 | 0.00013783333 | 0.9865724 |
+| UniformNoise(0.0015) / timing-free / ZXZXZX | 0.079196167 | 0.017184833 | 0.017233 | 0.044649 | 0 | 0.00012933333 | 0.9896191 |
+| UniformNoise(0.0015) / timing-free / XZXZXZ | 0.079176167 | 0.017298333 | 0.017189167 | 0.044556 | 0 | 0.00013266667 | 0.9884832 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / ZZZXXX | 0.014992544 | 0 | 0 | 0.014992544 | 0 | 0 | 0.9781752 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / XXXZZZ | 0.014977883 | 0 | 0 | 0.014977883 | 0 | 0 | 0.9767418 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / ZXZXZX | 0.015367097 | 0 | 0 | 0.015367097 | 0 | 0 | 0.9809568 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / XZXZXZ | 0.015352932 | 0 | 0 | 0.015352932 | 0 | 0 | 0.9811424 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / ZZZXXX | 0.029747692 | 0 | 0 | 0.029747692 | 0 | 0 | 0.9743202 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / XXXZZZ | 0.029736462 | 0 | 0 | 0.029736462 | 0 | 0 | 0.9755457 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / ZXZXZX | 0.030435654 | 0 | 0 | 0.030435654 | 0 | 0 | 0.9817895 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / XZXZXZ | 0.030462462 | 0 | 0 | 0.030462462 | 0 | 0 | 0.9812802 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / ZZZXXX | 0.058562714 | 0 | 0 | 0.058562714 | 0 | 0 | 0.9780347 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / XXXZZZ | 0.058563714 | 0 | 0 | 0.058563714 | 0 | 0 | 0.9762770 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / ZXZXZX | 0.059930286 | 0 | 0 | 0.059930286 | 0 | 0 | 0.9773905 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / XZXZXZ | 0.059961 | 0 | 0 | 0.059961 | 0 | 0 | 0.9802702 |
+| H2_LIKE / timing-free / ZZZXXX | 0.050054833 | 0.00058683333 | 0.011780667 | 0.0376565 | 0 | 3.0833333e-05 | 0.9819724 |
+| H2_LIKE / timing-free / XXXZZZ | 0.050067333 | 0.00058283333 | 0.011786083 | 0.03766775 | 0 | 3.0666667e-05 | 0.9825064 |
+| H2_LIKE / timing-free / ZXZXZX | 0.050868167 | 0.0005755 | 0.011726667 | 0.0385345 | 0 | 3.15e-05 | 0.9830538 |
+| H2_LIKE / timing-free / XZXZXZ | 0.050961333 | 0.00058041667 | 0.0118125 | 0.038535833 | 0 | 3.2583333e-05 | 0.9870682 |
+| JONES_MURALI_2026 / SEQ / ZZZXXX | 0.104883 | 0.056740833 | 0.011336333 | 0.028508333 | 0.0080425 | 0.000255 | 0.9876224 |
+| JONES_MURALI_2026 / SEQ / XXXZZZ | 0.1002355 | 0.056944167 | 0.011315167 | 0.028585667 | 0.0031731667 | 0.00021733333 | 0.9703557 |
+| JONES_MURALI_2026 / SEQ / ZXZXZX | 0.1049325 | 0.057005 | 0.011410833 | 0.029188667 | 0.0070796667 | 0.00024833333 | 0.9865357 |
+| JONES_MURALI_2026 / SEQ / XZXZXZ | 0.10309317 | 0.0567525 | 0.011346833 | 0.029264 | 0.0054881667 | 0.00024166667 | 0.9839851 |
+| JONES_MURALI_2026 / PAR_MR / ZZZXXX | 0.101841 | 0.056872 | 0.011356833 | 0.028642167 | 0.0047356667 | 0.00023433333 | 0.9901304 |
+| JONES_MURALI_2026 / PAR_MR / XXXZZZ | 0.099039 | 0.057050333 | 0.011368 | 0.028569167 | 0.001843 | 0.0002085 | 0.9774322 |
+| JONES_MURALI_2026 / PAR_MR / ZXZXZX | 0.102058 | 0.0569235 | 0.011360833 | 0.0293445 | 0.0041976667 | 0.0002315 | 0.9909013 |
+| JONES_MURALI_2026 / PAR_MR / XZXZXZ | 0.101037 | 0.056980333 | 0.011336833 | 0.029242167 | 0.0032503333 | 0.00022733333 | 0.9894315 |
+
+### Per-position trigger histogram
+
+All-shot probabilities, not conditional fractions of triggers. Positions refer to the **executed** order; JSON gives each position's actual kind/support label.
+
+| Preset / policy / order | F0 | F1 | F2 | F3 | F4 | F5 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| UniformNoise(0.0005) / timing-free / ZZZXXX | 0.0041272453 | 0.004292 | 0.0043358679 | 0.0049256981 | 0.0045382075 | 0.0044863774 |
+| UniformNoise(0.0005) / timing-free / XXXZZZ | 0.0041321887 | 0.004298717 | 0.0043423585 | 0.0049285094 | 0.0045405094 | 0.0044878679 |
+| UniformNoise(0.0005) / timing-free / ZXZXZX | 0.0041348491 | 0.0046220943 | 0.0044503019 | 0.0046838302 | 0.0045166226 | 0.0046789811 |
+| UniformNoise(0.0005) / timing-free / XZXZXZ | 0.0041142264 | 0.0046154151 | 0.004440434 | 0.0046943019 | 0.0045248679 | 0.0046920566 |
+| UniformNoise(0.001) / timing-free / ZZZXXX | 0.0082241429 | 0.0085527143 | 0.0086383571 | 0.0096523571 | 0.0089073571 | 0.0087702143 |
+| UniformNoise(0.001) / timing-free / XXXZZZ | 0.0082159286 | 0.0085645714 | 0.0085614286 | 0.0096987143 | 0.0088719286 | 0.0087286429 |
+| UniformNoise(0.001) / timing-free / ZXZXZX | 0.0081794286 | 0.0092400714 | 0.0088061429 | 0.0092166429 | 0.0088253571 | 0.0091262857 |
+| UniformNoise(0.001) / timing-free / XZXZXZ | 0.0082176429 | 0.0092106429 | 0.0087760714 | 0.0092085 | 0.0088340714 | 0.0090786429 |
+| UniformNoise(0.0015) / timing-free / ZZZXXX | 0.0122815 | 0.012761167 | 0.012790667 | 0.014276833 | 0.013123 | 0.012834333 |
+| UniformNoise(0.0015) / timing-free / XXXZZZ | 0.0123195 | 0.012802167 | 0.0127465 | 0.014260333 | 0.013085833 | 0.012820667 |
+| UniformNoise(0.0015) / timing-free / ZXZXZX | 0.012311 | 0.013661667 | 0.013146 | 0.013634 | 0.012988 | 0.0134555 |
+| UniformNoise(0.0015) / timing-free / XZXZXZ | 0.012359333 | 0.013708 | 0.0130715 | 0.013647333 | 0.013053 | 0.013337 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / ZZZXXX | 0.0021317767 | 0.0023226602 | 0.0023916893 | 0.0029736602 | 0.0026050485 | 0.0025677087 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / XXXZZZ | 0.0021303883 | 0.0023251068 | 0.0023816796 | 0.0029757476 | 0.0026043204 | 0.0025606408 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / ZXZXZX | 0.0021352913 | 0.0026676602 | 0.0024867379 | 0.0027446117 | 0.0025691456 | 0.0027636505 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / XZXZXZ | 0.0021318058 | 0.0026521068 | 0.0024873204 | 0.0027527573 | 0.0025647961 | 0.0027641456 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / ZZZXXX | 0.0042441154 | 0.0046238846 | 0.0047525385 | 0.0058872308 | 0.0051719231 | 0.005068 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / XXXZZZ | 0.0042424231 | 0.0046449231 | 0.0047450385 | 0.0058951154 | 0.0051401538 | 0.0050688077 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / ZXZXZX | 0.0042502308 | 0.0053162692 | 0.0049733462 | 0.0054149231 | 0.0050577692 | 0.0054231154 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / XZXZXZ | 0.0042679231 | 0.0053038077 | 0.0049524231 | 0.0054332308 | 0.0050598462 | 0.0054452308 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / ZZZXXX | 0.0085412857 | 0.0091627143 | 0.0093075714 | 0.011602571 | 0.010093714 | 0.0098548571 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / XXXZZZ | 0.0084777143 | 0.0092495714 | 0.0093677143 | 0.011542 | 0.010098286 | 0.0098284286 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / ZXZXZX | 0.0084355714 | 0.010544857 | 0.0097851429 | 0.010729 | 0.0098934286 | 0.010542286 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / XZXZXZ | 0.0084618571 | 0.010473857 | 0.0097755714 | 0.010653286 | 0.0099671429 | 0.010629286 |
+| H2_LIKE / timing-free / ZZZXXX | 0.0075174167 | 0.0080315 | 0.0081065833 | 0.0095175 | 0.0085436667 | 0.0083381667 |
+| H2_LIKE / timing-free / XXXZZZ | 0.0075200833 | 0.0080280833 | 0.008094 | 0.0095558333 | 0.0085334167 | 0.0083359167 |
+| H2_LIKE / timing-free / ZXZXZX | 0.0075953333 | 0.0087826667 | 0.0083366667 | 0.0088705 | 0.0084205 | 0.0088625 |
+| H2_LIKE / timing-free / XZXZXZ | 0.0075891667 | 0.0088296667 | 0.0083673333 | 0.00889775 | 0.0084348333 | 0.0088425833 |
+| JONES_MURALI_2026 / SEQ / ZZZXXX | 0.016258167 | 0.016366667 | 0.0161765 | 0.0200145 | 0.018369 | 0.017698167 |
+| JONES_MURALI_2026 / SEQ / XXXZZZ | 0.016319333 | 0.017397 | 0.017629 | 0.0170765 | 0.016047 | 0.015766667 |
+| JONES_MURALI_2026 / SEQ / ZXZXZX | 0.016220667 | 0.018129 | 0.016360333 | 0.019019333 | 0.0160975 | 0.019105667 |
+| JONES_MURALI_2026 / SEQ / XZXZXZ | 0.016335 | 0.017001 | 0.018293667 | 0.0166335 | 0.018771 | 0.016059 |
+| JONES_MURALI_2026 / PAR_MR / ZZZXXX | 0.016124 | 0.016331167 | 0.016280333 | 0.018769333 | 0.017464167 | 0.016872 |
+| JONES_MURALI_2026 / PAR_MR / XXXZZZ | 0.016315833 | 0.0169565 | 0.017065 | 0.0168895 | 0.016033833 | 0.015778333 |
+| JONES_MURALI_2026 / PAR_MR / ZXZXZX | 0.016299333 | 0.017649 | 0.016328 | 0.018002833 | 0.015922 | 0.017856833 |
+| JONES_MURALI_2026 / PAR_MR / XZXZXZ | 0.016297167 | 0.017011833 | 0.017541167 | 0.016671167 | 0.017562167 | 0.0159535 |
+
+### Logical failure split
+
+Mutually exclusive shares **among failed MC shots**; X-only + Z-only + both XZ = 1. JSON also reports absolute per-shot rates, counts, and inclusive X/Z rates (which overlap through XZ).
+
+| Preset / policy / order | X only | Z only | Both XZ |
+| --- | ---: | ---: | ---: |
+| UniformNoise(0.0005) / timing-free / ZZZXXX | 0.4187325 | 0.4951020 | 0.0861655 |
+| UniformNoise(0.0005) / timing-free / XXXZZZ | 0.4996508 | 0.4126509 | 0.0876983 |
+| UniformNoise(0.0005) / timing-free / ZXZXZX | 0.4008692 | 0.4694481 | 0.1296827 |
+| UniformNoise(0.0005) / timing-free / XZXZXZ | 0.4744166 | 0.4021136 | 0.1234698 |
+| UniformNoise(0.001) / timing-free / ZZZXXX | 0.4123989 | 0.5000963 | 0.0875048 |
+| UniformNoise(0.001) / timing-free / XXXZZZ | 0.4975493 | 0.4148006 | 0.0876502 |
+| UniformNoise(0.001) / timing-free / ZXZXZX | 0.4116369 | 0.4578666 | 0.1304966 |
+| UniformNoise(0.001) / timing-free / XZXZXZ | 0.4709683 | 0.4065279 | 0.1225038 |
+| UniformNoise(0.0015) / timing-free / ZZZXXX | 0.4221639 | 0.4865138 | 0.0913224 |
+| UniformNoise(0.0015) / timing-free / XXXZZZ | 0.4894498 | 0.4203937 | 0.0901565 |
+| UniformNoise(0.0015) / timing-free / ZXZXZX | 0.4061758 | 0.4668778 | 0.1269464 |
+| UniformNoise(0.0015) / timing-free / XZXZXZ | 0.4688867 | 0.4019284 | 0.1291849 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / ZZZXXX | 0.3657674 | 0.5061130 | 0.1281196 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / XXXZZZ | 0.5104712 | 0.3701168 | 0.1194120 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / ZXZXZX | 0.3715731 | 0.4715731 | 0.1568537 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free / XZXZXZ | 0.4723544 | 0.3744965 | 0.1531490 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / ZZZXXX | 0.3703927 | 0.5022155 | 0.1273917 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / XXXZZZ | 0.5021221 | 0.3729790 | 0.1248989 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / ZXZXZX | 0.3772182 | 0.4678993 | 0.1548825 |
+| TWO_QUBIT_ONLY(0.001) / timing-free / XZXZXZ | 0.4748425 | 0.3650808 | 0.1600767 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / ZZZXXX | 0.3685934 | 0.5098266 | 0.1215800 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / XXXZZZ | 0.5045915 | 0.3725847 | 0.1228238 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / ZXZXZX | 0.3684540 | 0.4803396 | 0.1512064 |
+| TWO_QUBIT_ONLY(0.002) / timing-free / XZXZXZ | 0.4657839 | 0.3799325 | 0.1542837 |
+| H2_LIKE / timing-free / ZZZXXX | 0.3929432 | 0.4988914 | 0.1081654 |
+| H2_LIKE / timing-free / XXXZZZ | 0.5087962 | 0.3915794 | 0.0996244 |
+| H2_LIKE / timing-free / ZXZXZX | 0.3898496 | 0.4743213 | 0.1358292 |
+| H2_LIKE / timing-free / XZXZXZ | 0.4665857 | 0.3923798 | 0.1410345 |
+| JONES_MURALI_2026 / SEQ / ZZZXXX | 0.3528841 | 0.5854704 | 0.0616455 |
+| JONES_MURALI_2026 / SEQ / XXXZZZ | 0.4309199 | 0.5142831 | 0.0547970 |
+| JONES_MURALI_2026 / SEQ / ZXZXZX | 0.3435953 | 0.5589520 | 0.0974527 |
+| JONES_MURALI_2026 / SEQ / XZXZXZ | 0.3915829 | 0.5142644 | 0.0941527 |
+| JONES_MURALI_2026 / PAR_MR / ZZZXXX | 0.3701093 | 0.5727882 | 0.0571026 |
+| JONES_MURALI_2026 / PAR_MR / XXXZZZ | 0.4394083 | 0.4981035 | 0.0624881 |
+| JONES_MURALI_2026 / PAR_MR / ZXZXZX | 0.3676025 | 0.5316121 | 0.1007854 |
+| JONES_MURALI_2026 / PAR_MR / XZXZXZ | 0.4140112 | 0.4861489 | 0.0998399 |
+
+Idle exposure: every Jones row contains all seven data qubits' MC-weighted idle seconds and summed Z probabilities, with errors and seven conditional path tables in `results/stageA_check_order.json`. Exposure follows the executed flagged prefix and the permuted bare round. H2/uniform/CX-only rows have no timing assigned.
+
+Assumptions made:
+- A1 PAR_MR is retained as an explicit model assumption, using only existing sourced durations. No real hardware schedule, routing, layout, transport events or recooling model is introduced.
+- The batched MC samples exactly the original independent per-location Pauli distribution. It has a separate NumPy RNG stream; exhaustive/mixed-fault and tableau oracles validate propagation and decisions. No correction or circuit was changed to obtain any outcome.
+- All comparisons use the same preset and timing policy. MC is primary; P2/survival-corrected P2/p_eff_P2 are secondary. Raw P2 determines initial shot allocation only, never the reported p_L or primary p_eff.
+- Calibration remains the approved baseline uniform gadget, with lower analysis-only points to bracket all targets. Joint MC uncertainty and threshold ratios use the existing approved bootstrap method. There is no extrapolation and no new pseudothreshold experiment outside one-round uniform MC.
+- Significance means the specified per-comparison ≥3σ rule. Null results do not establish equivalence. Descriptive trigger/failure-share changes are not additional significance claims.
+- The observed Jones gain supports XXXZZZ for a later Jones comparison under each policy. It does not justify changing the frozen default or claiming the same gain for H2/uniform/CX-only.
+
+Open questions for the human:
+- Review the Jones XXXZZZ improvement and the significant losses for alternating orders, including in timing-free noise. The prompt's interleaving/unbiased-noise expectations are not borne out by this unchanged gadget.
+- Stop here. Stage B1 (verified ancilla preparation), B2 and B3 have **not started**. No decoder/circuit has been changed, and no Steane-style comparison or paper-matching claim is made.

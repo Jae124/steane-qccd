@@ -590,3 +590,80 @@ trigger rates, trigger-position counts, failure share through bare, and all
 actual-path idle-exposure tables. New files use the `stageA1_` prefix; all 16
 approved result/figure files are SHA-256 checked against the pre-A1 commit.
 No order-effect conclusion or new p_eff calibration is made until A2.
+
+## Stage A2: order comparison and MC measurement
+
+Stage A2 evaluates `ZZZXXX`, `XXXZZZ`, `ZXZXZX`, and `XZXZXZ`, preserving support
+order within each kind. Every order uses both flagged and bare rounds in that
+order. The nine comparison families are the three requested UniformNoise rates,
+three requested TWO_QUBIT_ONLY rates, H2_LIKE (Stage 1 only, timing-free), and
+nominal Jones–Murali separately under SEQ and PAR_MR. Transport is empty. Each
+order is compared only to ZZZXXX in its own family; the timing assumption is
+never changed within an order comparison.
+
+### Sparse batched sampling
+
+`design_mc.py` supplies a new sampler for this experiment, without modifying the
+approved scalar instrument. For n shots at a location with total fault
+probability p, draw K~Binomial(n,p), select a uniformly random K-subset of shot
+indices, and draw each payload from the original normalized channel weights.
+For any binary fault pattern with k hits the resulting probability is
+P(K=k)/choose(n,k) = p^k(1-p)^(n-k), exactly the independent Bernoulli law.
+Locations draw independently. Only shots with at least one fault need frame
+propagation; omitted zero-fault shots remain in the denominator as successes.
+Every nonzero shot executes the full adaptive protocol, including early exit,
+no-trigger residual errors, flagged decoding and any triggered bare faults.
+There is no pair-order truncation, rare-event approximation or change of channel.
+
+Four linear component frames track reset, measurement, 2q and idle contributions
+to the actual flagged trigger, with the same cancellation and mixed-cause rule
+as the scalar instrument. Corrections use the original lookup tables. Syndrome
+bit weights are the original (4,2,1) support addresses, independent of execution
+position. Final logical-X-only, logical-Z-only and simultaneous XZ failures are
+mutually exclusive and sum to p_L; inclusive X/Z rates may overlap through XZ.
+
+Sampling uses its own recorded NumPy PCG64 streams, not the frozen scalar
+random.Random streams. Each million-shot checkpoint stores raw accumulated
+counts and RNG state atomically. Cache acceptance requires the same source,
+ordered channels, timing policy, order, seed, NumPy version and chunk size.
+Validation replays every positive payload and forced-trigger bare fault against
+the scalar implementation across all 20 A1 support geometries, plus mixed
+multi-fault cases and both-basis tableau checks. Sampling tests check location
+independence, uniform and unequal payload weights, and exact cache resumption.
+
+### Shot allocation, attribution and calibration
+
+Sample allocation is fixed initially from deterministic P2, with variance margin:
+per family n = max(5M, ceil_to_1M(4 / (0.02^2 * min_order P2))). P2 controls
+allocation only; MC supplies every primary estimate. If measured combined stderr
+exceeds 2% of the smaller of the two compared p_L values, the entire family is
+extended in 1M-shot blocks. Differences use independent-stream combined stderr
+sqrt(stderr_order^2 + stderr_baseline^2). The baseline compared with itself has
+zero difference and zero comparison error. Significance means |delta|/stderr
+>=3 for that comparison; no correction or claim of simultaneous family-wise
+significance is made. Null results are retained.
+
+Raw and exact survival-corrected P2 remain attribution only. For identical
+uniform or CX-only support geometries across scan probabilities, exhaustive
+counts can be reweighted exactly by p^2. Exact survival is (1-p)^(M-2) where M
+is the number of active equal-rate locations (96 for uniform, 60 for CX-only);
+zero-rate spectators contribute factors of one. The original all-location mean
+approximation is saved separately. For H2/Jones and new orders, pairs are
+explicitly enumerated. The two approved A1 Jones baseline pair tables are read
+unchanged. Every row reports both P2/MC ratios and discrepancy in MC stderr.
+
+The approved Stage 3 uniform MC grid remains the calibration instrument for all
+orders. Seven lower points in `ion_params.py`, each with 5M shots, extend its
+coverage; these are analysis scan inputs, not hardware parameters. Effective
+rates use the approved piecewise log-log inverse and 20,000-draw independent
+binomial bootstrap of targets and calibration, with the same calibration draws
+shared across threshold ratios. Targets and bootstrap intervals must be
+bracketed; extrapolation raises an error. P2-based p_eff = sqrt(P2/A_uniform)
+is secondary. MC p_eff confidence intervals, p_eff/p_2q, and p_eff relative to
+the uniform MC pseudothreshold are reported for every row.
+
+A1's source identity excludes only the appended A2 analysis-grid section of
+`ion_params.py`, retaining exactly its original bytes for all A1 inputs. The A2
+fingerprint includes the entire parameter file and the new sampler. All 16
+Stage 0–4 artifacts and four approved A1 JSONs are SHA-256 checked and untouched.
+No decoder, check circuit, physical timing value or hardware schedule is changed.

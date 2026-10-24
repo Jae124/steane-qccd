@@ -289,3 +289,33 @@ with machine-readable results in `results/stageA1_validation.json`. All 36
 order/preset/policy configurations pass the fault and simulator checks. A1
 contains only baseline-order timing reference MC; the order experiment (A2)
 and Steane-style extraction (B) await review.
+
+### Stage A2: check-order experiment
+
+```bash
+.venv/bin/python src/order_experiment.py --part all
+# Independent resumable parts: pairs, mc, calibration, report
+.venv/bin/python -m pytest -q
+```
+
+The experiment covers all four orders under the three uniform rates, three
+CX-only rates, timing-free H2, and **both SEQ and PAR_MR for Jones–Murali**:
+36 rows. Every difference uses the baseline order under the same preset and
+timing policy. The primary report is `results/stageA_check_order.json`; the
+nine-panel figure is `figures/check_order_comparison.png`. Detailed conclusions
+and checkpoint validation are appended to `docs/STAGE_LOG.md`.
+
+`src/design_mc.py` batches independent Pauli-frame shots with NumPy. It samples
+a binomial number of faults at each location, chooses their shot indices
+uniformly without replacement, and draws payloads using the unchanged channel
+weights. This is the same independent-location distribution as scalar MC;
+its separate RNG stream does not replace frozen seeded regressions. Exhaustive
+payload and mixed-fault replays are compared shot by shot with the scalar
+simulator, and tableau tests cover both logical bases. Transport is empty.
+
+`results/stageA2_cache/` stores pair counts and 1M-shot MC chunks, with RNG state,
+seed, accumulated counts, channel/configuration hashes and simulation source
+fingerprints. Interrupted runs resume from the last complete chunk. The approved
+Stage 3 uniform calibration is read unchanged and extended below its original
+range with seven 5M-shot points; p_eff uses log-log MC interpolation with joint
+target/calibration bootstrap intervals and no extrapolation. Stage B is deferred.

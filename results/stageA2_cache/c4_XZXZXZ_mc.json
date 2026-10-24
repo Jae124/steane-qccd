@@ -1,0 +1,85 @@
+{
+  "configuration": {
+    "simulation_fingerprint": "ec959bd9cca81dc01e74cea62676ff25c3ee7fb10f8201e195af01dfcbb27272",
+    "seed": 83403,
+    "chunk_size": 1000000,
+    "rng": "numpy.PCG64",
+    "numpy_version": "2.0.2",
+    "order": [
+      [
+        "X",
+        0
+      ],
+      [
+        "Z",
+        0
+      ],
+      [
+        "X",
+        1
+      ],
+      [
+        "Z",
+        1
+      ],
+      [
+        "X",
+        2
+      ],
+      [
+        "Z",
+        2
+      ]
+    ],
+    "timing_policy": "timing-free",
+    "ordered_channel_hash": "d4343be007e5b3ad0b5390bc3027bddcce1e9981fdf8fd06dd3e4260d8b5782d"
+  },
+  "counts": {
+    "shots": 26000000,
+    "fails": 10951,
+    "triggers": 792024,
+    "trigger_circuit_counts": [
+      110966,
+      137899,
+      128763,
+      141264,
+      131556,
+      141576
+    ],
+    "trigger_cause_counts": {
+      "reset": 0,
+      "measurement": 0,
+      "2q": 792024,
+      "idle": 0,
+      "mixed": 0
+    },
+    "trigger_contributing_type_counts": {
+      "reset": 0,
+      "measurement": 0,
+      "2q": 792024,
+      "idle": 0
+    },
+    "trigger_fractional_type_counts": {
+      "reset": 0.0,
+      "measurement": 0.0,
+      "2q": 792024.0,
+      "idle": 0.0
+    },
+    "failures_through_bare": 10746,
+    "logical_failure_counts": {
+      "X_only": 5200,
+      "Z_only": 3998,
+      "both_XZ": 1753
+    }
+  },
+  "chunks": 26,
+  "rng_state": {
+    "bit_generator": "PCG64",
+    "state": {
+      "state": 94688766000833154708895000416838471729,
+      "inc": 322393933631480659394520335129028026837
+    },
+    "has_uint32": 1,
+    "uinteger": 3073724156
+  }
+}
