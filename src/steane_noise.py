@@ -399,6 +399,7 @@ def monte_carlo(noise, shots, rng, *, return_details=False):
     causes = dict.fromkeys((*TRIGGER_TYPES, 'mixed'), 0)
     contributed = dict.fromkeys(TRIGGER_TYPES, 0)
     fractional = dict.fromkeys(TRIGGER_TYPES, 0.0)
+    trigger_circuits = [0] * len(ROUND)
     for _ in range(shots):
         faults = {}
         for l, p, vs, equal, edges in zip(locs, probs, variants, equal_weights, cumulative):
@@ -418,6 +419,7 @@ def monte_carlo(noise, shots, rng, *, return_details=False):
         fails += int(failed)
         if return_details and log['trigger'] is not None:
             triggers += 1
+            trigger_circuits[log['trigger_index']] += 1
             bare_fails += int(failed)
             contributors = trigger_contributors(faults, circuits, log)
             if not contributors:
@@ -434,6 +436,8 @@ def monte_carlo(noise, shots, rng, *, return_details=False):
         'shots': shots, 'fails': fails, 'p_L': pl,
         'stderr': math.sqrt(max(pl, 1 / shots) * (1 - pl) / shots),
         'triggers': triggers, 'trigger_rate': rate,
+        'trigger_circuit_counts': trigger_circuits,
+        'no_trigger_shots': shots - triggers,
         'trigger_rate_stderr': math.sqrt(rate * (1 - rate) / shots),
         'trigger_cause_counts': causes,
         'trigger_cause_rates': {k: v / shots for k, v in causes.items()},

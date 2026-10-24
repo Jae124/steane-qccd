@@ -1,0 +1,1873 @@
+{
+  "configuration": {
+    "simulation_fingerprint": "481c4d8668af7a000bfed3b2e92163228375fd8a36d4af386dea49d5e8539dec",
+    "shots_per_point": 3000000,
+    "seed_base": 2026,
+    "nominal_parameters": {
+      "name": "JONES_MURALI_2026",
+      "p_2q": 0.001,
+      "p_1q": 1e-05,
+      "p_reset": 0.005,
+      "p_meas": 0.001,
+      "T2": 2.2,
+      "ms_duration": 4e-05,
+      "rotation_duration": 5e-06,
+      "measurement_duration": 0.0004,
+      "reset_duration": 5e-05,
+      "shuttle_duration": 5e-06,
+      "split_duration": 8e-05,
+      "merge_duration": 8e-05,
+      "junction_duration": 0.0001,
+      "source": "https://arxiv.org/html/2510.23519v1#S5",
+      "caveat": "Gate probabilities are placeholders pending a heating model."
+    },
+    "measurement_durations_seconds": [
+      0.0,
+      0.0001,
+      0.0002,
+      0.0004
+    ]
+  },
+  "points": {
+    "0.0": {
+      "stage": 2,
+      "primary_estimate": "Monte Carlo",
+      "parameters": {
+        "name": "JONES_MURALI_2026",
+        "p_2q": 0.001,
+        "p_1q": 1e-05,
+        "p_reset": 0.005,
+        "p_meas": 0.001,
+        "T2": 2.2,
+        "ms_duration": 4e-05,
+        "rotation_duration": 5e-06,
+        "measurement_duration": 0.0,
+        "reset_duration": 5e-05,
+        "shuttle_duration": 5e-06,
+        "split_duration": 8e-05,
+        "merge_duration": 8e-05,
+        "junction_duration": 0.0001,
+        "source": "https://arxiv.org/html/2510.23519v1#S5",
+        "caveat": "Gate probabilities are placeholders pending a heating model."
+      },
+      "checks": {
+        "single_fault_runs": 2214,
+        "flagged_fault_runs": 1332,
+        "bare_only_fault_runs": 882,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 180,
+        "bare_only_idle_fault_runs": 126,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2214,
+        "bare_triggered_pair_cross_check_runs": 882,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "counts": {
+        "n_locations": 249,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "IDLE": 153,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 128022,
+        "P1": 0.0,
+        "P2": 0.001819399017919449,
+        "P2_survival_corrected": 0.0015367099188825562,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.00143483388547771,
+          "FF": 0.00010187603340551998
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0007511665501675468,
+          "idle*reset": 4.574324138755628e-05,
+          "reset*reset": 0.00012752672336796425,
+          "meas*reset": 5.094184243751579e-05,
+          "idle*idle": 4.886392483184781e-06,
+          "2q*idle": 6.465435627473063e-05,
+          "idle*meas": 9.15343524688295e-06,
+          "2q*2q": 0.0003275091332136332,
+          "2q*meas": 0.00015004089961497683,
+          "meas*meas": 5.087344689233212e-06
+        },
+        "mean_location_fault_probability": 0.0006963815865648166,
+        "P2_survival_mean_approx": 0.0015317947174982901,
+        "P2_by_logical_type": {
+          "X": 0.0008570610182285735,
+          "Z": 0.0010656856028302985,
+          "any": 0.001819399017919449
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.001698518983901205,
+          "FF": 0.00012088003401865749
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0008882681466666308,
+          "idle*reset": 5.414333327365961e-05,
+          "reset*reset": 0.00015019813068000004,
+          "meas*reset": 6.0239463472e-05,
+          "idle*idle": 5.812483264865938e-06,
+          "2q*idle": 7.683537109039483e-05,
+          "idle*meas": 1.087791845126129e-05,
+          "2q*2q": 0.0003888444444436227,
+          "2q*meas": 0.00017813967377777637,
+          "meas*meas": 6.040052800533333e-06
+        }
+      },
+      "monte_carlo": {
+        "shots": 3000000,
+        "fails": 5030,
+        "p_L": 0.0016766666666666666,
+        "stderr": 2.3621003757641597e-05,
+        "triggers": 298736,
+        "trigger_rate": 0.09957866666666666,
+        "trigger_circuit_counts": [
+          48745,
+          49076,
+          48515,
+          53738,
+          50046,
+          48616
+        ],
+        "no_trigger_shots": 2701264,
+        "trigger_rate_stderr": 0.00017288026281365526,
+        "trigger_cause_counts": {
+          "reset": 170938,
+          "measurement": 34056,
+          "2q": 85424,
+          "idle": 7692,
+          "mixed": 626
+        },
+        "trigger_cause_rates": {
+          "reset": 0.05697933333333333,
+          "measurement": 0.011352,
+          "2q": 0.028474666666666665,
+          "idle": 0.002564,
+          "mixed": 0.00020866666666666668
+        },
+        "trigger_contributing_type_rates": {
+          "reset": 0.057154666666666666,
+          "measurement": 0.011430333333333334,
+          "2q": 0.028616333333333334,
+          "idle": 0.002586
+        },
+        "trigger_fractional_type_rates": {
+          "reset": 0.057067,
+          "measurement": 0.011391166666666667,
+          "2q": 0.0285455,
+          "idle": 0.002575
+        },
+        "failures_through_bare": 4989,
+        "failure_share_through_bare": 0.9918489065606362,
+        "failure_share_through_bare_stderr": 0.0012677881927244971,
+        "seed": 3026
+      },
+      "comparison": {
+        "P2": {
+          "estimate_over_MC": 1.0851286389181605,
+          "estimate_minus_MC_in_stderr": 6.042603130555253
+        },
+        "P2_survival_corrected": {
+          "estimate_over_MC": 0.9165267905860177,
+          "estimate_minus_MC_in_stderr": -5.925097392985814
+        },
+        "P2_survival_mean_approx": {
+          "estimate_over_MC": 0.9135952589453022,
+          "estimate_minus_MC_in_stderr": -6.133183443633683
+        }
+      },
+      "status": "PASS",
+      "idle_exposure": {
+        "definition": "Sum over idle locations in actually executed circuits; probability sums are expected Z-fault counts.",
+        "shots": 3000000,
+        "paths": {
+          "no_trigger": {
+            "count": 2701264,
+            "probability": 0.9004213333333333,
+            "round_duration_seconds": 0.0021000000000000003,
+            "readout_idle_seconds_per_data_qubit": 0.0,
+            "data": {
+              "0": {
+                "seconds": 0.00202,
+                "summed_Z_probability": 0.0004590601202967557
+              },
+              "1": {
+                "seconds": 0.00202,
+                "summed_Z_probability": 0.0004590601202967557
+              },
+              "2": {
+                "seconds": 0.00194,
+                "summed_Z_probability": 0.0004408861372940532
+              },
+              "3": {
+                "seconds": 0.00202,
+                "summed_Z_probability": 0.0004590601202967557
+              },
+              "4": {
+                "seconds": 0.0019400000000000003,
+                "summed_Z_probability": 0.00044088531090599704
+              },
+              "5": {
+                "seconds": 0.0019400000000000003,
+                "summed_Z_probability": 0.0004408844845179408
+              },
+              "6": {
+                "seconds": 0.0018600000000000003,
+                "summed_Z_probability": 0.00042269843624961347
+              }
+            }
+          },
+          "trigger_F0": {
+            "count": 48745,
+            "probability": 0.016248333333333333,
+            "round_duration_seconds": 0.0016400000000000002,
+            "readout_idle_seconds_per_data_qubit": 0.0,
+            "data": {
+              "0": {
+                "seconds": 0.0015600000000000002,
+                "summed_Z_probability": 0.00035452773569890093
+              },
+              "1": {
+                "seconds": 0.0015600000000000002,
+                "summed_Z_probability": 0.00035452773569890093
+              },
+              "2": {
+                "seconds": 0.0014800000000000002,
+                "summed_Z_probability": 0.0003363493548726424
+              },
+              "3": {
+                "seconds": 0.00152,
+                "summed_Z_probability": 0.00034544041364232723
+              },
+              "4": {
+                "seconds": 0.00144,
+                "summed_Z_probability": 0.0003272617848869741
+              },
+              "5": {
+                "seconds": 0.00144,
+                "summed_Z_probability": 0.00032726095848624015
+              },
+              "6": {
+                "seconds": 0.00136,
+                "summed_Z_probability": 0.0003090768754632221
+              }
+            }
+          },
+          "trigger_F1": {
+            "count": 49076,
+            "probability": 0.016358666666666667,
+            "round_duration_seconds": 0.00199,
+            "readout_idle_seconds_per_data_qubit": 0.0,
+            "data": {
+              "0": {
+                "seconds": 0.0019100000000000002,
+                "summed_Z_probability": 0.0004340668631005514
+              },
+              "1": {
+                "seconds": 0.0018700000000000001,
+                "summed_Z_probability": 0.00042497954104397777
+              },
+              "2": {
+                "seconds": 0.0017900000000000001,
+                "summed_Z_probability": 0.00040680132549533043
+              },
+              "3": {
+                "seconds": 0.0018700000000000001,
+                "summed_Z_probability": 0.00042497954104397777
+              },
+              "4": {
+                "seconds": 0.0017900000000000001,
+                "summed_Z_probability": 0.0004068009122886246
+              },
+              "5": {
+                "seconds": 0.0017500000000000003,
+                "summed_Z_probability": 0.0003977125159149001
+              },
+              "6": {
+                "seconds": 0.0016700000000000003,
+                "summed_Z_probability": 0.00037952661483815764
+              }
+            }
+          },
+          "trigger_F2": {
+            "count": 48515,
+            "probability": 0.016171666666666668,
+            "round_duration_seconds": 0.00234,
+            "readout_idle_seconds_per_data_qubit": 0.0,
+            "data": {
+              "0": {
+                "seconds": 0.00222,
+                "summed_Z_probability": 0.0005045186684456283
+              },
+              "1": {
+                "seconds": 0.00222,
+                "summed_Z_probability": 0.0005045186684456283
+              },
+              "2": {
+                "seconds": 0.0021000000000000003,
+                "summed_Z_probability": 0.00047725329611801847
+              },
+              "3": {
+                "seconds": 0.00222,
+                "summed_Z_probability": 0.0005045186684456283
+              },
+              "4": {
+                "seconds": 0.0021000000000000003,
+                "summed_Z_probability": 0.00047725246971728455
+              },
+              "5": {
+                "seconds": 0.0021000000000000003,
+                "summed_Z_probability": 0.0004772516433165506
+              },
+              "6": {
+                "seconds": 0.0019800000000000004,
+                "summed_Z_probability": 0.00044997635421309325
+              }
+            }
+          },
+          "trigger_F3": {
+            "count": 53738,
+            "probability": 0.017912666666666667,
+            "round_duration_seconds": 0.00269,
+            "readout_idle_seconds_per_data_qubit": 0.0,
+            "data": {
+              "0": {
+                "seconds": 0.0025700000000000002,
+                "summed_Z_probability": 0.0005840577958472787
+              },
+              "1": {
+                "seconds": 0.0025700000000000002,
+                "summed_Z_probability": 0.0005840577958472787
+              },
+              "2": {
+                "seconds": 0.0024500000000000004,
+                "summed_Z_probability": 0.000556792423519669
+              },
+              "3": {
+                "seconds": 0.00253,
+                "summed_Z_probability": 0.0005749704737907051
+              },
+              "4": {
+                "seconds": 0.0024100000000000002,
+                "summed_Z_probability": 0.0005477044403399726
+              },
+              "5": {
+                "seconds": 0.0024100000000000002,
+                "summed_Z_probability": 0.0005477032007452106
+              },
+              "6": {
+                "seconds": 0.0022900000000000004,
+                "summed_Z_probability": 0.0005204260935880288
+              }
+            }
+          },
+          "trigger_F4": {
+            "count": 50046,
+            "probability": 0.016682,
+            "round_duration_seconds": 0.00304,
+            "readout_idle_seconds_per_data_qubit": 0.0,
+            "data": {
+              "0": {
+                "seconds": 0.0029200000000000003,
+                "summed_Z_probability": 0.0006635969232489293
+              },
+              "1": {
+                "seconds": 0.00288,
+                "summed_Z_probability": 0.0006545096011923556
+              },
+              "2": {
+                "seconds": 0.0027600000000000003,
+                "summed_Z_probability": 0.000627244394142357
+              },
+              "3": {
+                "seconds": 0.00288,
+                "summed_Z_probability": 0.0006545096011923556
+              },
+              "4": {
+                "seconds": 0.0027600000000000003,
+                "summed_Z_probability": 0.0006272435677416231
+              },
+              "5": {
+                "seconds": 0.00272,
+                "summed_Z_probability": 0.0006181547581738705
+              },
+              "6": {
+                "seconds": 0.0026000000000000003,
+                "summed_Z_probability": 0.0005908758329629644
+              }
+            }
+          },
+          "trigger_F5": {
+            "count": 48616,
+            "probability": 0.016205333333333332,
+            "round_duration_seconds": 0.0033900000000000002,
+            "readout_idle_seconds_per_data_qubit": 0.0,
+            "data": {
+              "0": {
+                "seconds": 0.0032300000000000002,
+                "summed_Z_probability": 0.000734048728594006
+              },
+              "1": {
+                "seconds": 0.0032300000000000002,
+                "summed_Z_probability": 0.000734048728594006
+              },
+              "2": {
+                "seconds": 0.0030700000000000002,
+                "summed_Z_probability": 0.0006976963647650451
+              },
+              "3": {
+                "seconds": 0.0032300000000000002,
+                "summed_Z_probability": 0.000734048728594006
+              },
+              "4": {
+                "seconds": 0.0030700000000000002,
+                "summed_Z_probability": 0.000697695125170283
+              },
+              "5": {
+                "seconds": 0.0030700000000000002,
+                "summed_Z_probability": 0.000697693885575521
+              },
+              "6": {
+                "seconds": 0.0029100000000000003,
+                "summed_Z_probability": 0.0006613255723379
+              }
+            }
+          }
+        },
+        "monte_carlo_weighted_data": {
+          "0": {
+            "seconds": 0.0020584348666666664,
+            "seconds_stderr": 1.231028636154635e-07,
+            "summed_Z_probability": 0.00046779533409552795,
+            "summed_Z_probability_stderr": 2.7976640924336927e-08
+          },
+          "1": {
+            "seconds": 0.00205711324,
+            "seconds_stderr": 1.2187221287986092e-07,
+            "summed_Z_probability": 0.00046749508291656403,
+            "summed_Z_probability_stderr": 2.7697043059720948e-08
+          },
+          "2": {
+            "seconds": 0.00197378616,
+            "seconds_stderr": 1.1495993349248213e-07,
+            "summed_Z_probability": 0.0004485648387532302,
+            "summed_Z_probability_stderr": 2.6126339892352754e-08
+          },
+          "3": {
+            "seconds": 0.0020557468,
+            "seconds_stderr": 1.2182296803571613e-07,
+            "summed_Z_probability": 0.0004671846509077894,
+            "summed_Z_probability_stderr": 2.7685830339113223e-08
+          },
+          "4": {
+            "seconds": 0.00197241972,
+            "seconds_stderr": 1.1497765689489647e-07,
+            "summed_Z_probability": 0.0004482535927782562,
+            "summed_Z_probability_stderr": 2.6130313600780925e-08
+          },
+          "5": {
+            "seconds": 0.0019710980933333334,
+            "seconds_stderr": 1.138688740872558e-07,
+            "summed_Z_probability": 0.00044795248602839326,
+            "summed_Z_probability_stderr": 2.587834732031319e-08
+          },
+          "6": {
+            "seconds": 0.0018877710133333337,
+            "seconds_stderr": 1.0712573498014143e-07,
+            "summed_Z_probability": 0.00042901030178158455,
+            "summed_Z_probability_stderr": 2.4345645782764446e-08
+          }
+        },
+        "mean_readout_idle_seconds_per_data_qubit": 0.0
+      }
+    },
+    "0.0001": {
+      "stage": 2,
+      "primary_estimate": "Monte Carlo",
+      "parameters": {
+        "name": "JONES_MURALI_2026",
+        "p_2q": 0.001,
+        "p_1q": 1e-05,
+        "p_reset": 0.005,
+        "p_meas": 0.001,
+        "T2": 2.2,
+        "ms_duration": 4e-05,
+        "rotation_duration": 5e-06,
+        "measurement_duration": 0.0001,
+        "reset_duration": 5e-05,
+        "shuttle_duration": 5e-06,
+        "split_duration": 8e-05,
+        "merge_duration": 8e-05,
+        "junction_duration": 0.0001,
+        "source": "https://arxiv.org/html/2510.23519v1#S5",
+        "caveat": "Gate probabilities are placeholders pending a heating model."
+      },
+      "checks": {
+        "single_fault_runs": 2220,
+        "flagged_fault_runs": 1332,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 180,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2220,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "counts": {
+        "n_locations": 252,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "IDLE": 156,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 128568,
+        "P1": 0.0,
+        "P2": 0.0019043899145381612,
+        "P2_survival_corrected": 0.0016035057539979189,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0014851237989970691,
+          "FF": 0.00011838195500173307
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0007489165591648087,
+          "idle*reset": 6.994502240388508e-05,
+          "reset*reset": 0.00012714473886649936,
+          "meas*reset": 5.078925485607962e-05,
+          "idle*idle": 1.1945732055790276e-05,
+          "2q*idle": 9.957628670366092e-05,
+          "idle*meas": 1.3996440196967759e-05,
+          "2q*2q": 0.00032652813558719607,
+          "2q*meas": 0.00014959147774694937,
+          "meas*meas": 5.072106417806056e-06
+        },
+        "mean_location_fault_probability": 0.0006999946951213721,
+        "P2_survival_mean_approx": 0.0015985576453200674,
+        "P2_by_logical_type": {
+          "X": 0.0008633631899826414,
+          "Z": 0.0011469027435471037,
+          "any": 0.0019043899145381612
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0017634745790287246,
+          "FF": 0.00014091533550975586
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0008882681466666308,
+          "idle*reset": 8.303635203688652e-05,
+          "reset*reset": 0.00015019813068000004,
+          "meas*reset": 6.0239463472e-05,
+          "idle*idle": 1.4251654968365521e-05,
+          "2q*idle": 0.00011868905253519776,
+          "idle*meas": 1.6682943158168783e-05,
+          "2q*2q": 0.0003888444444436227,
+          "2q*meas": 0.00017813967377777637,
+          "meas*meas": 6.040052800533333e-06
+        }
+      },
+      "monte_carlo": {
+        "shots": 3000000,
+        "fails": 5371,
+        "p_L": 0.0017903333333333332,
+        "stderr": 2.4407157692562843e-05,
+        "triggers": 303611,
+        "trigger_rate": 0.10120366666666666,
+        "trigger_circuit_counts": [
+          48520,
+          49609,
+          48711,
+          55025,
+          51685,
+          50061
+        ],
+        "no_trigger_shots": 2696389,
+        "trigger_rate_stderr": 0.000174127811793415,
+        "trigger_cause_counts": {
+          "reset": 170808,
+          "measurement": 34325,
+          "2q": 86039,
+          "idle": 11765,
+          "mixed": 674
+        },
+        "trigger_cause_rates": {
+          "reset": 0.056936,
+          "measurement": 0.011441666666666666,
+          "2q": 0.028679666666666666,
+          "idle": 0.003921666666666667,
+          "mixed": 0.00022466666666666666
+        },
+        "trigger_contributing_type_rates": {
+          "reset": 0.057127,
+          "measurement": 0.011526,
+          "2q": 0.028825,
+          "idle": 0.0039506666666666666
+        },
+        "trigger_fractional_type_rates": {
+          "reset": 0.05703144444444444,
+          "measurement": 0.011483777777777777,
+          "2q": 0.02875227777777778,
+          "idle": 0.003936166666666667
+        },
+        "failures_through_bare": 5324,
+        "failure_share_through_bare": 0.9912493018059951,
+        "failure_share_through_bare_stderr": 0.0012708234608661522,
+        "seed": 3126
+      },
+      "comparison": {
+        "P2": {
+          "estimate_over_MC": 1.06370689696788,
+          "estimate_minus_MC_in_stderr": 4.67307921067689
+        },
+        "P2_survival_corrected": {
+          "estimate_over_MC": 0.8956464833352741,
+          "estimate_minus_MC_in_stderr": -7.654622536910268
+        },
+        "P2_survival_mean_approx": {
+          "estimate_over_MC": 0.8928826914839326,
+          "estimate_minus_MC_in_stderr": -7.857354405167064
+        }
+      },
+      "status": "PASS",
+      "idle_exposure": {
+        "definition": "Sum over idle locations in actually executed circuits; probability sums are expected Z-fault counts.",
+        "shots": 3000000,
+        "paths": {
+          "no_trigger": {
+            "count": 2696389,
+            "probability": 0.8987963333333333,
+            "round_duration_seconds": 0.0033,
+            "readout_idle_seconds_per_data_qubit": 0.0012000000000000001,
+            "data": {
+              "0": {
+                "seconds": 0.00322,
+                "summed_Z_probability": 0.0007317376044063656
+              },
+              "1": {
+                "seconds": 0.00322,
+                "summed_Z_probability": 0.0007317376044063656
+              },
+              "2": {
+                "seconds": 0.0031400000000000004,
+                "summed_Z_probability": 0.0007135762228850692
+              },
+              "3": {
+                "seconds": 0.00322,
+                "summed_Z_probability": 0.0007317376044063656
+              },
+              "4": {
+                "seconds": 0.0031400000000000004,
+                "summed_Z_probability": 0.0007135770492355632
+              },
+              "5": {
+                "seconds": 0.0031400000000000004,
+                "summed_Z_probability": 0.0007135778755860572
+              },
+              "6": {
+                "seconds": 0.0030600000000000002,
+                "summed_Z_probability": 0.0006954126928524872
+              }
+            }
+          },
+          "trigger_F0": {
+            "count": 48520,
+            "probability": 0.016173333333333335,
+            "round_duration_seconds": 0.0024400000000000003,
+            "readout_idle_seconds_per_data_qubit": 0.0008,
+            "data": {
+              "0": {
+                "seconds": 0.00236,
+                "summed_Z_probability": 0.0005363221073112914
+              },
+              "1": {
+                "seconds": 0.00236,
+                "summed_Z_probability": 0.0005363221073112914
+              },
+              "2": {
+                "seconds": 0.00228,
+                "summed_Z_probability": 0.0005181472902299401
+              },
+              "3": {
+                "seconds": 0.00232,
+                "summed_Z_probability": 0.0005272377806084682
+              },
+              "4": {
+                "seconds": 0.0022400000000000002,
+                "summed_Z_probability": 0.0005090651946955193
+              },
+              "5": {
+                "seconds": 0.0022400000000000002,
+                "summed_Z_probability": 0.0005090660210680812
+              },
+              "6": {
+                "seconds": 0.00216,
+                "summed_Z_probability": 0.0004908896338457604
+              }
+            }
+          },
+          "trigger_F1": {
+            "count": 49609,
+            "probability": 0.016536333333333333,
+            "round_duration_seconds": 0.00299,
+            "readout_idle_seconds_per_data_qubit": 0.001,
+            "data": {
+              "0": {
+                "seconds": 0.0029100000000000003,
+                "summed_Z_probability": 0.0006613064836132933
+              },
+              "1": {
+                "seconds": 0.00287,
+                "summed_Z_probability": 0.0006522221569104701
+              },
+              "2": {
+                "seconds": 0.00279,
+                "summed_Z_probability": 0.0006340491578002064
+              },
+              "3": {
+                "seconds": 0.00287,
+                "summed_Z_probability": 0.0006522221569104701
+              },
+              "4": {
+                "seconds": 0.00279,
+                "summed_Z_probability": 0.0006340495709975212
+              },
+              "5": {
+                "seconds": 0.0027500000000000003,
+                "summed_Z_probability": 0.0006249683018135945
+              },
+              "6": {
+                "seconds": 0.00267,
+                "summed_Z_probability": 0.000606791749321175
+              }
+            }
+          },
+          "trigger_F2": {
+            "count": 48711,
+            "probability": 0.016237,
+            "round_duration_seconds": 0.00354,
+            "readout_idle_seconds_per_data_qubit": 0.0012000000000000001,
+            "data": {
+              "0": {
+                "seconds": 0.0034200000000000003,
+                "summed_Z_probability": 0.0007772065332124721
+              },
+              "1": {
+                "seconds": 0.0034200000000000003,
+                "summed_Z_probability": 0.0007772065332124721
+              },
+              "2": {
+                "seconds": 0.0033,
+                "summed_Z_probability": 0.0007499510253704727
+              },
+              "3": {
+                "seconds": 0.0034200000000000003,
+                "summed_Z_probability": 0.0007772065332124721
+              },
+              "4": {
+                "seconds": 0.0033,
+                "summed_Z_probability": 0.0007499518517430346
+              },
+              "5": {
+                "seconds": 0.0033,
+                "summed_Z_probability": 0.0007499526781155965
+              },
+              "6": {
+                "seconds": 0.00318,
+                "summed_Z_probability": 0.0007226938647965894
+              }
+            }
+          },
+          "trigger_F3": {
+            "count": 55025,
+            "probability": 0.018341666666666666,
+            "round_duration_seconds": 0.00409,
+            "readout_idle_seconds_per_data_qubit": 0.0014,
+            "data": {
+              "0": {
+                "seconds": 0.0039700000000000004,
+                "summed_Z_probability": 0.0009021909095144741
+              },
+              "1": {
+                "seconds": 0.0039700000000000004,
+                "summed_Z_probability": 0.0009021909095144741
+              },
+              "2": {
+                "seconds": 0.00385,
+                "summed_Z_probability": 0.0008749354016724747
+              },
+              "3": {
+                "seconds": 0.00393,
+                "summed_Z_probability": 0.000893106582811651
+              },
+              "4": {
+                "seconds": 0.00381,
+                "summed_Z_probability": 0.0008658537193133009
+              },
+              "5": {
+                "seconds": 0.00381,
+                "summed_Z_probability": 0.0008658549588611098
+              },
+              "6": {
+                "seconds": 0.00369,
+                "summed_Z_probability": 0.000838595980272004
+              }
+            }
+          },
+          "trigger_F4": {
+            "count": 51685,
+            "probability": 0.01722833333333333,
+            "round_duration_seconds": 0.00464,
+            "readout_idle_seconds_per_data_qubit": 0.0016,
+            "data": {
+              "0": {
+                "seconds": 0.004520000000000001,
+                "summed_Z_probability": 0.001027175285816476
+              },
+              "1": {
+                "seconds": 0.0044800000000000005,
+                "summed_Z_probability": 0.001018090959113653
+              },
+              "2": {
+                "seconds": 0.00436,
+                "summed_Z_probability": 0.000990837269242741
+              },
+              "3": {
+                "seconds": 0.0044800000000000005,
+                "summed_Z_probability": 0.001018090959113653
+              },
+              "4": {
+                "seconds": 0.00436,
+                "summed_Z_probability": 0.0009908380956153027
+              },
+              "5": {
+                "seconds": 0.00432,
+                "summed_Z_probability": 0.000981757239606623
+              },
+              "6": {
+                "seconds": 0.004200000000000001,
+                "summed_Z_probability": 0.0009544980957474185
+              }
+            }
+          },
+          "trigger_F5": {
+            "count": 50061,
+            "probability": 0.016687,
+            "round_duration_seconds": 0.00519,
+            "readout_idle_seconds_per_data_qubit": 0.0018000000000000002,
+            "data": {
+              "0": {
+                "seconds": 0.005030000000000001,
+                "summed_Z_probability": 0.0011430753354156548
+              },
+              "1": {
+                "seconds": 0.005030000000000001,
+                "summed_Z_probability": 0.0011430753354156548
+              },
+              "2": {
+                "seconds": 0.00487,
+                "summed_Z_probability": 0.0011067391368130074
+              },
+              "3": {
+                "seconds": 0.005030000000000001,
+                "summed_Z_probability": 0.0011430753354156548
+              },
+              "4": {
+                "seconds": 0.00487,
+                "summed_Z_probability": 0.0011067403763608161
+              },
+              "5": {
+                "seconds": 0.00487,
+                "summed_Z_probability": 0.001106741615908625
+              },
+              "6": {
+                "seconds": 0.004710000000000001,
+                "summed_Z_probability": 0.001070400211222833
+              }
+            }
+          }
+        },
+        "monte_carlo_weighted_data": {
+          "0": {
+            "seconds": 0.0032705686233333335,
+            "seconds_stderr": 1.877450264180754e-07,
+            "summed_Z_probability": 0.0007432309802163352,
+            "summed_Z_probability_stderr": 4.266609413478309e-08
+          },
+          "1": {
+            "seconds": 0.0032692180366666666,
+            "seconds_stderr": 1.8668309442595077e-07,
+            "summed_Z_probability": 0.0007429242509533233,
+            "summed_Z_probability_stderr": 4.2424889487909035e-08
+          },
+          "2": {
+            "seconds": 0.003185810796666667,
+            "seconds_stderr": 1.7994049393751626e-07,
+            "summed_Z_probability": 0.0007239880687675906,
+            "summed_Z_probability_stderr": 4.089316461360794e-08
+          },
+          "3": {
+            "seconds": 0.003267837436666667,
+            "seconds_stderr": 1.868628528744747e-07,
+            "summed_Z_probability": 0.0007426107054171753,
+            "summed_Z_probability_stderr": 4.24656676438564e-08
+          },
+          "4": {
+            "seconds": 0.0031844301966666667,
+            "seconds_stderr": 1.801725778778915e-07,
+            "summed_Z_probability": 0.0007236754057112729,
+            "summed_Z_probability_stderr": 4.0945869345373975e-08
+          },
+          "5": {
+            "seconds": 0.0031830796100000003,
+            "seconds_stderr": 1.792021377311553e-07,
+            "summed_Z_probability": 0.0007233695997261994,
+            "summed_Z_probability_stderr": 4.072554511872506e-08
+          },
+          "6": {
+            "seconds": 0.00309967237,
+            "seconds_stderr": 1.7260320502874325e-07,
+            "summed_Z_probability": 0.0007044296187031336,
+            "summed_Z_probability_stderr": 3.922633496482711e-08
+          }
+        },
+        "mean_readout_idle_seconds_per_data_qubit": 0.0012107952666666668
+      }
+    },
+    "0.0002": {
+      "stage": 2,
+      "primary_estimate": "Monte Carlo",
+      "parameters": {
+        "name": "JONES_MURALI_2026",
+        "p_2q": 0.001,
+        "p_1q": 1e-05,
+        "p_reset": 0.005,
+        "p_meas": 0.001,
+        "T2": 2.2,
+        "ms_duration": 4e-05,
+        "rotation_duration": 5e-06,
+        "measurement_duration": 0.0002,
+        "reset_duration": 5e-05,
+        "shuttle_duration": 5e-06,
+        "split_duration": 8e-05,
+        "merge_duration": 8e-05,
+        "junction_duration": 0.0001,
+        "source": "https://arxiv.org/html/2510.23519v1#S5",
+        "caveat": "Gate probabilities are placeholders pending a heating model."
+      },
+      "checks": {
+        "single_fault_runs": 2220,
+        "flagged_fault_runs": 1332,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 180,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2220,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "counts": {
+        "n_locations": 252,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "IDLE": 156,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 128568,
+        "P1": 0.0,
+        "P2": 0.001993119573080828,
+        "P2_survival_corrected": 0.0016730185629847438,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0015363142240694386,
+          "FF": 0.00013670433891432352
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0007466733909320727,
+          "idle*reset": 9.400141874967931e-05,
+          "reset*reset": 0.0001267639126773957,
+          "meas*reset": 5.063712997425836e-05,
+          "idle*idle": 2.209346617213842e-05,
+          "2q*idle": 0.0001342884464398676,
+          "idle*meas": 1.8810352303350353e-05,
+          "2q*2q": 0.00032555011269263937,
+          "2q*meas": 0.00014914341868528153,
+          "meas*meas": 5.056914354217407e-06
+        },
+        "mean_location_fault_probability": 0.0007118971753304447,
+        "P2_survival_mean_approx": 0.0016680634826355353,
+        "P2_by_logical_type": {
+          "X": 0.0008696648020597501,
+          "Z": 0.0012318589777412141,
+          "any": 0.001993119573080828
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0018298783333475638,
+          "FF": 0.00016324123973369893
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0008882681466666308,
+          "idle*reset": 0.00011192715774972505,
+          "reset*reset": 0.00015019813068000004,
+          "meas*reset": 6.0239463472e-05,
+          "idle*idle": 2.6435598091108286e-05,
+          "2q*idle": 0.0001605393823051173,
+          "idle*meas": 2.248752309559333e-05,
+          "2q*2q": 0.0003888444444436227,
+          "2q*meas": 0.00017813967377777637,
+          "meas*meas": 6.040052800533333e-06
+        }
+      },
+      "monte_carlo": {
+        "shots": 3000000,
+        "fails": 5582,
+        "p_L": 0.0018606666666666667,
+        "stderr": 2.488108107392859e-05,
+        "triggers": 307175,
+        "trigger_rate": 0.10239166666666667,
+        "trigger_circuit_counts": [
+          48692,
+          48677,
+          48760,
+          57191,
+          52707,
+          51148
+        ],
+        "no_trigger_shots": 2692825,
+        "trigger_rate_stderr": 0.00017503105749541414,
+        "trigger_cause_counts": {
+          "reset": 170367,
+          "measurement": 34170,
+          "2q": 85888,
+          "idle": 16052,
+          "mixed": 698
+        },
+        "trigger_cause_rates": {
+          "reset": 0.056789,
+          "measurement": 0.01139,
+          "2q": 0.028629333333333333,
+          "idle": 0.005350666666666667,
+          "mixed": 0.00023266666666666667
+        },
+        "trigger_contributing_type_rates": {
+          "reset": 0.056987666666666666,
+          "measurement": 0.011483333333333333,
+          "2q": 0.028767333333333332,
+          "idle": 0.005386333333333333
+        },
+        "trigger_fractional_type_rates": {
+          "reset": 0.056888277777777774,
+          "measurement": 0.01143661111111111,
+          "2q": 0.02869827777777778,
+          "idle": 0.0053685
+        },
+        "failures_through_bare": 5520,
+        "failure_share_through_bare": 0.98889286993909,
+        "failure_share_through_bare_stderr": 0.0014027511563530985,
+        "seed": 3226
+      },
+      "comparison": {
+        "P2": {
+          "estimate_over_MC": 1.071185725410692,
+          "estimate_minus_MC_in_stderr": 5.323438560430987
+        },
+        "P2_survival_corrected": {
+          "estimate_over_MC": 0.8991500696800844,
+          "estimate_minus_MC_in_stderr": -7.541798651126469
+        },
+        "P2_survival_mean_approx": {
+          "estimate_over_MC": 0.8964870024913303,
+          "estimate_minus_MC_in_stderr": -7.740949175755425
+        }
+      },
+      "status": "PASS",
+      "idle_exposure": {
+        "definition": "Sum over idle locations in actually executed circuits; probability sums are expected Z-fault counts.",
+        "shots": 3000000,
+        "paths": {
+          "no_trigger": {
+            "count": 2692825,
+            "probability": 0.8976083333333333,
+            "round_duration_seconds": 0.0045000000000000005,
+            "readout_idle_seconds_per_data_qubit": 0.0024000000000000002,
+            "data": {
+              "0": {
+                "seconds": 0.00442,
+                "summed_Z_probability": 0.001004390300780516
+              },
+              "1": {
+                "seconds": 0.00442,
+                "summed_Z_probability": 0.001004390300780516
+              },
+              "2": {
+                "seconds": 0.00434,
+                "summed_Z_probability": 0.0009862415195950884
+              },
+              "3": {
+                "seconds": 0.00442,
+                "summed_Z_probability": 0.001004390300780516
+              },
+              "4": {
+                "seconds": 0.00434,
+                "summed_Z_probability": 0.0009862439985338905
+              },
+              "5": {
+                "seconds": 0.00434,
+                "summed_Z_probability": 0.0009862464774726925
+              },
+              "6": {
+                "seconds": 0.004260000000000001,
+                "summed_Z_probability": 0.0009681021583770994
+              }
+            }
+          },
+          "trigger_F0": {
+            "count": 48692,
+            "probability": 0.016230666666666668,
+            "round_duration_seconds": 0.0032400000000000003,
+            "readout_idle_seconds_per_data_qubit": 0.0016,
+            "data": {
+              "0": {
+                "seconds": 0.00316,
+                "summed_Z_probability": 0.000718106150178661
+              },
+              "1": {
+                "seconds": 0.00316,
+                "summed_Z_probability": 0.000718106150178661
+              },
+              "2": {
+                "seconds": 0.0030800000000000003,
+                "summed_Z_probability": 0.0006999348966802324
+              },
+              "3": {
+                "seconds": 0.0031200000000000004,
+                "summed_Z_probability": 0.000709024818557296
+              },
+              "4": {
+                "seconds": 0.00304,
+                "summed_Z_probability": 0.0006908582751369657
+              },
+              "5": {
+                "seconds": 0.00304,
+                "summed_Z_probability": 0.0006908607541701393
+              },
+              "6": {
+                "seconds": 0.00296,
+                "summed_Z_probability": 0.0006726920623235934
+              }
+            }
+          },
+          "trigger_F1": {
+            "count": 48677,
+            "probability": 0.016225666666666666,
+            "round_duration_seconds": 0.0039900000000000005,
+            "readout_idle_seconds_per_data_qubit": 0.002,
+            "data": {
+              "0": {
+                "seconds": 0.00391,
+                "summed_Z_probability": 0.0008885316441825354
+              },
+              "1": {
+                "seconds": 0.00387,
+                "summed_Z_probability": 0.0008794503125611704
+              },
+              "2": {
+                "seconds": 0.0037900000000000004,
+                "summed_Z_probability": 0.0008612825295770673
+              },
+              "3": {
+                "seconds": 0.00387,
+                "summed_Z_probability": 0.0008794503125611704
+              },
+              "4": {
+                "seconds": 0.0037900000000000004,
+                "summed_Z_probability": 0.0008612837691408399
+              },
+              "5": {
+                "seconds": 0.0037500000000000003,
+                "summed_Z_probability": 0.0008522096265363752
+              },
+              "6": {
+                "seconds": 0.0036700000000000005,
+                "summed_Z_probability": 0.0008340424220531099
+              }
+            }
+          },
+          "trigger_F2": {
+            "count": 48760,
+            "probability": 0.016253333333333335,
+            "round_duration_seconds": 0.00474,
+            "readout_idle_seconds_per_data_qubit": 0.0024000000000000002,
+            "data": {
+              "0": {
+                "seconds": 0.00462,
+                "summed_Z_probability": 0.0010498758065650446
+              },
+              "1": {
+                "seconds": 0.00462,
+                "summed_Z_probability": 0.0010498758065650446
+              },
+              "2": {
+                "seconds": 0.0045000000000000005,
+                "summed_Z_probability": 0.0010226301624739022
+              },
+              "3": {
+                "seconds": 0.00462,
+                "summed_Z_probability": 0.0010498758065650446
+              },
+              "4": {
+                "seconds": 0.0045000000000000005,
+                "summed_Z_probability": 0.0010226326415070759
+              },
+              "5": {
+                "seconds": 0.0045000000000000005,
+                "summed_Z_probability": 0.0010226351205402495
+              },
+              "6": {
+                "seconds": 0.00438,
+                "summed_Z_probability": 0.0009953927817826264
+              }
+            }
+          },
+          "trigger_F3": {
+            "count": 57191,
+            "probability": 0.019063666666666666,
+            "round_duration_seconds": 0.00549,
+            "readout_idle_seconds_per_data_qubit": 0.0028,
+            "data": {
+              "0": {
+                "seconds": 0.005370000000000001,
+                "summed_Z_probability": 0.001220301300568919
+              },
+              "1": {
+                "seconds": 0.005370000000000001,
+                "summed_Z_probability": 0.001220301300568919
+              },
+              "2": {
+                "seconds": 0.00525,
+                "summed_Z_probability": 0.0011930556564777766
+              },
+              "3": {
+                "seconds": 0.0053300000000000005,
+                "summed_Z_probability": 0.001211219968947554
+              },
+              "4": {
+                "seconds": 0.00521,
+                "summed_Z_probability": 0.001183980274403911
+              },
+              "5": {
+                "seconds": 0.00521,
+                "summed_Z_probability": 0.0011839839929064855
+              },
+              "6": {
+                "seconds": 0.005090000000000001,
+                "summed_Z_probability": 0.001156743141512143
+              }
+            }
+          },
+          "trigger_F4": {
+            "count": 52707,
+            "probability": 0.017569,
+            "round_duration_seconds": 0.006240000000000001,
+            "readout_idle_seconds_per_data_qubit": 0.0032,
+            "data": {
+              "0": {
+                "seconds": 0.0061200000000000004,
+                "summed_Z_probability": 0.0013907267945727933
+              },
+              "1": {
+                "seconds": 0.00608,
+                "summed_Z_probability": 0.0013816454629514284
+              },
+              "2": {
+                "seconds": 0.005960000000000001,
+                "summed_Z_probability": 0.0013544032893746116
+              },
+              "3": {
+                "seconds": 0.00608,
+                "summed_Z_probability": 0.0013816454629514284
+              },
+              "4": {
+                "seconds": 0.00596,
+                "summed_Z_probability": 0.0013544057684077852
+              },
+              "5": {
+                "seconds": 0.00592,
+                "summed_Z_probability": 0.0013453328652727214
+              },
+              "6": {
+                "seconds": 0.0058000000000000005,
+                "summed_Z_probability": 0.0013180935012416595
+              }
+            }
+          },
+          "trigger_F5": {
+            "count": 51148,
+            "probability": 0.017049333333333333,
+            "round_duration_seconds": 0.0069900000000000006,
+            "readout_idle_seconds_per_data_qubit": 0.0036000000000000003,
+            "data": {
+              "0": {
+                "seconds": 0.00683,
+                "summed_Z_probability": 0.0015520709569553028
+              },
+              "1": {
+                "seconds": 0.00683,
+                "summed_Z_probability": 0.0015520709569553028
+              },
+              "2": {
+                "seconds": 0.006670000000000001,
+                "summed_Z_probability": 0.0015157509222714464
+              },
+              "3": {
+                "seconds": 0.00683,
+                "summed_Z_probability": 0.0015520709569553028
+              },
+              "4": {
+                "seconds": 0.006670000000000001,
+                "summed_Z_probability": 0.001515754640774021
+              },
+              "5": {
+                "seconds": 0.006670000000000001,
+                "summed_Z_probability": 0.0015157583592765957
+              },
+              "6": {
+                "seconds": 0.006510000000000001,
+                "summed_Z_probability": 0.001479443860971176
+              }
+            }
+          }
+        },
+        "monte_carlo_weighted_data": {
+          "0": {
+            "seconds": 0.004483591613333334,
+            "seconds_stderr": 2.5403276983294705e-07,
+            "summed_Z_probability": 0.001018844316561504,
+            "summed_Z_probability_stderr": 5.77285255571334e-08
+          },
+          "1": {
+            "seconds": 0.004482239826666667,
+            "seconds_stderr": 2.530446181845561e-07,
+            "summed_Z_probability": 0.0010185374159864707,
+            "summed_Z_probability_stderr": 5.750413477231237e-08
+          },
+          "2": {
+            "seconds": 0.00439876044,
+            "seconds_stderr": 2.4636909863793557e-07,
+            "summed_Z_probability": 0.0009995971182674254,
+            "summed_Z_probability_stderr": 5.598811196119701e-08
+          },
+          "3": {
+            "seconds": 0.004480828053333334,
+            "seconds_stderr": 2.5331940562219325e-07,
+            "summed_Z_probability": 0.0010182168964411155,
+            "summed_Z_probability_stderr": 5.756645204060794e-08
+          },
+          "4": {
+            "seconds": 0.004397348666666667,
+            "seconds_stderr": 2.466859036856083e-07,
+            "summed_Z_probability": 0.0009992791810635197,
+            "summed_Z_probability_stderr": 5.606007840886951e-08
+          },
+          "5": {
+            "seconds": 0.00439599688,
+            "seconds_stderr": 2.4576823949286425e-07,
+            "summed_Z_probability": 0.0009989749851464775,
+            "summed_Z_probability_stderr": 5.585193881391625e-08
+          },
+          "6": {
+            "seconds": 0.004312517493333334,
+            "seconds_stderr": 2.3921105917437805e-07,
+            "summed_Z_probability": 0.000980039032441864,
+            "summed_Z_probability_stderr": 5.4362999755057774e-08
+          }
+        },
+        "mean_readout_idle_seconds_per_data_qubit": 0.002422665066666667
+      }
+    },
+    "0.0004": {
+      "stage": 2,
+      "primary_estimate": "Monte Carlo",
+      "parameters": {
+        "name": "JONES_MURALI_2026",
+        "p_2q": 0.001,
+        "p_1q": 1e-05,
+        "p_reset": 0.005,
+        "p_meas": 0.001,
+        "T2": 2.2,
+        "ms_duration": 4e-05,
+        "rotation_duration": 5e-06,
+        "measurement_duration": 0.0004,
+        "reset_duration": 5e-05,
+        "shuttle_duration": 5e-06,
+        "split_duration": 8e-05,
+        "merge_duration": 8e-05,
+        "junction_duration": 0.0001,
+        "source": "https://arxiv.org/html/2510.23519v1#S5",
+        "caveat": "Gate probabilities are placeholders pending a heating model."
+      },
+      "checks": {
+        "single_fault_runs": 2220,
+        "flagged_fault_runs": 1332,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 180,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2220,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "counts": {
+        "n_locations": 252,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "IDLE": 156,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 128568,
+        "P1": 0.0,
+        "P2": 0.0021817914988133515,
+        "P2_survival_corrected": 0.0018200903518558653,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.001641358807581539,
+          "FF": 0.00017873154427420275
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.000742207439099646,
+          "idle*reset": 0.00014168070192940592,
+          "reset*reset": 0.00012600572103030905,
+          "meas*reset": 5.0334262634744894e-05,
+          "idle*idle": 5.154253542960544e-05,
+          "2q*idle": 0.0002030872693896451,
+          "idle*meas": 2.8351427174305223e-05,
+          "2q*2q": 0.0003236029546179161,
+          "2q*meas": 0.00014825137226705257,
+          "meas*meas": 5.0266682838459715e-06
+        },
+        "mean_location_fault_probability": 0.0007356994800435424,
+        "P2_survival_mean_approx": 0.0018151239689499442,
+        "P2_by_logical_type": {
+          "X": 0.0008822663473841938,
+          "Z": 0.001412985049316845,
+          "any": 0.0021817914988133515
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0019670291388950646,
+          "FF": 0.00021476235991864186
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0008882681466666308,
+          "idle*reset": 0.00016970213075375595,
+          "reset*reset": 0.00015019813068000004,
+          "meas*reset": 6.0239463472e-05,
+          "idle*idle": 6.203411945503259e-05,
+          "2q*idle": 0.0002442299879565231,
+          "idle*meas": 3.409534880863858e-05,
+          "2q*2q": 0.0003888444444436227,
+          "2q*meas": 0.00017813967377777637,
+          "meas*meas": 6.040052800533333e-06
+        }
+      },
+      "monte_carlo": {
+        "shots": 3000000,
+        "fails": 6121,
+        "p_L": 0.0020403333333333332,
+        "stderr": 2.605232154224918e-05,
+        "triggers": 315452,
+        "trigger_rate": 0.10515066666666667,
+        "trigger_circuit_counts": [
+          48985,
+          49422,
+          48915,
+          60146,
+          54884,
+          53100
+        ],
+        "no_trigger_shots": 2684548,
+        "trigger_rate_stderr": 0.0001771007283687471,
+        "trigger_cause_counts": {
+          "reset": 170462,
+          "measurement": 34079,
+          "2q": 85778,
+          "idle": 24379,
+          "mixed": 754
+        },
+        "trigger_cause_rates": {
+          "reset": 0.056820666666666665,
+          "measurement": 0.011359666666666667,
+          "2q": 0.028592666666666666,
+          "idle": 0.008126333333333333,
+          "mixed": 0.00025133333333333333
+        },
+        "trigger_contributing_type_rates": {
+          "reset": 0.057034666666666664,
+          "measurement": 0.011446,
+          "2q": 0.028736666666666667,
+          "idle": 0.008185
+        },
+        "trigger_fractional_type_rates": {
+          "reset": 0.056927611111111116,
+          "measurement": 0.011402777777777779,
+          "2q": 0.02866461111111111,
+          "idle": 0.008155666666666667
+        },
+        "failures_through_bare": 6053,
+        "failure_share_through_bare": 0.9888907041333116,
+        "failure_share_through_bare_stderr": 0.0013396958870450885,
+        "seed": 3326
+      },
+      "comparison": {
+        "P2": {
+          "estimate_over_MC": 1.0693309094004337,
+          "estimate_minus_MC_in_stderr": 5.429771978309682
+        },
+        "P2_survival_corrected": {
+          "estimate_over_MC": 0.8920553921855247,
+          "estimate_minus_MC_in_stderr": -8.453871610647012
+        },
+        "P2_survival_mean_approx": {
+          "estimate_over_MC": 0.8896212884904154,
+          "estimate_minus_MC_in_stderr": -8.644502718046292
+        }
+      },
+      "status": "PASS",
+      "idle_exposure": {
+        "definition": "Sum over idle locations in actually executed circuits; probability sums are expected Z-fault counts.",
+        "shots": 3000000,
+        "paths": {
+          "no_trigger": {
+            "count": 2684548,
+            "probability": 0.8948493333333334,
+            "round_duration_seconds": 0.006900000000000001,
+            "readout_idle_seconds_per_data_qubit": 0.0048000000000000004,
+            "data": {
+              "0": {
+                "seconds": 0.00682,
+                "summed_Z_probability": 0.001549621339335546
+              },
+              "1": {
+                "seconds": 0.00682,
+                "summed_Z_probability": 0.001549621339335546
+              },
+              "2": {
+                "seconds": 0.00674,
+                "summed_Z_probability": 0.0015314977553856613
+              },
+              "3": {
+                "seconds": 0.00682,
+                "summed_Z_probability": 0.001549621339335546
+              },
+              "4": {
+                "seconds": 0.00674,
+                "summed_Z_probability": 0.0015315035390504076
+              },
+              "5": {
+                "seconds": 0.00674,
+                "summed_Z_probability": 0.0015315093227151542
+              },
+              "6": {
+                "seconds": 0.006660000000000001,
+                "summed_Z_probability": 0.0015134067252058627
+              }
+            }
+          },
+          "trigger_F0": {
+            "count": 48985,
+            "probability": 0.016328333333333334,
+            "round_duration_seconds": 0.0048400000000000006,
+            "readout_idle_seconds_per_data_qubit": 0.0032,
+            "data": {
+              "0": {
+                "seconds": 0.00476,
+                "summed_Z_probability": 0.0010816432523072781
+              },
+              "1": {
+                "seconds": 0.00476,
+                "summed_Z_probability": 0.0010816432523072781
+              },
+              "2": {
+                "seconds": 0.00468,
+                "summed_Z_probability": 0.00106347912548877
+              },
+              "3": {
+                "seconds": 0.00472,
+                "summed_Z_probability": 0.001072567910032051
+              },
+              "4": {
+                "seconds": 0.00464,
+                "summed_Z_probability": 0.001054413450547691
+              },
+              "5": {
+                "seconds": 0.00464,
+                "summed_Z_probability": 0.0010544192345640704
+              },
+              "6": {
+                "seconds": 0.00456,
+                "summed_Z_probability": 0.0010362659321944108
+              }
+            }
+          },
+          "trigger_F1": {
+            "count": 49422,
+            "probability": 0.016474,
+            "round_duration_seconds": 0.0059900000000000005,
+            "readout_idle_seconds_per_data_qubit": 0.004,
+            "data": {
+              "0": {
+                "seconds": 0.00591,
+                "summed_Z_probability": 0.0013429385896216116
+              },
+              "1": {
+                "seconds": 0.00587,
+                "summed_Z_probability": 0.0013338632473463843
+              },
+              "2": {
+                "seconds": 0.00579,
+                "summed_Z_probability": 0.0013157058956780186
+              },
+              "3": {
+                "seconds": 0.00587,
+                "summed_Z_probability": 0.0013338632473463843
+              },
+              "4": {
+                "seconds": 0.00579,
+                "summed_Z_probability": 0.0013157087878620246
+              },
+              "5": {
+                "seconds": 0.00575,
+                "summed_Z_probability": 0.0013066488965856923
+              },
+              "6": {
+                "seconds": 0.00567,
+                "summed_Z_probability": 0.001288500386395388
+              }
+            }
+          },
+          "trigger_F2": {
+            "count": 48915,
+            "probability": 0.016305,
+            "round_duration_seconds": 0.0071400000000000005,
+            "readout_idle_seconds_per_data_qubit": 0.0048000000000000004,
+            "data": {
+              "0": {
+                "seconds": 0.00702,
+                "summed_Z_probability": 0.0015951585846607178
+              },
+              "1": {
+                "seconds": 0.00702,
+                "summed_Z_probability": 0.0015951585846607178
+              },
+              "2": {
+                "seconds": 0.0069,
+                "summed_Z_probability": 0.001567932665867267
+              },
+              "3": {
+                "seconds": 0.00702,
+                "summed_Z_probability": 0.0015951585846607178
+              },
+              "4": {
+                "seconds": 0.0069,
+                "summed_Z_probability": 0.0015679384498836465
+              },
+              "5": {
+                "seconds": 0.0069,
+                "summed_Z_probability": 0.0015679442339000256
+              },
+              "6": {
+                "seconds": 0.0067800000000000004,
+                "summed_Z_probability": 0.001540734840596365
+              }
+            }
+          },
+          "trigger_F3": {
+            "count": 60146,
+            "probability": 0.020048666666666666,
+            "round_duration_seconds": 0.00829,
+            "readout_idle_seconds_per_data_qubit": 0.0056,
+            "data": {
+              "0": {
+                "seconds": 0.00817,
+                "summed_Z_probability": 0.001856453921975051
+              },
+              "1": {
+                "seconds": 0.00817,
+                "summed_Z_probability": 0.001856453921975051
+              },
+              "2": {
+                "seconds": 0.00805,
+                "summed_Z_probability": 0.0018292280031816006
+              },
+              "3": {
+                "seconds": 0.00813,
+                "summed_Z_probability": 0.0018473785796998237
+              },
+              "4": {
+                "seconds": 0.00801,
+                "summed_Z_probability": 0.0018201652200728951
+              },
+              "5": {
+                "seconds": 0.00801,
+                "summed_Z_probability": 0.0018201738959216474
+              },
+              "6": {
+                "seconds": 0.007890000000000001,
+                "summed_Z_probability": 0.0017929692947973423
+              }
+            }
+          },
+          "trigger_F4": {
+            "count": 54884,
+            "probability": 0.018294666666666667,
+            "round_duration_seconds": 0.00944,
+            "readout_idle_seconds_per_data_qubit": 0.0064,
+            "data": {
+              "0": {
+                "seconds": 0.00932,
+                "summed_Z_probability": 0.0021177492592893846
+              },
+              "1": {
+                "seconds": 0.00928,
+                "summed_Z_probability": 0.002108673917014157
+              },
+              "2": {
+                "seconds": 0.00916,
+                "summed_Z_probability": 0.002081454773370849
+              },
+              "3": {
+                "seconds": 0.00928,
+                "summed_Z_probability": 0.002108673917014157
+              },
+              "4": {
+                "seconds": 0.00916,
+                "summed_Z_probability": 0.0020814605573872286
+              },
+              "5": {
+                "seconds": 0.00912,
+                "summed_Z_probability": 0.0020724035579432693
+              },
+              "6": {
+                "seconds": 0.009000000000000001,
+                "summed_Z_probability": 0.0020452037489983193
+              }
+            }
+          },
+          "trigger_F5": {
+            "count": 53100,
+            "probability": 0.0177,
+            "round_duration_seconds": 0.01059,
+            "readout_idle_seconds_per_data_qubit": 0.007200000000000001,
+            "data": {
+              "0": {
+                "seconds": 0.01043,
+                "summed_Z_probability": 0.0023699692543284905
+              },
+              "1": {
+                "seconds": 0.01043,
+                "summed_Z_probability": 0.0023699692543284905
+              },
+              "2": {
+                "seconds": 0.01027,
+                "summed_Z_probability": 0.0023336815435600978
+              },
+              "3": {
+                "seconds": 0.01043,
+                "summed_Z_probability": 0.0023699692543284905
+              },
+              "4": {
+                "seconds": 0.01027,
+                "summed_Z_probability": 0.0023336902194088503
+              },
+              "5": {
+                "seconds": 0.01027,
+                "summed_Z_probability": 0.002333698895257603
+              },
+              "6": {
+                "seconds": 0.010110000000000001,
+                "summed_Z_probability": 0.0022974382031992965
+              }
+            }
+          }
+        },
+        "monte_carlo_weighted_data": {
+          "0": {
+            "seconds": 0.00691133266,
+            "seconds_stderr": 3.9021024743819174e-07,
+            "summed_Z_probability": 0.0015703830834908616,
+            "summed_Z_probability_stderr": 8.866886015127566e-08
+          },
+          "1": {
+            "seconds": 0.006909941913333334,
+            "seconds_stderr": 3.892900471196563e-07,
+            "summed_Z_probability": 0.0015700675459404082,
+            "summed_Z_probability_stderr": 8.845999980063248e-08
+          },
+          "2": {
+            "seconds": 0.006826339980000001,
+            "seconds_stderr": 3.8263378876773987e-07,
+            "summed_Z_probability": 0.0015511239351794393,
+            "summed_Z_probability_stderr": 8.69493166179203e-08
+          },
+          "3": {
+            "seconds": 0.006908486833333333,
+            "seconds_stderr": 3.896510006802265e-07,
+            "summed_Z_probability": 0.0015697374122144623,
+            "summed_Z_probability_stderr": 8.854178137873477e-08
+          },
+          "4": {
+            "seconds": 0.0068248849000000006,
+            "seconds_stderr": 3.830243713243859e-07,
+            "summed_Z_probability": 0.0015507997879414344,
+            "summed_Z_probability_stderr": 8.703806276575384e-08
+          },
+          "5": {
+            "seconds": 0.006823494153333334,
+            "seconds_stderr": 3.821531046114384e-07,
+            "summed_Z_probability": 0.0015504905322687205,
+            "summed_Z_probability_stderr": 8.684084055872035e-08
+          },
+          "6": {
+            "seconds": 0.006739892220000001,
+            "seconds_stderr": 3.755823465781602e-07,
+            "summed_Z_probability": 0.0015315675524018276,
+            "summed_Z_probability_stderr": 8.535045149549953e-08
+          }
+        },
+        "mean_readout_idle_seconds_per_data_qubit": 0.004848485866666668
+      }
+    }
+  }
+}

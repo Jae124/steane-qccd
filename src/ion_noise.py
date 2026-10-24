@@ -1,4 +1,4 @@
-"""Stages 1–2: trapped-ion channels, timing, and checkpoint reports.
+"""Stages 1–3: trapped-ion channels, timing, and checkpoint reports.
 
 Run from src/ or the repository root. Stage 2 timings are Jones–Murali only.
 """
@@ -188,14 +188,23 @@ def run_preset(params, shots, seed, *, idle=False):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--preset', choices=['ALL', *PRESETS], default='ALL')
-    parser.add_argument('--stage', type=int, choices=(1, 2), default=2)
+    parser.add_argument('--stage', type=int, choices=(1, 2, 3), default=3)
     parser.add_argument('--shots', type=int, default=3_000_000)
     parser.add_argument('--sweep-shots', type=int, default=1_000_000)
+    parser.add_argument('--grid-shots', type=int, default=1_000_000)
+    parser.add_argument('--bootstrap-draws', type=int, default=20000)
     parser.add_argument('--seed', type=int, default=2026)
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--cache-dir', type=Path, help='Stage 3 simulation cache directory')
     args = parser.parse_args()
     if args.shots <= 0 or args.sweep_shots <= 0:
         parser.error('shot counts must be positive')
+    if args.stage == 3:
+        from ion_analysis import run_stage3
+        run_stage3(preset=args.preset, shots=args.shots, grid_shots=args.grid_shots,
+                   bootstrap_draws=args.bootstrap_draws, seed=args.seed, output=args.output,
+                   cache_dir=args.cache_dir)
+        return
     if args.output is None:
         args.output = Path(__file__).resolve().parents[1] / f'results/stage{args.stage}_ion_noise.json'
     selected = PRESETS.values() if args.preset == 'ALL' else [PRESETS[args.preset]]

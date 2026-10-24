@@ -252,3 +252,126 @@ Open questions for the human:
 - No decision blocks completion of Stage 2. H2 timing stays deferred until a sourced preset is supplied.
 - Boundary subdivision and mixed-trigger allocation are explicit modeling/reporting conventions for checkpoint review.
 - Stop here for Stage 2 review.
+
+
+## Stage 3 — Monte Carlo effective uniform rates and readout sensitivity
+
+Scope: Stage 2 approved. Stage 3 only. Monte Carlo is primary, H2 remains
+Stage 1 only for physical noise, and no Stage 4 transport work has started.
+
+Changes:
+- `src/ion_calibration.py`: log-log inverse calibration, monotone bootstrap draws, uniform MC pseudothreshold and propagated target/grid confidence intervals, including covariance in threshold ratios.
+- `src/ion_analysis.py`: cached/resumable calibration and readout experiments, complete Stage 3 JSON, secondary P2 checks, ratio comparisons and scientific figures.
+- `src/ion_noise.py`: default Stage 3 entry point, explicit Stage 1/2 options retained, configurable cache/grid/uncertainty options.
+- `src/ion_params.py`: requested 0/100/200/400 microsecond readout sweep and uniform analysis grid; nominal hardware parameters unchanged.
+- `src/steane_noise.py`: six-bin trigger histogram and no-trigger count in detailed MC reporting only; no RNG or quantum simulation changes.
+- `src/ion_timing.py`: idle exposure per data qubit for all adaptive paths and their sampled average; existing timing/insertion logic unchanged.
+- `tests/test_ion_calibration.py`: interpolation/threshold analytic checks, round trips, pooling, joint uncertainty, reproducibility, attribution conservation, and exposure accounting.
+- `results/uniform_mc_calibration.json`: 11M uniform shots, with seeds, checks and pair comparisons/breakdowns.
+- `results/measurement_duration_sweep.json`: four readout points, 3M shots each, their checks, trigger metrics and path exposures.
+- `results/ion_noise_results.json`: all physical inputs, provenance, Monte Carlo, pair attribution, calibrated p_eff and ratios, confidence intervals, readout study, nominal exposure and marked Stage 2 T2 reference.
+- `figures/ion_noise_breakdown.png`, `figures/ion_noise_calibration.png`: secondary type attribution and primary MC calibration, visually inspected.
+- `docs/noise_model.md`, `README.md`: formulas, inference assumptions, uncertainty scope, cached runs and headline results.
+
+Checks:
+- Nominal Jones flagged single-fault failures: 0 / 1332; bare-only faults: 0 / 888, skipped on noiseless input; incoming errors: 0 / 42. Frame/tableau: 0 mismatches, including another 888 forced-trigger bare-fault agreement trials.
+- Readout 0 microseconds: 0 / 1332 flagged, 0 / 882 bare-only, 0 / 42 incoming; 0 mismatches including forced bare execution. Three zero-length bare idle gaps are omitted (six fewer basis trials). Other readout points have nominal support and all checks pass.
+- H2 timing-free checks remain 0 / 1152 flagged, 0 / 756 bare-only, 0 / 42 incoming; 0 simulator mismatches. Uniform channel support checks: 0 / 1128 flagged, 0 / 744 bare-only, 0 / 42 incoming; 0 mismatches.
+- P1 = 0 for both presets, all readout points and uniform grid points.
+- Full pytest: 43 passed in 134.82 seconds. Final fast suite: 38 passed in 36.84 seconds (5 slow deselected). Uniform and infinite-T2 exact regressions pass unchanged, including 542/3M uniform failures, 92840 malignant pairs, all A dictionaries, 0/1218 with flags, 48/1218 ignoring flags and 0/1176 baseline simulator mismatches.
+- Confidence tests show that including both MC sources gives wider intervals than holding either source effectively fixed. Bootstrap is reproducible; extrapolation is rejected.
+- Uniform interpolation round trip: maximum absolute error recorded below. The observed point grid is strictly increasing, with no point-estimate pooling.
+- Nominal Stage 3 P1/P2 and all counting dictionaries exactly reproduce Stage 2; the fresh nominal MC differs by 0.908 combined standard errors.
+- All secondary P2 p_eff values for the nominal presets lie inside the propagated primary MC 95% intervals. Raw P2 and survival-corrected P2 themselves remain attribution terms and need not equal p_L.
+- Source/config fingerprints match all caches; each target has six explicit bracketing grid points at >=1M shots each. Artifact checks verify attribution sums and trigger/path accounting. No decoder, circuit gate order or adaptive stopping rule changed.
+- `compileall` and `git diff --check` pass. Both figures were visually inspected. Default `python ion_noise.py` runs/resumes Stage 3 and writes the required final JSON and figures.
+
+Calibration:
+- 11 points: [0.00085, 0.00095, 0.00105, 0.00115, 0.00125, 0.00135, 0.00145, 0.00155, 0.00165, 0.00175, 0.00185], each 1,000,000 shots, distinct seeds 12026–12036.
+- New readout experiments: four points × 3M shots, distinct seeds 3026/3126/3226/3326. Total new experimental sampling: 23M shots. H2 reuses the approved 3M-shot timing-free sample (seed 2026); no H2 timing is invented.
+- Uniform MC pseudothreshold: 0.00133488898353; 95% CI [0.00129130961, 0.00145135925].
+- Uniform round-trip max absolute error: 6.5052e-19.
+- 20,000 joint binomial bootstrap draws, seed 302026; 1.725% of sampled grids required pooling; all 20,000 threshold/target draws remained bracketed. The point curve did not require pooling.
+
+### Primary p_eff and ratios
+
+All intervals below are 95% sampling intervals, propagated from target and uniform MC. Hardware and interpolation-model uncertainty are excluded.
+
+| Preset | Primary MC p_L ± stderr | p_eff (MC) [95% CI] | p_eff / p_2q [95% CI] | p_eff / uniform pseudothreshold [95% CI] |
+| --- | ---: | ---: | ---: | ---: |
+| JONES_MURALI_2026 | 0.00204033333333 ± 2.6052322e-05 | 0.00167566902067 [0.001638817566, 0.001710165456] | 1.675669 [1.638817566, 1.710165456] | 1.2552872 [1.156312819, 1.306449499] |
+| H2_LIKE (Stage 1 only) | 0.00087 ± 1.7021977e-05 | 0.0010734088134 [0.001032147376, 0.001135605607] | 0.83860064 [0.8063651373, 0.8871918802] | 0.80411841 [0.7380704684, 0.857423151] |
+
+Jones–Murali lies above the one-gadget uniform pseudothreshold; timing-free H2 lies below it, with both ratio intervals remaining on their respective sides of one. This is a comparison under the defined uniform calibration, not a many-round threshold claim.
+
+### Pair attribution and secondary check
+
+| Preset | P1 | Raw P2 | Survival-corrected P2 | Raw / MC | Corrected / MC | P2-based p_eff | Within primary 95% CI? |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| JONES_MURALI_2026 | 0 | 0.00218179149881 | 0.00182009035186 | 1.069331 | 0.8920554 | 0.0016855868979 | True |
+| H2_LIKE | 0 | 0.00088465601772 | 0.000805656034421 | 1.016846 | 0.9260414 | 0.00107332622866 | True |
+
+The JSON retains logical-X/Z, type-pair and stage-pair breakdowns for both raw and survival-corrected values. The figure splits mixed-type pair credit equally; credits sum to raw P2.
+
+### Trigger metrics
+
+| Preset | Trigger rate ± stderr | Share of failures through bare | Reset | Measurement | 2q | Idle | Mixed |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| JONES_MURALI_2026 | 0.105150666667 ± 0.00017710073 | 6053/6121 = 0.9888907 | 0.05682066667 | 0.01135966667 | 0.02859266667 | 0.008126333333 | 0.0002513333333 |
+| H2_LIKE | 0.0499503333333 ± 0.00012577135 | 2552/2610 = 0.97777778 | 0.0005803333333 | 0.01172433333 | 0.03761433333 | 0 | 3.133333333e-05 |
+
+Exclusive rates sum to trigger rate. The JSON also includes overlapping contributing-type rates and equal-share mixed allocation, as defined in Stage 2. Every readout/grid point retains its trigger and bare-failure metrics.
+
+### Jones–Murali readout-duration sensitivity
+
+Only measurement duration changes. Measurement errors, MX rotation time, resets, gates and T2 remain nominal. Each point uses 3M shots.
+
+| Measurement duration (μs) | MC p_L ± stderr | p_eff (MC) [95% CI] | Raw P2 | Survival-corrected P2 | Trigger rate | Failure share through bare |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 0 | 0.00167666666667 ± 2.3621004e-05 | 0.00153982523131 [0.001503013479, 0.001572012799] | 0.00181939901792 | 0.00153670991888 | 0.09957866667 | 0.9918489066 |
+| 100 | 0.00179033333333 ± 2.4407158e-05 | 0.00158400704318 [0.001549512904, 0.001611361568] | 0.00190438991454 | 0.001603505754 | 0.1012036667 | 0.9912493018 |
+| 200 | 0.00186066666667 ± 2.4881081e-05 | 0.00160894295754 [0.001580474676, 0.001640772799] | 0.00199311957308 | 0.00167301856298 | 0.1023916667 | 0.9888928699 |
+| 400 | 0.00204033333333 ± 2.6052322e-05 | 0.00167566902067 [0.001638817566, 0.001710165456] | 0.00218179149881 | 0.00182009035186 | 0.1051506667 | 0.9888907041 |
+
+400 μs − 0 μs logical-rate difference: 0.000363666666667 ± 3.5166394e-05; 95% CI [0.000295, 0.0004323333333]. Removing readout duration lowers nominal p_L by 17.8239%.
+
+Relative to the Stage 1 no-idle reference p_L=0.001592, this difference is 81.1152% of the total nominal logical idle increment; 95% interval [68.1127%, 95.2460%]. This is a ratio of logical-rate increments with shared-numerator covariance propagated by resampling three experiments, not a microscopic failure allocation. All live-ion waiting changes, including ancillary waits; it is not solely a data-qubit intervention.
+
+### Nominal Jones–Murali idle exposure per data qubit
+
+The main values are actual-path MC averages over the fresh nominal 3M shots, rather than the sum over all potential circuits. Probability sums are expected idle-Z fault counts, not net Z probabilities. The ± values are sampling standard errors from the path histogram.
+
+| Data qubit (0-indexed) | Idle exposure (seconds) ± stderr | Summed local Z probability ± stderr |
+| ---: | ---: | ---: |
+| 0 | 0.00691133266 ± 3.902102e-07 | 0.00157038308349 ± 8.866886e-08 |
+| 1 | 0.00690994191333 ± 3.8929e-07 | 0.00157006754594 ± 8.846e-08 |
+| 2 | 0.00682633998 ± 3.826338e-07 | 0.00155112393518 ± 8.694932e-08 |
+| 3 | 0.00690848683333 ± 3.89651e-07 | 0.00156973741221 ± 8.854178e-08 |
+| 4 | 0.0068248849 ± 3.830244e-07 | 0.00155079978794 ± 8.703806e-08 |
+| 5 | 0.00682349415333 ± 3.821531e-07 | 0.00155049053227 ± 8.684084e-08 |
+| 6 | 0.00673989222 ± 3.755823e-07 | 0.0015315675524 ± 8.535045e-08 |
+
+Readout alone accounts for 0.00484848586667 seconds of waiting per data qubit on average (about 70–72% of their idle seconds). All seven conditional path exposure tables are in the JSON. For comparison, the no-trigger full flagged path has 0.006660–0.006820 seconds of data idle; the longest executed path has 0.010110–0.010430 seconds.
+
+| Execution path | MC shots | Probability | Round duration (seconds) |
+| --- | ---: | ---: | ---: |
+| no_trigger | 2684548 | 0.8948493333 | 0.0069 |
+| trigger_F0 | 48985 | 0.01632833333 | 0.00484 |
+| trigger_F1 | 49422 | 0.016474 | 0.00599 |
+| trigger_F2 | 48915 | 0.016305 | 0.00714 |
+| trigger_F3 | 60146 | 0.02004866667 | 0.00829 |
+| trigger_F4 | 54884 | 0.01829466667 | 0.00944 |
+| trigger_F5 | 53100 | 0.0177 | 0.01059 |
+
+Assumptions made:
+- Uniform p_eff is a one-round MC equivalence under the same uniform channel conventions; it is not a hardware-averaged infidelity. H2 remains timing-free Stage 1 only. Jones gate rates and the H2 convention retain their earlier placeholder/unverified caveats.
+- Confidence intervals propagate binomial target and calibration sampling, with common grid draws for threshold ratios. They are conditional on piecewise log-log interpolation and fixed physical input rates, excluding interpolation bias and hardware calibration uncertainty. Small sampled reversals are pooled; no extrapolation is used.
+- The readout sweep is a hypothetical duration-only intervention: readout error stays finite even at zero duration, and MX basis rotations retain nominal duration/error. It changes data and ancillary waiting.
+- Primary nominal Stage 3 Jones MC is a fresh independent 3M-shot sample, so its point estimate differs through sampling from the approved Stage 2 nominal sample. The Stage 2 T2 sweep remains a marked reference; this grid is not used to extrapolate p_eff for its high-error points.
+- Summed per-gap idle-Z probabilities are expected physical fault counts, not a net probability after intervening gates. Exposure is averaged over actual executed paths; all potential locations are still used in the separate survival-corrected pair attribution, as before.
+- Pair-type figures allocate half of a mixed-type pair to each type, preserving the raw P2 total. Monte Carlo remains primary.
+
+Open questions for the human:
+- No issue blocks this Stage 3 checkpoint. H2 timing remains deferred pending a sourced preset.
+- Grid/target sampling intervals do not establish uncertainty in the hardware parameters or the interpolation model; those remain explicit modeling limitations.
+- Stage 4 transport hooks have not started. Stop here for review.

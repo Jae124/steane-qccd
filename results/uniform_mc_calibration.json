@@ -1,0 +1,920 @@
+{
+  "configuration": {
+    "simulation_fingerprint": "481c4d8668af7a000bfed3b2e92163228375fd8a36d4af386dea49d5e8539dec",
+    "shots_per_point": 1000000,
+    "seed_base": 2026,
+    "p_grid": [
+      0.00085,
+      0.00095,
+      0.00105,
+      0.00115,
+      0.00125,
+      0.00135,
+      0.00145,
+      0.00155,
+      0.00165,
+      0.00175,
+      0.00185
+    ]
+  },
+  "points": {
+    "0.00085": {
+      "p": 0.00085,
+      "monte_carlo": {
+        "shots": 1000000,
+        "fails": 557,
+        "p_L": 0.000557,
+        "stderr": 2.3594273690876777e-05,
+        "triggers": 45323,
+        "trigger_rate": 0.045323,
+        "trigger_circuit_counts": [
+          6994,
+          7368,
+          7462,
+          8185,
+          7804,
+          7510
+        ],
+        "no_trigger_shots": 954677,
+        "trigger_rate_stderr": 0.00020801159984722007,
+        "trigger_cause_counts": {
+          "reset": 10012,
+          "measurement": 9970,
+          "2q": 25307,
+          "idle": 0,
+          "mixed": 34
+        },
+        "trigger_cause_rates": {
+          "reset": 0.010012,
+          "measurement": 0.00997,
+          "2q": 0.025307,
+          "idle": 0.0,
+          "mixed": 3.4e-05
+        },
+        "trigger_contributing_type_rates": {
+          "reset": 0.010031,
+          "measurement": 0.009992,
+          "2q": 0.025334,
+          "idle": 0.0
+        },
+        "trigger_fractional_type_rates": {
+          "reset": 0.0100215,
+          "measurement": 0.009981,
+          "2q": 0.0253205,
+          "idle": 0.0
+        },
+        "failures_through_bare": 551,
+        "failure_share_through_bare": 0.9892280071813285,
+        "failure_share_through_bare_stderr": 0.0043738978071764445,
+        "seed": 12026
+      },
+      "P1": 0,
+      "P2": 0.0005548157777772324,
+      "P2_survival_corrected": 0.0005121933292487959,
+      "P2_over_MC": 0.9960785956503275,
+      "P2_survival_over_MC": 0.9195571440732421,
+      "P2_by_type_pair": {
+        "2q*reset": 0.00012826783333332975,
+        "reset*reset": 4.335e-06,
+        "meas*reset": 8.67e-06,
+        "2q*2q": 0.0002809401111111651,
+        "2q*meas": 0.00012826783333332975,
+        "meas*meas": 4.335e-06
+      },
+      "P2_survival_by_type_pair": {
+        "2q*reset": 0.00011841395148085825,
+        "reset*reset": 4.001973576146279e-06,
+        "meas*reset": 8.003947152292558e-06,
+        "2q*2q": 0.00025935753198304094,
+        "2q*meas": 0.00011841395148085825,
+        "meas*meas": 4.001973576146279e-06
+      },
+      "P2_by_stage_pair": {
+        "FB": 0.0005007021333329549,
+        "FF": 5.4113644444450876e-05
+      },
+      "P2_survival_by_stage_pair": {
+        "FB": 0.0004622368413191595,
+        "FF": 4.9956487929796374e-05
+      }
+    },
+    "0.00095": {
+      "p": 0.00095,
+      "monte_carlo": {
+        "shots": 1000000,
+        "fails": 666,
+        "p_L": 0.000666,
+        "stderr": 2.5798380646854564e-05,
+        "triggers": 50158,
+        "trigger_rate": 0.050158,
+        "trigger_circuit_counts": [
+          7882,
+          8110,
+          8136,
+          9264,
+          8337,
+          8429
+        ],
+        "no_trigger_shots": 949842,
+        "trigger_rate_stderr": 0.00021827087537278078,
+        "trigger_cause_counts": {
+          "reset": 11097,
+          "measurement": 11030,
+          "2q": 27973,
+          "idle": 0,
+          "mixed": 58
+        },
+        "trigger_cause_rates": {
+          "reset": 0.011097,
+          "measurement": 0.01103,
+          "2q": 0.027973,
+          "idle": 0.0,
+          "mixed": 5.8e-05
+        },
+        "trigger_contributing_type_rates": {
+          "reset": 0.011134,
+          "measurement": 0.011061,
+          "2q": 0.028021,
+          "idle": 0.0
+        },
+        "trigger_fractional_type_rates": {
+          "reset": 0.0111155,
+          "measurement": 0.0110455,
+          "2q": 0.027997,
+          "idle": 0.0
+        },
+        "failures_through_bare": 658,
+        "failure_share_through_bare": 0.987987987987988,
+        "failure_share_through_bare_stderr": 0.004221303681793907,
+        "seed": 12027
+      },
+      "P1": 0,
+      "P2": 0.0006930397777770967,
+      "P2_survival_corrected": 0.0006338072920960046,
+      "P2_over_MC": 1.0406002669325776,
+      "P2_survival_over_MC": 0.9516626007447516,
+      "P2_by_type_pair": {
+        "2q*reset": 0.00016022383333332888,
+        "reset*reset": 5.415e-06,
+        "meas*reset": 1.083e-05,
+        "2q*2q": 0.00035093211111117856,
+        "2q*meas": 0.00016022383333332888,
+        "meas*meas": 5.415e-06
+      },
+      "P2_survival_by_type_pair": {
+        "2q*reset": 0.0001465298777798303,
+        "reset*reset": 4.95219263994934e-06,
+        "meas*reset": 9.90438527989868e-06,
+        "2q*2q": 0.000320938765977223,
+        "2q*meas": 0.0001465298777798303,
+        "meas*meas": 4.95219263994934e-06
+      },
+      "P2_by_stage_pair": {
+        "FB": 0.0006254445333328608,
+        "FF": 6.759524444445249e-05
+      },
+      "P2_survival_by_stage_pair": {
+        "FB": 0.0005719892547862499,
+        "FF": 6.181803730995276e-05
+      }
+    },
+    "0.00105": {
+      "p": 0.00105,
+      "monte_carlo": {
+        "shots": 1000000,
+        "fails": 847,
+        "p_L": 0.000847,
+        "stderr": 2.909093657825406e-05,
+        "triggers": 55240,
+        "trigger_rate": 0.05524,
+        "trigger_circuit_counts": [
+          8653,
+          8707,
+          9175,
+          10246,
+          9363,
+          9096
+        ],
+        "no_trigger_shots": 944760,
+        "trigger_rate_stderr": 0.00022844811752343244,
+        "trigger_cause_counts": {
+          "reset": 12211,
+          "measurement": 12155,
+          "2q": 30815,
+          "idle": 0,
+          "mixed": 59
+        },
+        "trigger_cause_rates": {
+          "reset": 0.012211,
+          "measurement": 0.012155,
+          "2q": 0.030815,
+          "idle": 0.0,
+          "mixed": 5.9e-05
+        },
+        "trigger_contributing_type_rates": {
+          "reset": 0.012248,
+          "measurement": 0.012183,
+          "2q": 0.030868,
+          "idle": 0.0
+        },
+        "trigger_fractional_type_rates": {
+          "reset": 0.0122295,
+          "measurement": 0.012169,
+          "2q": 0.0308415,
+          "idle": 0.0
+        },
+        "failures_through_bare": 832,
+        "failure_share_through_bare": 0.9822904368358913,
+        "failure_share_through_bare_stderr": 0.004531919398190389,
+        "seed": 12028
+      },
+      "P1": 0,
+      "P2": 0.0008466219999991679,
+      "P2_survival_corrected": 0.0007670120104536465,
+      "P2_over_MC": 0.9995537190072821,
+      "P2_survival_over_MC": 0.9055631764505861,
+      "P2_by_type_pair": {
+        "2q*reset": 0.0001957304999999945,
+        "reset*reset": 6.6149999999999985e-06,
+        "meas*reset": 1.3229999999999997e-05,
+        "2q*2q": 0.0004287010000000823,
+        "2q*meas": 0.0001957304999999945,
+        "meas*meas": 6.6149999999999985e-06
+      },
+      "P2_survival_by_type_pair": {
+        "2q*reset": 0.000177325470295174,
+        "reset*reset": 5.992974963036464e-06,
+        "meas*reset": 1.1985949926072928e-05,
+        "2q*2q": 0.00038838917001197113,
+        "2q*meas": 0.000177325470295174,
+        "meas*meas": 5.992974963036464e-06
+      },
+      "P2_by_stage_pair": {
+        "FB": 0.0007640471999994225,
+        "FF": 8.257480000000981e-05
+      },
+      "P2_survival_by_stage_pair": {
+        "FB": 0.0006922019259523286,
+        "FF": 7.481008450155741e-05
+      }
+    },
+    "0.00115": {
+      "p": 0.00115,
+      "monte_carlo": {
+        "shots": 1000000,
+        "fails": 946,
+        "p_L": 0.000946,
+        "stderr": 3.074256144175368e-05,
+        "triggers": 60251,
+        "trigger_rate": 0.060251,
+        "trigger_circuit_counts": [
+          9360,
+          9887,
+          9780,
+          11142,
+          10104,
+          9978
+        ],
+        "no_trigger_shots": 939749,
+        "trigger_rate_stderr": 0.00023795129123205025,
+        "trigger_cause_counts": {
+          "reset": 13180,
+          "measurement": 13241,
+          "2q": 33749,
+          "idle": 0,
+          "mixed": 81
+        },
+        "trigger_cause_rates": {
+          "reset": 0.01318,
+          "measurement": 0.013241,
+          "2q": 0.033749,
+          "idle": 0.0,
+          "mixed": 8.1e-05
+        },
+        "trigger_contributing_type_rates": {
+          "reset": 0.013223,
+          "measurement": 0.013294,
+          "2q": 0.033815,
+          "idle": 0.0
+        },
+        "trigger_fractional_type_rates": {
+          "reset": 0.0132015,
+          "measurement": 0.0132675,
+          "2q": 0.033782,
+          "idle": 0.0
+        },
+        "failures_through_bare": 939,
+        "failure_share_through_bare": 0.992600422832981,
+        "failure_share_through_bare_stderr": 0.0027864105868534326,
+        "seed": 12029
+      },
+      "P1": 0,
+      "P2": 0.0010155624444434465,
+      "P2_survival_corrected": 0.0009114490222731961,
+      "P2_over_MC": 1.0735332393693937,
+      "P2_survival_over_MC": 0.9634767677306513,
+      "P2_by_type_pair": {
+        "2q*reset": 0.0002347878333333268,
+        "reset*reset": 7.935000000000001e-06,
+        "meas*reset": 1.5870000000000002e-05,
+        "2q*2q": 0.0005142467777778766,
+        "2q*meas": 0.0002347878333333268,
+        "meas*meas": 7.935000000000001e-06
+      },
+      "P2_survival_by_type_pair": {
+        "2q*reset": 0.00021071785620290303,
+        "reset*reset": 7.1215197364858445e-06,
+        "meas*reset": 1.4243039472971689e-05,
+        "2q*2q": 0.00046152723092241936,
+        "2q*meas": 0.00021071785620290303,
+        "meas*meas": 7.1215197364858445e-06
+      },
+      "P2_by_stage_pair": {
+        "FB": 0.0009165101333326409,
+        "FF": 9.905231111112289e-05
+      },
+      "P2_survival_by_stage_pair": {
+        "FB": 0.0008225513551629078,
+        "FF": 8.889766711057311e-05
+      }
+    },
+    "0.00125": {
+      "p": 0.00125,
+      "monte_carlo": {
+        "shots": 1000000,
+        "fails": 1157,
+        "p_L": 0.001157,
+        "stderr": 3.3995019502862476e-05,
+        "triggers": 65527,
+        "trigger_rate": 0.065527,
+        "trigger_circuit_counts": [
+          10387,
+          10762,
+          10552,
+          12065,
+          10997,
+          10764
+        ],
+        "no_trigger_shots": 934473,
+        "trigger_rate_stderr": 0.0002474534547566471,
+        "trigger_cause_counts": {
+          "reset": 14534,
+          "measurement": 14558,
+          "2q": 36340,
+          "idle": 0,
+          "mixed": 95
+        },
+        "trigger_cause_rates": {
+          "reset": 0.014534,
+          "measurement": 0.014558,
+          "2q": 0.03634,
+          "idle": 0.0,
+          "mixed": 9.5e-05
+        },
+        "trigger_contributing_type_rates": {
+          "reset": 0.014593,
+          "measurement": 0.014614,
+          "2q": 0.036415,
+          "idle": 0.0
+        },
+        "trigger_fractional_type_rates": {
+          "reset": 0.0145635,
+          "measurement": 0.014586,
+          "2q": 0.0363775,
+          "idle": 0.0
+        },
+        "failures_through_bare": 1141,
+        "failure_share_through_bare": 0.986171132238548,
+        "failure_share_through_bare_stderr": 0.003433229022269016,
+        "seed": 12030
+      },
+      "P1": 0,
+      "P2": 0.001199861111109932,
+      "P2_survival_corrected": 0.0010667667134498218,
+      "P2_over_MC": 1.0370450398530096,
+      "P2_survival_over_MC": 0.9220109882885236,
+      "P2_by_type_pair": {
+        "2q*reset": 0.0002773958333333256,
+        "reset*reset": 9.375000000000001e-06,
+        "meas*reset": 1.8750000000000002e-05,
+        "2q*2q": 0.0006075694444445612,
+        "2q*meas": 0.0002773958333333256,
+        "meas*meas": 9.375000000000001e-06
+      },
+      "P2_survival_by_type_pair": {
+        "2q*reset": 0.00024662574585480857,
+        "reset*reset": 8.335079657128574e-06,
+        "meas*reset": 1.6670159314257148e-05,
+        "2q*2q": 0.0005401749031128288,
+        "2q*meas": 0.00024662574585480857,
+        "meas*meas": 8.335079657128574e-06
+      },
+      "P2_by_stage_pair": {
+        "FB": 0.001082833333332515,
+        "FF": 0.0001170277777777917
+      },
+      "P2_survival_by_stage_pair": {
+        "FB": 0.0009627202227968607,
+        "FF": 0.00010404649065329439
+      }
+    },
+    "0.00135": {
+      "p": 0.00135,
+      "monte_carlo": {
+        "shots": 1000000,
+        "fails": 1368,
+        "p_L": 0.001368,
+        "stderr": 3.696117660464829e-05,
+        "triggers": 70979,
+        "trigger_rate": 0.070979,
+        "trigger_circuit_counts": [
+          11203,
+          11573,
+          11470,
+          13113,
+          11820,
+          11800
+        ],
+        "no_trigger_shots": 929021,
+        "trigger_rate_stderr": 0.00025678976139830806,
+        "trigger_cause_counts": {
+          "reset": 15725,
+          "measurement": 15710,
+          "2q": 39453,
+          "idle": 0,
+          "mixed": 91
+        },
+        "trigger_cause_rates": {
+          "reset": 0.015725,
+          "measurement": 0.01571,
+          "2q": 0.039453,
+          "idle": 0.0,
+          "mixed": 9.1e-05
+        },
+        "trigger_contributing_type_rates": {
+          "reset": 0.015771,
+          "measurement": 0.015775,
+          "2q": 0.039524,
+          "idle": 0.0
+        },
+        "trigger_fractional_type_rates": {
+          "reset": 0.015748,
+          "measurement": 0.0157425,
+          "2q": 0.0394885,
+          "idle": 0.0
+        },
+        "failures_through_bare": 1357,
+        "failure_share_through_bare": 0.9919590643274854,
+        "failure_share_through_bare_stderr": 0.002414666296430579,
+        "seed": 12031
+      },
+      "P1": 0,
+      "P2": 0.0013995179999986248,
+      "P2_survival_corrected": 0.001232620211613422,
+      "P2_over_MC": 1.0230394736832051,
+      "P2_survival_over_MC": 0.9010381663840803,
+      "P2_by_type_pair": {
+        "2q*reset": 0.000323554499999991,
+        "reset*reset": 1.0935000000000001e-05,
+        "meas*reset": 2.1870000000000002e-05,
+        "2q*2q": 0.0007086690000001363,
+        "2q*meas": 0.000323554499999991,
+        "meas*meas": 1.0935000000000001e-05
+      },
+      "P2_survival_by_type_pair": {
+        "2q*reset": 0.00028496940822401404,
+        "reset*reset": 9.630960097695075e-06,
+        "meas*reset": 1.926192019539015e-05,
+        "2q*2q": 0.0006241575547759288,
+        "2q*meas": 0.00028496940822401404,
+        "meas*meas": 9.630960097695075e-06
+      },
+      "P2_by_stage_pair": {
+        "FB": 0.0012630167999990458,
+        "FF": 0.00013650120000001625
+      },
+      "P2_survival_by_stage_pair": {
+        "FB": 0.001112397293416491,
+        "FF": 0.00012022291819731606
+      }
+    },
+    "0.00145": {
+      "p": 0.00145,
+      "monte_carlo": {
+        "shots": 1000000,
+        "fails": 1502,
+        "p_L": 0.001502,
+        "stderr": 3.8726528323618166e-05,
+        "triggers": 75688,
+        "trigger_rate": 0.075688,
+        "trigger_circuit_counts": [
+          11960,
+          12281,
+          12406,
+          13888,
+          12695,
+          12458
+        ],
+        "no_trigger_shots": 924312,
+        "trigger_rate_stderr": 0.00026449825454244496,
+        "trigger_cause_counts": {
+          "reset": 16596,
+          "measurement": 16622,
+          "2q": 42353,
+          "idle": 0,
+          "mixed": 117
+        },
+        "trigger_cause_rates": {
+          "reset": 0.016596,
+          "measurement": 0.016622,
+          "2q": 0.042353,
+          "idle": 0.0,
+          "mixed": 0.000117
+        },
+        "trigger_contributing_type_rates": {
+          "reset": 0.016668,
+          "measurement": 0.016697,
+          "2q": 0.04244,
+          "idle": 0.0
+        },
+        "trigger_fractional_type_rates": {
+          "reset": 0.016632,
+          "measurement": 0.0166595,
+          "2q": 0.0423965,
+          "idle": 0.0
+        },
+        "failures_through_bare": 1489,
+        "failure_share_through_bare": 0.9913448735019973,
+        "failure_share_through_bare_stderr": 0.0023900892911725737,
+        "seed": 12032
+      },
+      "P1": 0,
+      "P2": 0.0016145331111095244,
+      "P2_survival_corrected": 0.0014086712813774296,
+      "P2_over_MC": 1.0749221778359017,
+      "P2_survival_over_MC": 0.9378637026480889,
+      "P2_by_type_pair": {
+        "2q*reset": 0.0003732638333333229,
+        "reset*reset": 1.2614999999999999e-05,
+        "meas*reset": 2.5229999999999997e-05,
+        "2q*2q": 0.0008175454444446015,
+        "2q*meas": 0.0003732638333333229,
+        "meas*meas": 1.2614999999999999e-05
+      },
+      "P2_survival_by_type_pair": {
+        "2q*reset": 0.00032567064668755156,
+        "reset*reset": 1.1006518288351653e-05,
+        "meas*reset": 2.2013036576703306e-05,
+        "2q*2q": 0.0007133039148504232,
+        "2q*meas": 0.00032567064668755156,
+        "meas*meas": 1.1006518288351653e-05
+      },
+      "P2_by_stage_pair": {
+        "FB": 0.0014570605333322321,
+        "FF": 0.0001574725777777965
+      },
+      "P2_survival_by_stage_pair": {
+        "FB": 0.0012712773212331851,
+        "FF": 0.00013739396014468455
+      }
+    },
+    "0.00155": {
+      "p": 0.00155,
+      "monte_carlo": {
+        "shots": 1000000,
+        "fails": 1697,
+        "p_L": 0.001697,
+        "stderr": 4.1159691337520986e-05,
+        "triggers": 80374,
+        "trigger_rate": 0.080374,
+        "trigger_circuit_counts": [
+          12713,
+          13154,
+          13296,
+          14622,
+          13294,
+          13295
+        ],
+        "no_trigger_shots": 919626,
+        "trigger_rate_stderr": 0.00027187133008833424,
+        "trigger_cause_counts": {
+          "reset": 17738,
+          "measurement": 17858,
+          "2q": 44635,
+          "idle": 0,
+          "mixed": 143
+        },
+        "trigger_cause_rates": {
+          "reset": 0.017738,
+          "measurement": 0.017858,
+          "2q": 0.044635,
+          "idle": 0.0,
+          "mixed": 0.000143
+        },
+        "trigger_contributing_type_rates": {
+          "reset": 0.017819,
+          "measurement": 0.017946,
+          "2q": 0.044752,
+          "idle": 0.0
+        },
+        "trigger_fractional_type_rates": {
+          "reset": 0.0177785,
+          "measurement": 0.017902,
+          "2q": 0.0446935,
+          "idle": 0.0
+        },
+        "failures_through_bare": 1675,
+        "failure_share_through_bare": 0.9870359457866824,
+        "failure_share_through_bare_stderr": 0.0027459712291931825,
+        "seed": 12033
+      },
+      "P1": 0,
+      "P2": 0.0018449064444426315,
+      "P2_survival_corrected": 0.0015945882210269592,
+      "P2_over_MC": 1.0871575983751511,
+      "P2_survival_over_MC": 0.9396512793323272,
+      "P2_by_type_pair": {
+        "2q*reset": 0.0004265238333333214,
+        "reset*reset": 1.4415e-05,
+        "meas*reset": 2.883e-05,
+        "2q*2q": 0.0009341987777779573,
+        "2q*meas": 0.0004265238333333214,
+        "meas*meas": 1.4415e-05
+      },
+      "P2_survival_by_type_pair": {
+        "2q*reset": 0.0003686527751416987,
+        "reset*reset": 1.2459162509483218e-05,
+        "meas*reset": 2.4918325018966436e-05,
+        "2q*2q": 0.0008074460207073306,
+        "2q*meas": 0.0003686527751416987,
+        "meas*meas": 1.2459162509483218e-05
+      },
+      "P2_by_stage_pair": {
+        "FB": 0.0016649645333320752,
+        "FF": 0.0001799419111111325
+      },
+      "P2_survival_by_stage_pair": {
+        "FB": 0.001439060956872023,
+        "FF": 0.00015552726415543418
+      }
+    },
+    "0.00165": {
+      "p": 0.00165,
+      "monte_carlo": {
+        "shots": 1000000,
+        "fails": 1980,
+        "p_L": 0.00198,
+        "stderr": 4.445311687609768e-05,
+        "triggers": 85431,
+        "trigger_rate": 0.085431,
+        "trigger_circuit_counts": [
+          13531,
+          14060,
+          14094,
+          15684,
+          14184,
+          13878
+        ],
+        "no_trigger_shots": 914569,
+        "trigger_rate_stderr": 0.00027952199240667986,
+        "trigger_cause_counts": {
+          "reset": 19080,
+          "measurement": 18988,
+          "2q": 47199,
+          "idle": 0,
+          "mixed": 164
+        },
+        "trigger_cause_rates": {
+          "reset": 0.01908,
+          "measurement": 0.018988,
+          "2q": 0.047199,
+          "idle": 0.0,
+          "mixed": 0.000164
+        },
+        "trigger_contributing_type_rates": {
+          "reset": 0.019171,
+          "measurement": 0.019088,
+          "2q": 0.047336,
+          "idle": 0.0
+        },
+        "trigger_fractional_type_rates": {
+          "reset": 0.0191255,
+          "measurement": 0.019038,
+          "2q": 0.0472675,
+          "idle": 0.0
+        },
+        "failures_through_bare": 1950,
+        "failure_share_through_bare": 0.9848484848484849,
+        "failure_share_through_bare_stderr": 0.0027452389217404484,
+        "seed": 12034
+      },
+      "P1": 0,
+      "P2": 0.0020906379999979454,
+      "P2_survival_corrected": 0.0017900457606281873,
+      "P2_over_MC": 1.05587777777674,
+      "P2_survival_over_MC": 0.9040635154687815,
+      "P2_by_type_pair": {
+        "2q*reset": 0.0004833344999999865,
+        "reset*reset": 1.6335e-05,
+        "meas*reset": 3.267e-05,
+        "2q*2q": 0.0010586290000002033,
+        "2q*meas": 0.0004833344999999865,
+        "meas*meas": 1.6335e-05
+      },
+      "P2_survival_by_type_pair": {
+        "2q*reset": 0.00041384059444589193,
+        "reset*reset": 1.3986351295580666e-05,
+        "meas*reset": 2.7972702591161332e-05,
+        "2q*2q": 0.0009064191665559908,
+        "2q*meas": 0.00041384059444589193,
+        "meas*meas": 1.3986351295580666e-05
+      },
+      "P2_by_stage_pair": {
+        "FB": 0.0018867287999985742,
+        "FF": 0.00020390920000002425
+      },
+      "P2_survival_by_stage_pair": {
+        "FB": 0.001615454655419003,
+        "FF": 0.00017459110520974327
+      }
+    },
+    "0.00175": {
+      "p": 0.00175,
+      "monte_carlo": {
+        "shots": 1000000,
+        "fails": 2220,
+        "p_L": 0.00222,
+        "stderr": 4.706454716663064e-05,
+        "triggers": 90610,
+        "trigger_rate": 0.09061,
+        "trigger_circuit_counts": [
+          14348,
+          14766,
+          14876,
+          16699,
+          14997,
+          14924
+        ],
+        "no_trigger_shots": 909390,
+        "trigger_rate_stderr": 0.00028705370211861054,
+        "trigger_cause_counts": {
+          "reset": 19719,
+          "measurement": 20121,
+          "2q": 50563,
+          "idle": 0,
+          "mixed": 207
+        },
+        "trigger_cause_rates": {
+          "reset": 0.019719,
+          "measurement": 0.020121,
+          "2q": 0.050563,
+          "idle": 0.0,
+          "mixed": 0.000207
+        },
+        "trigger_contributing_type_rates": {
+          "reset": 0.019834,
+          "measurement": 0.020256,
+          "2q": 0.050727,
+          "idle": 0.0
+        },
+        "trigger_fractional_type_rates": {
+          "reset": 0.0197765,
+          "measurement": 0.0201885,
+          "2q": 0.050645,
+          "idle": 0.0
+        },
+        "failures_through_bare": 2198,
+        "failure_share_through_bare": 0.9900900900900901,
+        "failure_share_through_bare_stderr": 0.0021023049979186172,
+        "seed": 12035
+      },
+      "P1": 0,
+      "P2": 0.002351727777775467,
+      "P2_survival_corrected": 0.001994724961540755,
+      "P2_over_MC": 1.0593368368357958,
+      "P2_survival_over_MC": 0.8985247574507904,
+      "P2_by_type_pair": {
+        "2q*reset": 0.0005436958333333182,
+        "reset*reset": 1.8375000000000003e-05,
+        "meas*reset": 3.6750000000000006e-05,
+        "2q*2q": 0.0011908361111113402,
+        "2q*meas": 0.0005436958333333182,
+        "meas*meas": 1.8375000000000003e-05
+      },
+      "P2_survival_by_type_pair": {
+        "2q*reset": 0.0004611603691910032,
+        "reset*reset": 1.558559265009067e-05,
+        "meas*reset": 3.117118530018134e-05,
+        "2q*2q": 0.0010100618525605146,
+        "2q*meas": 0.0004611603691910032,
+        "meas*meas": 1.558559265009067e-05
+      },
+      "P2_by_stage_pair": {
+        "FB": 0.00212235333333173,
+        "FF": 0.00022937444444447175
+      },
+      "P2_survival_by_stage_pair": {
+        "FB": 0.0018001705857344453,
+        "FF": 0.00019455437580693271
+      }
+    },
+    "0.00185": {
+      "p": 0.00185,
+      "monte_carlo": {
+        "shots": 1000000,
+        "fails": 2455,
+        "p_L": 0.002455,
+        "stderr": 4.9487099076425973e-05,
+        "triggers": 95133,
+        "trigger_rate": 0.095133,
+        "trigger_circuit_counts": [
+          15048,
+          15566,
+          15675,
+          17394,
+          15919,
+          15531
+        ],
+        "no_trigger_shots": 904867,
+        "trigger_rate_stderr": 0.00029339855540032913,
+        "trigger_cause_counts": {
+          "reset": 21330,
+          "measurement": 20889,
+          "2q": 52730,
+          "idle": 0,
+          "mixed": 184
+        },
+        "trigger_cause_rates": {
+          "reset": 0.02133,
+          "measurement": 0.020889,
+          "2q": 0.05273,
+          "idle": 0.0,
+          "mixed": 0.000184
+        },
+        "trigger_contributing_type_rates": {
+          "reset": 0.021452,
+          "measurement": 0.020988,
+          "2q": 0.052877,
+          "idle": 0.0
+        },
+        "trigger_fractional_type_rates": {
+          "reset": 0.021391,
+          "measurement": 0.0209385,
+          "2q": 0.0528035,
+          "idle": 0.0
+        },
+        "failures_through_bare": 2424,
+        "failure_share_through_bare": 0.9873727087576375,
+        "failure_share_through_bare_stderr": 0.002253564070908036,
+        "seed": 12036
+      },
+      "P1": 0,
+      "P2": 0.0026281757777751953,
+      "P2_survival_corrected": 0.00220831311731573,
+      "P2_over_MC": 1.070540031680324,
+      "P2_survival_over_MC": 0.8995165447314581,
+      "P2_by_type_pair": {
+        "2q*reset": 0.0006076078333333164,
+        "reset*reset": 2.0535000000000002e-05,
+        "meas*reset": 4.1070000000000005e-05,
+        "2q*2q": 0.001330820111111367,
+        "2q*meas": 0.0006076078333333164,
+        "meas*meas": 2.0535000000000002e-05
+      },
+      "P2_survival_by_type_pair": {
+        "2q*reset": 0.0005105398047879445,
+        "reset*reset": 1.725444327109136e-05,
+        "meas*reset": 3.450888654218272e-05,
+        "2q*2q": 0.0011182157346578318,
+        "2q*meas": 0.0005105398047879445,
+        "meas*meas": 1.725444327109136e-05
+      },
+      "P2_by_stage_pair": {
+        "FB": 0.0023718381333315414,
+        "FF": 0.000256337644444475
+      },
+      "P2_survival_by_stage_pair": {
+        "FB": 0.001992926541016815,
+        "FF": 0.00021538657629960458
+      }
+    }
+  },
+  "fault_checks": {
+    "single_fault_runs": 1872,
+    "flagged_fault_runs": 1128,
+    "bare_only_fault_runs": 744,
+    "incoming_runs": 42,
+    "flagged_fault_failures": 0,
+    "bare_only_fault_failures": 0,
+    "incoming_failures": 0,
+    "flagged_idle_fault_runs": 0,
+    "bare_only_idle_fault_runs": 0,
+    "single_fault_failures": 0,
+    "cross_check_runs": 1872,
+    "bare_triggered_pair_cross_check_runs": 744,
+    "mismatches": 0,
+    "failure_details": [],
+    "mismatch_details": []
+  },
+  "pair_coefficient_source_sha256": "b70e8bcefe021eb92882c3f0f0a3a2bb14512eb1086bb496c0995edec64c447c"
+}

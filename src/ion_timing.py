@@ -70,3 +70,54 @@ def timed_circuits(params):
         # Exact regression, including RNG stream and location numbering.
         return CIRCUITS
     return {key: insert_idles(ops, params) for key, ops in CIRCUITS.items()}
+
+
+def idle_exposure(params, monte_carlo):
+    """Per-data idle seconds and sum of local Z probabilities on actual paths.
+
+    The Monte Carlo histogram weights six triggered paths and the no-trigger
+    path. Summed probabilities are expected fault counts, not a net Pauli rate.
+    """
+    circuits = timed_circuits(params)
+    per_circuit = {}
+    for key, ops in circuits.items():
+        per_circuit[key] = {
+            q: {'seconds': math.fsum(o[2] for o in ops if o[0] == 'IDLE' and o[1] == q),
+                'summed_Z_probability': math.fsum(idle_probability(o[2], params.T2)
+                    for o in ops if o[0] == 'IDLE' and o[1] == q)}
+            for q in DATA}
+    counts = monte_carlo['trigger_circuit_counts']
+    if len(counts) != 6 or sum(counts) != monte_carlo['triggers']:
+        raise ValueError('Inconsistent trigger histogram')
+    shots = monte_carlo['shots']
+    if shots <= 0 or monte_carlo['no_trigger_shots'] + sum(counts) != shots:
+        raise ValueError('Inconsistent exposure sample size')
+    paths = {}
+    for stop in [None, *range(6)]:
+        keys = ([('F', i) for i in range(6)] if stop is None else
+                [('F', i) for i in range(stop + 1)] + [('B', i) for i in range(6)])
+        count = monte_carlo['no_trigger_shots'] if stop is None else counts[stop]
+        paths['no_trigger' if stop is None else f'trigger_F{stop}'] = {
+            'count': count, 'probability': count / shots,
+            'round_duration_seconds': math.fsum(operation_duration(o, params)
+                for key in keys for o in CIRCUITS[key]),
+            'readout_idle_seconds_per_data_qubit': params.measurement_duration * (
+                12 if stop is None else 2 * (stop + 1) + 6),
+            'data': {str(q): {metric: math.fsum(per_circuit[key][q][metric] for key in keys)
+                             for metric in ('seconds', 'summed_Z_probability')} for q in DATA},
+        }
+    average = {}
+    for q in DATA:
+        average[str(q)] = {}
+        for metric in ('seconds', 'summed_Z_probability'):
+            mean = math.fsum(p['probability'] * p['data'][str(q)][metric] for p in paths.values())
+            variance = math.fsum(p['probability'] * (p['data'][str(q)][metric] - mean)**2
+                                 for p in paths.values())
+            average[str(q)][metric] = mean
+            average[str(q)][metric + '_stderr'] = math.sqrt(variance / shots)
+    return {
+        'definition': 'Sum over idle locations in actually executed circuits; probability sums are expected Z-fault counts.',
+        'shots': shots, 'paths': paths, 'monte_carlo_weighted_data': average,
+        'mean_readout_idle_seconds_per_data_qubit': math.fsum(
+            p['probability'] * p['readout_idle_seconds_per_data_qubit'] for p in paths.values()),
+    }

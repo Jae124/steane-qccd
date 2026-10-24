@@ -238,7 +238,7 @@ The result file records that gap and its probability. The requested T2 sweep
 Monte Carlo is the primary p_L estimate from Stage 2 onward. P2, with and
 without survival factors, is retained for attribution/comparison only. In
 Stage 3, p_eff must be computed from Monte Carlo, with a P2-derived value as
-a secondary check; Stage 3 is not implemented at this checkpoint.
+a secondary check; the Stage 3 implementation is described below.
 
 `monte_carlo(..., return_details=True)` reports p_L, its binomial standard
 error, trigger rate (bare-round execution probability), its standard error,
@@ -278,3 +278,123 @@ The Stage 2 output also reruns Stage 1 Jones–Murali and timing-free H2-like wi
 these metrics. `results/stage0_trigger_metrics.json` backfills the same metrics
 for the Stage 0 uniform benchmark without changing its exact 542/3M result.
 Historical Stage 0/1 result files remain as originally approved.
+
+## Stage 3: effective uniform rate from Monte Carlo
+
+The primary definition is the uniform per-location p for which the **uniform
+Monte Carlo** logical failure probability equals the ion Monte Carlo p_L.
+`src/ion_analysis.py` builds the calibration, readout sweep, figures and final
+JSON; `src/ion_calibration.py` implements interpolation and statistical inference.
+`python ion_noise.py --stage 3` (now the default) runs/resumes this analysis.
+It adds no new noise channels or transport events.
+
+### Calibration, pseudothreshold and confidence intervals
+
+The uniform grid is centralized in `ion_params.py` and contains 11 p values
+from 0.00085 to 0.00185, each with 1,000,000 independent shots. It is the union
+of two six-point neighborhoods, sharing p=0.00135, around the timing-free H2
+and nominal Jones–Murali targets. Each target's result explicitly lists six
+bracketing grid p values and their shot counts. The same grid also brackets
+every readout-sensitivity target and the uniform pseudothreshold. Grid and
+new target runs use distinct deterministic random seeds, recorded in the JSON.
+
+For neighboring grid points, interpolate linearly in (log p, log p_L). Invert
+that piecewise curve to get p_eff; never extrapolate. The uniform
+pseudothreshold is the first upward crossing of p_L(p)=p, solving
+`log p_L - log p = 0` within the corresponding log-linear segment. This is a
+one-gadget pseudothreshold, not a many-round accuracy threshold.
+
+The reported **95% confidence intervals** use 20,000 parametric binomial
+bootstrap draws. In each draw, resample each grid failure count at its observed
+binomial rate and independently resample each target failure count, then
+repeat the log-log interpolation/inversion. Use the same sampled grid for
+p_eff and the pseudothreshold, so their covariance is retained in the
+p_eff/pseudothreshold ratio interval. p_eff/p_2q uses the preset's fixed p_2q.
+The point estimate uses the observed MC means, not an average of bootstrap
+roots. Percentile bounds are 2.5% and 97.5% of valid draws.
+
+An inverse curve must be monotone. The observed grid is checked for reversals;
+when a bootstrap draw has a small adjacent reversal, weighted pool-adjacent-
+violators regression on log rates restores nondecreasing order, with weights
+`N*p_L/(1-p_L)` (inverse delta-method log-rate variance). Exact plateau targets
+use the rightmost p endpoint. The result records the adjustment fraction and
+whether the point curve was adjusted. If more than 0.5% of bootstrap draws
+lack a bracket, the analysis stops and requires a wider grid rather than
+silently clipping the interval. The unadjusted point grid is strictly
+increasing in the saved experiment.
+
+Intervals include target and calibration **sampling** uncertainty conditional
+on the log-linear interpolation model. They do not include interpolation bias,
+hardware-rate uncertainty, or uncertainty in placeholder gate parameters.
+Finite grid resolution is visible in the calibration figure. Unit tests cover
+analytic power-law inversion, exact uniform round trips, monotone pooling,
+bootstrap reproducibility, and the separate contributions of target and grid
+sampling errors.
+
+The secondary value remains `p_eff_P2 = sqrt(P2/A_uniform)`, with the approved
+uniform leading coefficient. Its ratio to the primary p_eff and membership in
+the primary 95% interval are reported. Survival-corrected pair sums, raw pair
+sums and comparisons with MC remain in every target and grid record. Neither
+pair quantity substitutes for primary MC p_L or the MC p_eff.
+
+### Readout-duration sensitivity
+
+Jones–Murali measurement duration is set to 0, 100, 200 or 400 microseconds;
+every other parameter, including measurement error probability and the 5
+microsecond MX basis rotation, stays nominal. Each point has 3,000,000 shots,
+its own seed, pair attribution, trigger metrics, separate fault counts and a
+calibrated MC p_eff with a propagated interval. The 400 microsecond sample is
+a fresh nominal Stage 3 run, rather than reusing the Stage 2 target sample.
+Stage 2 files and their T2 sweep remain archived reference data. H2 primary
+MC is reused from the approved 3M-shot timing-free Stage 2 report and remains
+marked Stage 1 only; no H2 timing or idle exposure is invented.
+
+Zero-duration readout is a counterfactual timing intervention, not a claim of
+instantaneous hardware measurement. It removes readout waiting for every
+other live ion, including flag/ancilla waits as well as all data waits. Thus
+the logical-rate difference isolates readout-duration effects under this
+model, but is not an intervention confined exclusively to data qubits.
+The report includes the difference between 400 and 0 microseconds, its
+sampling uncertainty, and its ratio to the total nominal idle increment over
+the approved Stage 1 no-idle reference. That ratio uses a separate binomial
+bootstrap of the three target experiments; it is a ratio of logical-rate
+increments, not a microscopic assignment of every failure to a mechanism.
+
+### Nominal idle exposure on adaptive paths
+
+Detailed MC now records a six-bin histogram of the first triggering check and
+the no-trigger shot count. Adding these counters does not consume random
+numbers or change failure sampling. For each data qubit, report:
+
+- Sum of idle durations in the circuits actually executed, in seconds.
+- Sum of the individual idle-location Z probabilities. This is the expected
+  number of physical idle-Z faults on that qubit, not a net Z probability,
+  probability of any fault, or a logical error probability.
+
+`idle_exposure` lists all seven possible paths: six triggered flagged prefixes
+followed by the bare round, plus the full flagged round without a trigger.
+The main per-round exposure is the path-frequency-weighted MC mean, with a
+standard error from the sampled path distribution. The no-trigger and maximum
+executed-path exposures are retained, rather than counting all potential
+locations as if every circuit always ran. The report also gives readout-only
+waiting seconds for each path (identical across data ions, since none is
+measured), connecting the timing sweep to data idle exposure. The previous
+exact boundary-subdivision convention remains unchanged.
+
+### Artifacts and caching
+
+`results/uniform_mc_calibration.json` and
+`results/measurement_duration_sweep.json` checkpoint the expensive experiments.
+Caches are accepted only when simulation-source fingerprint, parameters,
+shot count, seeds and study grid match; use a new `--cache-dir` for a new
+configuration. The final `results/ion_noise_results.json` contains all inputs,
+checks, MC estimates, attribution, p_eff and ratios with confidence intervals,
+pseudothreshold, exposure and the approved Stage 2 T2 sweep as a marked
+reference. Original Stage 0–2 result files remain unchanged.
+
+`figures/ion_noise_breakdown.png` groups raw P2 credit by location type: split a
+mixed-type pair equally between its two types, and give a same-type pair full
+credit to that type. These credits sum to P2; this is a stated attribution
+convention. The figure labels P2 as secondary. The separate
+`figures/ion_noise_calibration.png` shows the MC grid, p_L=p crossing, primary
+targets and their sampling intervals. Stage 4 transport hooks are not added.

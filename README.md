@@ -11,8 +11,10 @@ src/
   steane_ft.py              Layer 1: flagged EC round (Chao–Reichardt) + single-fault test
   steane_noise.py           Layer 2: per-location noise model, fault-pair counting, Monte Carlo
   ion_params.py             Centralized trapped-ion presets and fidelity conversion
-  ion_noise.py              Stages 1–2: channels, checks, Monte Carlo and trigger metrics
-  ion_timing.py             Sequential timing and lumped idle Z channels
+  ion_noise.py              Stages 1–3: channels, checks, Monte Carlo, p_eff and trigger metrics
+  ion_timing.py             Sequential timing, idle Z channels and adaptive exposure
+  ion_calibration.py        Log-log inversion and joint binomial uncertainty
+  ion_analysis.py           Stage 3 calibration, readout sweep, results and figures
   plot_ec_threshold.py      p_L vs p figure
   draw_flagged_circuit.py   Clean drawing of the flagged Z4Z5Z6Z7 circuit
 results/                    Generated data (.json, .stim)
@@ -47,7 +49,7 @@ noise remains the default; operation-specific ion noise is opt-in. Pseudothresho
 
 ## Next
 
-1. First p_eff from Monte Carlo, with P2 for a secondary check.
+1. Transport interface hooks (Stage 4), then sourced transport schedules.
 2. Other gadgets: Goto-verified |0_L⟩, transversal H / S / CNOT, logical measurement.
 3. QCCD schedule per gadget → idle and shuttle error per location.
 
@@ -105,10 +107,10 @@ log for both comparisons and the operation-type breakdown.
 ## Idle dephasing (Stage 2 checkpoint)
 
 ```sh
-# Default: Jones–Murali Stage 1 reference + Stage 2 + T2 sweep,
+# Stage 2: Jones–Murali Stage 1 reference + idle model + T2 sweep,
 # and H2-like Stage 1 only. Monte Carlo is the primary p_L estimate.
-.venv/bin/python src/ion_noise.py
-.venv/bin/python src/ion_noise.py --preset JONES_MURALI_2026
+.venv/bin/python src/ion_noise.py --stage 2
+.venv/bin/python src/ion_noise.py --stage 2 --preset JONES_MURALI_2026
 # Explicitly reproduce timing-free Stage 1 with the new trigger metrics:
 .venv/bin/python src/ion_noise.py --stage 1 --preset H2_LIKE --output results/h2_stage1_metrics.json
 ```
@@ -128,8 +130,8 @@ the bare round. H2-like stays timing-free and is explicitly marked “Stage 1
 only.” The updated Stage 0 uniform trigger metrics are stored separately in
 `results/stage0_trigger_metrics.json`.
 
-Stage 3 will define p_eff primarily from Monte Carlo; the P2-based p_eff will
-be a secondary check. It has not been implemented at Stage 2.
+The Stage 3 analysis below defines p_eff primarily from Monte Carlo; P2-based
+p_eff is a secondary check.
 
 Nominal Jones–Murali Stage 2 result (T2 = 2.2 s):
 
@@ -138,3 +140,58 @@ Nominal Jones–Murali Stage 2 result (T2 = 2.2 s):
 - Attribution: raw P2 = 0.0021817915, survival-corrected P2 = 0.0018200904.
 - Flagged single faults: 0/1332; bare-only (skipped on noiseless input): 0/888; incoming errors: 0/42.
 - Full metrics, trigger category splits, and T2 sweep: [Stage 2 report](docs/STAGE_LOG.md#stage-2--sequential-idle-z-noise-and-primary-monte-carlo-reporting).
+
+## Effective uniform rate (Stage 3 checkpoint)
+
+```sh
+# Default stage is now 3. Runs/resumes the grid and readout study, then reports.
+.venv/bin/python src/ion_noise.py
+# Also usable from src/: python ion_noise.py --preset H2_LIKE
+# New sampling configurations require a separate cache directory:
+.venv/bin/python src/ion_noise.py --grid-shots 2000000 --cache-dir results/stage3_2M_grid
+```
+
+The uniform grid has 11 points at 1M shots each, with six-point neighborhoods
+bracketing both preset targets. p_eff is obtained by log-log interpolation.
+The uniform pseudothreshold solves uniform MC p_L=p on that curve. The reported
+95% intervals propagate binomial sampling uncertainty from the target and the
+uniform grid, including their shared calibration in threshold ratios. These
+are sampling intervals conditional on the interpolation model.
+
+Jones–Murali measurement-duration sensitivity uses 0/100/200/400 μs at 3M
+shots each, keeping measurement error and other parameters nominal. It also
+reports the nominal per-data-qubit idle seconds and summed local Z probability,
+weighted by the actual adaptive-path histogram. H2 remains **Stage 1 only**;
+its approved 3M-shot timing-free target is reused.
+
+Outputs:
+
+- `results/ion_noise_results.json`: both presets, p_eff and confidence intervals,
+  p_eff/p_2q and p_eff/pseudothreshold, pair attribution, timing sensitivity,
+  idle exposure, trigger metrics and the Stage 2 T2 sweep as reference.
+- `results/uniform_mc_calibration.json`, `results/measurement_duration_sweep.json`:
+  resumable raw experiments with seeds, parameters, checks and source fingerprints.
+- `figures/ion_noise_breakdown.png`: secondary P2 credit by location type
+  (mixed-type pairs split equally).
+- `figures/ion_noise_calibration.png`: uniform MC calibration and primary targets.
+
+For the two expensive parts independently and a report-only rebuild:
+
+```sh
+.venv/bin/python src/ion_analysis.py --part calibration
+.venv/bin/python src/ion_analysis.py --part measurements
+.venv/bin/python src/ion_analysis.py --part report
+```
+
+See [docs/noise_model.md](docs/noise_model.md#stage-3-effective-uniform-rate-from-monte-carlo)
+for uncertainty, attribution and counterfactual-timing definitions. Stage 4
+transport hooks have not been implemented.
+
+Stage 3 headline results (95% sampling intervals):
+
+| Preset | MC p_eff [95% CI] | p_eff / p_2q | p_eff / uniform pseudothreshold |
+| --- | ---: | ---: | ---: |
+| JONES_MURALI_2026 | 0.001675669 [0.001638817566, 0.001710165456] | 1.67567 | 1.25529 |
+| H2_LIKE (Stage 1 only) | 0.0010734088 [0.001032147376, 0.001135605607] | 0.838601 | 0.804118 |
+
+Uniform pseudothreshold = 0.001334889, 95% CI [0.00129130961, 0.00145135925]. Reducing readout duration from 400 to 0 μs lowers Jones–Murali p_L by 17.82%, accounting for about 81.1% of the nominal idle-induced logical increment under this timing model. This changes waiting for all live ions, including ancillas. Full readout p_L/p_eff tables, trigger metrics, per-data exposure and assumptions are in [the Stage 3 report](docs/STAGE_LOG.md#stage-3--monte-carlo-effective-uniform-rates-and-readout-sensitivity).

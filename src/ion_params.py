@@ -96,3 +96,13 @@ def fidelity_to_depolarizing(f_avg, n_qubits):
 
 # Sensitivity values explicitly requested in the staged study prompt, in seconds.
 T2_SWEEP = (0.1, 0.5, 2.2, 10.0)
+
+# Stage 3 counterfactual readout-duration study, explicitly requested by the user.
+# Error probabilities and all other nominal parameters remain fixed.
+MEASUREMENT_DURATION_SWEEP = (0.0, 100e-6, 200e-6, 400e-6)
+
+# Stage 3 analysis grid (not a device calibration). Two six-point neighborhoods
+# share 0.00135; the union brackets H2-like, Jones–Murali/readout targets and
+# the expected uniform MC pseudothreshold. Extend rather than extrapolate.
+UNIFORM_CALIBRATION_P = (0.00085, 0.00095, 0.00105, 0.00115, 0.00125, 0.00135,
+                         0.00145, 0.00155, 0.00165, 0.00175, 0.00185)
