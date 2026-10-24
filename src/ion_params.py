@@ -112,3 +112,8 @@ UNIFORM_CALIBRATION_P = (0.00085, 0.00095, 0.00105, 0.00115, 0.00125, 0.00135,
 DEFAULT_HEATING_PENALTY = dict.fromkeys(('shuttle', 'split', 'merge', 'junction'), 0.0)
 # Synthetic sensitivity values requested to test monotonicity, not hardware data.
 SYNTHETIC_HEATING_PENALTIES = (0.0, 5e-4, 1e-3)
+
+# Design-choice experiment inputs explicitly requested in the experiment prompt.
+# Analysis scan values, not additional hardware calibrations.
+DESIGN_UNIFORM_P = (5e-4, 1e-3, 1.5e-3)
+DESIGN_TWO_QUBIT_P = (5e-4, 1e-3, 2e-3)

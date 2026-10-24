@@ -1,0 +1,1813 @@
+{
+  "stage": "A1",
+  "source_fingerprint": "d7c575db7b10ee970896a75b442e808e1d67c6d576dda487f875a06f0f544bb6",
+  "rows": [
+    {
+      "order_name": "ZZZXXX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.0005)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "bca165104779a726f7d0350708cffcc74c8e211818c621b001ca581e302fb5f3",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "ZZZXXX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.001)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "bca165104779a726f7d0350708cffcc74c8e211818c621b001ca581e302fb5f3",
+      "reused_identical_support_check": true,
+      "checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "ZZZXXX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.0015)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "bca165104779a726f7d0350708cffcc74c8e211818c621b001ca581e302fb5f3",
+      "reused_identical_support_check": true,
+      "checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "ZZZXXX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.0005)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "67a590052ec5f9545149bd353531334e3d4eeb3da8e92656fafc971ba2e2b828",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "ZZZXXX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.001)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "67a590052ec5f9545149bd353531334e3d4eeb3da8e92656fafc971ba2e2b828",
+      "reused_identical_support_check": true,
+      "checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "ZZZXXX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.002)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "67a590052ec5f9545149bd353531334e3d4eeb3da8e92656fafc971ba2e2b828",
+      "reused_identical_support_check": true,
+      "checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "ZZZXXX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "H2_LIKE",
+      "timing_policy": "timing-free",
+      "geometry_signature": "8e78a59bbc6541a5957317d400b1aef28f37ceca6c21d505ecaf2a827ad2a030",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 1908,
+        "flagged_fault_runs": 1152,
+        "bare_only_fault_runs": 756,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1908,
+        "bare_triggered_pair_cross_check_runs": 756,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "ZZZXXX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "JONES_MURALI_2026",
+      "timing_policy": "SEQ",
+      "geometry_signature": "fb68add76d7ea6924e7e962e9f871735868f550316e6f6479205b83760633093",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 2220,
+        "flagged_fault_runs": 1332,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 180,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2220,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "ZZZXXX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "JONES_MURALI_2026",
+      "timing_policy": "PAR_MR",
+      "geometry_signature": "d15d8a39bcb3ed8f1bf4ead41c2e6bbc023bb95cd79a108d4907819008eacbc5",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 2214,
+        "flagged_fault_runs": 1326,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 174,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2214,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "XXXZZZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.0005)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "1d6e185d912c958d1d6b2a295a2d6474f85898f9d47237a8da984da5003581cd",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "XXXZZZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.001)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "1d6e185d912c958d1d6b2a295a2d6474f85898f9d47237a8da984da5003581cd",
+      "reused_identical_support_check": true,
+      "checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "XXXZZZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.0015)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "1d6e185d912c958d1d6b2a295a2d6474f85898f9d47237a8da984da5003581cd",
+      "reused_identical_support_check": true,
+      "checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "XXXZZZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.0005)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "78f342629562e992823f7bd6925bc372049d2c3b805bbee85aeb6713de9037c6",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "XXXZZZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.001)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "78f342629562e992823f7bd6925bc372049d2c3b805bbee85aeb6713de9037c6",
+      "reused_identical_support_check": true,
+      "checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "XXXZZZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.002)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "78f342629562e992823f7bd6925bc372049d2c3b805bbee85aeb6713de9037c6",
+      "reused_identical_support_check": true,
+      "checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "XXXZZZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "H2_LIKE",
+      "timing_policy": "timing-free",
+      "geometry_signature": "971082a51dd0d1a4b3d073bf0d3529de696812e55e87df6167bbb42425c6bfd6",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 1908,
+        "flagged_fault_runs": 1152,
+        "bare_only_fault_runs": 756,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1908,
+        "bare_triggered_pair_cross_check_runs": 756,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "XXXZZZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "JONES_MURALI_2026",
+      "timing_policy": "SEQ",
+      "geometry_signature": "377bc734193273ee1aa783b9ce3c5490cec3c70d804360e16feeacdd634b3324",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 2220,
+        "flagged_fault_runs": 1332,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 180,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2220,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "XXXZZZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "JONES_MURALI_2026",
+      "timing_policy": "PAR_MR",
+      "geometry_signature": "8ad0e4872bfb5dcdfa399f857cde649c52f3e0c1773bcec592ae281e3d5fd70c",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 2214,
+        "flagged_fault_runs": 1326,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 174,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2214,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "ZXZXZX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.0005)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "ee503cc525c6257475a944739240f4bed64a3db0a0fff05fa3303690c2d3a714",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "ZXZXZX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.001)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "ee503cc525c6257475a944739240f4bed64a3db0a0fff05fa3303690c2d3a714",
+      "reused_identical_support_check": true,
+      "checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "ZXZXZX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.0015)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "ee503cc525c6257475a944739240f4bed64a3db0a0fff05fa3303690c2d3a714",
+      "reused_identical_support_check": true,
+      "checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "ZXZXZX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.0005)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "d91fbc6952cb7299174a1926044155f31b360fc46877770afa4c2504d0cdb1f2",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "ZXZXZX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.001)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "d91fbc6952cb7299174a1926044155f31b360fc46877770afa4c2504d0cdb1f2",
+      "reused_identical_support_check": true,
+      "checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "ZXZXZX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.002)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "d91fbc6952cb7299174a1926044155f31b360fc46877770afa4c2504d0cdb1f2",
+      "reused_identical_support_check": true,
+      "checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "ZXZXZX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "H2_LIKE",
+      "timing_policy": "timing-free",
+      "geometry_signature": "becf5f3f1a22b062b0b28ddc143b7ee60eee4afa5b66a95630d520b0f8174bcc",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 1908,
+        "flagged_fault_runs": 1152,
+        "bare_only_fault_runs": 756,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1908,
+        "bare_triggered_pair_cross_check_runs": 756,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "ZXZXZX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "JONES_MURALI_2026",
+      "timing_policy": "SEQ",
+      "geometry_signature": "66dc51073129cd106dd9e04fce62026164f643098fa62c3f26550e84ec50f1c1",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 2220,
+        "flagged_fault_runs": 1332,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 180,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2220,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "ZXZXZX",
+      "round_order": [
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          2
+        ],
+        [
+          "X",
+          2
+        ]
+      ],
+      "preset": "JONES_MURALI_2026",
+      "timing_policy": "PAR_MR",
+      "geometry_signature": "8b057c7271236cb9dab86b55cc3c76215fd27a2dc2035d8f1617867e1333b8ef",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 2214,
+        "flagged_fault_runs": 1326,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 174,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2214,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "XZXZXZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.0005)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "9be0bf5855796dfad579b39e4c9a3cb9710a0700042193213ac2534bf1995d4f",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "XZXZXZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.001)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "9be0bf5855796dfad579b39e4c9a3cb9710a0700042193213ac2534bf1995d4f",
+      "reused_identical_support_check": true,
+      "checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "XZXZXZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "UniformNoise(0.0015)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "9be0bf5855796dfad579b39e4c9a3cb9710a0700042193213ac2534bf1995d4f",
+      "reused_identical_support_check": true,
+      "checks": {
+        "single_fault_runs": 1872,
+        "flagged_fault_runs": 1128,
+        "bare_only_fault_runs": 744,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1872,
+        "bare_triggered_pair_cross_check_runs": 744,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "XZXZXZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.0005)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "c31045164fe1c12043b14c88b4acbe9b5269193f0366e2cb08eccb7a5c0b5be9",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "XZXZXZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.001)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "c31045164fe1c12043b14c88b4acbe9b5269193f0366e2cb08eccb7a5c0b5be9",
+      "reused_identical_support_check": true,
+      "checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "XZXZXZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "TWO_QUBIT_ONLY(0.002)",
+      "timing_policy": "timing-free",
+      "geometry_signature": "c31045164fe1c12043b14c88b4acbe9b5269193f0366e2cb08eccb7a5c0b5be9",
+      "reused_identical_support_check": true,
+      "checks": {
+        "single_fault_runs": 1800,
+        "flagged_fault_runs": 1080,
+        "bare_only_fault_runs": 720,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1800,
+        "bare_triggered_pair_cross_check_runs": 720,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "XZXZXZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "H2_LIKE",
+      "timing_policy": "timing-free",
+      "geometry_signature": "9fa3b3387a96c1f280fd426c4a76c8d3f6496be5b7efbd8ffa8ea120aa7e53ba",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 1908,
+        "flagged_fault_runs": 1152,
+        "bare_only_fault_runs": 756,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 0,
+        "bare_only_idle_fault_runs": 0,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1908,
+        "bare_triggered_pair_cross_check_runs": 756,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "XZXZXZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "JONES_MURALI_2026",
+      "timing_policy": "SEQ",
+      "geometry_signature": "2c79d8f94db04e10da898e85f5386aa391a3a0ce2c1a371512f9da86faed9760",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 2220,
+        "flagged_fault_runs": 1332,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 180,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2220,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    },
+    {
+      "order_name": "XZXZXZ",
+      "round_order": [
+        [
+          "X",
+          0
+        ],
+        [
+          "Z",
+          0
+        ],
+        [
+          "X",
+          1
+        ],
+        [
+          "Z",
+          1
+        ],
+        [
+          "X",
+          2
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "preset": "JONES_MURALI_2026",
+      "timing_policy": "PAR_MR",
+      "geometry_signature": "c3b7394e60b739f44ef725a74a85ed82767ecca95a05763548390713616b2ed1",
+      "reused_identical_support_check": false,
+      "checks": {
+        "single_fault_runs": 2214,
+        "flagged_fault_runs": 1326,
+        "bare_only_fault_runs": 888,
+        "incoming_runs": 42,
+        "flagged_fault_failures": 0,
+        "bare_only_fault_failures": 0,
+        "incoming_failures": 0,
+        "flagged_idle_fault_runs": 174,
+        "bare_only_idle_fault_runs": 132,
+        "single_fault_failures": 0,
+        "cross_check_runs": 2214,
+        "bare_triggered_pair_cross_check_runs": 888,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      }
+    }
+  ],
+  "frozen_artifacts": {
+    "frozen_commit": "d298328beb86d96699a2f3c8804eff3268419e9a",
+    "artifact_count": 16,
+    "all_byte_identical": true,
+    "mismatches": []
+  },
+  "unique_exhaustive_checks": 20
+}

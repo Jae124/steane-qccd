@@ -524,3 +524,69 @@ Custom events may be supplied with `--transport-events events.json`, plus an
 optional `--heating-penalty` JSON map. Stage 4 without either event input has
 an empty event list; it does not automatically select the fixture. The original
 Stage 0–3 numerical artifacts and figures remain unchanged.
+
+
+## Stage A1: optional flag order and reset/readout layers
+
+`FlagDesign` is an opt-in experimental view around the approved instrument.
+`round_order` must be a permutation of `ROUND`, including the original support
+indices. Both rounds execute that order; bare syndrome bits are stored by
+support index, not appended by position. The triggering circuit's actual kind
+and support select the original flagged table. No circuit, decoder, correction
+rule or channel convention changes. Default order and SEQ delegate to the
+original functions and retain the seeded random stream exactly. Other orders
+reuse the independent or conditional counting/sampling kernel with private
+function bindings; no module globals are mutated.
+
+`SEQ` retains the original sequential timing. **PAR_MR is a modeling
+assumption**, not a hardware schedule: greedily group adjacent reset-family
+operations (R/RX), or adjacent measurement-family operations (M/MX), on distinct
+ions. Each operation starts at the layer start, retains its original composite
+duration, and the layer lasts the maximum duration. Gates remain sequential.
+An RX still includes the reset and rotation channels; an MX still includes its
+rotation and measurement channel. Only live-qubit waiting and resulting idle Z
+locations change. A shorter reset's ion waits until its next gate; ancillas
+cease to be live at their own measurement end. Data are live throughout.
+Readout exposure uses the union of actual readout windows within a layer,
+excluding an MX rotation from its own readout window.
+
+For nominal Jones–Murali, each flagged check takes 1150 us under SEQ and
+700 us under PAR_MR: max(50,55) + 6*40 + max(400,405) us. Bare Z/X checks
+remain 610/620 us because each has only one reset and one measurement.
+PAR_MR therefore differs from globally reducing the measurement-duration
+parameter in the Stage 3 sensitivity sweep. Boundary subdivision and data
+exposure are recomputed for each circuit and actual executed prefix. Intervals
+below 1e-15 seconds are discarded solely to remove floating-point roundoff.
+
+Transport events use circuit **position in the executed order**, with original
+operation indices before idle insertion. An event at an insertion point is a
+serial barrier between layers; terminal events are allowed. The same synthetic
+waiting and prefix-dependent next-CX heating rules apply. Custom circuit maps
+and idle inserters extend `TransportPlan` without changing its default path.
+No hardware transport schedule is inferred.
+
+The design grids are centralized in `ion_params.py`: UniformNoise at
+{0.0005,0.001,0.0015}, and TWO_QUBIT_ONLY at {0.0005,0.001,0.002} as requested
+experiment inputs, not new hardware parameters. TWO_QUBIT_ONLY uses the
+existing CX depolarizing channel, with reset, readout and idle errors zero.
+H2_LIKE stays timing-free, Stage 1 only; PAR_MR is rejected for untimed inputs.
+Jones–Murali uses nominal sourced parameters and empty transport for both
+reference rows. No physical placeholders were added.
+
+A1 validates four orders under all nine preset/policy cases (36 rows). Exact
+fault-support geometries can be reused across probability values: the saved
+signature includes the order, operations, durations and every positive-probability
+payload. There are 20 distinct exhaustive checks. Bare-only injected faults are
+reported separately; noiseless input alone never executes the bare round.
+The cross-check also forces a flagged trigger to execute each bare fault.
+
+A1 MC is limited to the required baseline-order SEQ/PAR_MR timing references,
+5M shots each with independent recorded seeds. MC is primary; raw P2 and exact
+survival-corrected P2 are secondary attribution. Survival correction uses the
+existing product over all other potential locations, including unexecuted
+locations, and is not claimed to replace the adaptive MC estimate. JSON retains
+both the exact correction and mean-probability approximation, cause-separated
+trigger rates, trigger-position counts, failure share through bare, and all
+actual-path idle-exposure tables. New files use the `stageA1_` prefix; all 16
+approved result/figure files are SHA-256 checked against the pre-A1 commit.
+No order-effect conclusion or new p_eff calibration is made until A2.

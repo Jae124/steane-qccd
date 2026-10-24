@@ -1,0 +1,21 @@
+{
+  "frozen_commit": "d298328beb86d96699a2f3c8804eff3268419e9a",
+  "sha256": {
+    "figures/flagged_Z4567.svg": "90a95c8967c343f3407c08f8e500c34a3968bafa6b0d3f37b21545b806658e66",
+    "figures/flagged_circuit.png": "5ee6a844e0d20183ce35fb1fce1b7484b35c7381b0adbff96c99ea7d19ed5e1c",
+    "figures/ion_noise_breakdown.png": "7cd4417a9541832f05e9d840aede08aa6d614c492ff4158f67e7e848e4338e32",
+    "figures/ion_noise_calibration.png": "3361c3c1d0afe80a55c46ba3cbbcb2f877204a197e1d6a24ea53b58f9439e766",
+    "figures/steane_ec_threshold.png": "380503ccb0920170e9f275cec5337a48cf10fe0f36f22ebac9af7434880253ae",
+    "results/flagged_Z4567.stim": "2f9f38fe2d2722af8c3027d5f41b3e4dd4876aa39c2b4fbff42b858f6dd8eff3",
+    "results/flagged_round.stim": "0837bdc4b45817e52d30cb33633215371c6c077158f518db7dc58c62e3f6db02",
+    "results/ion_noise_results.json": "fbe49db5f8f6ffcd0a09b65e73c107c0b655000087bcd266c6a2e909f92e27f5",
+    "results/measurement_duration_sweep.json": "70622dcb73acdb187a713b5bdf192659b56060a92665c60ce1169eb4e5d1cdb9",
+    "results/stage0_channels.json": "b70e8bcefe021eb92882c3f0f0a3a2bb14512eb1086bb496c0995edec64c447c",
+    "results/stage0_trigger_metrics.json": "a0ca711eba5f97ff7db2ac60679947a85b87555cf259c490b7540383becac5ef",
+    "results/stage1_ion_noise.json": "273c94ab7f027ed99efe6667be9eb6d5080e57d819a9a5c21613fe7e3f198b08",
+    "results/stage2_ion_noise.json": "86fc8f5a21cf0287b19bd6c9634682140d4c1ec63d48a13dbe3fa261a8cd7ee6",
+    "results/stage4_transport_results.json": "19f2ee641948a20cabb8af45dcdf279f5408f2607061446f942a549509f4eb89",
+    "results/steane_ec_results.json": "5f2a3906cb0df7c73be6498080f08f7bcb0ccdf580144b2d69c241a6ba6008ec",
+    "results/uniform_mc_calibration.json": "8d815f5992cf5435e98b82bb40ca2cee5cbd691ea011b665f5a000cf2d566a25"
+  }
+}

@@ -249,3 +249,43 @@ faults: 0/912 separately; incoming: 0/42; no simulator mismatches.
 Raw P2 increases strictly over the synthetic penalty sweep. Full trigger
 splits, type/stage attribution, event list and actual-path exposure are in
 [the Stage 4 report](docs/STAGE_LOG.md#stage-4--optional-transport-interface-and-synthetic-validation).
+
+
+### Stage A1: optional flag check order and timing policy
+
+`src/flag_design.py` provides `FlagDesign(noise, round_order=None,
+timing_policy="SEQ")`. The order is a permutation of the six `(kind,
+support_index)` entries in `steane_ft.ROUND`, used for both flagged and bare
+rounds. Defaults delegate to the approved instrument. Individual check circuits,
+lookup tables and the adaptive rule are unchanged.
+
+```python
+from flag_design import CHECK_ORDERS, FlagDesign, TWO_QUBIT_ONLY
+from ion_noise import IdleIonNoise
+from ion_params import JONES_MURALI_2026
+
+design = FlagDesign(IdleIonNoise(JONES_MURALI_2026),
+                    CHECK_ORDERS["ZXZXZX"], timing_policy="PAR_MR")
+checks = design.check_faults()
+```
+
+`PAR_MR` is an explicit modeling assumption: adjacent resets or adjacent
+measurements on distinct ions share a layer; gates remain sequential. It uses
+only the existing sourced durations. H2 remains timing-free (Stage 1 only).
+Transport indices identify positions in the **executed** check order and
+original operation indices before idle insertion; transport remains synthetic.
+
+Reproduce this checkpoint with:
+
+```bash
+.venv/bin/python src/check_order.py --part checks
+.venv/bin/python src/check_order.py --part reference  # cached 5M-shot SEQ/PAR_MR arms
+.venv/bin/python src/check_order.py --part report
+.venv/bin/python -m pytest -q
+```
+
+The A1 report is [docs/STAGE_LOG.md](docs/STAGE_LOG.md#stage-a1--parameterized-flag-check-order-and-timing-policy),
+with machine-readable results in `results/stageA1_validation.json`. All 36
+order/preset/policy configurations pass the fault and simulator checks. A1
+contains only baseline-order timing reference MC; the order experiment (A2)
+and Steane-style extraction (B) await review.

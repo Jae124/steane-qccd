@@ -35,7 +35,8 @@ def validate_penalties(penalties=None):
     return result
 
 
-def validate_events(params, events):
+def validate_events(params, events, *, circuits=None):
+    circuits = CIRCUITS if circuits is None else circuits
     result = []
     for event in events:
         if not isinstance(event, (list, tuple)) or len(event) != 5:
@@ -43,7 +44,7 @@ def validate_events(params, events):
         stage, circuit, before, qubit, kind = event
         if stage not in ('F', 'B') or type(circuit) is not int or not 0 <= circuit < len(ROUND):
             raise ValueError(f'Invalid event circuit: {event}')
-        if type(before) is not int or not 0 <= before <= len(CIRCUITS[(stage, circuit)]):
+        if type(before) is not int or not 0 <= before <= len(circuits[(stage, circuit)]):
             raise ValueError(f'Invalid original before_op index: {event}')
         if type(qubit) is not int or not 0 <= qubit < N_QUBITS:
             raise ValueError(f'Invalid moved qubit: {event}')
@@ -98,17 +99,19 @@ def insert_transport_idles(ops, params, events):
 
 
 class TransportPlan:
-    def __init__(self, params, transport_events, heating_penalty=None):
+    def __init__(self, params, transport_events, heating_penalty=None, *, circuits=None, idle_inserter=None):
         self.params = params
-        self.events = validate_events(params, transport_events)
+        base_circuits = CIRCUITS if circuits is None else circuits
+        idle_inserter = insert_transport_idles if idle_inserter is None else idle_inserter
+        self.events = validate_events(params, transport_events, circuits=base_circuits)
         self.penalties = validate_penalties(heating_penalty)
         self.grouped = {}
         for stage, circuit, before, qubit, kind in self.events:
             self.grouped.setdefault((stage, circuit), []).append((before, qubit, kind))
         self.circuits, self.mapping, self.extra_durations = {}, {}, {}
-        for key, ops in CIRCUITS.items():
+        for key, ops in base_circuits.items():
             events = self.grouped.get(key, [])
-            self.circuits[key], self.mapping[key] = insert_transport_idles(ops, params, events)
+            self.circuits[key], self.mapping[key] = idle_inserter(ops, params, events)
             self.extra_durations[key] = math.fsum(getattr(params, kind + '_duration')
                                                  for _, _, kind in events)
         self.rates = {}
@@ -123,12 +126,12 @@ class TransportPlan:
                 by_index = {}
                 for before, qubit, kind in self.grouped.get(key, []):
                     by_index.setdefault(before, []).append((qubit, kind))
-                for idx in range(len(CIRCUITS[key]) + 1):
+                for idx in range(len(base_circuits[key]) + 1):
                     for qubit, kind in by_index.get(idx, []):
                         pending[qubit] += self.penalties[kind]
-                    if idx == len(CIRCUITS[key]):
+                    if idx == len(base_circuits[key]):
                         continue
-                    op = CIRCUITS[key][idx]
+                    op = base_circuits[key][idx]
                     if op[0] == 'CX':
                         a, b = op[1:]
                         rate = params.p_2q + pending[a] + pending[b]

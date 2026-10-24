@@ -1,0 +1,476 @@
+{
+  "configuration": {
+    "source_fingerprint": "d7c575db7b10ee970896a75b442e808e1d67c6d576dda487f875a06f0f544bb6",
+    "policy": "PAR_MR",
+    "shots": 5000000,
+    "seed": 73002,
+    "parameters": {
+      "name": "JONES_MURALI_2026",
+      "p_2q": 0.001,
+      "p_1q": 1e-05,
+      "p_reset": 0.005,
+      "p_meas": 0.001,
+      "T2": 2.2,
+      "ms_duration": 4e-05,
+      "rotation_duration": 5e-06,
+      "measurement_duration": 0.0004,
+      "reset_duration": 5e-05,
+      "shuttle_duration": 5e-06,
+      "split_duration": 8e-05,
+      "merge_duration": 8e-05,
+      "junction_duration": 0.0001,
+      "source": "https://arxiv.org/html/2510.23519v1#S5",
+      "caveat": "Gate probabilities are placeholders pending a heating model."
+    },
+    "round_order": [
+      [
+        "Z",
+        0
+      ],
+      [
+        "Z",
+        1
+      ],
+      [
+        "Z",
+        2
+      ],
+      [
+        "X",
+        0
+      ],
+      [
+        "X",
+        1
+      ],
+      [
+        "X",
+        2
+      ]
+    ]
+  },
+  "checks": {
+    "single_fault_runs": 2214,
+    "flagged_fault_runs": 1326,
+    "bare_only_fault_runs": 888,
+    "incoming_runs": 42,
+    "flagged_fault_failures": 0,
+    "bare_only_fault_failures": 0,
+    "incoming_failures": 0,
+    "flagged_idle_fault_runs": 174,
+    "bare_only_idle_fault_runs": 132,
+    "single_fault_failures": 0,
+    "cross_check_runs": 2214,
+    "bare_triggered_pair_cross_check_runs": 888,
+    "mismatches": 0,
+    "failure_details": [],
+    "mismatch_details": []
+  },
+  "complete": true,
+  "counts": {
+    "n_locations": 249,
+    "location_counts": {
+      "R": 9,
+      "RX": 9,
+      "IDLE": 153,
+      "CX": 60,
+      "M": 9,
+      "MX": 9
+    },
+    "single_fault_failures": 0,
+    "malignant_pairs": 128187,
+    "P1": 0.0,
+    "P2": 0.0020168313462503866,
+    "P2_survival_corrected": 0.001691044302165995,
+    "P2_survival_by_stage_pair": {
+      "FB": 0.0015591657034254123,
+      "FF": 0.00013187859874113486
+    },
+    "P2_survival_by_type_pair": {
+      "2q*reset": 0.0007458593803782526,
+      "idle*reset": 0.00010300517673558655,
+      "reset*reset": 0.00012662571682896376,
+      "meas*reset": 5.0581926241657e-05,
+      "idle*idle": 2.387338394641712e-05,
+      "2q*idle": 0.00014126510901876665,
+      "idle*meas": 2.0606179012569137e-05,
+      "2q*2q": 0.00032519520353121545,
+      "2q*meas": 0.00014898082508235644,
+      "meas*meas": 5.051401392721766e-06
+    },
+    "mean_location_fault_probability": 0.0007248543544461329,
+    "P2_survival_mean_approx": 0.00168610931405257,
+    "P2_by_logical_type": {
+      "X": 0.0008670954626229956,
+      "Z": 0.0012572735653631618,
+      "any": 0.0020168313462503866
+    },
+    "P2_by_stage_pair": {
+      "FB": 0.0018591869150305278,
+      "FF": 0.000157644431220209
+    },
+    "P2_by_type_pair": {
+      "2q*reset": 0.0008882681466666308,
+      "idle*reset": 0.00012278090130657607,
+      "reset*reset": 0.00015019813068000004,
+      "meas*reset": 6.0239463472e-05,
+      "idle*idle": 2.859623766386796e-05,
+      "2q*idle": 0.00016906317585459204,
+      "idle*meas": 2.4661119585792386e-05,
+      "2q*2q": 0.0003888444444436227,
+      "2q*meas": 0.00017813967377777637,
+      "meas*meas": 6.040052800533333e-06
+    }
+  },
+  "monte_carlo": {
+    "shots": 5000000,
+    "fails": 9551,
+    "p_L": 0.0019102,
+    "stderr": 1.9527166389212746e-05,
+    "triggers": 509070,
+    "trigger_rate": 0.101814,
+    "trigger_circuit_counts": [
+      80929,
+      81719,
+      80586,
+      93858,
+      87442,
+      84536
+    ],
+    "no_trigger_shots": 4490930,
+    "trigger_rate_stderr": 0.00013523898062614936,
+    "trigger_cause_counts": {
+      "reset": 285197,
+      "measurement": 56484,
+      "2q": 142521,
+      "idle": 23716,
+      "mixed": 1152
+    },
+    "trigger_cause_rates": {
+      "reset": 0.0570394,
+      "measurement": 0.0112968,
+      "2q": 0.0285042,
+      "idle": 0.0047432,
+      "mixed": 0.0002304
+    },
+    "trigger_contributing_type_rates": {
+      "reset": 0.057234,
+      "measurement": 0.0113874,
+      "2q": 0.0286474,
+      "idle": 0.0047758
+    },
+    "trigger_fractional_type_rates": {
+      "reset": 0.057136666666666676,
+      "measurement": 0.011342066666666668,
+      "2q": 0.028575766666666662,
+      "idle": 0.0047595
+    },
+    "failures_through_bare": 9454,
+    "failure_share_through_bare": 0.9898439953931526,
+    "failure_share_through_bare_stderr": 0.0010259363049317932,
+    "seed": 73002
+  },
+  "idle_exposure": {
+    "definition": "Actual executed paths under the selected order and timing policy.",
+    "shots": 5000000,
+    "paths": {
+      "no_trigger": {
+        "count": 4490930,
+        "probability": 0.898186,
+        "round_duration_seconds": 0.004200000000000001,
+        "readout_idle_seconds_per_data_qubit": 0.0024300000000000007,
+        "data": {
+          "0": {
+            "seconds": 0.00412,
+            "summed_Z_probability": 0.0009362242858994132
+          },
+          "1": {
+            "seconds": 0.00412,
+            "summed_Z_probability": 0.0009362242858994132
+          },
+          "2": {
+            "seconds": 0.00404,
+            "summed_Z_probability": 0.0009180704955121836
+          },
+          "3": {
+            "seconds": 0.00412,
+            "summed_Z_probability": 0.0009362242858994132
+          },
+          "4": {
+            "seconds": 0.00404,
+            "summed_Z_probability": 0.0009180733876403183
+          },
+          "5": {
+            "seconds": 0.00404,
+            "summed_Z_probability": 0.0009180762797684531
+          },
+          "6": {
+            "seconds": 0.003960000000000001,
+            "summed_Z_probability": 0.0008999290173275715
+          }
+        }
+      },
+      "trigger_F0": {
+        "count": 80929,
+        "probability": 0.0161858,
+        "round_duration_seconds": 0.004390000000000001,
+        "readout_idle_seconds_per_data_qubit": 0.002805,
+        "data": {
+          "0": {
+            "seconds": 0.0043100000000000005,
+            "summed_Z_probability": 0.0009794135168506703
+          },
+          "1": {
+            "seconds": 0.0043100000000000005,
+            "summed_Z_probability": 0.0009794135168506703
+          },
+          "2": {
+            "seconds": 0.00423,
+            "summed_Z_probability": 0.0009612493900321619
+          },
+          "3": {
+            "seconds": 0.00427,
+            "summed_Z_probability": 0.0009703288542272006
+          },
+          "4": {
+            "seconds": 0.00419,
+            "summed_Z_probability": 0.0009521715033076257
+          },
+          "5": {
+            "seconds": 0.00419,
+            "summed_Z_probability": 0.0009521758415556991
+          },
+          "6": {
+            "seconds": 0.00411,
+            "summed_Z_probability": 0.000934019647548029
+          }
+        }
+      },
+      "trigger_F1": {
+        "count": 81719,
+        "probability": 0.0163438,
+        "round_duration_seconds": 0.005090000000000001,
+        "readout_idle_seconds_per_data_qubit": 0.00321,
+        "data": {
+          "0": {
+            "seconds": 0.0050100000000000006,
+            "summed_Z_probability": 0.0011384791187083955
+          },
+          "1": {
+            "seconds": 0.0049700000000000005,
+            "summed_Z_probability": 0.001129394456084926
+          },
+          "2": {
+            "seconds": 0.00489,
+            "summed_Z_probability": 0.001111234212981345
+          },
+          "3": {
+            "seconds": 0.0049700000000000005,
+            "summed_Z_probability": 0.001129394456084926
+          },
+          "4": {
+            "seconds": 0.00489,
+            "summed_Z_probability": 0.0011112371051653512
+          },
+          "5": {
+            "seconds": 0.00485,
+            "summed_Z_probability": 0.0011021621105689497
+          },
+          "6": {
+            "seconds": 0.004770000000000001,
+            "summed_Z_probability": 0.0010840078171026242
+          }
+        }
+      },
+      "trigger_F2": {
+        "count": 80586,
+        "probability": 0.0161172,
+        "round_duration_seconds": 0.005790000000000001,
+        "readout_idle_seconds_per_data_qubit": 0.003615,
+        "data": {
+          "0": {
+            "seconds": 0.0056700000000000006,
+            "summed_Z_probability": 0.0012884600579426515
+          },
+          "1": {
+            "seconds": 0.0056700000000000006,
+            "summed_Z_probability": 0.0012884600579426515
+          },
+          "2": {
+            "seconds": 0.00555,
+            "summed_Z_probability": 0.0012612190359305284
+          },
+          "3": {
+            "seconds": 0.0056700000000000006,
+            "summed_Z_probability": 0.0012884600579426515
+          },
+          "4": {
+            "seconds": 0.00555,
+            "summed_Z_probability": 0.0012612233741786016
+          },
+          "5": {
+            "seconds": 0.00555,
+            "summed_Z_probability": 0.0012612277124266751
+          },
+          "6": {
+            "seconds": 0.005430000000000001,
+            "summed_Z_probability": 0.0012339959866572196
+          }
+        }
+      },
+      "trigger_F3": {
+        "count": 93858,
+        "probability": 0.0187716,
+        "round_duration_seconds": 0.006490000000000001,
+        "readout_idle_seconds_per_data_qubit": 0.00402,
+        "data": {
+          "0": {
+            "seconds": 0.006370000000000001,
+            "summed_Z_probability": 0.0014475256598003767
+          },
+          "1": {
+            "seconds": 0.006370000000000001,
+            "summed_Z_probability": 0.0014475256598003767
+          },
+          "2": {
+            "seconds": 0.00625,
+            "summed_Z_probability": 0.0014202846377882536
+          },
+          "3": {
+            "seconds": 0.0063300000000000006,
+            "summed_Z_probability": 0.0014384409971769073
+          },
+          "4": {
+            "seconds": 0.00621,
+            "summed_Z_probability": 0.001411208197127785
+          },
+          "5": {
+            "seconds": 0.00621,
+            "summed_Z_probability": 0.0014112139814399258
+          },
+          "6": {
+            "seconds": 0.006090000000000001,
+            "summed_Z_probability": 0.0013839841562118147
+          }
+        }
+      },
+      "trigger_F4": {
+        "count": 87442,
+        "probability": 0.0174884,
+        "round_duration_seconds": 0.007190000000000001,
+        "readout_idle_seconds_per_data_qubit": 0.004425,
+        "data": {
+          "0": {
+            "seconds": 0.007070000000000001,
+            "summed_Z_probability": 0.0016065912616581022
+          },
+          "1": {
+            "seconds": 0.007030000000000001,
+            "summed_Z_probability": 0.0015975065990346327
+          },
+          "2": {
+            "seconds": 0.00691,
+            "summed_Z_probability": 0.001570269460737437
+          },
+          "3": {
+            "seconds": 0.007030000000000001,
+            "summed_Z_probability": 0.0015975065990346327
+          },
+          "4": {
+            "seconds": 0.00691,
+            "summed_Z_probability": 0.0015702737989855102
+          },
+          "5": {
+            "seconds": 0.00687,
+            "summed_Z_probability": 0.0015612002504531762
+          },
+          "6": {
+            "seconds": 0.006750000000000001,
+            "summed_Z_probability": 0.00153397232576641
+          }
+        }
+      },
+      "trigger_F5": {
+        "count": 84536,
+        "probability": 0.0169072,
+        "round_duration_seconds": 0.007890000000000001,
+        "readout_idle_seconds_per_data_qubit": 0.004830000000000001,
+        "data": {
+          "0": {
+            "seconds": 0.007730000000000001,
+            "summed_Z_probability": 0.001756572200892358
+          },
+          "1": {
+            "seconds": 0.007730000000000001,
+            "summed_Z_probability": 0.001756572200892358
+          },
+          "2": {
+            "seconds": 0.00757,
+            "summed_Z_probability": 0.00172025428368662
+          },
+          "3": {
+            "seconds": 0.007730000000000001,
+            "summed_Z_probability": 0.001756572200892358
+          },
+          "4": {
+            "seconds": 0.00757,
+            "summed_Z_probability": 0.0017202600679987609
+          },
+          "5": {
+            "seconds": 0.00757,
+            "summed_Z_probability": 0.0017202658523109017
+          },
+          "6": {
+            "seconds": 0.007410000000000001,
+            "summed_Z_probability": 0.0016839604953210053
+          }
+        }
+      }
+    },
+    "monte_carlo_weighted_data": {
+      "0": {
+        "seconds": 0.004317464816,
+        "seconds_stderr": 3.101031434610382e-07,
+        "summed_Z_probability": 0.0009810973820329292,
+        "summed_Z_probability_stderr": 7.046910267027234e-08
+      },
+      "1": {
+        "seconds": 0.004316111528000001,
+        "seconds_stderr": 3.085824397549236e-07,
+        "summed_Z_probability": 0.0009807900279101194,
+        "summed_Z_probability_stderr": 7.012372248625056e-08
+      },
+      "2": {
+        "seconds": 0.004232663864,
+        "seconds_stderr": 3.027981730818697e-07,
+        "summed_Z_probability": 0.0009618529644043258,
+        "summed_Z_probability_stderr": 6.881011034527543e-08
+      },
+      "3": {
+        "seconds": 0.004314713232,
+        "seconds_stderr": 3.076014040943618e-07,
+        "summed_Z_probability": 0.0009804724517249257,
+        "summed_Z_probability_stderr": 6.990090563270457e-08
+      },
+      "4": {
+        "seconds": 0.004231265568,
+        "seconds_stderr": 3.0181504399139463e-07,
+        "summed_Z_probability": 0.0009615385407561072,
+        "summed_Z_probability_stderr": 6.858712685944292e-08
+      },
+      "5": {
+        "seconds": 0.00422991228,
+        "seconds_stderr": 3.003014697883451e-07,
+        "summed_Z_probability": 0.000961234483198014,
+        "summed_Z_probability_stderr": 6.824386716760089e-08
+      },
+      "6": {
+        "seconds": 0.004146464616000001,
+        "seconds_stderr": 2.945098390953934e-07,
+        "summed_Z_probability": 0.000942304242141149,
+        "summed_Z_probability_stderr": 6.69290493610521e-08
+      }
+    },
+    "mean_readout_idle_seconds_per_data_qubit": 0.0025732302030000006
+  }
+}

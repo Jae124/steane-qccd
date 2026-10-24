@@ -545,3 +545,80 @@ Open questions for the human:
 - None blocks this Stage 4 checkpoint. Actual schedules, transport locations/feasibility and nonzero heating penalties still require external scheduler/hardware inputs.
 - H2 transport/idle modeling remains deferred until a sourced timing preset is supplied.
 - Stop here. No hardware schedule or work beyond Stage 4 has started.
+
+
+## Stage A1 — Parameterized flag check order and timing policy
+
+Changes:
+- `src/flag_design.py`: optional validated `round_order` for both rounds, original kind/support decoder selection, SEQ/PAR_MR timing and live-qubit idle insertion, actual-path exposure, and unchanged-kernel adapters.
+- `src/ion_transport.py`: optional circuit map and idle inserter; default Stage 4 path unchanged. Event positions follow the executed order, and event insertions split parallel layers.
+- `src/ion_params.py`: centralized user-requested design scan grids; no new hardware values.
+- `src/check_order.py`: A1-only correctness matrix and cached baseline-order timing references; atomic result saves and source/configuration checks.
+- `tests/test_flag_design.py`, `tests/fixtures/stages0_4_artifacts.json`: order, timing, conditional synthetic transport, default replay, exhaustive-matrix and frozen-artifact checks.
+- `README.md`, `docs/noise_model.md`: usage, timing assumption, transport-index convention, and stage scope.
+- `results/stageA1_fault_checks.json`, `stageA1_reference_SEQ.json`, `stageA1_reference_PAR_MR.json`, `stageA1_validation.json`: new checkpoint outputs. No A2/B output generated.
+
+Frozen-result checks:
+- All 16 approved `results/` and `figures/` files are SHA-256 identical to commit `d298328beb86d96699a2f3c8804eff3268419e9a`; manifest records each digest.
+- Default-order functions delegate to the approved instrument; original circuit and decoder source files are unchanged. Approved Stage 3 semantic fingerprint remains `481c4d8668af7a000bfed3b2e92163228375fd8a36d4af386dea49d5e8539dec`.
+- Full suite: **81 passed in 401.31 s** (61 existing + 20 new, including all slow checks); `git diff --check` passed.
+- Flagged FT regression: 0/1218; ignoring flags: 48/1218; original frame/tableau regression: 0/1176 — all pass.
+- Uniform malignant-pair total 92840 and all A dictionaries — exact pass; uniform seed 2026 at 3M shots: exactly 542 failures.
+- Default-order Jones seed 3326 at 3M shots: exactly 6121 failures, with the full MC/trigger dictionary equal to approved Stage 3 and Stage 4 empty transport; default pair counts equal Stage 3.
+- Stage 4 empty-transport channels, sampling, pair counts, cached Stage 3 report reconstruction and synthetic P2 monotonicity — pass. No approved artifact was rewritten.
+
+FT checks: all four orders (`ZZZXXX`, `XXXZZZ`, `ZXZXZX`, `XZXZXZ`) pass every row below. Counts are **per order and per scan value**, not pooled. All failure numerators are zero. Positive-support-identical scans share exhaustive results: 36 reported rows, 20 distinct exhaustive geometries. Bare-only faults are tested separately from flagged faults; they never execute on noiseless input. Incoming tests cover 7 qubits × X/Y/Z × both logical bases.
+
+| Preset | Policy | Flagged failures/runs | Bare-only failures/runs | Incoming failures/runs | Frame/tableau mismatches/runs | Additional forced-trigger bare checks |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| UniformNoise p={0.0005,0.001,0.0015} | timing-free | 0/1128 | 0/744 | 0/42 | 0/1872 | 0/744 |
+| TWO_QUBIT_ONLY p={0.0005,0.001,0.002} | timing-free | 0/1080 | 0/720 | 0/42 | 0/1800 | 0/720 |
+| H2_LIKE (Stage 1 only) | timing-free | 0/1152 | 0/756 | 0/42 | 0/1908 | 0/756 |
+| JONES_MURALI_2026 | SEQ | 0/1332 | 0/888 | 0/42 | 0/2220 | 0/888 |
+| JONES_MURALI_2026 | PAR_MR | 0/1326 | 0/888 | 0/42 | 0/2214 | 0/888 |
+
+Cross-check: zero mismatches throughout. Tests also reverse support-row order, compare incoming-error syndromes/corrections between simulators, preserve noiseless states in both bases, and exercise an asymmetric late synthetic transport event with prefix-dependent heating and forced bare-round faults. Transport is still synthetic.
+
+Numbers: **baseline order only**, nominal Jones–Murali, empty transport. These are the required SEQ/PAR_MR timing reference rows for the same gadget, not an A2 order-design comparison. Monte Carlo is primary, 5,000,000 shots per arm (independent seeds 73001/73002); P1=0 for both.
+
+| Policy | MC failures | MC p_L ± stderr | Raw P2 | Exact survival-corrected P2 | Raw/MC | Corrected/MC |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| SEQ | 10200 | 0.00204 ± 2.01783964e-05 | 0.00218179149881 | 0.00182009035186 | 1.069506 | 0.892201 |
+| PAR_MR | 9551 | 0.0019102 ± 1.95271664e-05 | 0.00201683134625 | 0.00169104430217 | 1.055822 | 0.885271 |
+
+PAR_MR minus SEQ: Δp_L = -0.0001298 ± 0.00002807985 (combined stderr), -4.6225σ; significant for this timing assumption at the specified ≥3σ rule. Combined stderr is 1.4700% of the smaller p_L, meeting the ≤2% criterion. ΔP2 = -0.000164960153. Raw P2 is above MC by 6.95%/5.58% (SEQ/PAR_MR); the survival-corrected estimate is below by 10.78%/11.47%. Neither replaces adaptive MC. The exact correction multiplies each pair weight by the product over all other potential locations; JSON also retains the mean-probability approximation and type/stage attribution.
+
+Trigger rates are probabilities per shot. The exclusive causes below sum to the total; mixed means multiple contributing types, with fractional and overlapping contributor rates also saved in JSON. Failure-through-bare is conditional on an MC failure.
+
+| Policy | Total trigger | Reset | Measurement | 2q | Idle | Mixed | Failures through bare / all failures |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| SEQ | 0.1049754 | 0.0568204 | 0.011358 | 0.028475 | 0.0080622 | 0.0002598 | 10106/10200 (99.07843%) |
+| PAR_MR | 0.101814 | 0.0570394 | 0.0112968 | 0.0285042 | 0.0047432 | 0.0002304 | 9454/9551 (98.98440%) |
+
+Per-position trigger rates (F0…F5, all-shot denominator):
+
+- SEQ: 0.0162038, 0.0163502, 0.0162802, 0.0199438, 0.0184906, 0.0177068.
+- PAR_MR: 0.0161858, 0.0163438, 0.0161172, 0.0187716, 0.0174884, 0.0169072.
+
+Timing: each flagged check is 1150 us SEQ / 700 us PAR_MR; all-six-flagged no-trigger round is 6.9 ms / 4.2 ms. Bare Z/X checks remain 610/620 us under either policy. MC-weighted per-data-qubit readout idle is 0.00484903008 s SEQ / 0.002573230203 s PAR_MR. Full conditional paths, round durations and exposure errors are in the JSON.
+
+| Data qubit | SEQ mean idle s | SEQ summed Z probability | PAR_MR mean idle s | PAR_MR summed Z probability |
+| ---: | ---: | ---: | ---: | ---: |
+| 0 | 0.006912069708 | 0.00157055053742 | 0.004317464816 | 0.000981097382033 |
+| 1 | 0.006910676076 | 0.00157023434523 | 0.004316111528 | 0.00098079002791 |
+| 2 | 0.006827070948 | 0.00155129001833 | 0.004232663864 | 0.000961852964404 |
+| 3 | 0.006909230172 | 0.00156990629339 | 0.004314713232 | 0.000980472451725 |
+| 4 | 0.006825625044 | 0.00155096795216 | 0.004231265568 | 0.000961538540756 |
+| 5 | 0.006824231412 | 0.00155065804283 | 0.00422991228 | 0.000961234483198 |
+| 6 | 0.006740626284 | 0.00153173434939 | 0.004146464616 | 0.000942304242141 |
+
+Assumptions made:
+- PAR_MR groups adjacent disjoint resets or measurements, including the existing composite RX/MX durations. This is a timing assumption, not a demonstrated device schedule; gates are sequential. It changes only waiting/idle noise. No hardware values or placeholders were added.
+- Bare syndrome rows retain their original support addresses, even if support order is also permuted. The triggered flagged lookup uses actual kind and support; decoders and adaptive rules are unchanged.
+- Transport indices identify positions in the executed order. Insertions are serial barriers; branch-dependent heating uses only the executed flagged prefix. No real routing or layout is introduced.
+- Uniform and two-qubit-only scan probabilities are analysis inputs from the prompt. H2 remains timing-free, Stage 1 only. Jones uses nominal sourced timing and empty transport.
+- Monte Carlo remains primary; P2 and survival-corrected P2 are attribution. Baseline timing references are included here as requested. Order MC, logical-X/Z comparisons, p_eff and calibration extension belong to A2 and have not started.
+
+Open questions for the human:
+- None blocks A1. Review the order/timing interfaces and PAR_MR assumption before A2.
+- Stop here. Stage A2 and all Stage B work await approval.
