@@ -13,7 +13,7 @@ from flag_design import layer_timing
 from ion_noise import IonNoise,IdleIonNoise
 from ion_params import H2_LIKE,JONES_MURALI_2026
 from ion_timing import operation_duration
-from prep_experiment import derivation,frozen_checks,sample_cache
+from prep_experiment import derivation,frozen_checks,sample_cache,DEFAULT_MAX_ATTEMPTS
 from verified_prep import (VerifiedPreparation,BLOCK,VERIFIER,PAPER_ENCODER,VERIFY_SUPPORT,
                            CODE_GROUP,REDUCED_WEIGHT,STATE_PHASE_WEIGHT,preparation_ops,
                            run_tableau,tableau_signature,frame_signature,weights,popcount)
@@ -162,9 +162,10 @@ def test_retry_attempt_count_exhaustion_and_fresh_resets():
     class AlwaysReject:
         def channel(self,loc):return {'FLIP':1.} if loc[3][0]=='M' else {}
     g=VerifiedPreparation('0',AlwaysReject())
-    result=g.sample_retries(20,np.random.default_rng(4),max_attempts=3)
-    assert result['accepted_on_attempt']==[0,0,0]
-    assert result['all_attempts_rejected']==20 and result['attempt_executions']==60
+    assert DEFAULT_MAX_ATTEMPTS==4
+    result=g.sample_retries(20,np.random.default_rng(4),max_attempts=DEFAULT_MAX_ATTEMPTS)
+    assert result['max_attempts']==4 and result['accepted_on_attempt']==[0,0,0,0]
+    assert result['all_attempts_rejected']==20 and result['attempt_executions']==80
     with pytest.raises(ValueError):g.sample_retries(20,np.random.default_rng(4),max_attempts=0)
     # Fresh preparation resets all block/verifier errors, preserving spectators.
     clean=VerifiedPreparation('0',scalar.UniformNoise(0))

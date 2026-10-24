@@ -897,10 +897,12 @@ preparation. The original low-count H2 hazard samples are retained; fixed,
 independent 20M-attempt checks are additionally reported, rather than silently
 replacing those samples.
 
-`sample_retries` requires an explicit **total-attempt** cap. B1 reports both
-three-total-attempt and initial-plus-three-retry (four-total-attempt) diagnostics;
-the ambiguous “max_retries=3” convention is left explicit for review before
-B2. A failed verification discards and resets the whole block; a dangerous
+The nominal parameter is **`max_attempts = 4`**, including the initial attempt
+and three retries. `sample_retries` accepts this explicit total-attempt cap.
+The experiment runner defaults to four; three-attempt B1 results are retained
+as diagnostics only. B1 reports per-attempt rejection r and implied all-attempts
+rejected probability r^4 per state/preset/policy, with propagated MC uncertainty,
+a transformed Wilson interval and an exact finite-rate benchmark. A failed verification discards and resets the whole block; a dangerous
 multi-fault state with verifier 0 is still accepted. Exhaustion is counted as
 a standalone failure. For per-attempt rejection q, exhaustion is q^K, mean
 attempts is sum(q^i, i=0..K-1), and the selected dangerous-state probability is
@@ -916,3 +918,14 @@ prompt's definitions, the X-error-syndrome half uses |+_L> as target with Z
 readout; the Z-error-syndrome half uses |0_L> as control with X readout. Primary
 comparisons use A3 epsilon_tot, always with epsilon_X and epsilon_Z. No B3 arm
 comparison, half-order round assembly, or later-stage sampling occurs in B1.
+
+
+### B2/B3 abort accounting and cap sensitivity (recorded only)
+
+Aborts count as logical failures. B2/B3 must report the observed abort rate and
+its share of the primary epsilon_tot, with epsilon_X and epsilon_Z also shown.
+The nominal cap is `max_attempts = 4`. Run the cap-sensitivity check with
+`max_attempts` in {2, 4, infinity} on Jones–Murali SEQ; infinity means retry
+until verification accepts, without a finite-cap abort. Rejected attempts still
+contribute their complete time, fault locations and data waiting. These are
+future-stage requirements; no B2/B3 experiment is run by this B1 clarification.

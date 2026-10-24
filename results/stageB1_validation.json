@@ -23,5 +23,22 @@
     "focused_passed": 24
   },
   "circuit_diagram": "Visually inspected both basis circuits, labels and physical indices.",
-  "later_stages_executed": false
+  "later_stages_executed": false,
+  "retry_policy_clarification": {
+    "max_attempts": 4,
+    "meaning": "Initial attempt plus three retries",
+    "rows_checked": 18,
+    "cache_files_byte_identical": 75,
+    "original_MC_and_retry_results_unchanged": true,
+    "approved_artifacts": {
+      "artifact_count": 147,
+      "all_byte_identical": true,
+      "mismatches": []
+    },
+    "later_stage_requirements_recorded_only": true,
+    "focused_tests": {
+      "passed": 24,
+      "seconds": 3.37
+    }
+  }
 }

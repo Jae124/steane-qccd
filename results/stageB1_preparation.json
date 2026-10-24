@@ -787,6 +787,27 @@
         "flag_trigger_rate": null,
         "failure_share_through_bare": null
       },
+      "all_attempts_fail": {
+        "max_attempts": 4,
+        "per_attempt_rejection": {
+          "count": 27001,
+          "shots": 5000000,
+          "probability": 0.0054002,
+          "stderr": 3.27751059188525e-05,
+          "ci95_Wilson": [
+            0.005336339703725877,
+            0.005464820317526856
+          ]
+        },
+        "implied_from_MC_rejection": 8.504315781985728e-10,
+        "propagated_stderr": 2.064589093159151e-11,
+        "ci95_from_rejection_Wilson": [
+          8.109122729560692e-10,
+          8.91874091219458e-10
+        ],
+        "exact_finite_rate": 8.540469412747213e-10,
+        "scope": "One standalone preparation with independent fresh attempts; not a full-EC abort rate."
+      },
       "pair_attribution_vs_MC": {
         "P2": {
           "estimate_over_MC": 0.835663082437324,
@@ -1328,6 +1349,27 @@
         "verification_trigger_rate": 0.005384,
         "flag_trigger_rate": null,
         "failure_share_through_bare": null
+      },
+      "all_attempts_fail": {
+        "max_attempts": 4,
+        "per_attempt_rejection": {
+          "count": 26920,
+          "shots": 5000000,
+          "probability": 0.005384,
+          "stderr": 3.272617467410452e-05,
+          "ci95_Wilson": [
+            0.005320235619621264,
+            0.005448524426525016
+          ]
+        },
+        "implied_from_MC_rejection": 8.402726053519359e-10,
+        "propagated_stderr": 2.0430095138642157e-11,
+        "ci95_from_rejection_Wilson": [
+          8.011677630121586e-10,
+          8.812834389896621e-10
+        ],
+        "exact_finite_rate": 8.540469412747213e-10,
+        "scope": "One standalone preparation with independent fresh attempts; not a full-EC abort rate."
       },
       "pair_attribution_vs_MC": {
         "P2": {
@@ -1871,6 +1913,27 @@
         "flag_trigger_rate": null,
         "failure_share_through_bare": null
       },
+      "all_attempts_fail": {
+        "max_attempts": 4,
+        "per_attempt_rejection": {
+          "count": 53929,
+          "shots": 5000000,
+          "probability": 0.0107858,
+          "stderr": 4.619408299416712e-05,
+          "ci95_Wilson": [
+            0.010695634724675801,
+            0.010876717020854906
+          ]
+        },
+        "implied_from_MC_rejection": 1.3533478950484216e-08,
+        "propagated_stderr": 2.3184804088282062e-10,
+        "ci95_from_rejection_Wilson": [
+          1.3086582586597746e-08,
+          1.399559345654482e-08
+        ],
+        "exact_finite_rate": 1.339148059020143e-08,
+        "scope": "One standalone preparation with independent fresh attempts; not a full-EC abort rate."
+      },
       "pair_attribution_vs_MC": {
         "P2": {
           "estimate_over_MC": 1.102364066193917,
@@ -2412,6 +2475,27 @@
         "verification_trigger_rate": 0.010773,
         "flag_trigger_rate": null,
         "failure_share_through_bare": null
+      },
+      "all_attempts_fail": {
+        "max_attempts": 4,
+        "per_attempt_rejection": {
+          "count": 53865,
+          "shots": 5000000,
+          "probability": 0.010773,
+          "stderr": 4.6166963233463814e-05,
+          "ci95_Wilson": [
+            0.010682887888721687,
+            0.010863863876477994
+          ]
+        },
+        "implied_from_MC_rejection": 1.3469350037585838e-08,
+        "propagated_stderr": 2.3088795617335185e-10,
+        "ci95_from_rejection_Wilson": [
+          1.3024308749835434e-08,
+          1.3929555599140679e-08
+        ],
+        "exact_finite_rate": 1.339148059020143e-08,
+        "scope": "One standalone preparation with independent fresh attempts; not a full-EC abort rate."
       },
       "pair_attribution_vs_MC": {
         "P2": {
@@ -2955,6 +3039,27 @@
         "flag_trigger_rate": null,
         "failure_share_through_bare": null
       },
+      "all_attempts_fail": {
+        "max_attempts": 4,
+        "per_attempt_rejection": {
+          "count": 80724,
+          "shots": 5000000,
+          "probability": 0.0161448,
+          "stderr": 5.636336652997228e-05,
+          "ci95_Wilson": [
+            0.01603469897387745,
+            0.01625564453680582
+          ]
+        },
+        "implied_from_MC_rejection": 6.794080331880987e-08,
+        "propagated_stderr": 9.487568504531088e-10,
+        "ci95_from_rejection_Wilson": [
+          6.610636003612227e-08,
+          6.982593757990752e-08
+        ],
+        "exact_finite_rate": 6.644021982696897e-08,
+        "scope": "One standalone preparation with independent fresh attempts; not a full-EC abort rate."
+      },
       "pair_attribution_vs_MC": {
         "P2": {
           "estimate_over_MC": 0.9251984126984638,
@@ -3497,6 +3602,27 @@
         "flag_trigger_rate": null,
         "failure_share_through_bare": null
       },
+      "all_attempts_fail": {
+        "max_attempts": 4,
+        "per_attempt_rejection": {
+          "count": 80057,
+          "shots": 5000000,
+          "probability": 0.0160114,
+          "stderr": 5.61338312785436e-05,
+          "ci95_Wilson": [
+            0.015901748962387146,
+            0.01612179475328374
+          ]
+        },
+        "implied_from_MC_rejection": 6.572297731339569e-08,
+        "propagated_stderr": 9.216639443480774e-10,
+        "ci95_from_rejection_Wilson": [
+          6.394102180973455e-08,
+          6.75543860520867e-08
+        ],
+        "exact_finite_rate": 6.644021982696897e-08,
+        "scope": "One standalone preparation with independent fresh attempts; not a full-EC abort rate."
+      },
       "pair_attribution_vs_MC": {
         "P2": {
           "estimate_over_MC": 0.9071984435798166,
@@ -4019,6 +4145,27 @@
         "verification_trigger_rate": 0.0029276,
         "flag_trigger_rate": null,
         "failure_share_through_bare": null
+      },
+      "all_attempts_fail": {
+        "max_attempts": 4,
+        "per_attempt_rejection": {
+          "count": 14638,
+          "shots": 5000000,
+          "probability": 0.0029276,
+          "stderr": 2.4162074241422234e-05,
+          "ci95_Wilson": [
+            0.002880622723141265,
+            0.002975341097604612
+          ]
+        },
+        "implied_from_MC_rejection": 7.345932847495988e-11,
+        "propagated_stderr": 2.425098713399376e-12,
+        "ci95_from_rejection_Wilson": [
+          6.885659278416109e-11,
+          7.836949430073302e-11
+        ],
+        "exact_finite_rate": 7.325114733594862e-11,
+        "scope": "One standalone preparation with independent fresh attempts; not a full-EC abort rate."
       },
       "pair_attribution_vs_MC": {
         "P2": {
@@ -4543,6 +4690,27 @@
         "flag_trigger_rate": null,
         "failure_share_through_bare": null
       },
+      "all_attempts_fail": {
+        "max_attempts": 4,
+        "per_attempt_rejection": {
+          "count": 14703,
+          "shots": 5000000,
+          "probability": 0.0029406,
+          "stderr": 2.421550276843328e-05,
+          "ci95_Wilson": [
+            0.002893517996758282,
+            0.0029884458040112904
+          ]
+        },
+        "implied_from_MC_rejection": 7.477282887431627e-11,
+        "propagated_stderr": 2.4629825812549733e-12,
+        "ci95_from_rejection_Wilson": [
+          7.009785868008345e-11,
+          7.975933731132351e-11
+        ],
+        "exact_finite_rate": 7.325114733594862e-11,
+        "scope": "One standalone preparation with independent fresh attempts; not a full-EC abort rate."
+      },
       "pair_attribution_vs_MC": {
         "P2": {
           "estimate_over_MC": 0.6103703703703577,
@@ -5065,6 +5233,27 @@
         "verification_trigger_rate": 0.0058302,
         "flag_trigger_rate": null,
         "failure_share_through_bare": null
+      },
+      "all_attempts_fail": {
+        "max_attempts": 4,
+        "per_attempt_rejection": {
+          "count": 29151,
+          "shots": 5000000,
+          "probability": 0.0058302,
+          "stderr": 3.404763947165794e-05,
+          "ci95_Wilson": [
+            0.0057638452524317344,
+            0.005897314108066306
+          ]
+        },
+        "implied_from_MC_rejection": 1.1554038555971223e-09,
+        "propagated_stderr": 2.6989656560347402e-11,
+        "ci95_from_rejection_Wilson": [
+          1.1036954431801242e-09,
+          1.2095311030642492e-09
+        ],
+        "exact_finite_rate": 1.1595931781793186e-09,
+        "scope": "One standalone preparation with independent fresh attempts; not a full-EC abort rate."
       },
       "pair_attribution_vs_MC": {
         "P2": {
@@ -5589,6 +5778,27 @@
         "flag_trigger_rate": null,
         "failure_share_through_bare": null
       },
+      "all_attempts_fail": {
+        "max_attempts": 4,
+        "per_attempt_rejection": {
+          "count": 28920,
+          "shots": 5000000,
+          "probability": 0.005784,
+          "stderr": 3.391325800922111e-05,
+          "ci95_Wilson": [
+            0.005717908671010732,
+            0.005850850760480022
+          ]
+        },
+        "implied_from_MC_rejection": 1.119214008078336e-09,
+        "propagated_stderr": 2.6249096420121086e-11,
+        "ci95_from_rejection_Wilson": [
+          1.0689289943544365e-09,
+          1.1718609494068712e-09
+        ],
+        "exact_finite_rate": 1.1595931781793186e-09,
+        "scope": "One standalone preparation with independent fresh attempts; not a full-EC abort rate."
+      },
       "pair_attribution_vs_MC": {
         "P2": {
           "estimate_over_MC": 1.2207407407407154,
@@ -6112,6 +6322,27 @@
         "flag_trigger_rate": null,
         "failure_share_through_bare": null
       },
+      "all_attempts_fail": {
+        "max_attempts": 4,
+        "per_attempt_rejection": {
+          "count": 57597,
+          "shots": 5000000,
+          "probability": 0.0115194,
+          "stderr": 4.772149080579944e-05,
+          "ci95_Wilson": [
+            0.011426240470110777,
+            0.011613310148141692
+          ]
+        },
+        "implied_from_MC_rejection": 1.7608381377665317e-08,
+        "propagated_stderr": 2.91785408968962e-10,
+        "ci95_from_rejection_Wilson": [
+          1.704564498190007e-08,
+          1.818963976935167e-08
+        ],
+        "exact_finite_rate": 1.8162497123375458e-08,
+        "scope": "One standalone preparation with independent fresh attempts; not a full-EC abort rate."
+      },
       "pair_attribution_vs_MC": {
         "P2": {
           "estimate_over_MC": 0.856660168940853,
@@ -6634,6 +6865,27 @@
         "verification_trigger_rate": 0.0115828,
         "flag_trigger_rate": null,
         "failure_share_through_bare": null
+      },
+      "all_attempts_fail": {
+        "max_attempts": 4,
+        "per_attempt_rejection": {
+          "count": 57914,
+          "shots": 5000000,
+          "probability": 0.0115828,
+          "stderr": 4.7851099766170477e-05,
+          "ci95_Wilson": [
+            0.011489386390168967,
+            0.011676964130660602
+          ]
+        },
+        "implied_from_MC_rejection": 1.7999242568565938e-08,
+        "propagated_stderr": 2.9743535306280044e-10,
+        "ci95_from_rejection_Wilson": [
+          1.7425583936361842e-08,
+          1.8591729182115847e-08
+        ],
+        "exact_finite_rate": 1.8162497123375458e-08,
+        "scope": "One standalone preparation with independent fresh attempts; not a full-EC abort rate."
       },
       "pair_attribution_vs_MC": {
         "P2": {
@@ -7191,6 +7443,27 @@
         "verification_trigger_rate": 0.0085776,
         "flag_trigger_rate": null,
         "failure_share_through_bare": null
+      },
+      "all_attempts_fail": {
+        "max_attempts": 4,
+        "per_attempt_rejection": {
+          "count": 42888,
+          "shots": 5000000,
+          "probability": 0.0085776,
+          "stderr": 4.1240816621982646e-05,
+          "ci95_Wilson": [
+            0.008497144718025578,
+            0.008658810420710969
+          ]
+        },
+        "implied_from_MC_rejection": 5.413313257033176e-09,
+        "propagated_stderr": 1.041081231816139e-10,
+        "ci95_from_rejection_Wilson": [
+          5.213052033205784e-09,
+          5.621250310376844e-09
+        ],
+        "exact_finite_rate": 5.4717144440436975e-09,
+        "scope": "One standalone preparation with independent fresh attempts; not a full-EC abort rate."
       },
       "pair_attribution_vs_MC": {
         "P2": {
@@ -7764,6 +8037,27 @@
         "verification_trigger_rate": 0.0087034,
         "flag_trigger_rate": null,
         "failure_share_through_bare": null
+      },
+      "all_attempts_fail": {
+        "max_attempts": 4,
+        "per_attempt_rejection": {
+          "count": 43517,
+          "shots": 5000000,
+          "probability": 0.0087034,
+          "stderr": 4.1539501269129364e-05,
+          "ci95_Wilson": [
+            0.008622359206476174,
+            0.00878519573895121
+          ]
+        },
+        "implied_from_MC_rejection": 5.737936992026313e-09,
+        "propagated_stderr": 1.0954387524988458e-10,
+        "ci95_from_rejection_Wilson": [
+          5.527190665277784e-09,
+          5.956700561654309e-09
+        ],
+        "exact_finite_rate": 5.717495814521302e-09,
+        "scope": "One standalone preparation with independent fresh attempts; not a full-EC abort rate."
       },
       "pair_attribution_vs_MC": {
         "P2": {
@@ -8757,6 +9051,27 @@
         "verification_trigger_rate": 0.0263734,
         "flag_trigger_rate": null,
         "failure_share_through_bare": null
+      },
+      "all_attempts_fail": {
+        "max_attempts": 4,
+        "per_attempt_rejection": {
+          "count": 131867,
+          "shots": 5000000,
+          "probability": 0.0263734,
+          "stderr": 7.166288268335289e-05,
+          "ci95_Wilson": [
+            0.0262333042290251,
+            0.026514223563994344
+          ]
+        },
+        "implied_from_MC_rejection": 4.837984656974987e-07,
+        "propagated_stderr": 5.258388025763226e-09,
+        "ci95_from_rejection_Wilson": [
+          4.736003157524289e-07,
+          4.942146960056832e-07
+        ],
+        "exact_finite_rate": 4.7530774784358485e-07,
+        "scope": "One standalone preparation with independent fresh attempts; not a full-EC abort rate."
       },
       "pair_attribution_vs_MC": {
         "P2": {
@@ -9770,6 +10085,27 @@
         "flag_trigger_rate": null,
         "failure_share_through_bare": null
       },
+      "all_attempts_fail": {
+        "max_attempts": 4,
+        "per_attempt_rejection": {
+          "count": 134406,
+          "shots": 5000000,
+          "probability": 0.0268812,
+          "stderr": 7.233063125199448e-05,
+          "ci95_Wilson": [
+            0.026739795057533423,
+            0.027023331955180824
+          ]
+        },
+        "implied_from_MC_rejection": 5.221491897046687e-07,
+        "propagated_stderr": 5.619895019427124e-09,
+        "ci95_from_rejection_Wilson": [
+          5.112487950748913e-07,
+          5.332803539860497e-07
+        ],
+        "exact_finite_rate": 5.092462255038608e-07,
+        "scope": "One standalone preparation with independent fresh attempts; not a full-EC abort rate."
+      },
       "pair_attribution_vs_MC": {
         "P2": {
           "estimate_over_MC": 0.9272177403786995,
@@ -10756,6 +11092,27 @@
         "flag_trigger_rate": null,
         "failure_share_through_bare": null
       },
+      "all_attempts_fail": {
+        "max_attempts": 4,
+        "per_attempt_rejection": {
+          "count": 131329,
+          "shots": 5000000,
+          "probability": 0.0262658,
+          "stderr": 7.15204974120846e-05,
+          "ci95_Wilson": [
+            0.02612598338556767,
+            0.026406344572794106
+          ]
+        },
+        "implied_from_MC_rejection": 4.7595131611334e-07,
+        "propagated_stderr": 5.1839692485836935e-09,
+        "ci95_from_rejection_Wilson": [
+          4.6589772022299127e-07,
+          4.862203640186854e-07
+        ],
+        "exact_finite_rate": 4.753077478435688e-07,
+        "scope": "One standalone preparation with independent fresh attempts; not a full-EC abort rate."
+      },
       "pair_attribution_vs_MC": {
         "P2": {
           "estimate_over_MC": 1.0024181780279433,
@@ -11728,6 +12085,27 @@
         "flag_trigger_rate": null,
         "failure_share_through_bare": null
       },
+      "all_attempts_fail": {
+        "max_attempts": 4,
+        "per_attempt_rejection": {
+          "count": 133432,
+          "shots": 5000000,
+          "probability": 0.0266864,
+          "stderr": 7.207528849063317e-05,
+          "ci95_Wilson": [
+            0.02654549567678583,
+            0.026828031635265655
+          ]
+        },
+        "implied_from_MC_rejection": 5.071774845009899e-07,
+        "propagated_stderr": 5.479189926159014e-09,
+        "ci95_from_rejection_Wilson": [
+          4.965504237634865e-07,
+          5.180303911532812e-07
+        ],
+        "exact_finite_rate": 5.005254370356498e-07,
+        "scope": "One standalone preparation with independent fresh attempts; not a full-EC abort rate."
+      },
       "pair_attribution_vs_MC": {
         "P2": {
           "estimate_over_MC": 1.0262437353990161,
@@ -11873,7 +12251,21 @@
     ],
     "primary_metric": "epsilon_tot from A3 marginal memory fits, always report epsilon_X and epsilon_Z"
   },
-  "retry_cap_selection": "Both total-attempt caps are standalone diagnostics; the max_retries convention remains for review before B2.",
+  "max_attempts": 4,
+  "retry_cap_selection": "Initial attempt plus three retries: max_attempts = 4. Other caps are diagnostics only.",
+  "later_B2_B3_requirements_recorded_only": {
+    "abort_accounting": "Aborts count as logical failures; report observed abort rate and its share of epsilon_tot.",
+    "cap_sensitivity": {
+      "preset": "JONES_MURALI_2026",
+      "policy": "SEQ",
+      "max_attempts": [
+        2,
+        4,
+        "infinity"
+      ]
+    },
+    "rejected_attempt_costs": "Every rejected attempt contributes real time and fault locations."
+  },
   "not_applicable_metrics": {
     "flag_trigger": "No flagged EC round in B1; report verification rejection instead.",
     "failure_share_through_bare": "No bare EC round in standalone preparation."

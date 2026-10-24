@@ -369,8 +369,8 @@ The arXiv identifier in the attached design prompt belongs to a different paper.
 
 ```bash
 .venv/bin/python src/prep_experiment.py --part checks
-.venv/bin/python src/prep_experiment.py --part mc --retry-caps 3 4
-MPLCONFIGDIR=/tmp/steane_matplotlib .venv/bin/python src/prep_experiment.py --part report --retry-caps 3 4 --retry-cap-selection "Both total-attempt caps are standalone diagnostics; the max_retries convention remains for review before B2."
+.venv/bin/python src/prep_experiment.py --part mc --max-attempts 4 --retry-caps 3
+MPLCONFIGDIR=/tmp/steane_matplotlib .venv/bin/python src/prep_experiment.py --part report --max-attempts 4 --retry-caps 3
 .venv/bin/python -m pytest -q
 ```
 
@@ -386,8 +386,12 @@ only the latter eight ions. Its timing includes block waiting during verifier
 readout and every rejected retry. **Data waiting must be added when embedding
 this gadget in B2.** `sample_attempts(..., return_arrays=True)` supplies full
 output Pauli frames. Acceptance uses only the reported verification bit, never
-an ideal error-weight test. Retry sampling takes an explicit total-attempt cap;
-three- and four-attempt diagnostics expose the ambiguous “max_retries=3” wording.
+an ideal error-weight test. The nominal parameter is `max_attempts = 4`: an initial attempt plus three retries.
+The three-attempt result is retained as an additional diagnostic. B1 reports each
+per-attempt rejection rate r and its implied exhaustion probability r^4.
+In B2/B3, aborts count as logical failures; report observed abort rate and its
+share of epsilon_tot. Check max_attempts in {2, 4, infinity} on Jones–Murali SEQ.
+Every rejected attempt contributes real time and fault locations.
 
 Recorded for later B3, with no comparisons run in B1: include XXXZZZ as the
 “flag, best order” arm under every preset, regardless of significance; run

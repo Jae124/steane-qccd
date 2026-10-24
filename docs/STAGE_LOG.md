@@ -1376,7 +1376,7 @@ Only sourced Jones–Murali timing is used. H2 remains timing-free (Stage 1 chan
 
 These are standalone eight-ion preparations in a reserved fifteen-ion layout. **External data waiting is outside B1 and must be added in B2 on every attempt, including rejected attempts.** No full-EC time or resource claim is made here. Rejected attempts are discarded and all eight ions reset. Accepted states retain full Pauli frames for a future B2 adapter.
 
-The prompt's max_retries=3 can mean three total attempts or initial plus three retries. Both explicit total-attempt caps K=3 and K=4 are reported as standalone diagnostics; no full-EC default was selected. Each cap/row has 5M independently sampled cycles. For rejection q, exact exhaustion is q^K and mean attempts is Σ(q^i), i=0..K−1. Exhaustion counts as a standalone failure; the JSON also includes accepted dangerous states, total standalone failures and resource counts including rejected attempts.
+The user resolved the retry policy as **max_attempts = 4**, an initial attempt plus three retries. The K=4 result is nominal; K=3 is retained as a standalone diagnostic. Each cap/row has 5M independently sampled cycles. For rejection q, exact exhaustion is q^K and mean attempts is Σ(q^i), i=0..K−1. Exhaustion counts as a standalone failure; the JSON also includes accepted dangerous states, total standalone failures and resource counts including rejected attempts.
 
 | Preset / policy | State | K | Exhaustion MC | Exact exhaustion | Mean attempts MC | Mean elapsed ms (timed only) |
 |---|---|---:|---:|---:|---:|---:|
@@ -1472,5 +1472,42 @@ Assumptions made:
 Open questions for the human:
 
 - Review the B1 circuit, acceptance and component-level fault-tolerance results.
-- Before B2, resolve whether max_retries=3 means three total attempts or four; both diagnostics are available.
+- Retry policy resolved by the user: `max_attempts = 4`. The clarification table below reports r and r^4.
 - **Stop here. B2 and all later work require the next checkpoint approval.**
+
+
+### B1 clarification — max_attempts = 4
+
+The user specifies an initial attempt plus three retries, **four attempts total**. The runner uses `max_attempts = 4`; the CLI is `--max-attempts 4`. Previously sampled three-attempt diagnostics remain available. All original MC samples, pair results, single-fault checks and caches are unchanged. No B2/B3 execution is authorized by this clarification.
+
+For independent fresh attempts, per-attempt rejection r implies all four attempts fail with probability r^4 for **one standalone preparation**. MC-derived r and r^4 below are primary; uncertainty on r^4 is propagated as 4r³σ_r, and transformed Wilson 95% bounds are in JSON. The exact finite-rate r^4 is a secondary benchmark. This is not the abort rate of a complete two-half EC round or a multi-round memory experiment.
+
+| Preset / policy | State | Rejection r MC ± 1σ | Implied r^4 ± 1σ | Exact r^4 | Observed four-attempt exhaustion |
+|---|---|---:|---:|---:|---:|
+| UniformNoise(0.0005) / timing-free | 0 | 0.00540020 ± 3.3e-05 | 8.5043158e-10 ± 2.1e-11 | 8.5404694e-10 | 0/5000000 |
+| UniformNoise(0.0005) / timing-free | + | 0.00538400 ± 3.3e-05 | 8.4027261e-10 ± 2e-11 | 8.5404694e-10 | 0/5000000 |
+| UniformNoise(0.001) / timing-free | 0 | 0.01078580 ± 4.6e-05 | 1.3533479e-08 ± 2.3e-10 | 1.3391481e-08 | 0/5000000 |
+| UniformNoise(0.001) / timing-free | + | 0.01077300 ± 4.6e-05 | 1.346935e-08 ± 2.3e-10 | 1.3391481e-08 | 0/5000000 |
+| UniformNoise(0.0015) / timing-free | 0 | 0.01614480 ± 5.6e-05 | 6.7940803e-08 ± 9.5e-10 | 6.644022e-08 | 0/5000000 |
+| UniformNoise(0.0015) / timing-free | + | 0.01601140 ± 5.6e-05 | 6.5722977e-08 ± 9.2e-10 | 6.644022e-08 | 0/5000000 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free | 0 | 0.00292760 ± 2.4e-05 | 7.3459328e-11 ± 2.4e-12 | 7.3251147e-11 | 0/5000000 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free | + | 0.00294060 ± 2.4e-05 | 7.4772829e-11 ± 2.5e-12 | 7.3251147e-11 | 0/5000000 |
+| TWO_QUBIT_ONLY(0.001) / timing-free | 0 | 0.00583020 ± 3.4e-05 | 1.1554039e-09 ± 2.7e-11 | 1.1595932e-09 | 0/5000000 |
+| TWO_QUBIT_ONLY(0.001) / timing-free | + | 0.00578400 ± 3.4e-05 | 1.119214e-09 ± 2.6e-11 | 1.1595932e-09 | 0/5000000 |
+| TWO_QUBIT_ONLY(0.002) / timing-free | 0 | 0.01151940 ± 4.8e-05 | 1.7608381e-08 ± 2.9e-10 | 1.8162497e-08 | 0/5000000 |
+| TWO_QUBIT_ONLY(0.002) / timing-free | + | 0.01158280 ± 4.8e-05 | 1.7999243e-08 ± 3e-10 | 1.8162497e-08 | 0/5000000 |
+| H2_LIKE / timing-free | 0 | 0.00857760 ± 4.1e-05 | 5.4133133e-09 ± 1e-10 | 5.4717144e-09 | 0/5000000 |
+| H2_LIKE / timing-free | + | 0.00870340 ± 4.2e-05 | 5.737937e-09 ± 1.1e-10 | 5.7174958e-09 | 0/5000000 |
+| JONES_MURALI_2026 / SEQ | 0 | 0.02637340 ± 7.2e-05 | 4.8379847e-07 ± 5.3e-09 | 4.7530775e-07 | 2/5000000 |
+| JONES_MURALI_2026 / SEQ | + | 0.02688120 ± 7.2e-05 | 5.2214919e-07 ± 5.6e-09 | 5.0924623e-07 | 2/5000000 |
+| JONES_MURALI_2026 / PAR_MR | 0 | 0.02626580 ± 7.2e-05 | 4.7595132e-07 ± 5.2e-09 | 4.7530775e-07 | 2/5000000 |
+| JONES_MURALI_2026 / PAR_MR | + | 0.02668640 ± 7.2e-05 | 5.0717748e-07 ± 5.5e-09 | 5.0052544e-07 | 3/5000000 |
+
+Recorded for B2/B3, with no action now:
+
+- Aborts count as logical failures. Report the observed abort rate and its share of epsilon_tot; epsilon_X and epsilon_Z remain mandatory.
+- Run Jones–Murali SEQ cap sensitivity at max_attempts ∈ {2, 4, ∞}; the unbounded case retries until acceptance.
+- Every rejected attempt contributes real time, fault locations and data waiting.
+- Preserve the approved A3 memory metric, XXXZZZ arm under every preset, and both Steane half-orders.
+
+Validation: all 18 r^4 entries and exact cap-four identities checked; all 75 MC/check/analysis caches are byte-identical; all 147 pre-B1 approved artifacts remain byte-identical. The focused B1 suite passes: **24 tests in 3.37 s**; `git diff --check` passes. This changes reporting and the experiment-runner default only. **Stop before B2.**

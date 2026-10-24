@@ -24,6 +24,7 @@ import steane_noise as scalar
 ROOT=Path(__file__).resolve().parents[1]
 CACHE=ROOT/'results/stageB1_cache'
 CHUNK=1_000_000
+DEFAULT_MAX_ATTEMPTS=4  # Initial preparation plus three retries.
 
 
 def fingerprint():
@@ -151,7 +152,8 @@ def sample_cache(g,shots,seed,path,*,max_attempts=None):
     return data
 
 
-def monte_carlo(shots=5_000_000,*,retry_caps=()):
+def monte_carlo(shots=5_000_000,*,max_attempts=DEFAULT_MAX_ATTEMPTS,retry_caps=()):
+    retry_caps=sorted(set((max_attempts,*retry_caps)))
     check=checks()
     for key,ci,bi,preset,policy,g in gadgets():
         path=CACHE/f'{key}_analysis.json'
@@ -177,7 +179,8 @@ def bernoulli(count,shots):
             'ci95_Wilson':[max(0,center-half),min(1,center+half)]}
 
 
-def assemble(*,retry_caps=(),retry_cap_selection=None):
+def assemble(*,max_attempts=DEFAULT_MAX_ATTEMPTS,retry_caps=()):
+    retry_caps=sorted(set((max_attempts,*retry_caps)))
     frozen=frozen_checks();validated=checks()
     result={'stage':'B1','scope':'Verified preparation only; no B2 full round or B3 comparison.',
             'primary_estimate':'Monte Carlo acceptance per attempt',
@@ -186,7 +189,12 @@ def assemble(*,retry_caps=(),retry_cap_selection=None):
             'later_B3_decisions_recorded_only':{'flag_best_arm':'XXXZZZ under every preset, irrespective of prior significance',
                  'Steane_half_orders':['X-syndrome first','Z-syndrome first'],
                  'primary_metric':'epsilon_tot from A3 marginal memory fits, always report epsilon_X and epsilon_Z'},
-            'retry_cap_selection':retry_cap_selection,
+            'max_attempts':max_attempts,
+            'retry_cap_selection':'Initial attempt plus three retries: max_attempts = 4. Other caps are diagnostics only.',
+            'later_B2_B3_requirements_recorded_only':{
+                 'abort_accounting':'Aborts count as logical failures; report observed abort rate and its share of epsilon_tot.',
+                 'cap_sensitivity':{'preset':'JONES_MURALI_2026','policy':'SEQ','max_attempts':[2,4,'infinity']},
+                 'rejected_attempt_costs':'Every rejected attempt contributes real time and fault locations.'},
             'not_applicable_metrics':{'flag_trigger':'No flagged EC round in B1; report verification rejection instead.',
                                      'failure_share_through_bare':'No bare EC round in standalone preparation.'}}
     for key,ci,bi,preset,policy,g in gadgets():
@@ -203,6 +211,14 @@ def assemble(*,retry_caps=(),retry_cap_selection=None):
         row.update(monte_carlo=m,**{k:v for k,v in analysis.items() if k!='simulation_fingerprint'})
         row['adaptive_metrics']={'verification_trigger_rate':m['rejection']['probability'],
                                  'flag_trigger_rate':None,'failure_share_through_bare':None}
+        rejection=m['rejection'];r=rejection['probability']
+        row['all_attempts_fail']={
+            'max_attempts':max_attempts,'per_attempt_rejection':rejection,
+            'implied_from_MC_rejection':r**max_attempts,
+            'propagated_stderr':max_attempts*r**(max_attempts-1)*rejection['stderr'],
+            'ci95_from_rejection_Wilson':[v**max_attempts for v in rejection['ci95_Wilson']],
+            'exact_finite_rate':row['exact_finite_rate']['rejection']**max_attempts,
+            'scope':'One standalone preparation with independent fresh attempts; not a full-EC abort rate.'}
         hazard=m['accepted_dangerous_probability']['probability'];stderr=m['accepted_dangerous_probability']['stderr']
         row['pair_attribution_vs_MC']={k:{'estimate_over_MC':row['pairs'][k]/hazard if hazard else None,
              'estimate_minus_MC_in_stderr':(row['pairs'][k]-hazard)/stderr if stderr else None}
@@ -269,9 +285,11 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--part',choices=('checks','mc','report','all'),default='all')
     parser.add_argument('--shots',type=int,default=5_000_000)
-    parser.add_argument('--retry-caps',type=int,nargs='*',default=[])
-    parser.add_argument('--retry-cap-selection')
+    parser.add_argument('--max-attempts',type=int,default=DEFAULT_MAX_ATTEMPTS,
+                        help='Total attempts, including the initial attempt (default: 4).')
+    parser.add_argument('--retry-caps',type=int,nargs='*',default=[],help='Additional diagnostic total-attempt caps.')
     args=parser.parse_args()
+    if args.max_attempts<1 or any(k<1 for k in args.retry_caps):parser.error('Attempt caps must be positive integers.')
     if args.part in ('checks','all'):checks()
-    if args.part in ('mc','all'):monte_carlo(args.shots,retry_caps=args.retry_caps)
-    if args.part in ('report','all'):assemble(retry_caps=args.retry_caps,retry_cap_selection=args.retry_cap_selection)
+    if args.part in ('mc','all'):monte_carlo(args.shots,max_attempts=args.max_attempts,retry_caps=args.retry_caps)
+    if args.part in ('report','all'):assemble(max_attempts=args.max_attempts,retry_caps=args.retry_caps)
