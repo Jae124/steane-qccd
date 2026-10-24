@@ -46,3 +46,24 @@ for every operation. Pseudothreshold not yet checked against Chao–Reichardt.
 1. Idle locations with a timing model; published trapped-ion rates; first p_eff.
 2. Other gadgets: Goto-verified |0_L⟩, transversal H / S / CNOT, logical measurement.
 3. QCCD schedule per gadget → idle and shuttle error per location.
+
+## General channels (Stage 0 checkpoint)
+
+Noise models can now expose `channel(loc)`, a dictionary of fault payloads and
+probabilities. `UniformNoise(p)` reproduces the original uniform model;
+`NoiseModel(p)` remains compatible. `count_faults(noise)` reports P1, P2, and
+logical/type/stage breakdowns; `monte_carlo(noise, shots, rng)` samples those
+same channels. See [docs/noise_model.md](docs/noise_model.md) for definitions and
+[docs/STAGE_LOG.md](docs/STAGE_LOG.md) for checkpoint results.
+
+From the repository root:
+
+```sh
+.venv/bin/python -m pytest -m "not slow"  # fast correctness tests
+.venv/bin/python -m pytest               # includes exhaustive pairs + 3M shots
+```
+
+The full suite includes the exact seeded baseline: 542 failures in 3,000,000
+shots at p = 0.0005, p_L = 0.000180667 ± 0.000007760. The second-order estimate
+is P2 = 0.000191978, with P1 = 0 and A = 767.911111. The slow checks took about 64 seconds on the checkpoint machine
+(and may take longer on other machines). Ion-specific channels begin at Stage 1.

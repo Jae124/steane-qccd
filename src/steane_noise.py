@@ -176,11 +176,7 @@ def loc_type(loc):
 
 
 class NoiseModel:
-    """
-    Per-location fault probabilities. The interface layer 3 will plug into:
-    replace prob(loc) with schedule-derived values (e.g. add idle/shuttle
-    error for the ions involved at that time step).
-    """
+    """Legacy operation-rate model, now exposing explicit Pauli channels."""
 
     def __init__(self, p_2q, p_reset=None, p_meas=None):
         self.p_2q = p_2q
@@ -194,6 +190,30 @@ class NoiseModel:
         if op[0] in ('R', 'RX'):
             return self.p_reset
         return self.p_meas
+
+    def channel(self, loc):
+        variants = physical_variants(loc[3])
+        return {v: self.prob(loc) / len(variants) for v in variants}
+
+
+class UniformNoise(NoiseModel):
+    """Each location fails with probability p, uniformly over its variants."""
+
+    def __init__(self, p):
+        super().__init__(p)
+
+
+def validated_channel(noise, loc):
+    """Check the nonidentity distribution before counting or sampling it."""
+    channel = dict(noise.channel(loc))
+    allowed = {payload for _, payload in fault_list([loc[3]])}
+    if any(payload not in allowed for payload in channel):
+        raise ValueError(f"Unsupported payload at {loc}: {channel}")
+    if any(not np.isfinite(p) or p < 0 for p in channel.values()):
+        raise ValueError(f"Invalid channel probabilities at {loc}: {channel}")
+    if sum(channel.values()) > 1 + 1e-12:
+        raise ValueError(f"Channel probability exceeds one at {loc}: {channel}")
+    return channel
 
 
 # ---------------------------------------------------------------------------
@@ -217,23 +237,37 @@ def cross_check():
     print(f"Cross-check frame vs tableau simulator: {n} single-fault runs, "
           f"{mismatches} mismatches")
     assert mismatches == 0
+    return {"runs": n, "mismatches": mismatches}
 
 
 # ---------------------------------------------------------------------------
 # 2. Single faults and malignant pairs
 # ---------------------------------------------------------------------------
 
-def count_faults():
+def count_faults(noise=None):
+    """Enumerate singles and distinct-location pairs using explicit channels.
+
+    P1/P2 are weighted failure sums, not a finite-rate expansion including
+    no-fault factors. A is retained for uniform models and the no-argument API.
+    """
+    noise = UniformNoise(1.0) if noise is None else noise
     locs = all_locations()
-    variants = [physical_variants(l[3]) for l in locs]
+    channels = [validated_channel(noise, loc) for loc in locs]
+    variants = [list(channel) for channel in channels]
+    uniform = (type(noise) in (NoiseModel, UniformNoise)
+               and noise.p_2q == noise.p_reset == noise.p_meas)
+    P1 = 0.0
+    P2 = {'X': 0.0, 'Z': 0.0, 'any': 0.0}
+    p2_stage, p2_type = {}, {}
 
     # First order: any single fault that fails would break fault tolerance
     single_fail = 0
-    for loc, vs in zip(locs, variants):
+    for loc, vs, channel in zip(locs, variants, channels):
         for v in vs:
             fx, fz = ec_round_frame(0, 0, {(loc[0], loc[1]): {loc[2]: v}})
             if any(logical_failure(fx, fz)):
                 single_fail += 1
+                P1 += channel[v]
 
     # Second order: weight each pair by (1/n_variants_i)(1/n_variants_j) so that
     # p_L ~ A p^2 with every location failing with probability p
@@ -243,6 +277,8 @@ def count_faults():
     per_type = {}
     for a, b in itertools.combinations(range(len(locs)), 2):
         la, lb = locs[a], locs[b]
+        if not variants[a] or not variants[b]:
+            continue
         w = 1.0 / (len(variants[a]) * len(variants[b]))
         for va in variants[a]:
             for vb in variants[b]:
@@ -251,6 +287,7 @@ def count_faults():
                 faults.setdefault((lb[0], lb[1]), {})[lb[2]] = vb
                 fx, fz = ec_round_frame(0, 0, faults)
                 xf, zf = logical_failure(fx, fz)
+                pw = channels[a][va] * channels[b][vb]
                 if xf or zf:
                     malignant_pairs += 1
                     A['any'] += w
@@ -258,8 +295,13 @@ def count_faults():
                     per_stage[key] = per_stage.get(key, 0.0) + w
                     tkey = '*'.join(sorted((loc_type(la), loc_type(lb))))
                     per_type[tkey] = per_type.get(tkey, 0.0) + w
+                    P2['any'] += pw
+                    p2_stage[key] = p2_stage.get(key, 0.0) + pw
+                    p2_type[tkey] = p2_type.get(tkey, 0.0) + pw
                 A['X'] += w * xf
                 A['Z'] += w * zf
+                P2['X'] += pw * xf
+                P2['Z'] += pw * zf
 
     n_loc_types = {}
     for l in locs:
@@ -269,9 +311,13 @@ def count_faults():
         'location_counts': n_loc_types,
         'single_fault_failures': single_fail,
         'malignant_pairs': malignant_pairs,
-        'A': A,
-        'A_by_stage_pair': per_stage,
-        'A_by_type_pair': per_type,
+        **({'A': A, 'A_by_stage_pair': per_stage,
+            'A_by_type_pair': per_type} if uniform else {}),
+        'P1': P1,
+        'P2': P2['any'],
+        'P2_by_logical_type': P2,
+        'P2_by_stage_pair': p2_stage,
+        'P2_by_type_pair': p2_type,
     }
 
 
@@ -281,14 +327,23 @@ def count_faults():
 
 def monte_carlo(noise, shots, rng):
     locs = all_locations()
-    probs = [noise.prob(l) for l in locs]
-    variants = [physical_variants(l[3]) for l in locs]
+    channels = [validated_channel(noise, loc) for loc in locs]
+    probs = [min(1.0, sum(ch.values())) for ch in channels]
+    variants = [list(ch) for ch in channels]
+    equal_weights = [len(set(ch.values())) <= 1 for ch in channels]
+    cumulative = [np.cumsum(list(ch.values())).tolist() for ch in channels]
     fails = 0
     for _ in range(shots):
         faults = {}
-        for l, p, vs in zip(locs, probs, variants):
+        for l, p, vs, equal, edges in zip(locs, probs, variants, equal_weights, cumulative):
+            # Preserve the legacy RNG sequence for uniform conditional channels.
             if rng.random() < p:
-                faults.setdefault((l[0], l[1]), {})[l[2]] = rng.choice(vs)
+                if equal:
+                    payload = rng.choice(vs)
+                else:
+                    draw = rng.random() * p
+                    payload = next(v for v, edge in zip(vs, edges) if draw < edge)
+                faults.setdefault((l[0], l[1]), {})[l[2]] = payload
         if not faults:
             continue
         fx, fz = ec_round_frame(0, 0, faults)
