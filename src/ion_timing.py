@@ -72,13 +72,14 @@ def timed_circuits(params):
     return {key: insert_idles(ops, params) for key, ops in CIRCUITS.items()}
 
 
-def idle_exposure(params, monte_carlo):
+def idle_exposure(params, monte_carlo, *, circuits=None, extra_durations=None):
     """Per-data idle seconds and sum of local Z probabilities on actual paths.
 
     The Monte Carlo histogram weights six triggered paths and the no-trigger
     path. Summed probabilities are expected fault counts, not a net Pauli rate.
     """
-    circuits = timed_circuits(params)
+    circuits = timed_circuits(params) if circuits is None else circuits
+    extra_durations = extra_durations or {}
     per_circuit = {}
     for key, ops in circuits.items():
         per_circuit[key] = {
@@ -100,7 +101,7 @@ def idle_exposure(params, monte_carlo):
         paths['no_trigger' if stop is None else f'trigger_F{stop}'] = {
             'count': count, 'probability': count / shots,
             'round_duration_seconds': math.fsum(operation_duration(o, params)
-                for key in keys for o in CIRCUITS[key]),
+                for key in keys for o in CIRCUITS[key]) + math.fsum(extra_durations.get(key, 0.0) for key in keys),
             'readout_idle_seconds_per_data_qubit': params.measurement_duration * (
                 12 if stop is None else 2 * (stop + 1) + 6),
             'data': {str(q): {metric: math.fsum(per_circuit[key][q][metric] for key in keys)

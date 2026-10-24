@@ -262,7 +262,7 @@ def cross_check():
 # 2. Single faults and malignant pairs
 # ---------------------------------------------------------------------------
 
-def count_faults(noise=None):
+def _count_faults_independent(noise=None):
     """Enumerate singles and distinct-location pairs using explicit channels.
 
     P1/P2 are weighted failure sums, not a finite-rate expansion including
@@ -387,7 +387,7 @@ def trigger_contributors(faults, circuits, log):
     return contributors
 
 
-def monte_carlo(noise, shots, rng, *, return_details=False):
+def _monte_carlo_independent(noise, shots, rng, *, return_details=False):
     circuits = getattr(noise, 'circuits', CIRCUITS)
     locs = all_locations(circuits)
     channels = [validated_channel(noise, loc) for loc in locs]
@@ -448,6 +448,20 @@ def monte_carlo(noise, shots, rng, *, return_details=False):
         'failure_share_through_bare_stderr': (math.sqrt(
             (bare_fails / fails) * (1 - bare_fails / fails) / fails) if fails else None),
     }
+
+
+def count_faults(noise=None):
+    if getattr(noise, 'dynamic_channels', False):
+        from ion_transport import conditional_count_faults
+        return conditional_count_faults(noise)
+    return _count_faults_independent(noise)
+
+
+def monte_carlo(noise, shots, rng, *, return_details=False):
+    if getattr(noise, 'dynamic_channels', False):
+        from ion_transport import conditional_monte_carlo
+        return conditional_monte_carlo(noise, shots, rng, return_details=return_details)
+    return _monte_carlo_independent(noise, shots, rng, return_details=return_details)
 
 
 if __name__ == '__main__':

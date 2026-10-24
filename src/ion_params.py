@@ -106,3 +106,9 @@ MEASUREMENT_DURATION_SWEEP = (0.0, 100e-6, 200e-6, 400e-6)
 # the expected uniform MC pseudothreshold. Extend rather than extrapolate.
 UNIFORM_CALIBRATION_P = (0.00085, 0.00095, 0.00105, 0.00115, 0.00125, 0.00135,
                          0.00145, 0.00155, 0.00165, 0.00175, 0.00185)
+
+# Stage 4 placeholders: additive *probability* penalty per transport event,
+# not a calibrated heating model. Zero preserves the prior operation channel.
+DEFAULT_HEATING_PENALTY = dict.fromkeys(('shuttle', 'split', 'merge', 'junction'), 0.0)
+# Synthetic sensitivity values requested to test monotonicity, not hardware data.
+SYNTHETIC_HEATING_PENALTIES = (0.0, 5e-4, 1e-3)

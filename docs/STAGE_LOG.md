@@ -375,3 +375,173 @@ Open questions for the human:
 - No issue blocks this Stage 3 checkpoint. H2 timing remains deferred pending a sourced preset.
 - Grid/target sampling intervals do not establish uncertainty in the hardware parameters or the interpolation model; those remain explicit modeling limitations.
 - Stage 4 transport hooks have not started. Stop here for review.
+
+
+## Stage 4 — Optional transport interface and synthetic validation
+
+Scope: Stage 3 approved. Stage 4 only. The transport list remains explicit input;
+all benchmark events are synthetic. No hardware schedule, trap layout, routing
+policy or calibrated heating law is invented. The default CLI remains Stage 3.
+
+Changes:
+- `src/ion_transport.py`: event validation, liveness-aware waiting, next-executed-CX heating tables, branch-conditioned sampler/pair counter, explicit synthetic fixture and checkpoint runner.
+- `src/ion_noise.py`: optional transport_events/heating_penalty inputs, context-aware fault support testing, Stage 4 CLI with empty default and explicit synthetic/custom event flags.
+- `src/ion_params.py`: zero default penalty map and synthetic 0/0.0005/0.001 sensitivity values, marked placeholders. Sourced durations and other preset values unchanged.
+- `src/steane_noise.py`: original independent count/MC bodies retained verbatim under private names; opt-in dispatch only for branch-dependent channels. Quantum simulators, decoder and circuits unchanged.
+- `src/ion_timing.py`: exposure reporting accepts a supplied circuit map and extra durations; default timing/insertion behavior unchanged.
+- `src/ion_cache.py`, `src/ion_analysis.py`: frozen semantic compatibility signature preserves approved Stage 3 data only when independent kernels, default dispatch, protocol/timing primitives, ordered baseline channels/circuits and study parameters match.
+- `tests/test_ion_transport.py`: event kinds/liveness/indices, summed and consumed heating, cross-circuit/reset/adaptive-branch carry, exact conditional oracle, seeded sampler equivalence, empty regressions, synthetic FT and P2 monotonicity.
+- `results/stage4_transport_results.json`: primary MC, attribution and comparisons, checks, explicit synthetic events, placeholder penalties, heated CX rates, trigger/failure metrics and exposure; Stage 3 baseline/H2 data retained.
+- `README.md`, `docs/noise_model.md`: stable original-op indexing, branch semantics, default behavior, cache preservation and synthetic-only scope.
+
+Checks:
+- Empty transport: all circuits and ordered channels match Stage 3; P1/P2 and every counting dictionary match exactly. Replaying 3M shots at the approved seed 3326 exactly reproduces all Stage 3 MC metrics (6121 failures, 315452 triggers), including its trigger histogram.
+- Rebuilding the Stage 3 final report using approved caches is byte-for-byte identical, including p_eff confidence intervals and ratios. No Stage 0–3 numerical results or figures were modified.
+- Synthetic flagged single faults: 0 / 1344, including 192 idle-fault runs. Bare-only single faults: 0 / 912, including 156 idle-fault runs; these never execute on noiseless input and are reported separately. Incoming errors: 0 / 42.
+- Synthetic frame/tableau cross-check: 0 mismatches / 2256 channel fault trials plus 42 incoming trials. Another 912 forced-trigger bare-fault trials per case agree, exercising actual bare execution; these are not added to the single-fault FT headline.
+- The three synthetic heating levels have identical support and all pass the above checks; P1 = 0 at every level.
+- Asymmetric branch-specific heating tested against an exact sparse oracle: next CX depends on the actual F stop; the MC and weighted pair counter reproduce the oracle. Support testing includes payloads available in any branch.
+- Conditional and independent samplers give identical seeded metrics when branch tables coincide. Reset does not clear pending heating; accumulated penalties are consumed once at the next CX. Tests and explicit checks cover all four transport kinds, both CX participants, invalid inputs and probability overflow.
+- P2 strictly increases with the synthetic heating penalty. This is deterministic pair attribution; finite-shot MC monotonicity is not imposed as a test.
+- Full pytest: 61 passed in 267.51 s. Final fast suite: 55 passed in 49.84 s (6 slow deselected). Legacy uniform and infinite-T2 exact regressions all pass.
+- `compileall`, `git diff --check`, artifact-sum and trigger/path accounting checks pass. H2 remains timing-free Stage 1 only.
+
+Numbers: primary p_L is Monte Carlo; P2 is attribution. All new MC rows use 3M shots. The no-event row replays seed 3326; synthetic rows use independent seeds 6026/6027/6028. Heating increments are additive probability per event, not hardware estimates.
+
+| Case | P1 | MC p_L ± stderr | Raw P2 | Survival-corrected P2 | Raw/MC | Corrected/MC |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| No events (Stage 3 regression) | 0 | 0.00204033333333 ± 2.6052322e-05 | 0.00218179149881 | 0.00182009035186 | 1.069331 | 0.8920554 |
+| Synthetic, shuttle penalty=0 | 0 | 0.00208233333333 ± 2.6318544e-05 | 0.00218859848822 | 0.00182533391532 | 1.051032 | 0.876581 |
+| Synthetic, shuttle penalty=0.0005 | 0 | 0.00226233333333 ± 2.7430003e-05 | 0.00246016452556 | 0.00202844645241 | 1.087446 | 0.896617 |
+| Synthetic, shuttle penalty=0.001 | 0 | 0.00256566666667 ± 2.9206643e-05 | 0.00274780167401 | 0.00224023112511 | 1.070989 | 0.8731575 |
+
+The empty-input nominal p_eff and ratio confidence intervals are exactly those approved in Stage 3. H2 likewise keeps its approved timing-free 3M-shot primary MC and p_eff. Synthetic hook trials are not assigned a new hardware p_eff; no extrapolation of the Stage 3 grid is made.
+
+### Trigger metrics
+
+Rates below are probabilities per shot. Exclusive categories plus mixed sum to trigger rate; overlapping and equal-share splits are also retained in the JSON.
+
+| Case | Trigger rate ± stderr | Failures through bare / total | Bare-failure share | Reset | Measurement | 2q | Idle | Mixed |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| No events (Stage 3 regression) | 0.105150666667 ± 0.00017710073 | 6053 / 6121 | 0.9888907041 | 0.05682066667 | 0.01135966667 | 0.02859266667 | 0.008126333333 | 0.0002513333333 |
+| Synthetic, shuttle penalty=0 | 0.105081 ± 0.00017704894 | 6185 / 6247 | 0.9900752361 | 0.05675166667 | 0.011327 | 0.02862033333 | 0.008131 | 0.000251 |
+| Synthetic, shuttle penalty=0.0005 | 0.108053333333 ± 0.0001792371 | 6702 / 6787 | 0.9874760572 | 0.056628 | 0.01136566667 | 0.03170833333 | 0.008094 | 0.0002573333333 |
+| Synthetic, shuttle penalty=0.001 | 0.111393333333 ± 0.00018164513 | 7597 / 7697 | 0.9870079252 | 0.05669933333 | 0.011305 | 0.03500366667 | 0.008098 | 0.0002873333333 |
+| H2_LIKE, Stage 1 only | 0.0499503333333 ± 0.00012577135 | 2552 / 2610 | 0.9777777778 | 0.0005803333333 | 0.01172433333 | 0.03761433333 | 0 | 3.133333333e-05 |
+
+Transport waiting is credited to idle and heated CX faults to 2q. No new causal category is introduced.
+
+### Synthetic fixture and duration/heating bookkeeping
+
+- Two A=7 shuttle markers per F/B circuit, before the first original CX and before syndrome readout: 24 potential events total. Each lasts the sourced 5 microseconds. This is an interface test, not routing or a claim of hardware feasibility.
+- 270 potential fault locations: 96 original operations and 174 idle locations (96 flagged, 78 bare). New ancilla gaps created by transport are included in both simulators.
+- Each executed circuit gains 10 microseconds. No-trigger F0..F5 gains 60 microseconds; the longest executed F0..F5+B0..B5 path gains 120 microseconds. Skipped events do not contribute to actual timing or realized heating.
+- At penalty h, F0 first CX gets p_2q+h; later first CXs get p_2q+2h because the preceding out-marker and current in-marker accumulate. All other CXs retain nominal p_2q. The final out-marker has no later gate within this round.
+- This symmetric fixture has equal B rate tables across trigger branches and therefore uses the unchanged independent kernel. Asymmetric fixtures in tests exercise the conditional implementation and verify correct carry into B versus a later F circuit.
+
+### Attribution — No events (Stage 3 regression)
+
+| Location type pair | Raw P2 | Survival-corrected contribution |
+| --- | ---: | ---: |
+| 2q*2q | 0.000388844444444 | 0.000323602954618 |
+| 2q*idle | 0.000244229987957 | 0.00020308726939 |
+| 2q*meas | 0.000178139673778 | 0.000148251372267 |
+| 2q*reset | 0.000888268146667 | 0.0007422074391 |
+| idle*idle | 6.2034119455e-05 | 5.15425354296e-05 |
+| idle*meas | 3.40953488086e-05 | 2.83514271743e-05 |
+| idle*reset | 0.000169702130754 | 0.000141680701929 |
+| meas*meas | 6.04005280053e-06 | 5.02666828385e-06 |
+| meas*reset | 6.0239463472e-05 | 5.03342626347e-05 |
+| reset*reset | 0.00015019813068 | 0.00012600572103 |
+
+| Stage pair | Raw P2 | Survival-corrected contribution |
+| --- | ---: | ---: |
+| FB | 0.0019670291389 | 0.00164135880758 |
+| FF | 0.000214762359919 | 0.000178731544274 |
+
+### Attribution — Synthetic, shuttle penalty=0
+
+| Location type pair | Raw P2 | Survival-corrected contribution |
+| --- | ---: | ---: |
+| 2q*2q | 0.000388844444444 | 0.000323527955278 |
+| 2q*idle | 0.000247149479354 | 0.000205467533899 |
+| 2q*meas | 0.000178139673778 | 0.000148217013016 |
+| 2q*reset | 0.000888268146667 | 0.000742035422536 |
+| idle*idle | 6.34565433849e-05 | 5.2712290623e-05 |
+| idle*meas | 3.45076536685e-05 | 2.86876520035e-05 |
+| idle*reset | 0.000171754899977 | 0.000143361430175 |
+| meas*meas | 6.04005280053e-06 | 5.02550328582e-06 |
+| meas*reset | 6.0239463472e-05 | 5.03225969919e-05 |
+| reset*reset | 0.00015019813068 | 0.000125976517509 |
+
+| Stage pair | Raw P2 | Survival-corrected contribution |
+| --- | ---: | ---: |
+| FB | 0.00197246542093 | 0.00164550420796 |
+| FF | 0.000216133067296 | 0.000179829707363 |
+
+### Attribution — Synthetic, shuttle penalty=0.0005
+
+| Location type pair | Raw P2 | Survival-corrected contribution |
+| --- | ---: | ---: |
+| 2q*2q | 0.00052899111111 | 0.000435334195601 |
+| 2q*idle | 0.000295266357579 | 0.000242737069885 |
+| 2q*meas | 0.000192057792889 | 0.000157989969675 |
+| 2q*reset | 0.00095765252 | 0.000790949351035 |
+| idle*idle | 6.34565433849e-05 | 5.21086778082e-05 |
+| idle*meas | 3.45076536685e-05 | 2.83591473194e-05 |
+| idle*reset | 0.000171754899977 | 0.00014171978654 |
+| meas*meas | 6.04005280053e-06 | 4.9679558306e-06 |
+| meas*reset | 6.0239463472e-05 | 4.97463487573e-05 |
+| reset*reset | 0.00015019813068 | 0.000124533949951 |
+
+| Stage pair | Raw P2 | Survival-corrected contribution |
+| --- | ---: | ---: |
+| FB | 0.00218726194229 | 0.00180387865681 |
+| FF | 0.000272902583274 | 0.000224567795593 |
+
+### Attribution — Synthetic, shuttle penalty=0.001
+
+| Location type pair | Raw P2 | Survival-corrected contribution |
+| --- | ---: | ---: |
+| 2q*2q | 0.000685208888888 | 0.000557910666916 |
+| 2q*idle | 0.000343383235804 | 0.000279199907708 |
+| 2q*meas | 0.000205975912 | 0.00016753975679 |
+| 2q*reset | 0.00102703689333 | 0.000838746285138 |
+| idle*idle | 6.34565433849e-05 | 5.15113951951e-05 |
+| idle*meas | 3.45076536685e-05 | 2.80340877261e-05 |
+| idle*reset | 0.000171754899977 | 0.000140095359132 |
+| meas*meas | 6.04005280053e-06 | 4.91101188642e-06 |
+| meas*reset | 6.0239463472e-05 | 4.91761437467e-05 |
+| reset*reset | 0.00015019813068 | 0.000123106510872 |
+
+| Stage pair | Raw P2 | Survival-corrected contribution |
+| --- | ---: | ---: |
+| FB | 0.00241386290809 | 0.00196839420282 |
+| FF | 0.000333938765919 | 0.000271836922287 |
+
+### Data idle exposure in the time-only synthetic fixture
+
+MC-weighted actual-path means; the JSON also contains all seven conditional path tables and both nonzero-heating cases. Probability sums are expected Z-fault counts, not net Z probabilities.
+
+| Data qubit | Idle seconds | Summed Z probability |
+| ---: | ---: | ---: |
+| 0 | 0.00697597249667 | 0.00158506787318 |
+| 1 | 0.00697457499 | 0.00158475082346 |
+| 2 | 0.00689096785667 | 0.00156580727029 |
+| 3 | 0.00697312624333 | 0.00158442214901 |
+| 4 | 0.00688951911 | 0.00156548458182 |
+| 5 | 0.00688812160333 | 0.0015651738162 |
+| 6 | 0.00680451447 | 0.001546250896 |
+
+Assumptions made:
+- Indices are original stabilizer ops before idle insertion; the terminal index is allowed. Events at a gap execute sequentially. Only live ions receive dephasing; an unprepared/measured moved ion still accumulates deterministic heating for its future CX.
+- Movement is logically ideal apart from added idle Z and the configurable next-CX depolarizing increment. Penalties sum over events and over both participants, survive resets, and are consumed once. Unused increments at the end of this one-round model have no realized gate effect; no cross-round thermal state is modeled.
+- Bare heating rates follow actual executed flagged prefixes. Latent unexecuted F/B faults are still sampled for consistency with the full-pool survival attribution; they do not affect actual execution. Exact survival products use the branch's rates; a branch-specific mean approximation is also retained.
+- All nonzero heating values are synthetic placeholders, not calibrated heating physics. No gate duration, decoder, gate order, adaptive rule, native synthesis or hardware transport policy changes.
+- MC remains primary. P2 raw/survival contributions, trigger causes, failure-through-bare share and stage-separated single-fault counts are reported as requested. Nominal p_eff is unchanged; synthetic test cases are not used to make a hardware p_eff claim.
+- Empty-input semantic cache compatibility is explicit and validated; approved Stage 0–3 artifacts remain unchanged. The user's untracked `STAGE_LOG0.md` was left untouched.
+
+Open questions for the human:
+- None blocks this Stage 4 checkpoint. Actual schedules, transport locations/feasibility and nonzero heating penalties still require external scheduler/hardware inputs.
+- H2 transport/idle modeling remains deferred until a sourced timing preset is supplied.
+- Stop here. No hardware schedule or work beyond Stage 4 has started.

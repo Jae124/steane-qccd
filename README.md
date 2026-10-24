@@ -11,10 +11,12 @@ src/
   steane_ft.py              Layer 1: flagged EC round (Chao–Reichardt) + single-fault test
   steane_noise.py           Layer 2: per-location noise model, fault-pair counting, Monte Carlo
   ion_params.py             Centralized trapped-ion presets and fidelity conversion
-  ion_noise.py              Stages 1–3: channels, checks, Monte Carlo, p_eff and trigger metrics
+  ion_noise.py              Stages 1–4: channels, checks, Monte Carlo, p_eff and transport input
   ion_timing.py             Sequential timing, idle Z channels and adaptive exposure
   ion_calibration.py        Log-log inversion and joint binomial uncertainty
   ion_analysis.py           Stage 3 calibration, readout sweep, results and figures
+  ion_transport.py          Optional event hooks and synthetic validation
+  ion_cache.py              Approved baseline cache compatibility checks
   plot_ec_threshold.py      p_L vs p figure
   draw_flagged_circuit.py   Clean drawing of the flagged Z4Z5Z6Z7 circuit
 results/                    Generated data (.json, .stim)
@@ -49,7 +51,7 @@ noise remains the default; operation-specific ion noise is opt-in. Pseudothresho
 
 ## Next
 
-1. Transport interface hooks (Stage 4), then sourced transport schedules.
+1. Sourced transport/heating inputs and scheduler integration (no hardware schedule yet).
 2. Other gadgets: Goto-verified |0_L⟩, transversal H / S / CNOT, logical measurement.
 3. QCCD schedule per gadget → idle and shuttle error per location.
 
@@ -185,7 +187,7 @@ For the two expensive parts independently and a report-only rebuild:
 
 See [docs/noise_model.md](docs/noise_model.md#stage-3-effective-uniform-rate-from-monte-carlo)
 for uncertainty, attribution and counterfactual-timing definitions. Stage 4
-transport hooks have not been implemented.
+transport hooks are described below; no hardware schedule is supplied.
 
 Stage 3 headline results (95% sampling intervals):
 
@@ -195,3 +197,55 @@ Stage 3 headline results (95% sampling intervals):
 | H2_LIKE (Stage 1 only) | 0.0010734088 [0.001032147376, 0.001135605607] | 0.838601 | 0.804118 |
 
 Uniform pseudothreshold = 0.001334889, 95% CI [0.00129130961, 0.00145135925]. Reducing readout duration from 400 to 0 μs lowers Jones–Murali p_L by 17.82%, accounting for about 81.1% of the nominal idle-induced logical increment under this timing model. This changes waiting for all live ions, including ancillas. Full readout p_L/p_eff tables, trigger metrics, per-data exposure and assumptions are in [the Stage 3 report](docs/STAGE_LOG.md#stage-3--monte-carlo-effective-uniform-rates-and-readout-sensitivity).
+
+## Transport hooks (Stage 4 checkpoint)
+
+The optional input is a list of `(stage, circuit_index, before_op_index, qubit,
+kind)` events, with kind `shuttle`, `split`, `merge` or `junction`. Indices refer
+to the **original op lists before IDLE insertion**. Transport duration adds idle
+Z noise on every live ion; optional heating increments affect the next executed
+CX on the moved ion, including across adaptive/circuit boundaries. Defaults are
+an empty event list and zero heating. H2 remains **Stage 1 only**.
+
+```sh
+# Explicitly run the synthetic test fixture and placeholder heating sweep:
+.venv/bin/python src/ion_noise.py --stage 4 --synthetic-transport
+# Empty transport regression; no automatic schedule is generated:
+.venv/bin/python src/ion_noise.py --stage 4
+# Future scheduler/user-supplied event list, not a schedule synthesized here:
+.venv/bin/python src/ion_noise.py --stage 4 --transport-events events.json --heating-penalty '{"shuttle":0.001}'
+```
+
+Programmatic use:
+
+```python
+noise = IdleIonNoise(params, transport_events=events,
+                     heating_penalty={"shuttle": 0.001})
+counts = count_faults(noise)
+metrics = monte_carlo(noise, shots, rng, return_details=True)
+```
+
+`src/ion_transport.py` validates inputs, builds waiting/heating tables and handles
+branch-dependent channels. `src/ion_cache.py` preserves approved Stage 3 caches
+only when the baseline semantic signature matches. The independent MC/counting
+kernels, decoder and gate order remain unchanged.
+
+The checkpoint report is `results/stage4_transport_results.json`. The fixture's
+24 potential events and nonzero heating penalties are **synthetic interface
+tests only**, not a hardware schedule or calibrated heating model. Details and
+scope are in [docs/noise_model.md](docs/noise_model.md#stage-4-optional-transport-hooks-synthetic-validation-only).
+
+Stage 4 synthetic checkpoint: no-event results exactly reproduce Stage 3,
+including seeded MC and rebuilt p_eff confidence intervals. All 61 tests pass
+(fast suite: 55 tests in 49.84 s). Synthetic flagged faults: 0/1344; bare-only
+faults: 0/912 separately; incoming: 0/42; no simulator mismatches.
+
+| Per-event shuttle penalty | MC p_L ± stderr (3M shots) | Raw P2 | Survival-corrected P2 |
+| ---: | ---: | ---: | ---: |
+| 0 | 0.00208233333 ± 2.63e-05 | 0.00218859849 | 0.00182533392 |
+| 0.0005 | 0.00226233333 ± 2.74e-05 | 0.00246016453 | 0.00202844645 |
+| 0.001 | 0.00256566667 ± 2.92e-05 | 0.00274780167 | 0.00224023113 |
+
+Raw P2 increases strictly over the synthetic penalty sweep. Full trigger
+splits, type/stage attribution, event list and actual-path exposure are in
+[the Stage 4 report](docs/STAGE_LOG.md#stage-4--optional-transport-interface-and-synthetic-validation).

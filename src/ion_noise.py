@@ -1,4 +1,4 @@
-"""Stages 1–3: trapped-ion channels, timing, and checkpoint reports.
+"""Stages 1–4: trapped-ion channels, timing, and checkpoint reports.
 
 Run from src/ or the repository root. Stage 2 timings are Jones–Murali only.
 """
@@ -47,19 +47,39 @@ class IonNoise:
 
 
 class IdleIonNoise(IonNoise):
-    """Opt-in sequential timing and Z-biased waiting noise (Stage 2)."""
+    """Sequential idle Z noise with optional Stage 4 transport inputs."""
 
-    def __init__(self, params):
+    def __init__(self, params, transport_events=None, heating_penalty=None):
         from ion_timing import timed_circuits
+        from ion_transport import TransportPlan, validate_penalties
         super().__init__(params)
-        self.circuits = timed_circuits(params)
+        baseline = timed_circuits(params)
+        self.transport_events = tuple(transport_events or ())
+        self.heating_penalty = validate_penalties(heating_penalty)
+        self.transport_plan = (TransportPlan(params, self.transport_events, self.heating_penalty)
+                               if self.transport_events else None)
+        self.circuits = self.transport_plan.circuits if self.transport_plan else baseline
+        if self.transport_plan:
+            self.transport_events = self.transport_plan.events
+        self.dynamic_channels = bool(self.transport_plan and self.transport_plan.dynamic_channels)
 
     def channel(self, loc):
+        if self.transport_plan and loc[3][0] == 'CX':
+            rate = self.transport_plan.cx_rate(loc)
+            return {v: rate / 15 for v in physical_variants(loc[3])}
         if loc[3][0] == 'IDLE':
             from ion_timing import idle_probability
             p = idle_probability(loc[3][2], self.params.T2)
             return {'Z': p} if p else {}
         return super().channel(loc)
+
+
+    def channel_for_trigger(self, loc, trigger_index):
+        """B channels use the actual flagged stop; None is the reference table."""
+        if self.transport_plan and loc[3][0] == 'CX':
+            rate = self.transport_plan.cx_rate(loc, trigger_index)
+            return {v: rate / 15 for v in physical_variants(loc[3])}
+        return self.channel(loc)
 
 
 def _state_signature(sim, basis):
@@ -133,8 +153,14 @@ def check_channel_faults(noise):
             else:
                 bare_pair_runs += 1
 
-    for loc in locs:
-        for payload, prob in validated_channel(noise, loc).items():
+    supports = [validated_channel(noise, loc) for loc in locs]
+    if getattr(noise, 'dynamic_channels', False):
+        from ion_transport import _context_channels
+        contexts = _context_channels(noise, locs)
+        supports = [{v: max(table[i].get(v, 0.0) for table in contexts.values())
+                     for v in contexts[None][i]} for i in range(len(locs))]
+    for loc, support in zip(locs, supports):
+        for payload, prob in support.items():
             if prob == 0:
                 continue
             if (loc[2], payload) not in allowed[loc[:2]]:
@@ -160,8 +186,11 @@ def check_channel_faults(noise):
             'mismatch_details': mismatches}
 
 
-def run_preset(params, shots, seed, *, idle=False):
-    noise = IdleIonNoise(params) if idle else IonNoise(params)
+def run_preset(params, shots, seed, *, idle=False, transport_events=None, heating_penalty=None):
+    if transport_events and not idle:
+        raise ValueError('Transport requires a timed idle-noise model')
+    noise = (IdleIonNoise(params, transport_events=transport_events, heating_penalty=heating_penalty)
+             if idle else IonNoise(params))
     checks = check_channel_faults(noise)
     print(f'{params.name}: checks {json.dumps(checks)}', flush=True)
     if checks['single_fault_failures'] or checks['mismatches']:
@@ -188,7 +217,7 @@ def run_preset(params, shots, seed, *, idle=False):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--preset', choices=['ALL', *PRESETS], default='ALL')
-    parser.add_argument('--stage', type=int, choices=(1, 2, 3), default=3)
+    parser.add_argument('--stage', type=int, choices=(1, 2, 3, 4), default=3)
     parser.add_argument('--shots', type=int, default=3_000_000)
     parser.add_argument('--sweep-shots', type=int, default=1_000_000)
     parser.add_argument('--grid-shots', type=int, default=1_000_000)
@@ -196,9 +225,26 @@ def main():
     parser.add_argument('--seed', type=int, default=2026)
     parser.add_argument('--output', type=Path)
     parser.add_argument('--cache-dir', type=Path, help='Stage 3 simulation cache directory')
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument('--transport-events', type=Path, help='Stage 4 event list JSON; original op indices')
+    group.add_argument('--synthetic-transport', action='store_true', help='Stage 4 synthetic test fixture only')
+    parser.add_argument('--heating-penalty', type=json.loads, help='Stage 4 JSON map of additive probability penalties')
     args = parser.parse_args()
     if args.shots <= 0 or args.sweep_shots <= 0:
         parser.error('shot counts must be positive')
+    if args.stage != 4 and (args.transport_events or args.synthetic_transport or args.heating_penalty is not None):
+        parser.error('Transport inputs are opt-in with --stage 4')
+    if args.stage == 4:
+        if args.synthetic_transport and args.heating_penalty is not None:
+            parser.error('Choose synthetic penalty sweep or custom heating inputs')
+        if args.preset == 'H2_LIKE':
+            parser.error('H2_LIKE has no sourced timing; transport tests require Jones–Murali')
+        from ion_transport import run_stage4
+        events = json.loads(args.transport_events.read_text()) if args.transport_events else None
+        run_stage4(shots=args.shots, seed=args.seed, output=args.output,
+                   transport_events=events, heating_penalty=args.heating_penalty,
+                   synthetic=args.synthetic_transport)
+        return
     if args.stage == 3:
         from ion_analysis import run_stage3
         run_stage3(preset=args.preset, shots=args.shots, grid_shots=args.grid_shots,

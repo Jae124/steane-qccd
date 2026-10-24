@@ -397,4 +397,130 @@ mixed-type pair equally between its two types, and give a same-type pair full
 credit to that type. These credits sum to P2; this is a stated attribution
 convention. The figure labels P2 as secondary. The separate
 `figures/ion_noise_calibration.png` shows the MC grid, p_L=p crossing, primary
-targets and their sampling intervals. Stage 4 transport hooks are not added.
+targets and their sampling intervals. Stage 4 transport hooks are described below.
+
+## Stage 4: optional transport hooks, synthetic validation only
+
+`IdleIonNoise(params, transport_events=None, heating_penalty=None)` accepts the
+scheduler interface. Defaults remain **no events** and **zero heating penalty**.
+No trap geometry, device mapping, transport policy or hardware schedule is
+created. The existing Stage 3 analysis remains the default CLI action.
+Stage 4 is opt-in with `--stage 4`. H2 remains Stage 1 only because it lacks
+sourced timing. Transport is available programmatically for a preset with all
+required sourced timing inputs.
+
+### Event convention and waiting time
+
+Each event is `(stage, circuit_index, before_op_index, qubit, kind)`:
+
+- stage is F or B; circuit_index is the original ROUND index, 0 through 5.
+- before_op_index indexes the **original** `stabilizer_circuit` list before
+  adding IDLE markers. This keeps scheduler inputs stable when timing changes.
+  Index `len(original_ops)` means after that circuit's last op, before any
+  successor circuit/adaptive transition.
+- qubit is the moved ion, 0 through 8. kind is shuttle, split, merge or junction.
+  Durations come exclusively from the corresponding preset fields.
+
+Events at one insertion point execute sequentially in input order. The order
+between distinct insertion points follows actual circuit execution. Every live
+ion waits for each event's whole duration, **including the moved ion if live**.
+Data are always live; ancillas are live after reset through their terminal
+measurement. Events before an ancilla reset or after its measurement therefore
+charge the live data/other ions, not that inactive ancilla. Transport itself has
+no ideal logical action or separate X/Y/leakage channel.
+
+The event duration is added to each live ion's pending idle gap and lumped into
+the same Z channel before its next operation (or the circuit-end data tail).
+Existing boundary subdivision remains exact. Event time is not added as an
+extra noisy location per ion per transport action; it extends the appropriate
+existing gap or creates one where the old gap was zero. Physical gate order
+and the adaptive stopping rule are unchanged. Skipped circuits contribute
+neither event time nor heating to executed gates.
+
+### Next-executed-CX heating hook
+
+`heating_penalty[kind]` is an additive **probability increment**, not a measured
+energy or a calibrated fidelity model. Defaults and synthetic study values live
+in `ion_params.py` with explicit placeholder comments. At an event, add that
+increment to the moved ion's pending heating. At its next **executed** CX, add
+all pending increments from both participant ions to the nominal p_2q and clear
+both pending accumulators. Each event is consumed by only that CX. A reset does
+not clear motional heating; no reset-induced cooling is assumed. Increments
+that find no later CX in this one-round simulation have no realized gate
+penalty, while their event duration is still charged. No cross-round motional
+state is modeled.
+
+Multiple events sum; moving both participants sums their increments on their
+shared next CX. Negative/nonfinite increments, unknown event kinds, invalid
+indices/ions and missing durations are rejected. If any reachable CX rate
+would exceed one, construction fails rather than clipping it.
+
+Because stopping early can send pending heating into B0 instead of the next
+flagged check, B CX channels can depend on which flagged check triggered.
+The model builds seven rate tables: each possible flagged stop and a no-trigger
+reference. Flagged rates depend only on the preceding flagged prefix. The
+no-trigger reference includes a virtual bare table after all flagged checks for
+latent-location bookkeeping; those B gates never execute in no-trigger shots.
+
+For branch-dependent cases, the MC dispatcher samples flagged faults, finds
+the actual first trigger without applying a correction, then samples bare
+faults using that branch's rate table and executes the existing EC simulator.
+The preliminary frame pass consumes no RNG and changes no circuit/protocol.
+A signal-provenance trigger split still uses reset/measurement/2q/idle/mixed:
+transport waiting is idle, and the increased CX channel is 2q.
+
+Pair counting chooses B payload probabilities from the branch produced by that
+fault pair. It also uses that branch's nonidentity rates in the exact survival
+product over every other potential location. The mean-rate approximation is
+weighted per pair/branch. Bare-only singles remain skipped on noiseless input.
+The support for fault testing is the union across possible branch channels.
+The conditional pair counter and sampler are checked against an exact sparse
+oracle with a forced flagged trigger and a branch-specific heated bare gate.
+
+If all B rate tables coincide, the model uses the original independent-channel
+counting/sampling kernels; the conditional sampler is also tested to give
+identical seeded metrics in this limit. The symmetric synthetic fixture below
+has this property, although asymmetric events exercise the full conditional
+implementation in tests.
+
+### Empty input regression and approved caches
+
+No-event construction delegates to the original timing/channel path. The
+independent MC/counting bodies are retained unchanged behind opt-in dispatchers.
+With an empty list, circuit maps, ordered payload probabilities, P1/P2 and
+breakdowns, seeded MC failure/trigger metrics and all existing results reproduce
+Stage 3 exactly, even if a nonzero unused penalty map is supplied.
+
+Stage 3 caches remain usable through an explicit frozen semantic signature
+(`ion_cache.py`). It checks the original kernels, default dispatchers, protocol
+and timing primitives, ordered baseline channels/circuits and study inputs
+against the approved Stage 3 manifest before accepting the legacy signature.
+Other changes fall back to the ordinary source fingerprint. No old cached
+numbers or fingerprints are rewritten. Rebuilding the Stage 3 report with no
+transport is checked byte-for-byte, including p_eff confidence intervals.
+
+### Synthetic fixture and outputs
+
+`--stage 4 --synthetic-transport` explicitly selects a test list of two syndrome-
+ancilla shuttle events per flagged/bare check: before its first CX and before
+its syndrome readout. There are 24 potential events; only the executed prefix
+and, when triggered, bare events incur time. These are **synthetic markers**,
+not a feasible routing plan or a hardware schedule. All use the sourced Jones
+shuttle duration; the three penalty levels 0, 0.0005 and 0.001 are artificial
+sensitivity values. They check strict monotonicity of raw P2, not a heating-law
+fit or a monotonicity claim about a finite-shot estimator.
+
+The checkpoint runner first replays empty transport at the approved nominal
+Stage 3 seed, then samples each synthetic case with its own seed. MC remains
+primary. Every case reports P1, raw/survival-corrected P2 and type/stage
+breakdowns, MC p_L and stderr, trigger splits, failure share through bare,
+separate flagged/bare-only/incoming fault counts, heated CX rates and adaptive
+idle exposure including event time. Results are written separately to
+`results/stage4_transport_results.json`. H2 and the nominal p_eff/ratios are
+carried unchanged from Stage 3. The synthetic hook test is not assigned a new
+hardware p_eff, and no extrapolation of the Stage 3 calibration is made.
+
+Custom events may be supplied with `--transport-events events.json`, plus an
+optional `--heating-penalty` JSON map. Stage 4 without either event input has
+an empty event list; it does not automatically select the fixture. The original
+Stage 0–3 numerical artifacts and figures remain unchanged.

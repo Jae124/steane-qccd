@@ -25,6 +25,12 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def fingerprint():
+    # Stage 4 adds opt-in transport code. Retain approved Stage 3 caches only
+    # when the independent kernels, primitives, ordered default channels and
+    # all baseline study circuits/parameters match the frozen semantic manifest.
+    from ion_cache import sampling_manifest
+    if sampling_manifest() == '1edaef4078655b02fd76d68086b7d984487db915e8e7ecc1e889f6ccbb8b7bd5':
+        return '481c4d8668af7a000bfed3b2e92163228375fd8a36d4af386dea49d5e8539dec'
     sources = [(ROOT / 'src' / name).read_bytes() for name in
                ('steane_ft.py', 'steane_noise.py', 'ion_timing.py', 'ion_params.py')]
     sources += [inspect.getsource(cls).encode() for cls in (IonNoise, IdleIonNoise)]
