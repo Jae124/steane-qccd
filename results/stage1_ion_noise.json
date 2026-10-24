@@ -1,0 +1,205 @@
+{
+  "stage": 1,
+  "presets": {
+    "JONES_MURALI_2026": {
+      "parameters": {
+        "name": "JONES_MURALI_2026",
+        "p_2q": 0.001,
+        "p_1q": 1e-05,
+        "p_reset": 0.005,
+        "p_meas": 0.001,
+        "T2": 2.2,
+        "ms_duration": 4e-05,
+        "rotation_duration": 5e-06,
+        "measurement_duration": 0.0004,
+        "reset_duration": 5e-05,
+        "shuttle_duration": 5e-06,
+        "split_duration": 8e-05,
+        "merge_duration": 8e-05,
+        "junction_duration": 0.0001,
+        "source": "https://arxiv.org/html/2510.23519v1#S5",
+        "caveat": "Gate probabilities are placeholders pending a heating model."
+      },
+      "checks": {
+        "single_fault_runs": 1908,
+        "flagged_fault_runs": 1152,
+        "bare_only_fault_runs": 756,
+        "incoming_runs": 42,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1908,
+        "bare_triggered_pair_cross_check_runs": 756,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 94222,
+        "P1": 0.0,
+        "P2": 0.0016717299118395137,
+        "P2_survival_corrected": 0.0014197062329883898,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.001340383586143803,
+          "FF": 7.932264684442498e-05
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 0.0007551204446728027,
+          "reset*reset": 0.0001281979822395099,
+          "meas*reset": 5.120998359856794e-05,
+          "2q*2q": 0.00032923303394166747,
+          "2q*meas": 0.00015083066573066763,
+          "meas*meas": 5.11412280416529e-06
+        },
+        "mean_location_fault_probability": 0.0017515550000000003,
+        "P2_survival_mean_approx": 0.0014177462085350173,
+        "P2_by_logical_type": {
+          "X": 0.0008451392853326173,
+          "Z": 0.0009252223011736044,
+          "any": 0.0016717299118395137
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0015781389607287433,
+          "FF": 9.359095111112052e-05
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 0.0008882681466666308,
+          "reset*reset": 0.00015019813068000004,
+          "meas*reset": 6.0239463472e-05,
+          "2q*2q": 0.0003888444444436227,
+          "2q*meas": 0.00017813967377777637,
+          "meas*meas": 6.040052800533333e-06
+        }
+      },
+      "monte_carlo": {
+        "seed": 2026,
+        "shots": 3000000,
+        "fails": 4776,
+        "p_L": 0.001592,
+        "stderr": 2.3017859269126948e-05
+      },
+      "comparison": {
+        "P2": {
+          "estimate_over_MC": 1.0500816029142672,
+          "estimate_minus_MC_in_stderr": 3.463828278177568
+        },
+        "P2_survival_corrected": {
+          "estimate_over_MC": 0.8917752719776317,
+          "estimate_minus_MC_in_stderr": -7.485221149244834
+        },
+        "P2_survival_mean_approx": {
+          "estimate_over_MC": 0.8905441008385786,
+          "estimate_minus_MC_in_stderr": -7.570373483806262
+        }
+      },
+      "status": "PASS"
+    },
+    "H2_LIKE": {
+      "parameters": {
+        "name": "H2_LIKE",
+        "p_2q": 0.00128,
+        "p_1q": 2.9e-05,
+        "p_reset": 4e-05,
+        "p_meas": 0.001,
+        "T2": null,
+        "ms_duration": null,
+        "rotation_duration": null,
+        "measurement_duration": null,
+        "reset_duration": null,
+        "shuttle_duration": null,
+        "split_duration": null,
+        "merge_duration": null,
+        "junction_duration": null,
+        "source": "https://arxiv.org/html/2508.14227v1#S3.T1",
+        "caveat": "Depolarizing-parameter convention unverified (process vs average infidelity). Timing unspecified."
+      },
+      "checks": {
+        "single_fault_runs": 1908,
+        "flagged_fault_runs": 1152,
+        "bare_only_fault_runs": 756,
+        "incoming_runs": 42,
+        "single_fault_failures": 0,
+        "cross_check_runs": 1908,
+        "bare_triggered_pair_cross_check_runs": 756,
+        "mismatches": 0,
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "counts": {
+        "n_locations": 96,
+        "location_counts": {
+          "R": 9,
+          "RX": 9,
+          "CX": 60,
+          "M": 9,
+          "MX": 9
+        },
+        "single_fault_failures": 0,
+        "malignant_pairs": 94222,
+        "P1": 0.0,
+        "P2": 0.0008846560177199771,
+        "P2_survival_corrected": 0.0008056560344211786,
+        "P2_survival_by_stage_pair": {
+          "FB": 0.0007020728157990893,
+          "FF": 0.00010358321862249579
+        },
+        "P2_survival_by_type_pair": {
+          "2q*reset": 1.031998733731941e-05,
+          "reset*reset": 1.3956209308516569e-08,
+          "meas*reset": 5.482550572332624e-07,
+          "2q*2q": 0.0005802436673059948,
+          "2q*meas": 0.00020896203112144498,
+          "meas*meas": 5.568137390757861e-06
+        },
+        "mean_location_fault_probability": 0.0009995274800000014,
+        "P2_survival_mean_approx": 0.0008052850538368528,
+        "P2_by_logical_type": {
+          "X": 0.0004388230449560098,
+          "Z": 0.000534450747440625,
+          "any": 0.0008846560177199771
+        },
+        "P2_by_stage_pair": {
+          "FB": 0.0007709240815552521,
+          "FF": 0.00011373193616495484
+        },
+        "P2_by_type_pair": {
+          "2q*reset": 1.1344772469190874e-05,
+          "reset*reset": 1.5360782727176536e-08,
+          "meas*reset": 6.028594422788268e-07,
+          "2q*2q": 0.0006370827377770853,
+          "2q*meas": 0.00022949340239644648,
+          "meas*meas": 6.116884852485333e-06
+        }
+      },
+      "monte_carlo": {
+        "seed": 2026,
+        "shots": 3000000,
+        "fails": 2610,
+        "p_L": 0.00087,
+        "stderr": 1.7021976970963156e-05
+      },
+      "comparison": {
+        "P2": {
+          "estimate_over_MC": 1.016845997379284,
+          "estimate_minus_MC_in_stderr": 0.8610056132127308
+        },
+        "P2_survival_corrected": {
+          "estimate_over_MC": 0.9260414188749179,
+          "estimate_minus_MC_in_stderr": -3.7800524397713757
+        },
+        "P2_survival_mean_approx": {
+          "estimate_over_MC": 0.9256150044101756,
+          "estimate_minus_MC_in_stderr": -3.8018466523330874
+        }
+      },
+      "status": "PASS"
+    }
+  }
+}

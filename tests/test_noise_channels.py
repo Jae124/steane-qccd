@@ -79,8 +79,10 @@ def test_exhaustive_uniform_pairs():
     assert result['P2'] == pytest.approx(result['A']['any'] * p**2, rel=2e-12)
     assert sum(result['P2_by_type_pair'].values()) == pytest.approx(result['P2'])
     assert sum(result['P2_by_stage_pair'].values()) == pytest.approx(result['P2'])
-    output = Path(__file__).parents[1] / 'results/stage0_channels.json'
-    output.write_text(json.dumps(result, indent=2) + '\n')
+    assert result['P2_survival_corrected'] == pytest.approx(
+        result['P2'] * (1 - p)**94, rel=2e-12)
+    assert result['P2_survival_mean_approx'] == pytest.approx(
+        result['P2_survival_corrected'], rel=2e-12)
 
 
 @pytest.mark.slow

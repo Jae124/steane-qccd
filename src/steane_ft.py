@@ -107,18 +107,24 @@ def apply_pauli(sim, qubits, paulis):
     sim.do(ps)
 
 
-def run_ops(sim, ops, fault=None):
+def run_ops(sim, ops, fault=None, *, faults=None):
     """
     Execute ops on a TableauSimulator.
     fault = (op_index, payload): after op op_index, apply a Pauli (payload is a
     string like 'XZ' over the op's qubits) or, for a measurement, flip the
     result (payload == 'FLIP').
+    Alternatively faults = {op_index: payload} supports multiple injections.
     Returns dict tag -> measured bit.
     """
+    if fault is not None and faults is not None:
+        raise ValueError('Specify fault or faults, not both')
+    injected = dict(faults or {})
+    if fault is not None:
+        injected[fault[0]] = fault[1]
     results = {}
     for i, op in enumerate(ops):
         kind = op[0]
-        hit = fault is not None and fault[0] == i
+        hit = i in injected
         if kind == 'R':
             sim.reset(op[1])
         elif kind == 'RX':
@@ -132,13 +138,13 @@ def run_ops(sim, ops, fault=None):
             bit = sim.measure(q)
             if kind == 'MX':
                 sim.h(q)
-            if hit and fault[1] == 'FLIP':
+            if hit and injected[i] == 'FLIP':
                 bit = not bit
             results[op[2]] = int(bit)
             continue
         if hit:
             qubits = [op[1]] if kind in ('R', 'RX') else [op[1], op[2]]
-            apply_pauli(sim, qubits, fault[1])
+            apply_pauli(sim, qubits, injected[i])
     return results
 
 
@@ -187,17 +193,23 @@ def syndrome_value(bits):
 # One full adaptive EC round
 # ---------------------------------------------------------------------------
 
-def ec_round(sim, fault_at=None, use_flags=True):
+def ec_round(sim, fault_at=None, use_flags=True, *, faults=None):
     """
     fault_at = (circuit_index in ROUND, fault) or None.
+    Alternatively faults = {(stage, circuit_index): {op_index: payload}}.
     Returns a log dict describing what happened.
     """
+    if fault_at is not None and faults is not None:
+        raise ValueError('Specify fault_at or faults, not both')
+    injected = faults or {}
+    if fault_at is not None:
+        idx, (op_idx, payload) = fault_at
+        injected = {('F', idx): {op_idx: payload}}
     log = {'trigger': None}
     trigger = None
     for idx, (kind, k) in enumerate(ROUND):
         ops = stabilizer_circuit(kind, SUPPORTS[k], flagged=True)
-        fault = fault_at[1] if (fault_at and fault_at[0] == idx) else None
-        r = run_ops(sim, ops, fault)
+        r = run_ops(sim, ops, faults=injected.get(('F', idx), {}))
         if r['flag'] or r['synd']:
             trigger = (kind, k, r['flag'])
             break
@@ -205,10 +217,11 @@ def ec_round(sim, fault_at=None, use_flags=True):
     if trigger is None:
         return log
 
-    # Bare round (fault-free by the single-fault assumption)
+    # Bare follow-up round; accepts explicit injections for noise cross-checks.
     bits = {'Z': [], 'X': []}
-    for kind, k in ROUND:
-        r = run_ops(sim, stabilizer_circuit(kind, SUPPORTS[k], flagged=False))
+    for idx, (kind, k) in enumerate(ROUND):
+        r = run_ops(sim, stabilizer_circuit(kind, SUPPORTS[k], flagged=False),
+                    faults=injected.get(('B', idx), {}))
         bits[kind].append(r['synd'])
     s_x = syndrome_value(bits['Z'])  # Z-checks see X errors
     s_z = syndrome_value(bits['X'])  # X-checks see Z errors

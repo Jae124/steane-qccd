@@ -22,6 +22,7 @@ What this file does
 
 import itertools
 import json
+import math
 import random
 import time
 
@@ -259,6 +260,9 @@ def count_faults(noise=None):
     P1 = 0.0
     P2 = {'X': 0.0, 'Z': 0.0, 'any': 0.0}
     p2_stage, p2_type = {}, {}
+    rates = [min(1.0, sum(ch.values())) for ch in channels]
+    corrected = 0.0
+    corrected_stage, corrected_type = {}, {}
 
     # First order: any single fault that fails would break fault tolerance
     single_fail = 0
@@ -280,6 +284,8 @@ def count_faults(noise=None):
         if not variants[a] or not variants[b]:
             continue
         w = 1.0 / (len(variants[a]) * len(variants[b]))
+        survival = math.prod(1 - rate for idx, rate in enumerate(rates)
+                             if idx not in (a, b))
         for va in variants[a]:
             for vb in variants[b]:
                 faults = {}
@@ -296,6 +302,9 @@ def count_faults(noise=None):
                     tkey = '*'.join(sorted((loc_type(la), loc_type(lb))))
                     per_type[tkey] = per_type.get(tkey, 0.0) + w
                     P2['any'] += pw
+                    corrected += pw * survival
+                    corrected_stage[key] = corrected_stage.get(key, 0.0) + pw * survival
+                    corrected_type[tkey] = corrected_type.get(tkey, 0.0) + pw * survival
                     p2_stage[key] = p2_stage.get(key, 0.0) + pw
                     p2_type[tkey] = p2_type.get(tkey, 0.0) + pw
                 A['X'] += w * xf
@@ -315,6 +324,11 @@ def count_faults(noise=None):
             'A_by_type_pair': per_type} if uniform else {}),
         'P1': P1,
         'P2': P2['any'],
+        'P2_survival_corrected': corrected,
+        'P2_survival_by_stage_pair': corrected_stage,
+        'P2_survival_by_type_pair': corrected_type,
+        'mean_location_fault_probability': sum(rates) / len(rates),
+        'P2_survival_mean_approx': P2['any'] * (1 - sum(rates) / len(rates)) ** (len(locs) - 2),
         'P2_by_logical_type': P2,
         'P2_by_stage_pair': p2_stage,
         'P2_by_type_pair': p2_type,
