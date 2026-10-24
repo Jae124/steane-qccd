@@ -345,9 +345,9 @@ matched-pair mechanisms are in `results/stageA3_memory.json` and
 
 `src/memory_mc.py` provides the reusable `RoundAdapter`/`RoundStep` interface
 and `memory_trial` driver. The adapter supplies one noisy round; the driver
-carries opaque state and scores only at the final endpoint. Only the flag
-adapter is implemented here. An absorbing abort hook is available for future
-verified-preparation adapters. Current-round reset/readout/2q/idle trigger
+carries opaque state and scores only at the final endpoint. A3 initially implemented the flag
+adapter. B2 adds the Steane adapter described below, using the absorbing abort
+hook for verified preparation. Current-round reset/readout/2q/idle trigger
 signals are distinguished from incoming `carry`; any-bare and last-bare failure
 shares are separate. Caches save 250k-trajectory chunks and RNG state atomically.
 
@@ -355,7 +355,7 @@ shares are separate. Caches save 250k-trajectory chunks and RNG state atomically
 the independently fitted R≥4 trend, and R≥4/R≥8 sensitivity fits. The R≥4 fits
 are shown for all cases, including every R=2 point outside its one-sigma error
 bar. Inspect goodness of fit before interpreting a fitted finite-window metric
-as a stationary rate. Stage B has not started.
+as a stationary rate. The subsequent B1/B2 sections describe the implemented Steane preparation and round.
 
 ### Stage B1: standalone verified ancilla preparation
 
@@ -396,4 +396,38 @@ Every rejected attempt contributes real time and fault locations.
 Recorded for later B3, with no comparisons run in B1: include XXXZZZ as the
 “flag, best order” arm under every preset, regardless of significance; run
 Steane-style in both half-orders; use A3 epsilon_tot as primary and always
-report epsilon_X and epsilon_Z. B2/B3 assembly and sampling have not started.
+report epsilon_X and epsilon_Z. B1 performed no B2/B3 assembly or sampling; the later B2 implementation is documented below.
+
+### Stage B2: complete Steane-style round correctness
+
+`src/steane_extraction.py` reuses the fixed B1 preparations on ions 7..13 plus
+verifier 14, with data on 0..6. It implements both `X_FIRST` and `Z_FIRST`,
+transversal coupling, H·m syndromes and standard Hamming corrections. The cap is
+`max_attempts = 4`; exhaustion aborts the round and counts as a logical failure.
+Data accrue idle channels during **every** attempt, including rejected attempts.
+The block is reset between attempts and reused between the two halves.
+
+```bash
+.venv/bin/python src/extraction_experiment.py
+.venv/bin/python src/extraction_smoke.py
+.venv/bin/python src/extraction_report.py
+.venv/bin/python -m pytest -q
+```
+
+`results/stageB2_correctness.json` reports exhaustive positive-channel and
+universal single-fault checks, separate dormant retry locations and conditioned
+retry tests, incoming single errors, and physical exhaustion tests. Comparisons
+use H·m, verification outcomes, corrections, six residual stabilizer signs and
+the relevant logical decision; raw random ancilla bits are never compared.
+`results/stageB2_resources.json` includes executed-path location counts and
+round time under SEQ and PAR_MR for both half-orders, plus exact expected costs
+that include rejected attempts. H2 remains timing-free and transport empty.
+
+`src/steane_memory.py` supplies the Steane adapter to the unchanged A3 memory
+driver, including an absorbing abort state. The B2 smoke report has 50k
+trajectories for each half-order/policy at R=1 and R=4, and persistent
+frame/tableau trajectory checks with explicit rejection and abort paths. This
+is **harness validation only**, with no epsilon fit or performance comparison.
+The user's B2 clarification defers epsilon_tot, abort share of epsilon_tot and
+Jones–Murali SEQ cap performance sensitivity {2,4,infinity} to B3. B2 ends at
+this correctness/resource checkpoint.

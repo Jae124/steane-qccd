@@ -1,0 +1,67 @@
+{
+  "stage": "B2",
+  "simulation_fingerprint": "bca267ff665801ed308a8bafc730e761ad430a0036d770fdf8081478deec75fb",
+  "harness_fingerprint": "f665fd1cbcaa17685158e162444cdaf92ab146c4af46da7a4a1f49f2c51a4074",
+  "approved_artifacts": {
+    "artifact_count": 225,
+    "all_byte_identical": true,
+    "mismatches": []
+  },
+  "positive_channel_rows": 18,
+  "distinct_positive_support_checks": 10,
+  "universal_geometry_checks": 6,
+  "single_fault_failures": 0,
+  "incoming_error_failures": 0,
+  "conditioned_nonabort_failures": 0,
+  "frame_tableau_mismatches": 0,
+  "positive_support_counts": {
+    "noiseless_runs": 20,
+    "cross_check_runs": 62680,
+    "first_attempt_or_extraction_fault_runs": 13144,
+    "retry_only_fault_runs": 24528,
+    "conditioned_retry_fault_runs": 24528,
+    "expected_conditioned_aborts": 3860,
+    "incoming_single_error_runs": 420,
+    "physical_abort_policy_runs": 40
+  },
+  "universal_counts": {
+    "noiseless_runs": 12,
+    "cross_check_runs": 43112,
+    "first_attempt_or_extraction_fault_runs": 8888,
+    "retry_only_fault_runs": 16968,
+    "conditioned_retry_fault_runs": 16968,
+    "expected_conditioned_aborts": 2460,
+    "incoming_single_error_runs": 252,
+    "physical_abort_policy_runs": 24
+  },
+  "memory_smoke": {
+    "status": "PASS",
+    "trajectories": 400000,
+    "executed_rounds": 1000000,
+    "observed_aborts": 1,
+    "persistent_frame_tableau_comparisons": 1000,
+    "forced_rejection": true,
+    "forced_abort": true,
+    "frames_carried": true,
+    "epsilon_or_performance_comparison": false
+  },
+  "resources_validated": "15 ions; nominal 36 CX/16 reset/16 readout; max 102 CX/64 reset/22 readout. Every data qubit waits the whole duration of each preparation, including rejected attempts. All timed exposure identities pass.",
+  "tests": {
+    "focused_passed": 17,
+    "focused_seconds": 1.74,
+    "full_suite": {
+      "passed": 160,
+      "seconds": 421.74,
+      "includes_all_prior_regressions": true
+    }
+  },
+  "later_B3_started": false,
+  "diff_check": "PASS",
+  "new_source_sha256": {
+    "src/steane_extraction.py": "f6a6e218ec64049bf2d0674311df3d42c473ccb9fb86c172db4b35654587de41",
+    "src/steane_memory.py": "af377fe0c151009051bcce9ed6bda79193ead01d08f84302a291ad88f31bf275",
+    "src/extraction_experiment.py": "784c8240b29dd1ef10fe5d199ce1aa5e75e4ef5d53418e85ccd0f3836dc2116f",
+    "src/extraction_smoke.py": "22f6d88eb335be665b60e717aa626aa23517f3ce17493f22f715cc8f9d53333f",
+    "src/extraction_report.py": "dbf03d246e0d4833e7a056abad0201dcdcd704f2c9ef78a26697044a25b754f4"
+  }
+}

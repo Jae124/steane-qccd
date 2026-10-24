@@ -1,0 +1,114 @@
+{
+  "simulation_fingerprint": "bca267ff665801ed308a8bafc730e761ad430a0036d770fdf8081478deec75fb",
+  "checks": {
+    "catalog": "positive preset payloads",
+    "counts": {
+      "noiseless_runs": 2,
+      "cross_check_runs": 5592,
+      "first_attempt_or_extraction_fault_runs": 1176,
+      "retry_only_fault_runs": 2184,
+      "conditioned_retry_fault_runs": 2184,
+      "expected_conditioned_aborts": 380,
+      "incoming_single_error_runs": 42,
+      "physical_abort_policy_runs": 4
+    },
+    "fault_runs_by_part": {
+      "prep_0/initial_resets": 112,
+      "prep_0/encoder": 960,
+      "prep_0/verification": 360,
+      "prep_0/verification_readout": 8,
+      "Z_coupling": 210,
+      "Z_ancilla_readout": 14,
+      "prep_+/initial_resets": 144,
+      "prep_+/encoder": 960,
+      "prep_+/verification": 360,
+      "prep_+/verification_readout": 8,
+      "X_coupling": 210,
+      "X_ancilla_readout": 14
+    },
+    "single_fault_failures": 0,
+    "incoming_failures": 0,
+    "conditioned_nonabort_failures": 0,
+    "frame_tableau_mismatches": 0,
+    "noiseless": [
+      {
+        "basis": "0",
+        "logical_preserved": true,
+        "trivial_syndromes": true
+      },
+      {
+        "basis": "+",
+        "logical_preserved": true,
+        "trivial_syndromes": true
+      }
+    ],
+    "physical_abort_checks": [
+      {
+        "half": 0,
+        "basis": "0",
+        "aborted": true,
+        "counts_as_logical_failure": true,
+        "resources": {
+          "location_counts": {
+            "reset": 32,
+            "2q": 44,
+            "measurement": 4
+          },
+          "duration_seconds": null,
+          "ion_count": 15,
+          "idle_exposure_per_data_qubit": null
+        }
+      },
+      {
+        "half": 0,
+        "basis": "+",
+        "aborted": true,
+        "counts_as_logical_failure": true,
+        "resources": {
+          "location_counts": {
+            "reset": 32,
+            "2q": 44,
+            "measurement": 4
+          },
+          "duration_seconds": null,
+          "ion_count": 15,
+          "idle_exposure_per_data_qubit": null
+        }
+      },
+      {
+        "half": 1,
+        "basis": "0",
+        "aborted": true,
+        "counts_as_logical_failure": true,
+        "resources": {
+          "location_counts": {
+            "reset": 40,
+            "2q": 62,
+            "measurement": 12
+          },
+          "duration_seconds": null,
+          "ion_count": 15,
+          "idle_exposure_per_data_qubit": null
+        }
+      },
+      {
+        "half": 1,
+        "basis": "+",
+        "aborted": true,
+        "counts_as_logical_failure": true,
+        "resources": {
+          "location_counts": {
+            "reset": 40,
+            "2q": 62,
+            "measurement": 12
+          },
+          "duration_seconds": null,
+          "ion_count": 15,
+          "idle_exposure_per_data_qubit": null
+        }
+      }
+    ],
+    "failure_details": [],
+    "mismatch_details": []
+  }
+}

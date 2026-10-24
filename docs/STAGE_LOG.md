@@ -1511,3 +1511,125 @@ Recorded for B2/B3, with no action now:
 - Preserve the approved A3 memory metric, XXXZZZ arm under every preset, and both Steane half-orders.
 
 Validation: all 18 r^4 entries and exact cap-four identities checked; all 75 MC/check/analysis caches are byte-identical; all 147 pre-B1 approved artifacts remain byte-identical. The focused B1 suite passes: **24 tests in 3.37 s**; `git diff --check` passes. This changes reporting and the experiment-runner default only. **Stop before B2.**
+
+
+## Stage B2 — Full Steane-style round correctness
+
+Completed B2 only. Both half-orders are assembled and checked under all presets; Jones–Murali has SEQ and PAR_MR. The user clarified that epsilon_tot, its abort share and cap performance sensitivity {2,4,infinity} are deferred to B3. No B3 comparison, logical-rate calibration or memory fit was run. The requested small memory experiment is reported exclusively as integration validation.
+
+### Changes
+
+- `src/steane_extraction.py`: fixed B1 circuits, repeated preparation, transversal extraction, standard decoder, timed live windows and executed-path costs.
+- `src/steane_memory.py`: Steane adapter for the unchanged A3 driver; sparse original-channel sampling, carried frames and absorbing aborts.
+- `src/extraction_experiment.py`: exhaustive supported/universal fault checks, dormant and conditioned retry checks, incoming errors and physical abort tests; resumable check caches.
+- `src/extraction_smoke.py`: persistent tableau/scalar/batch trajectory validation plus requested 50k-trajectory smoke runs.
+- `src/extraction_report.py`: resource expectations and observed correctness/smoke abort reports; no performance fits.
+- `tests/test_steane_extraction.py`: correctness, wait conservation, cap counting/costs, random-codeword syndrome and adapter replay/absorption tests.
+- `tests/fixtures/stageB1_artifacts.json`: hashes of all 225 approved result/figure files.
+- `results/stageB2_correctness.json`, `stageB2_resources.json`, `stageB2_memory_smoke.json`, `stageB2_validation.json`, `stageB2_cache/`: complete checkpoint artifacts.
+- README and noise-model documentation: usage, actual timing boundaries, decoder derivation and scope.
+
+### Decoder, layout and timing
+
+Data are 0..6, the reused ancilla block 7..13 and verifier 14: **15 ions**. The X-error syndrome half prepares the fixed plus block, applies seven serial CX data→ancilla and measures Z; the Z-error syndrome half prepares the fixed zero block, applies seven serial CX ancilla→data and measures X. H is the frozen Hamming matrix. Because a noiseless readout m0 is in ker H, only H(m0+e)=H e enters the decision. The standard qubit-address decoder corrects q=s−1 for s≠0, once per component, as an ideal zero-time Pauli-frame update. Both X_FIRST and Z_FIRST are used. Neither the preparation circuits nor decoder were tuned.
+
+`max_attempts = 4` means initial plus three retries. Each attempt resets all eight ancilla/verifier ions, never data. **Every data ion accrues the entire preparation elapsed time**, including rejected attempts and the fourth rejection preceding abort. These idle locations are split at the approved B1 boundaries. Block live windows, output waits and measurement convention match B1. Readout data waiting is also charged: seven serial measurements in SEQ, a single disjoint layer in PAR_MR. Transport is empty; this remains a synthetic timing model. H2 is timing-free, Stage 1 channels only.
+
+An abort halts the round, counts as a failure of both logical basis scores and is absorbing in later memory rounds. No subsequent operations are charged to an aborted trajectory. A successful retry preserves all data errors accrued in rejected attempts.
+
+### Fault tolerance and cross-checks
+
+All comparisons use **H·m, every verification outcome and retry decision, corrections, six residual stabilizer signs and the relevant pre-decode logical sign**, then the logical decision after ideal endpoint decode. Raw random ancilla bits are never compared. Both logical bases are checked. Incoming single errors are 7 qubits × X/Y/Z × 2 bases = 42 trials per support/geometry.
+
+First-attempt/extraction faults execute on noiseless input. Later retry-only fault injections are **dormant** without a prior rejection and are counted separately. Additional tests condition the branch to reach each later attempt; these are conditional-path cross-checks and residual-correctability tests, not ordinary unconditional single-fault claims. A fourth-attempt rejection on such a path is an expected abort, separately counted. Finally, four physical verification FLIPs in succession test actual exhaustion in either half, without branch overrides; those deliberate multi-fault tests must abort and fail the logical score.
+
+| Preset / policy | Half-order | First-attempt / extraction fault trials | Dormant retry fault trials | Incoming trials | Conditioned retry trials | Expected conditioned aborts | FT failures / cross-check mismatches |
+|---|---|---:|---:|---:|---:|---:|---|
+| UniformNoise(0.0005) / timing-free | X_FIRST | 1144 | 2088 | 42 | 2088 | 372 | 0 / 0 |
+| UniformNoise(0.0005) / timing-free | Z_FIRST | 1144 | 2088 | 42 | 2088 | 372 | 0 / 0 |
+| UniformNoise(0.001) / timing-free | X_FIRST | 1144 | 2088 | 42 | 2088 | 372 | 0 / 0 |
+| UniformNoise(0.001) / timing-free | Z_FIRST | 1144 | 2088 | 42 | 2088 | 372 | 0 / 0 |
+| UniformNoise(0.0015) / timing-free | X_FIRST | 1144 | 2088 | 42 | 2088 | 372 | 0 / 0 |
+| UniformNoise(0.0015) / timing-free | Z_FIRST | 1144 | 2088 | 42 | 2088 | 372 | 0 / 0 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free | X_FIRST | 1080 | 1980 | 42 | 1980 | 352 | 0 / 0 |
+| TWO_QUBIT_ONLY(0.0005) / timing-free | Z_FIRST | 1080 | 1980 | 42 | 1980 | 352 | 0 / 0 |
+| TWO_QUBIT_ONLY(0.001) / timing-free | X_FIRST | 1080 | 1980 | 42 | 1980 | 352 | 0 / 0 |
+| TWO_QUBIT_ONLY(0.001) / timing-free | Z_FIRST | 1080 | 1980 | 42 | 1980 | 352 | 0 / 0 |
+| TWO_QUBIT_ONLY(0.002) / timing-free | X_FIRST | 1080 | 1980 | 42 | 1980 | 352 | 0 / 0 |
+| TWO_QUBIT_ONLY(0.002) / timing-free | Z_FIRST | 1080 | 1980 | 42 | 1980 | 352 | 0 / 0 |
+| H2_LIKE / timing-free | X_FIRST | 1176 | 2184 | 42 | 2184 | 380 | 0 / 0 |
+| H2_LIKE / timing-free | Z_FIRST | 1176 | 2184 | 42 | 2184 | 380 | 0 / 0 |
+| JONES_MURALI_2026 / SEQ | X_FIRST | 1604 | 3024 | 42 | 3024 | 416 | 0 / 0 |
+| JONES_MURALI_2026 / SEQ | Z_FIRST | 1604 | 3024 | 42 | 3024 | 416 | 0 / 0 |
+| JONES_MURALI_2026 / PAR_MR | X_FIRST | 1568 | 2988 | 42 | 2988 | 410 | 0 / 0 |
+| JONES_MURALI_2026 / PAR_MR | Z_FIRST | 1568 | 2988 | 42 | 2988 | 410 | 0 / 0 |
+
+The 18 positive-channel rows reuse 10 identical support checks: **62,680 frame/tableau comparisons**, including 13,144 first-attempt/extraction fault trials, 24,528 dormant retry trials, 24,528 conditioned retry trials, 420 incoming-error trials and 40 physical abort-policy tests (plus noiseless checks). All unconditional single-fault and incoming-error trials pass; all non-aborted conditioned paths pass. No failing-fault or mismatch records exist.
+
+Universal reset XYZ / CX nonidentity Pauli / readout FLIP / idle Z checks cover six half-order/timing geometries, each in both bases, independently of preset rates: **43,112 frame/tableau comparisons**, 8,888 active fault trials, 16,968 dormant retry trials, 16,968 conditioned trials, 252 incoming trials and 24 physical abort tests (plus noiseless checks). All pass. Conditional final-attempt aborts are expected policy outcomes, not hidden logical FT violations.
+
+### Resource counts and duration
+
+Counts below are actual physical operation/idle-channel locations. An RX/MX is one approved composite location, with its existing rotation contribution and duration; no separate unsourced channel is added. The no-rejection path uses 36 CNOTs, 16 resets and 16 readouts. The path accepting on attempt four in both halves uses 102 CNOTs, 64 resets and 22 readouts, including all discarded attempts. Every row uses 15 ions.
+
+| Policy | Half-order | No-rejection locations: reset / 2q / readout / idle | Nominal duration ms | Max-path locations: reset / 2q / readout / idle | Max duration ms | Expected elapsed ms including rejection/abort |
+|---|---|---|---:|---|---:|---:|
+| timing-free | X_FIRST | 16 / 36 / 16 / 0 | — | 64 / 102 / 22 / 0 | — | — |
+| timing-free | Z_FIRST | 16 / 36 / 16 / 0 | — | 64 / 102 / 22 / 0 | — | — |
+| SEQ | X_FIRST | 16 / 36 / 16 / 214 | 8.720000000 | 64 / 102 / 22 / 634 | 16.295000000 | 8.788691823 |
+| SEQ | Z_FIRST | 16 / 36 / 16 / 214 | 8.720000000 | 64 / 102 / 22 / 634 | 16.295000000 | 8.788691981 |
+| PAR_MR | X_FIRST | 16 / 36 / 16 / 196 | 3.160000000 | 64 / 102 / 22 / 598 | 8.545000000 | 3.208723992 |
+| PAR_MR | Z_FIRST | 16 / 36 / 16 / 196 | 3.160000000 | 64 / 102 / 22 / 598 | 8.545000000 | 3.208724032 |
+
+The timing-free count row applies to all Uniform, TWO_QUBIT_ONLY and H2 presets; their timing is not invented. Expected resource costs are computed from exact B1 per-attempt rejection r: attempt a is reached with probability r^(a−1), and the second half is reached only if the first accepts. First-half abort therefore suppresses its coupling and the entire second half. JSON supplies expected location counts and idle exposure for every preset, not just elapsed time. These are cost expectations, not logical performance estimates.
+
+Nominal per-data-qubit idle exposure is **0.008640 s** (SEQ) or **0.003080 s** (PAR_MR), in either half-order: round duration minus its two 40-µs CNOTs. The corresponding per-ion summed Z probabilities span **0.0019627636–0.0019627666** and **0.0006999482–0.0006999512** respectively. Exact per-ion values, including rejection-weighted costs, are in the resource JSON. Each additional preparation adds its complete B1 duration to every data ion's idle exposure.
+
+### Observed aborts and memory harness validation
+
+The deterministic unconditioned correctness trials have **zero aborts**; per-row denominators and rates are stored in `stageB2_resources.json`. This is a fault-injection statement, not a physical-rate estimate. Deliberate physical exhaustion aborts in every test (4/4 per support), with all four attempts and no later costs charged. Conditioned retry abort counts above likewise are not physical probabilities.
+
+The requested independent-channel smoke test runs **50,000 trajectories** for each of four Jones–Murali half-order/policy arms at **R=1 and R=4**: 400,000 trajectories and 1,000,000 actual executed rounds in total. It reports only harness pass/fail, counts and timing sanity. It performs no fit and supplies no logical performance number for comparison.
+
+| Half-order | Policy | R | Trajectories | Actual executed rounds | Observed aborts / round | Harness |
+|---|---|---:|---:|---:|---:|---|
+| X_FIRST | SEQ | 1 | 50000 | 50000 | 0/50000 | PASS |
+| X_FIRST | SEQ | 4 | 50000 | 200000 | 0/200000 | PASS |
+| X_FIRST | PAR_MR | 1 | 50000 | 50000 | 0/50000 | PASS |
+| X_FIRST | PAR_MR | 4 | 50000 | 200000 | 1/200000 | PASS |
+| Z_FIRST | SEQ | 1 | 50000 | 50000 | 0/50000 | PASS |
+| Z_FIRST | SEQ | 4 | 50000 | 200000 | 0/200000 | PASS |
+| Z_FIRST | PAR_MR | 1 | 50000 | 50000 | 0/50000 | PASS |
+| Z_FIRST | PAR_MR | 4 | 50000 | 200000 | 0/200000 | PASS |
+
+Pooled observed abort rate is **1/1,000,000 = 1e-06 per executed round**, Wilson 95% interval [1.765e-07, 5.665e-06]. Individual intervals are retained in JSON, including nonzero upper bounds for zero counts. Pooling is a harness sanity check, not a comparison or a precise rate determination. Epsilon_tot and the abort share of epsilon_tot are explicitly deferred to B3.
+
+Persistent multi-round replay uses **32 explicit trajectories per basis per half-order/policy**, R=4, with no intermediate ideal decode. Across both bases and all four configurations there are **1,000 scalar/batch frame comparisons and 1,000 persistent-tableau comparisons** before absorption. They all match. The trajectories include a physical rejected verification followed by acceptance, a physical four-rejection abort, and a nonzero residual frame that carries into the next round. Aborts fail both basis scores, persist to the endpoint and consume no subsequent-round time or locations. Preparation durations match B1 exactly. All eight 50k smoke runs pass without crashes.
+
+### Frozen-result checks and validation
+
+| Regression | Result |
+|---|---|
+| Flag single faults | 0/1218 preserved |
+| No-flag single faults | 48/1218 preserved |
+| Original tableau/frame cross-check | 0/1176 mismatches preserved |
+| Malignant pairs / A dictionaries | 92840 / exact match |
+| Seeded uniform MC | 542/3M, seed 2026 preserved |
+| Seeded Jones–Murali MC | 6121/3M, seed 3326 preserved |
+| Stage 4 empty transport / synthetic checks | Preserved |
+| A1/A2/A3/B1 results and figures | All 225 approved artifact hashes unchanged |
+
+Focused B2 tests: **17 passed in 1.74 s**. Full suite: **160 passed in 421.74 s**, including all prior regression tests. No dependencies, hardware parameters, approved physical source files or approved result/figure files changed. The original memory driver is unchanged; the new adapter is opt-in. `git diff --check` passes.
+
+Assumptions made:
+
+- The B1 published preparation and full Hadamard dual are fixed; all channels and sourced durations are reused. Only detector half-order is parameterized.
+- Pauli corrections are ideal frame updates. There is no extra inter-round, inter-half or retry gap. The schedule remains synthetic, with no transport, routing or recooling model.
+- Retry-only and conditioned-path fault checks are reported separately. Expected aborts on deliberately exhausted paths do not get counted as unexplained FT violations or omitted from cross-checks.
+- The user's explicit clarification limits B2 memory runs to harness validation. No epsilon, p_eff, P2 or logical-rate contrast is inferred from the smoke data.
+
+Open questions for the human:
+
+- Review the B2 correctness, retry costs and memory integration checks.
+- B3 retains XXXZZZ under every preset, both Steane half-orders, primary A3 epsilon_tot with both basis marginals, observed abort rate and its epsilon_tot share, and the Jones–Murali SEQ max_attempts {2,4,infinity} performance sensitivity.
+- **Stop here. B3 requires the next checkpoint approval.**

@@ -1,0 +1,1406 @@
+{
+  "stage": "B2",
+  "scope": "Correctness, resources and harness validation only. No B3 performance estimate or comparison.",
+  "simulation_fingerprint": "bca267ff665801ed308a8bafc730e761ad430a0036d770fdf8081478deec75fb",
+  "harness_fingerprint": "f665fd1cbcaa17685158e162444cdaf92ab146c4af46da7a4a1f49f2c51a4074",
+  "approved_artifacts": {
+    "artifact_count": 225,
+    "all_byte_identical": true,
+    "mismatches": []
+  },
+  "max_attempts": 4,
+  "ion_count": 15,
+  "rows": {
+    "c0_X_FIRST": {
+      "preset": "UniformNoise(0.0005)",
+      "policy": "timing-free",
+      "half_order": "X_FIRST",
+      "half_sequence": [
+        "X",
+        "Z"
+      ],
+      "no_rejection": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "maximum_executed_if_fourth_attempt_accepts_in_each_half": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "model_expected_resources_including_rejections_and_aborts": {
+        "location_counts": {
+          "reset": 16.086964989668573,
+          "2q": 36.119576842859296,
+          "measurement": 16.010870605773587
+        },
+        "duration_seconds": null,
+        "idle_exposure_per_data_qubit": null,
+        "method": "Per-attempt verification rejection from B1 exact finite-rate convolution; actual execution reach weights q^a and previous-half acceptance. This is a resource expectation, not p_L."
+      },
+      "model_expected_round_abort_probability": 1.7080938818200465e-09,
+      "observed_unconditioned_correctness_aborts": {
+        "aborts": 0,
+        "round_runs": 3276,
+        "rate": 0.0,
+        "scope": "Deterministic fault-injection/noiseless/incoming-error trials; not a stochastic physical abort-rate estimate."
+      },
+      "observed_conditioned_retry_aborts": {
+        "aborts": 372,
+        "round_runs": 2088,
+        "scope": "Test-only branch-conditioned retry paths; not physical sampling."
+      },
+      "physical_exhaustion_tests": {
+        "aborts": 4,
+        "round_runs": 4,
+        "counts_as_failure": true
+      }
+    },
+    "c0_Z_FIRST": {
+      "preset": "UniformNoise(0.0005)",
+      "policy": "timing-free",
+      "half_order": "Z_FIRST",
+      "half_sequence": [
+        "Z",
+        "X"
+      ],
+      "no_rejection": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "maximum_executed_if_fourth_attempt_accepts_in_each_half": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "model_expected_resources_including_rejections_and_aborts": {
+        "location_counts": {
+          "reset": 16.086964989668573,
+          "2q": 36.119576842859296,
+          "measurement": 16.010870605773587
+        },
+        "duration_seconds": null,
+        "idle_exposure_per_data_qubit": null,
+        "method": "Per-attempt verification rejection from B1 exact finite-rate convolution; actual execution reach weights q^a and previous-half acceptance. This is a resource expectation, not p_L."
+      },
+      "model_expected_round_abort_probability": 1.7080938818200465e-09,
+      "observed_unconditioned_correctness_aborts": {
+        "aborts": 0,
+        "round_runs": 3276,
+        "rate": 0.0,
+        "scope": "Deterministic fault-injection/noiseless/incoming-error trials; not a stochastic physical abort-rate estimate."
+      },
+      "observed_conditioned_retry_aborts": {
+        "aborts": 372,
+        "round_runs": 2088,
+        "scope": "Test-only branch-conditioned retry paths; not physical sampling."
+      },
+      "physical_exhaustion_tests": {
+        "aborts": 4,
+        "round_runs": 4,
+        "counts_as_failure": true
+      }
+    },
+    "c1_X_FIRST": {
+      "preset": "UniformNoise(0.001)",
+      "policy": "timing-free",
+      "half_order": "X_FIRST",
+      "half_sequence": [
+        "X",
+        "Z"
+      ],
+      "no_rejection": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "maximum_executed_if_fourth_attempt_accepts_in_each_half": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "model_expected_resources_including_rejections_and_aborts": {
+        "location_counts": {
+          "reset": 16.173989687741816,
+          "2q": 36.2392355394239,
+          "measurement": 16.021748429746637
+        },
+        "duration_seconds": null,
+        "idle_exposure_per_data_qubit": null,
+        "method": "Per-attempt verification rejection from B1 exact finite-rate convolution; actual execution reach weights q^a and previous-half acceptance. This is a resource expectation, not p_L."
+      },
+      "model_expected_round_abort_probability": 2.678296100107111e-08,
+      "observed_unconditioned_correctness_aborts": {
+        "aborts": 0,
+        "round_runs": 3276,
+        "rate": 0.0,
+        "scope": "Deterministic fault-injection/noiseless/incoming-error trials; not a stochastic physical abort-rate estimate."
+      },
+      "observed_conditioned_retry_aborts": {
+        "aborts": 372,
+        "round_runs": 2088,
+        "scope": "Test-only branch-conditioned retry paths; not physical sampling."
+      },
+      "physical_exhaustion_tests": {
+        "aborts": 4,
+        "round_runs": 4,
+        "counts_as_failure": true
+      }
+    },
+    "c1_Z_FIRST": {
+      "preset": "UniformNoise(0.001)",
+      "policy": "timing-free",
+      "half_order": "Z_FIRST",
+      "half_sequence": [
+        "Z",
+        "X"
+      ],
+      "no_rejection": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "maximum_executed_if_fourth_attempt_accepts_in_each_half": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "model_expected_resources_including_rejections_and_aborts": {
+        "location_counts": {
+          "reset": 16.173989687741816,
+          "2q": 36.2392355394239,
+          "measurement": 16.021748429746637
+        },
+        "duration_seconds": null,
+        "idle_exposure_per_data_qubit": null,
+        "method": "Per-attempt verification rejection from B1 exact finite-rate convolution; actual execution reach weights q^a and previous-half acceptance. This is a resource expectation, not p_L."
+      },
+      "model_expected_round_abort_probability": 2.678296100107111e-08,
+      "observed_unconditioned_correctness_aborts": {
+        "aborts": 0,
+        "round_runs": 3276,
+        "rate": 0.0,
+        "scope": "Deterministic fault-injection/noiseless/incoming-error trials; not a stochastic physical abort-rate estimate."
+      },
+      "observed_conditioned_retry_aborts": {
+        "aborts": 372,
+        "round_runs": 2088,
+        "scope": "Test-only branch-conditioned retry paths; not physical sampling."
+      },
+      "physical_exhaustion_tests": {
+        "aborts": 4,
+        "round_runs": 4,
+        "counts_as_failure": true
+      }
+    },
+    "c2_X_FIRST": {
+      "preset": "UniformNoise(0.0015)",
+      "policy": "timing-free",
+      "half_order": "X_FIRST",
+      "half_sequence": [
+        "X",
+        "Z"
+      ],
+      "no_rejection": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "maximum_executed_if_fourth_attempt_accepts_in_each_half": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "model_expected_resources_including_rejections_and_aborts": {
+        "location_counts": {
+          "reset": 16.26106832770608,
+          "2q": 36.35896755535128,
+          "measurement": 16.032632145718672
+        },
+        "duration_seconds": null,
+        "idle_exposure_per_data_qubit": null,
+        "method": "Per-attempt verification rejection from B1 exact finite-rate convolution; actual execution reach weights q^a and previous-half acceptance. This is a resource expectation, not p_L."
+      },
+      "model_expected_round_abort_probability": 1.3288043523963512e-07,
+      "observed_unconditioned_correctness_aborts": {
+        "aborts": 0,
+        "round_runs": 3276,
+        "rate": 0.0,
+        "scope": "Deterministic fault-injection/noiseless/incoming-error trials; not a stochastic physical abort-rate estimate."
+      },
+      "observed_conditioned_retry_aborts": {
+        "aborts": 372,
+        "round_runs": 2088,
+        "scope": "Test-only branch-conditioned retry paths; not physical sampling."
+      },
+      "physical_exhaustion_tests": {
+        "aborts": 4,
+        "round_runs": 4,
+        "counts_as_failure": true
+      }
+    },
+    "c2_Z_FIRST": {
+      "preset": "UniformNoise(0.0015)",
+      "policy": "timing-free",
+      "half_order": "Z_FIRST",
+      "half_sequence": [
+        "Z",
+        "X"
+      ],
+      "no_rejection": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "maximum_executed_if_fourth_attempt_accepts_in_each_half": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "model_expected_resources_including_rejections_and_aborts": {
+        "location_counts": {
+          "reset": 16.26106832770608,
+          "2q": 36.35896755535128,
+          "measurement": 16.032632145718672
+        },
+        "duration_seconds": null,
+        "idle_exposure_per_data_qubit": null,
+        "method": "Per-attempt verification rejection from B1 exact finite-rate convolution; actual execution reach weights q^a and previous-half acceptance. This is a resource expectation, not p_L."
+      },
+      "model_expected_round_abort_probability": 1.3288043523963512e-07,
+      "observed_unconditioned_correctness_aborts": {
+        "aborts": 0,
+        "round_runs": 3276,
+        "rate": 0.0,
+        "scope": "Deterministic fault-injection/noiseless/incoming-error trials; not a stochastic physical abort-rate estimate."
+      },
+      "observed_conditioned_retry_aborts": {
+        "aborts": 372,
+        "round_runs": 2088,
+        "scope": "Test-only branch-conditioned retry paths; not physical sampling."
+      },
+      "physical_exhaustion_tests": {
+        "aborts": 4,
+        "round_runs": 4,
+        "counts_as_failure": true
+      }
+    },
+    "c3_X_FIRST": {
+      "preset": "TWO_QUBIT_ONLY(0.0005)",
+      "policy": "timing-free",
+      "half_order": "X_FIRST",
+      "half_sequence": [
+        "X",
+        "Z"
+      ],
+      "no_rejection": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "maximum_executed_if_fourth_attempt_accepts_in_each_half": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "model_expected_resources_including_rejections_and_aborts": {
+        "location_counts": {
+          "reset": 16.04694571685841,
+          "2q": 36.06455035914204,
+          "measurement": 16.005868213069025
+        },
+        "duration_seconds": null,
+        "idle_exposure_per_data_qubit": null,
+        "method": "Per-attempt verification rejection from B1 exact finite-rate convolution; actual execution reach weights q^a and previous-half acceptance. This is a resource expectation, not p_L."
+      },
+      "model_expected_round_abort_probability": 1.465022946665315e-10,
+      "observed_unconditioned_correctness_aborts": {
+        "aborts": 0,
+        "round_runs": 3104,
+        "rate": 0.0,
+        "scope": "Deterministic fault-injection/noiseless/incoming-error trials; not a stochastic physical abort-rate estimate."
+      },
+      "observed_conditioned_retry_aborts": {
+        "aborts": 352,
+        "round_runs": 1980,
+        "scope": "Test-only branch-conditioned retry paths; not physical sampling."
+      },
+      "physical_exhaustion_tests": {
+        "aborts": 4,
+        "round_runs": 4,
+        "counts_as_failure": true
+      }
+    },
+    "c3_Z_FIRST": {
+      "preset": "TWO_QUBIT_ONLY(0.0005)",
+      "policy": "timing-free",
+      "half_order": "Z_FIRST",
+      "half_sequence": [
+        "Z",
+        "X"
+      ],
+      "no_rejection": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "maximum_executed_if_fourth_attempt_accepts_in_each_half": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "model_expected_resources_including_rejections_and_aborts": {
+        "location_counts": {
+          "reset": 16.04694571685841,
+          "2q": 36.06455035914204,
+          "measurement": 16.005868213069025
+        },
+        "duration_seconds": null,
+        "idle_exposure_per_data_qubit": null,
+        "method": "Per-attempt verification rejection from B1 exact finite-rate convolution; actual execution reach weights q^a and previous-half acceptance. This is a resource expectation, not p_L."
+      },
+      "model_expected_round_abort_probability": 1.465022946665315e-10,
+      "observed_unconditioned_correctness_aborts": {
+        "aborts": 0,
+        "round_runs": 3104,
+        "rate": 0.0,
+        "scope": "Deterministic fault-injection/noiseless/incoming-error trials; not a stochastic physical abort-rate estimate."
+      },
+      "observed_conditioned_retry_aborts": {
+        "aborts": 352,
+        "round_runs": 1980,
+        "scope": "Test-only branch-conditioned retry paths; not physical sampling."
+      },
+      "physical_exhaustion_tests": {
+        "aborts": 4,
+        "round_runs": 4,
+        "counts_as_failure": true
+      }
+    },
+    "c4_X_FIRST": {
+      "preset": "TWO_QUBIT_ONLY(0.001)",
+      "policy": "timing-free",
+      "half_order": "X_FIRST",
+      "half_sequence": [
+        "X",
+        "Z"
+      ],
+      "no_rejection": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "maximum_executed_if_fourth_attempt_accepts_in_each_half": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "model_expected_resources_including_rejections_and_aborts": {
+        "location_counts": {
+          "reset": 16.09391565791928,
+          "2q": 36.129134005287554,
+          "measurement": 16.011739432888454
+        },
+        "duration_seconds": null,
+        "idle_exposure_per_data_qubit": null,
+        "method": "Per-attempt verification rejection from B1 exact finite-rate convolution; actual execution reach weights q^a and previous-half acceptance. This is a resource expectation, not p_L."
+      },
+      "model_expected_round_abort_probability": 2.3191863550139807e-09,
+      "observed_unconditioned_correctness_aborts": {
+        "aborts": 0,
+        "round_runs": 3104,
+        "rate": 0.0,
+        "scope": "Deterministic fault-injection/noiseless/incoming-error trials; not a stochastic physical abort-rate estimate."
+      },
+      "observed_conditioned_retry_aborts": {
+        "aborts": 352,
+        "round_runs": 1980,
+        "scope": "Test-only branch-conditioned retry paths; not physical sampling."
+      },
+      "physical_exhaustion_tests": {
+        "aborts": 4,
+        "round_runs": 4,
+        "counts_as_failure": true
+      }
+    },
+    "c4_Z_FIRST": {
+      "preset": "TWO_QUBIT_ONLY(0.001)",
+      "policy": "timing-free",
+      "half_order": "Z_FIRST",
+      "half_sequence": [
+        "Z",
+        "X"
+      ],
+      "no_rejection": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "maximum_executed_if_fourth_attempt_accepts_in_each_half": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "model_expected_resources_including_rejections_and_aborts": {
+        "location_counts": {
+          "reset": 16.09391565791928,
+          "2q": 36.129134005287554,
+          "measurement": 16.011739432888454
+        },
+        "duration_seconds": null,
+        "idle_exposure_per_data_qubit": null,
+        "method": "Per-attempt verification rejection from B1 exact finite-rate convolution; actual execution reach weights q^a and previous-half acceptance. This is a resource expectation, not p_L."
+      },
+      "model_expected_round_abort_probability": 2.3191863550139807e-09,
+      "observed_unconditioned_correctness_aborts": {
+        "aborts": 0,
+        "round_runs": 3104,
+        "rate": 0.0,
+        "scope": "Deterministic fault-injection/noiseless/incoming-error trials; not a stochastic physical abort-rate estimate."
+      },
+      "observed_conditioned_retry_aborts": {
+        "aborts": 352,
+        "round_runs": 1980,
+        "scope": "Test-only branch-conditioned retry paths; not physical sampling."
+      },
+      "physical_exhaustion_tests": {
+        "aborts": 4,
+        "round_runs": 4,
+        "counts_as_failure": true
+      }
+    },
+    "c5_X_FIRST": {
+      "preset": "TWO_QUBIT_ONLY(0.002)",
+      "policy": "timing-free",
+      "half_order": "X_FIRST",
+      "half_sequence": [
+        "X",
+        "Z"
+      ],
+      "no_rejection": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "maximum_executed_if_fourth_attempt_accepts_in_each_half": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "model_expected_resources_including_rejections_and_aborts": {
+        "location_counts": {
+          "reset": 16.187924784144865,
+          "2q": 36.25839619678675,
+          "measurement": 16.023490216605673
+        },
+        "duration_seconds": null,
+        "idle_exposure_per_data_qubit": null,
+        "method": "Per-attempt verification rejection from B1 exact finite-rate convolution; actual execution reach weights q^a and previous-half acceptance. This is a resource expectation, not p_L."
+      },
+      "model_expected_round_abort_probability": 3.6324993916874616e-08,
+      "observed_unconditioned_correctness_aborts": {
+        "aborts": 0,
+        "round_runs": 3104,
+        "rate": 0.0,
+        "scope": "Deterministic fault-injection/noiseless/incoming-error trials; not a stochastic physical abort-rate estimate."
+      },
+      "observed_conditioned_retry_aborts": {
+        "aborts": 352,
+        "round_runs": 1980,
+        "scope": "Test-only branch-conditioned retry paths; not physical sampling."
+      },
+      "physical_exhaustion_tests": {
+        "aborts": 4,
+        "round_runs": 4,
+        "counts_as_failure": true
+      }
+    },
+    "c5_Z_FIRST": {
+      "preset": "TWO_QUBIT_ONLY(0.002)",
+      "policy": "timing-free",
+      "half_order": "Z_FIRST",
+      "half_sequence": [
+        "Z",
+        "X"
+      ],
+      "no_rejection": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "maximum_executed_if_fourth_attempt_accepts_in_each_half": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "model_expected_resources_including_rejections_and_aborts": {
+        "location_counts": {
+          "reset": 16.187924784144865,
+          "2q": 36.25839619678675,
+          "measurement": 16.023490216605673
+        },
+        "duration_seconds": null,
+        "idle_exposure_per_data_qubit": null,
+        "method": "Per-attempt verification rejection from B1 exact finite-rate convolution; actual execution reach weights q^a and previous-half acceptance. This is a resource expectation, not p_L."
+      },
+      "model_expected_round_abort_probability": 3.6324993916874616e-08,
+      "observed_unconditioned_correctness_aborts": {
+        "aborts": 0,
+        "round_runs": 3104,
+        "rate": 0.0,
+        "scope": "Deterministic fault-injection/noiseless/incoming-error trials; not a stochastic physical abort-rate estimate."
+      },
+      "observed_conditioned_retry_aborts": {
+        "aborts": 352,
+        "round_runs": 1980,
+        "scope": "Test-only branch-conditioned retry paths; not physical sampling."
+      },
+      "physical_exhaustion_tests": {
+        "aborts": 4,
+        "round_runs": 4,
+        "counts_as_failure": true
+      }
+    },
+    "c6_X_FIRST": {
+      "preset": "H2_LIKE",
+      "policy": "timing-free",
+      "half_order": "X_FIRST",
+      "half_sequence": [
+        "X",
+        "Z"
+      ],
+      "no_rejection": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "maximum_executed_if_fourth_attempt_accepts_in_each_half": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "model_expected_resources_including_rejections_and_aborts": {
+        "location_counts": {
+          "reset": 16.139577224493475,
+          "2q": 36.19191856533158,
+          "measurement": 16.017447034714742
+        },
+        "duration_seconds": null,
+        "idle_exposure_per_data_qubit": null,
+        "method": "Per-attempt verification rejection from B1 exact finite-rate convolution; actual execution reach weights q^a and previous-half acceptance. This is a resource expectation, not p_L."
+      },
+      "model_expected_round_abort_probability": 1.1189210227280494e-08,
+      "observed_unconditioned_correctness_aborts": {
+        "aborts": 0,
+        "round_runs": 3404,
+        "rate": 0.0,
+        "scope": "Deterministic fault-injection/noiseless/incoming-error trials; not a stochastic physical abort-rate estimate."
+      },
+      "observed_conditioned_retry_aborts": {
+        "aborts": 380,
+        "round_runs": 2184,
+        "scope": "Test-only branch-conditioned retry paths; not physical sampling."
+      },
+      "physical_exhaustion_tests": {
+        "aborts": 4,
+        "round_runs": 4,
+        "counts_as_failure": true
+      }
+    },
+    "c6_Z_FIRST": {
+      "preset": "H2_LIKE",
+      "policy": "timing-free",
+      "half_order": "Z_FIRST",
+      "half_sequence": [
+        "Z",
+        "X"
+      ],
+      "no_rejection": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "maximum_executed_if_fourth_attempt_accepts_in_each_half": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "model_expected_resources_including_rejections_and_aborts": {
+        "location_counts": {
+          "reset": 16.139577226472547,
+          "2q": 36.191918569773286,
+          "measurement": 16.017447036682597
+        },
+        "duration_seconds": null,
+        "idle_exposure_per_data_qubit": null,
+        "method": "Per-attempt verification rejection from B1 exact finite-rate convolution; actual execution reach weights q^a and previous-half acceptance. This is a resource expectation, not p_L."
+      },
+      "model_expected_round_abort_probability": 1.1189210227280494e-08,
+      "observed_unconditioned_correctness_aborts": {
+        "aborts": 0,
+        "round_runs": 3404,
+        "rate": 0.0,
+        "scope": "Deterministic fault-injection/noiseless/incoming-error trials; not a stochastic physical abort-rate estimate."
+      },
+      "observed_conditioned_retry_aborts": {
+        "aborts": 380,
+        "round_runs": 2184,
+        "scope": "Test-only branch-conditioned retry paths; not physical sampling."
+      },
+      "physical_exhaustion_tests": {
+        "aborts": 4,
+        "round_runs": 4,
+        "counts_as_failure": true
+      }
+    },
+    "c7_X_FIRST": {
+      "preset": "JONES_MURALI_2026",
+      "policy": "SEQ",
+      "half_order": "X_FIRST",
+      "half_sequence": [
+        "X",
+        "Z"
+      ],
+      "no_rejection": {
+        "location_counts": {
+          "reset": 16,
+          "idle": 214,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": 0.00872,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.001962763632908404
+          },
+          "1": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.001962765285710811
+          },
+          "2": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.0019627662773922553
+          },
+          "3": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.0019627666079527367
+          },
+          "4": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.0019627662773922553
+          },
+          "5": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.001962765285710811
+          },
+          "6": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.001962763632908404
+          }
+        }
+      },
+      "maximum_executed_if_fourth_attempt_accepts_in_each_half": {
+        "location_counts": {
+          "reset": 64,
+          "idle": 634,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": 0.016294999999999997,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.016214999999999997,
+            "summed_Z_probability": 0.0036842134641594734
+          },
+          "1": {
+            "seconds": 0.016214999999999997,
+            "summed_Z_probability": 0.0036842151169618805
+          },
+          "2": {
+            "seconds": 0.016215,
+            "summed_Z_probability": 0.003684216108643326
+          },
+          "3": {
+            "seconds": 0.016215,
+            "summed_Z_probability": 0.0036842164392038067
+          },
+          "4": {
+            "seconds": 0.016215,
+            "summed_Z_probability": 0.003684216108643326
+          },
+          "5": {
+            "seconds": 0.016214999999999997,
+            "summed_Z_probability": 0.0036842151169618805
+          },
+          "6": {
+            "seconds": 0.016214999999999997,
+            "summed_Z_probability": 0.0036842134641594734
+          }
+        }
+      },
+      "model_expected_resources_including_rejections_and_aborts": {
+        "location_counts": {
+          "reset": 16.43528136768577,
+          "idle": 217.80865669665212,
+          "2q": 36.59850142396823,
+          "measurement": 16.054399714361022
+        },
+        "duration_seconds": 0.008788691822935856,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.008708691882687854,
+            "summed_Z_probability": 0.0019783741455478496
+          },
+          "1": {
+            "seconds": 0.008708691882687854,
+            "summed_Z_probability": 0.001978375798349023
+          },
+          "2": {
+            "seconds": 0.008708691882687854,
+            "summed_Z_probability": 0.001978376790029726
+          },
+          "3": {
+            "seconds": 0.008708691882687854,
+            "summed_Z_probability": 0.0019783771205899602
+          },
+          "4": {
+            "seconds": 0.008708691882687854,
+            "summed_Z_probability": 0.001978376790029726
+          },
+          "5": {
+            "seconds": 0.008708691882687854,
+            "summed_Z_probability": 0.001978375798349023
+          },
+          "6": {
+            "seconds": 0.008708691882687854,
+            "summed_Z_probability": 0.0019783741455478496
+          }
+        },
+        "method": "Per-attempt verification rejection from B1 exact finite-rate convolution; actual execution reach weights q^a and previous-half acceptance. This is a resource expectation, not p_L."
+      },
+      "model_expected_round_abort_probability": 9.845537312987693e-07,
+      "observed_unconditioned_correctness_aborts": {
+        "aborts": 0,
+        "round_runs": 4672,
+        "rate": 0.0,
+        "scope": "Deterministic fault-injection/noiseless/incoming-error trials; not a stochastic physical abort-rate estimate."
+      },
+      "observed_conditioned_retry_aborts": {
+        "aborts": 416,
+        "round_runs": 3024,
+        "scope": "Test-only branch-conditioned retry paths; not physical sampling."
+      },
+      "physical_exhaustion_tests": {
+        "aborts": 4,
+        "round_runs": 4,
+        "counts_as_failure": true
+      }
+    },
+    "c7_Z_FIRST": {
+      "preset": "JONES_MURALI_2026",
+      "policy": "SEQ",
+      "half_order": "Z_FIRST",
+      "half_sequence": [
+        "Z",
+        "X"
+      ],
+      "no_rejection": {
+        "location_counts": {
+          "reset": 16,
+          "idle": 214,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": 0.008720000000000002,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.001962763632908404
+          },
+          "1": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.001962765285710811
+          },
+          "2": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.0019627662773922553
+          },
+          "3": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.0019627666079527362
+          },
+          "4": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.0019627662773922553
+          },
+          "5": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.001962765285710811
+          },
+          "6": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.001962763632908404
+          }
+        }
+      },
+      "maximum_executed_if_fourth_attempt_accepts_in_each_half": {
+        "location_counts": {
+          "reset": 64,
+          "idle": 634,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": 0.016295,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.016215000000000004,
+            "summed_Z_probability": 0.0036842134641594743
+          },
+          "1": {
+            "seconds": 0.016215000000000004,
+            "summed_Z_probability": 0.0036842151169618823
+          },
+          "2": {
+            "seconds": 0.016215000000000004,
+            "summed_Z_probability": 0.0036842161086433262
+          },
+          "3": {
+            "seconds": 0.016215000000000004,
+            "summed_Z_probability": 0.003684216439203807
+          },
+          "4": {
+            "seconds": 0.016215000000000004,
+            "summed_Z_probability": 0.0036842161086433262
+          },
+          "5": {
+            "seconds": 0.016215000000000004,
+            "summed_Z_probability": 0.003684215116961882
+          },
+          "6": {
+            "seconds": 0.016215000000000004,
+            "summed_Z_probability": 0.0036842134641594743
+          }
+        }
+      },
+      "model_expected_resources_including_rejections_and_aborts": {
+        "location_counts": {
+          "reset": 16.4352816446826,
+          "idle": 217.80866037609803,
+          "2q": 36.59850204240822,
+          "measurement": 16.05439998655497
+        },
+        "duration_seconds": 0.008788691981418555,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.008708692039813016,
+            "summed_Z_probability": 0.001978374181238601
+          },
+          "1": {
+            "seconds": 0.008708692039813016,
+            "summed_Z_probability": 0.0019783758340398017
+          },
+          "2": {
+            "seconds": 0.008708692039813016,
+            "summed_Z_probability": 0.001978376825720522
+          },
+          "3": {
+            "seconds": 0.008708692039813016,
+            "summed_Z_probability": 0.001978377156280762
+          },
+          "4": {
+            "seconds": 0.008708692039813016,
+            "summed_Z_probability": 0.001978376825720522
+          },
+          "5": {
+            "seconds": 0.008708692039813016,
+            "summed_Z_probability": 0.0019783758340398017
+          },
+          "6": {
+            "seconds": 0.008708692039813016,
+            "summed_Z_probability": 0.001978374181238601
+          }
+        },
+        "method": "Per-attempt verification rejection from B1 exact finite-rate convolution; actual execution reach weights q^a and previous-half acceptance. This is a resource expectation, not p_L."
+      },
+      "model_expected_round_abort_probability": 9.845537312987693e-07,
+      "observed_unconditioned_correctness_aborts": {
+        "aborts": 0,
+        "round_runs": 4672,
+        "rate": 0.0,
+        "scope": "Deterministic fault-injection/noiseless/incoming-error trials; not a stochastic physical abort-rate estimate."
+      },
+      "observed_conditioned_retry_aborts": {
+        "aborts": 416,
+        "round_runs": 3024,
+        "scope": "Test-only branch-conditioned retry paths; not physical sampling."
+      },
+      "physical_exhaustion_tests": {
+        "aborts": 4,
+        "round_runs": 4,
+        "counts_as_failure": true
+      }
+    },
+    "c8_X_FIRST": {
+      "preset": "JONES_MURALI_2026",
+      "policy": "PAR_MR",
+      "half_order": "X_FIRST",
+      "half_sequence": [
+        "X",
+        "Z"
+      ],
+      "no_rejection": {
+        "location_counts": {
+          "reset": 16,
+          "idle": 196,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": 0.0031599999999999996,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.00308,
+            "summed_Z_probability": 0.0006999482001144024
+          },
+          "1": {
+            "seconds": 0.00308,
+            "summed_Z_probability": 0.0006999498529168097
+          },
+          "2": {
+            "seconds": 0.00308,
+            "summed_Z_probability": 0.0006999508445982537
+          },
+          "3": {
+            "seconds": 0.0030799999999999994,
+            "summed_Z_probability": 0.000699951175158735
+          },
+          "4": {
+            "seconds": 0.00308,
+            "summed_Z_probability": 0.0006999508445982537
+          },
+          "5": {
+            "seconds": 0.00308,
+            "summed_Z_probability": 0.0006999498529168097
+          },
+          "6": {
+            "seconds": 0.00308,
+            "summed_Z_probability": 0.0006999482001144024
+          }
+        }
+      },
+      "maximum_executed_if_fourth_attempt_accepts_in_each_half": {
+        "location_counts": {
+          "reset": 64,
+          "idle": 598,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": 0.008544999999999999,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.008465000000000004,
+            "summed_Z_probability": 0.0019237244948351597
+          },
+          "1": {
+            "seconds": 0.008465000000000004,
+            "summed_Z_probability": 0.0019237261476375673
+          },
+          "2": {
+            "seconds": 0.008465000000000004,
+            "summed_Z_probability": 0.0019237271393190113
+          },
+          "3": {
+            "seconds": 0.008465000000000004,
+            "summed_Z_probability": 0.0019237274698794928
+          },
+          "4": {
+            "seconds": 0.008465000000000004,
+            "summed_Z_probability": 0.0019237271393190113
+          },
+          "5": {
+            "seconds": 0.008465000000000004,
+            "summed_Z_probability": 0.0019237261476375673
+          },
+          "6": {
+            "seconds": 0.008465000000000004,
+            "summed_Z_probability": 0.0019237244948351597
+          }
+        }
+      },
+      "model_expected_resources_including_rejections_and_aborts": {
+        "location_counts": {
+          "reset": 16.434309513769296,
+          "idle": 199.63693558220035,
+          "2q": 36.59716524692409,
+          "measurement": 16.054278354712476
+        },
+        "duration_seconds": 0.0032087239918443962,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.003128724050898731,
+            "summed_Z_probability": 0.000711021057748005
+          },
+          "1": {
+            "seconds": 0.003128724050898731,
+            "summed_Z_probability": 0.0007110227105491921
+          },
+          "2": {
+            "seconds": 0.003128724050898731,
+            "summed_Z_probability": 0.0007110237022299042
+          },
+          "3": {
+            "seconds": 0.003128724050898731,
+            "summed_Z_probability": 0.0007110240327901415
+          },
+          "4": {
+            "seconds": 0.003128724050898731,
+            "summed_Z_probability": 0.0007110237022299042
+          },
+          "5": {
+            "seconds": 0.003128724050898731,
+            "summed_Z_probability": 0.0007110227105491921
+          },
+          "6": {
+            "seconds": 0.003128724050898731,
+            "summed_Z_probability": 0.000711021057748005
+          }
+        },
+        "method": "Per-attempt verification rejection from B1 exact finite-rate convolution; actual execution reach weights q^a and previous-half acceptance. This is a resource expectation, not p_L."
+      },
+      "model_expected_round_abort_probability": 9.758329469756004e-07,
+      "observed_unconditioned_correctness_aborts": {
+        "aborts": 0,
+        "round_runs": 4600,
+        "rate": 0.0,
+        "scope": "Deterministic fault-injection/noiseless/incoming-error trials; not a stochastic physical abort-rate estimate."
+      },
+      "observed_conditioned_retry_aborts": {
+        "aborts": 410,
+        "round_runs": 2988,
+        "scope": "Test-only branch-conditioned retry paths; not physical sampling."
+      },
+      "physical_exhaustion_tests": {
+        "aborts": 4,
+        "round_runs": 4,
+        "counts_as_failure": true
+      }
+    },
+    "c8_Z_FIRST": {
+      "preset": "JONES_MURALI_2026",
+      "policy": "PAR_MR",
+      "half_order": "Z_FIRST",
+      "half_sequence": [
+        "Z",
+        "X"
+      ],
+      "no_rejection": {
+        "location_counts": {
+          "reset": 16,
+          "idle": 196,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": 0.00316,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.0030800000000000003,
+            "summed_Z_probability": 0.0006999482001144024
+          },
+          "1": {
+            "seconds": 0.0030800000000000003,
+            "summed_Z_probability": 0.0006999498529168096
+          },
+          "2": {
+            "seconds": 0.0030800000000000003,
+            "summed_Z_probability": 0.0006999508445982537
+          },
+          "3": {
+            "seconds": 0.00308,
+            "summed_Z_probability": 0.000699951175158735
+          },
+          "4": {
+            "seconds": 0.0030800000000000003,
+            "summed_Z_probability": 0.0006999508445982537
+          },
+          "5": {
+            "seconds": 0.0030800000000000003,
+            "summed_Z_probability": 0.0006999498529168097
+          },
+          "6": {
+            "seconds": 0.0030800000000000003,
+            "summed_Z_probability": 0.0006999482001144024
+          }
+        }
+      },
+      "maximum_executed_if_fourth_attempt_accepts_in_each_half": {
+        "location_counts": {
+          "reset": 64,
+          "idle": 598,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": 0.008544999999999999,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.008465000000000002,
+            "summed_Z_probability": 0.0019237244948351595
+          },
+          "1": {
+            "seconds": 0.008465000000000002,
+            "summed_Z_probability": 0.001923726147637567
+          },
+          "2": {
+            "seconds": 0.008465000000000002,
+            "summed_Z_probability": 0.001923727139319011
+          },
+          "3": {
+            "seconds": 0.008465000000000002,
+            "summed_Z_probability": 0.0019237274698794926
+          },
+          "4": {
+            "seconds": 0.008465000000000002,
+            "summed_Z_probability": 0.001923727139319011
+          },
+          "5": {
+            "seconds": 0.008465000000000002,
+            "summed_Z_probability": 0.001923726147637567
+          },
+          "6": {
+            "seconds": 0.008465000000000002,
+            "summed_Z_probability": 0.0019237244948351595
+          }
+        }
+      },
+      "model_expected_resources_including_rejections_and_aborts": {
+        "location_counts": {
+          "reset": 16.434309719580572,
+          "idle": 199.63693908993542,
+          "2q": 36.59716570643842,
+          "measurement": 16.054278556962707
+        },
+        "duration_seconds": 0.003208724032078711,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.0031287240901243384,
+            "summed_Z_probability": 0.0007110210666622578
+          },
+          "1": {
+            "seconds": 0.0031287240901243384,
+            "summed_Z_probability": 0.0007110227194634659
+          },
+          "2": {
+            "seconds": 0.0031287240901243384,
+            "summed_Z_probability": 0.0007110237111441905
+          },
+          "3": {
+            "seconds": 0.0031287240901243384,
+            "summed_Z_probability": 0.0007110240417044319
+          },
+          "4": {
+            "seconds": 0.0031287240901243384,
+            "summed_Z_probability": 0.0007110237111441905
+          },
+          "5": {
+            "seconds": 0.0031287240901243384,
+            "summed_Z_probability": 0.0007110227194634659
+          },
+          "6": {
+            "seconds": 0.0031287240901243384,
+            "summed_Z_probability": 0.0007110210666622578
+          }
+        },
+        "method": "Per-attempt verification rejection from B1 exact finite-rate convolution; actual execution reach weights q^a and previous-half acceptance. This is a resource expectation, not p_L."
+      },
+      "model_expected_round_abort_probability": 9.758329469756004e-07,
+      "observed_unconditioned_correctness_aborts": {
+        "aborts": 0,
+        "round_runs": 4600,
+        "rate": 0.0,
+        "scope": "Deterministic fault-injection/noiseless/incoming-error trials; not a stochastic physical abort-rate estimate."
+      },
+      "observed_conditioned_retry_aborts": {
+        "aborts": 410,
+        "round_runs": 2988,
+        "scope": "Test-only branch-conditioned retry paths; not physical sampling."
+      },
+      "physical_exhaustion_tests": {
+        "aborts": 4,
+        "round_runs": 4,
+        "counts_as_failure": true
+      }
+    }
+  },
+  "deferred_to_B3": [
+    "epsilon_tot and its abort share",
+    "epsilon_X and epsilon_Z performance fits",
+    "Jones\u2013Murali SEQ max_attempts in {2,4,infinity} performance sensitivity",
+    "design comparisons and calibration"
+  ],
+  "performance_metrics": {
+    "epsilon_tot": null,
+    "epsilon_X": null,
+    "epsilon_Z": null,
+    "abort_share_of_epsilon_tot": null
+  },
+  "observed_smoke_abort_rate": {
+    "count": 1,
+    "shots": 1000000,
+    "probability": 1e-06,
+    "stderr": 9.999994999998751e-07,
+    "ci95_Wilson": [
+      1.7652003609355793e-07,
+      5.66505752290209e-06
+    ],
+    "scope": "Pooled actual executed Jones\u2013Murali rounds across both half-orders/policies; harness sanity only, not a performance comparison."
+  }
+}

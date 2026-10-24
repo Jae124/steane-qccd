@@ -1,0 +1,5982 @@
+{
+  "stage": "B2",
+  "simulation_fingerprint": "bca267ff665801ed308a8bafc730e761ad430a0036d770fdf8081478deec75fb",
+  "approved_artifacts": {
+    "artifact_count": 225,
+    "all_byte_identical": true,
+    "mismatches": []
+  },
+  "max_attempts": 4,
+  "scope": "Full-round correctness; no B3 comparisons or epsilon fits.",
+  "unique_checks": {
+    "cd894dbd33f4fe0e294d872e5992fb56590e49225aad42d2d99c3f380bf59f42": {
+      "catalog": "positive preset payloads",
+      "counts": {
+        "noiseless_runs": 2,
+        "cross_check_runs": 5368,
+        "first_attempt_or_extraction_fault_runs": 1144,
+        "retry_only_fault_runs": 2088,
+        "conditioned_retry_fault_runs": 2088,
+        "expected_conditioned_aborts": 372,
+        "incoming_single_error_runs": 42,
+        "physical_abort_policy_runs": 4
+      },
+      "fault_runs_by_part": {
+        "prep_+/initial_resets": 64,
+        "prep_+/encoder": 960,
+        "prep_+/verification": 360,
+        "prep_+/verification_readout": 8,
+        "X_coupling": 210,
+        "X_ancilla_readout": 14,
+        "prep_0/initial_resets": 64,
+        "prep_0/encoder": 960,
+        "prep_0/verification": 360,
+        "prep_0/verification_readout": 8,
+        "Z_coupling": 210,
+        "Z_ancilla_readout": 14
+      },
+      "single_fault_failures": 0,
+      "incoming_failures": 0,
+      "conditioned_nonabort_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "noiseless": [
+        {
+          "basis": "0",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        },
+        {
+          "basis": "+",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        }
+      ],
+      "physical_abort_checks": [
+        {
+          "half": 0,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 0,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 1,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 1,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        }
+      ],
+      "failure_details": [],
+      "mismatch_details": []
+    },
+    "c5ff14480071112fb56cdc903d15fea482a03dc6344742e4817b12f8eb8d23f7": {
+      "catalog": "positive preset payloads",
+      "counts": {
+        "noiseless_runs": 2,
+        "cross_check_runs": 5368,
+        "first_attempt_or_extraction_fault_runs": 1144,
+        "retry_only_fault_runs": 2088,
+        "conditioned_retry_fault_runs": 2088,
+        "expected_conditioned_aborts": 372,
+        "incoming_single_error_runs": 42,
+        "physical_abort_policy_runs": 4
+      },
+      "fault_runs_by_part": {
+        "prep_0/initial_resets": 64,
+        "prep_0/encoder": 960,
+        "prep_0/verification": 360,
+        "prep_0/verification_readout": 8,
+        "Z_coupling": 210,
+        "Z_ancilla_readout": 14,
+        "prep_+/initial_resets": 64,
+        "prep_+/encoder": 960,
+        "prep_+/verification": 360,
+        "prep_+/verification_readout": 8,
+        "X_coupling": 210,
+        "X_ancilla_readout": 14
+      },
+      "single_fault_failures": 0,
+      "incoming_failures": 0,
+      "conditioned_nonabort_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "noiseless": [
+        {
+          "basis": "0",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        },
+        {
+          "basis": "+",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        }
+      ],
+      "physical_abort_checks": [
+        {
+          "half": 0,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 0,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 1,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 1,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        }
+      ],
+      "failure_details": [],
+      "mismatch_details": []
+    },
+    "c73d2cb43aebe997114862647d5a0c712dde636aa770c3f2e74fd23aa64fce57": {
+      "catalog": "positive preset payloads",
+      "counts": {
+        "noiseless_runs": 2,
+        "cross_check_runs": 5088,
+        "first_attempt_or_extraction_fault_runs": 1080,
+        "retry_only_fault_runs": 1980,
+        "conditioned_retry_fault_runs": 1980,
+        "expected_conditioned_aborts": 352,
+        "incoming_single_error_runs": 42,
+        "physical_abort_policy_runs": 4
+      },
+      "fault_runs_by_part": {
+        "prep_+/encoder": 960,
+        "prep_+/verification": 360,
+        "X_coupling": 210,
+        "prep_0/encoder": 960,
+        "prep_0/verification": 360,
+        "Z_coupling": 210
+      },
+      "single_fault_failures": 0,
+      "incoming_failures": 0,
+      "conditioned_nonabort_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "noiseless": [
+        {
+          "basis": "0",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        },
+        {
+          "basis": "+",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        }
+      ],
+      "physical_abort_checks": [
+        {
+          "half": 0,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 0,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 1,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 1,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        }
+      ],
+      "failure_details": [],
+      "mismatch_details": []
+    },
+    "d32804e18a312809730519fd4edfc46d08f2850b8e273860dfd07d0d03d07942": {
+      "catalog": "positive preset payloads",
+      "counts": {
+        "noiseless_runs": 2,
+        "cross_check_runs": 5088,
+        "first_attempt_or_extraction_fault_runs": 1080,
+        "retry_only_fault_runs": 1980,
+        "conditioned_retry_fault_runs": 1980,
+        "expected_conditioned_aborts": 352,
+        "incoming_single_error_runs": 42,
+        "physical_abort_policy_runs": 4
+      },
+      "fault_runs_by_part": {
+        "prep_0/encoder": 960,
+        "prep_0/verification": 360,
+        "Z_coupling": 210,
+        "prep_+/encoder": 960,
+        "prep_+/verification": 360,
+        "X_coupling": 210
+      },
+      "single_fault_failures": 0,
+      "incoming_failures": 0,
+      "conditioned_nonabort_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "noiseless": [
+        {
+          "basis": "0",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        },
+        {
+          "basis": "+",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        }
+      ],
+      "physical_abort_checks": [
+        {
+          "half": 0,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 0,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 1,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 1,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        }
+      ],
+      "failure_details": [],
+      "mismatch_details": []
+    },
+    "c30b94f83513f18bf5f4e624ce7de02b2218d0b10b57d2d3a959ad5cce169bbb": {
+      "catalog": "positive preset payloads",
+      "counts": {
+        "noiseless_runs": 2,
+        "cross_check_runs": 5592,
+        "first_attempt_or_extraction_fault_runs": 1176,
+        "retry_only_fault_runs": 2184,
+        "conditioned_retry_fault_runs": 2184,
+        "expected_conditioned_aborts": 380,
+        "incoming_single_error_runs": 42,
+        "physical_abort_policy_runs": 4
+      },
+      "fault_runs_by_part": {
+        "prep_+/initial_resets": 144,
+        "prep_+/encoder": 960,
+        "prep_+/verification": 360,
+        "prep_+/verification_readout": 8,
+        "X_coupling": 210,
+        "X_ancilla_readout": 14,
+        "prep_0/initial_resets": 112,
+        "prep_0/encoder": 960,
+        "prep_0/verification": 360,
+        "prep_0/verification_readout": 8,
+        "Z_coupling": 210,
+        "Z_ancilla_readout": 14
+      },
+      "single_fault_failures": 0,
+      "incoming_failures": 0,
+      "conditioned_nonabort_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "noiseless": [
+        {
+          "basis": "0",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        },
+        {
+          "basis": "+",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        }
+      ],
+      "physical_abort_checks": [
+        {
+          "half": 0,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 0,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 1,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 1,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        }
+      ],
+      "failure_details": [],
+      "mismatch_details": []
+    },
+    "baae67c3c843d3a83e301a2728e414dfaec66be2af90058e1ad66876851630de": {
+      "catalog": "positive preset payloads",
+      "counts": {
+        "noiseless_runs": 2,
+        "cross_check_runs": 5592,
+        "first_attempt_or_extraction_fault_runs": 1176,
+        "retry_only_fault_runs": 2184,
+        "conditioned_retry_fault_runs": 2184,
+        "expected_conditioned_aborts": 380,
+        "incoming_single_error_runs": 42,
+        "physical_abort_policy_runs": 4
+      },
+      "fault_runs_by_part": {
+        "prep_0/initial_resets": 112,
+        "prep_0/encoder": 960,
+        "prep_0/verification": 360,
+        "prep_0/verification_readout": 8,
+        "Z_coupling": 210,
+        "Z_ancilla_readout": 14,
+        "prep_+/initial_resets": 144,
+        "prep_+/encoder": 960,
+        "prep_+/verification": 360,
+        "prep_+/verification_readout": 8,
+        "X_coupling": 210,
+        "X_ancilla_readout": 14
+      },
+      "single_fault_failures": 0,
+      "incoming_failures": 0,
+      "conditioned_nonabort_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "noiseless": [
+        {
+          "basis": "0",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        },
+        {
+          "basis": "+",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        }
+      ],
+      "physical_abort_checks": [
+        {
+          "half": 0,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 0,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 1,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 1,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        }
+      ],
+      "failure_details": [],
+      "mismatch_details": []
+    },
+    "66c7d5c5dc891586e770c549311a06df413442913f033bbac24a3cbaa7593a89": {
+      "catalog": "positive preset payloads",
+      "counts": {
+        "noiseless_runs": 2,
+        "cross_check_runs": 7700,
+        "first_attempt_or_extraction_fault_runs": 1604,
+        "retry_only_fault_runs": 3024,
+        "conditioned_retry_fault_runs": 3024,
+        "expected_conditioned_aborts": 416,
+        "incoming_single_error_runs": 42,
+        "physical_abort_policy_runs": 4
+      },
+      "fault_runs_by_part": {
+        "prep_+/initial_resets": 256,
+        "prep_+/encoder": 1176,
+        "prep_+/verification": 480,
+        "prep_+/verification_readout": 120,
+        "X_coupling": 258,
+        "X_ancilla_readout": 40,
+        "prep_0/initial_resets": 224,
+        "prep_0/encoder": 1176,
+        "prep_0/verification": 480,
+        "prep_0/verification_readout": 120,
+        "Z_coupling": 258,
+        "Z_ancilla_readout": 40
+      },
+      "single_fault_failures": 0,
+      "incoming_failures": 0,
+      "conditioned_nonabort_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "noiseless": [
+        {
+          "basis": "0",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        },
+        {
+          "basis": "+",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        }
+      ],
+      "physical_abort_checks": [
+        {
+          "half": 0,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "idle": 280,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": 0.0050799999999999994,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "1": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "2": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "3": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "4": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "5": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "6": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              }
+            }
+          }
+        },
+        {
+          "half": 0,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "idle": 280,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": 0.0050799999999999994,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "1": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "2": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "3": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "4": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "5": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "6": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              }
+            }
+          }
+        },
+        {
+          "half": 1,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "idle": 387,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": 0.00937,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199301811480405
+              },
+              "1": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199310075492445
+              },
+              "2": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199315033899662
+              },
+              "3": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.002119931668670207
+              },
+              "4": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199315033899662
+              },
+              "5": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199310075492445
+              },
+              "6": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199301811480405
+              }
+            }
+          }
+        },
+        {
+          "half": 1,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "idle": 387,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": 0.00937,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199301811480405
+              },
+              "1": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199310075492445
+              },
+              "2": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199315033899662
+              },
+              "3": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.002119931668670207
+              },
+              "4": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199315033899662
+              },
+              "5": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199310075492445
+              },
+              "6": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199301811480405
+              }
+            }
+          }
+        }
+      ],
+      "failure_details": [],
+      "mismatch_details": []
+    },
+    "28795a040773b8f76366d335182ce6fa617b940f25e5457c3da781dafd80874d": {
+      "catalog": "positive preset payloads",
+      "counts": {
+        "noiseless_runs": 2,
+        "cross_check_runs": 7700,
+        "first_attempt_or_extraction_fault_runs": 1604,
+        "retry_only_fault_runs": 3024,
+        "conditioned_retry_fault_runs": 3024,
+        "expected_conditioned_aborts": 416,
+        "incoming_single_error_runs": 42,
+        "physical_abort_policy_runs": 4
+      },
+      "fault_runs_by_part": {
+        "prep_0/initial_resets": 224,
+        "prep_0/encoder": 1176,
+        "prep_0/verification": 480,
+        "prep_0/verification_readout": 120,
+        "Z_coupling": 258,
+        "Z_ancilla_readout": 40,
+        "prep_+/initial_resets": 256,
+        "prep_+/encoder": 1176,
+        "prep_+/verification": 480,
+        "prep_+/verification_readout": 120,
+        "X_coupling": 258,
+        "X_ancilla_readout": 40
+      },
+      "single_fault_failures": 0,
+      "incoming_failures": 0,
+      "conditioned_nonabort_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "noiseless": [
+        {
+          "basis": "0",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        },
+        {
+          "basis": "+",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        }
+      ],
+      "physical_abort_checks": [
+        {
+          "half": 0,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "idle": 280,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": 0.00502,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "1": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "2": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "3": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "4": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "5": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "6": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              }
+            }
+          }
+        },
+        {
+          "half": 0,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "idle": 280,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": 0.00502,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "1": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "2": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "3": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "4": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "5": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "6": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              }
+            }
+          }
+        },
+        {
+          "half": 1,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "idle": 387,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": 0.009450000000000002,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021380998934284598
+              },
+              "1": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021381007198296633
+              },
+              "2": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021381012156703855
+              },
+              "3": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.002138101380950626
+              },
+              "4": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021381012156703855
+              },
+              "5": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021381007198296633
+              },
+              "6": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021380998934284598
+              }
+            }
+          }
+        },
+        {
+          "half": 1,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "idle": 387,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": 0.009450000000000002,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021380998934284598
+              },
+              "1": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021381007198296633
+              },
+              "2": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021381012156703855
+              },
+              "3": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.002138101380950626
+              },
+              "4": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021381012156703855
+              },
+              "5": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021381007198296633
+              },
+              "6": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021380998934284598
+              }
+            }
+          }
+        }
+      ],
+      "failure_details": [],
+      "mismatch_details": []
+    },
+    "2bad64a09efbc6a03a3e9037be377a83a62aa6d188ef36844114cbe420159ae1": {
+      "catalog": "positive preset payloads",
+      "counts": {
+        "noiseless_runs": 2,
+        "cross_check_runs": 7592,
+        "first_attempt_or_extraction_fault_runs": 1568,
+        "retry_only_fault_runs": 2988,
+        "conditioned_retry_fault_runs": 2988,
+        "expected_conditioned_aborts": 410,
+        "incoming_single_error_runs": 42,
+        "physical_abort_policy_runs": 4
+      },
+      "fault_runs_by_part": {
+        "prep_+/initial_resets": 224,
+        "prep_+/encoder": 1176,
+        "prep_+/verification": 480,
+        "prep_+/verification_readout": 120,
+        "X_coupling": 258,
+        "X_ancilla_readout": 28,
+        "prep_0/initial_resets": 208,
+        "prep_0/encoder": 1176,
+        "prep_0/verification": 480,
+        "prep_0/verification_readout": 120,
+        "Z_coupling": 258,
+        "Z_ancilla_readout": 28
+      },
+      "single_fault_failures": 0,
+      "incoming_failures": 0,
+      "conditioned_nonabort_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "noiseless": [
+        {
+          "basis": "0",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        },
+        {
+          "basis": "+",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        }
+      ],
+      "physical_abort_checks": [
+        {
+          "half": 0,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "idle": 264,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": 0.0036,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "1": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "2": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "3": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "4": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "5": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "6": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              }
+            }
+          }
+        },
+        {
+          "half": 0,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "idle": 264,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": 0.0036,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "1": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "2": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "3": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "4": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "5": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "6": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              }
+            }
+          }
+        },
+        {
+          "half": 1,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "idle": 369,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": 0.00516,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.0011635526516993954
+              },
+              "1": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.001163553478100599
+              },
+              "2": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.001163553973941321
+              },
+              "3": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.0011635541392215616
+              },
+              "4": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.001163553973941321
+              },
+              "5": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.001163553478100599
+              },
+              "6": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.0011635526516993954
+              }
+            }
+          }
+        },
+        {
+          "half": 1,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "idle": 369,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": 0.00516,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.0011635526516993954
+              },
+              "1": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.001163553478100599
+              },
+              "2": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.001163553973941321
+              },
+              "3": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.0011635541392215616
+              },
+              "4": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.001163553973941321
+              },
+              "5": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.001163553478100599
+              },
+              "6": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.0011635526516993954
+              }
+            }
+          }
+        }
+      ],
+      "failure_details": [],
+      "mismatch_details": []
+    },
+    "b6e41ea2e5e54c9667690c1793288e9a12193a0aad7620b44fb6128b2bc80e2d": {
+      "catalog": "positive preset payloads",
+      "counts": {
+        "noiseless_runs": 2,
+        "cross_check_runs": 7592,
+        "first_attempt_or_extraction_fault_runs": 1568,
+        "retry_only_fault_runs": 2988,
+        "conditioned_retry_fault_runs": 2988,
+        "expected_conditioned_aborts": 410,
+        "incoming_single_error_runs": 42,
+        "physical_abort_policy_runs": 4
+      },
+      "fault_runs_by_part": {
+        "prep_0/initial_resets": 208,
+        "prep_0/encoder": 1176,
+        "prep_0/verification": 480,
+        "prep_0/verification_readout": 120,
+        "Z_coupling": 258,
+        "Z_ancilla_readout": 28,
+        "prep_+/initial_resets": 224,
+        "prep_+/encoder": 1176,
+        "prep_+/verification": 480,
+        "prep_+/verification_readout": 120,
+        "X_coupling": 258,
+        "X_ancilla_readout": 28
+      },
+      "single_fault_failures": 0,
+      "incoming_failures": 0,
+      "conditioned_nonabort_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "noiseless": [
+        {
+          "basis": "0",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        },
+        {
+          "basis": "+",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        }
+      ],
+      "physical_abort_checks": [
+        {
+          "half": 0,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "idle": 272,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": 0.00358,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "1": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "2": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "3": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "4": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "5": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "6": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              }
+            }
+          }
+        },
+        {
+          "half": 0,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "idle": 272,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": 0.00358,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "1": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "2": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "3": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "4": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "5": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "6": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              }
+            }
+          }
+        },
+        {
+          "half": 1,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "idle": 363,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": 0.00518,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680972747093493
+              },
+              "1": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680981011105529
+              },
+              "2": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680985969512749
+              },
+              "3": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680987622315155
+              },
+              "4": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680985969512749
+              },
+              "5": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680981011105529
+              },
+              "6": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680972747093493
+              }
+            }
+          }
+        },
+        {
+          "half": 1,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "idle": 363,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": 0.00518,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680972747093493
+              },
+              "1": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680981011105529
+              },
+              "2": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680985969512749
+              },
+              "3": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680987622315155
+              },
+              "4": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680985969512749
+              },
+              "5": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680981011105529
+              },
+              "6": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680972747093493
+              }
+            }
+          }
+        }
+      ],
+      "failure_details": [],
+      "mismatch_details": []
+    }
+  },
+  "universal_checks": {
+    "3e73439fddf432a1f07e5071f9daaa252424bceba6e4aa1d25da58a2b61cfbb1": {
+      "catalog": "universal",
+      "counts": {
+        "noiseless_runs": 2,
+        "cross_check_runs": 5816,
+        "first_attempt_or_extraction_fault_runs": 1208,
+        "retry_only_fault_runs": 2280,
+        "conditioned_retry_fault_runs": 2280,
+        "expected_conditioned_aborts": 388,
+        "incoming_single_error_runs": 42,
+        "physical_abort_policy_runs": 4
+      },
+      "fault_runs_by_part": {
+        "prep_+/initial_resets": 192,
+        "prep_+/encoder": 960,
+        "prep_+/verification": 360,
+        "prep_+/verification_readout": 8,
+        "X_coupling": 210,
+        "X_ancilla_readout": 14,
+        "prep_0/initial_resets": 192,
+        "prep_0/encoder": 960,
+        "prep_0/verification": 360,
+        "prep_0/verification_readout": 8,
+        "Z_coupling": 210,
+        "Z_ancilla_readout": 14
+      },
+      "single_fault_failures": 0,
+      "incoming_failures": 0,
+      "conditioned_nonabort_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "noiseless": [
+        {
+          "basis": "0",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        },
+        {
+          "basis": "+",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        }
+      ],
+      "physical_abort_checks": [
+        {
+          "half": 0,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 0,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 1,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 1,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        }
+      ],
+      "failure_details": [],
+      "mismatch_details": []
+    },
+    "57cfbc482501f60ee16703392af4445b9d788da0653a280339a55c2cbbf8a86c": {
+      "catalog": "universal",
+      "counts": {
+        "noiseless_runs": 2,
+        "cross_check_runs": 5816,
+        "first_attempt_or_extraction_fault_runs": 1208,
+        "retry_only_fault_runs": 2280,
+        "conditioned_retry_fault_runs": 2280,
+        "expected_conditioned_aborts": 388,
+        "incoming_single_error_runs": 42,
+        "physical_abort_policy_runs": 4
+      },
+      "fault_runs_by_part": {
+        "prep_0/initial_resets": 192,
+        "prep_0/encoder": 960,
+        "prep_0/verification": 360,
+        "prep_0/verification_readout": 8,
+        "Z_coupling": 210,
+        "Z_ancilla_readout": 14,
+        "prep_+/initial_resets": 192,
+        "prep_+/encoder": 960,
+        "prep_+/verification": 360,
+        "prep_+/verification_readout": 8,
+        "X_coupling": 210,
+        "X_ancilla_readout": 14
+      },
+      "single_fault_failures": 0,
+      "incoming_failures": 0,
+      "conditioned_nonabort_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "noiseless": [
+        {
+          "basis": "0",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        },
+        {
+          "basis": "+",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        }
+      ],
+      "physical_abort_checks": [
+        {
+          "half": 0,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 0,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 1,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        },
+        {
+          "half": 1,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": null,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": null
+          }
+        }
+      ],
+      "failure_details": [],
+      "mismatch_details": []
+    },
+    "528798ce5360fa95b2e4345efc08364d7048f186ab61b57cc9c04381e5400ea4": {
+      "catalog": "universal",
+      "counts": {
+        "noiseless_runs": 2,
+        "cross_check_runs": 7924,
+        "first_attempt_or_extraction_fault_runs": 1636,
+        "retry_only_fault_runs": 3120,
+        "conditioned_retry_fault_runs": 3120,
+        "expected_conditioned_aborts": 424,
+        "incoming_single_error_runs": 42,
+        "physical_abort_policy_runs": 4
+      },
+      "fault_runs_by_part": {
+        "prep_+/initial_resets": 304,
+        "prep_+/encoder": 1176,
+        "prep_+/verification": 480,
+        "prep_+/verification_readout": 120,
+        "X_coupling": 258,
+        "X_ancilla_readout": 40,
+        "prep_0/initial_resets": 304,
+        "prep_0/encoder": 1176,
+        "prep_0/verification": 480,
+        "prep_0/verification_readout": 120,
+        "Z_coupling": 258,
+        "Z_ancilla_readout": 40
+      },
+      "single_fault_failures": 0,
+      "incoming_failures": 0,
+      "conditioned_nonabort_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "noiseless": [
+        {
+          "basis": "0",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        },
+        {
+          "basis": "+",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        }
+      ],
+      "physical_abort_checks": [
+        {
+          "half": 0,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "idle": 280,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": 0.0050799999999999994,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "1": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "2": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "3": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "4": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "5": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "6": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              }
+            }
+          }
+        },
+        {
+          "half": 0,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "idle": 280,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": 0.0050799999999999994,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "1": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "2": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "3": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "4": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "5": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              },
+              "6": {
+                "seconds": 0.0050799999999999994,
+                "summed_Z_probability": 0.0011544501191987154
+              }
+            }
+          }
+        },
+        {
+          "half": 1,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "idle": 387,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": 0.00937,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199301811480405
+              },
+              "1": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199310075492445
+              },
+              "2": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199315033899662
+              },
+              "3": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.002119931668670207
+              },
+              "4": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199315033899662
+              },
+              "5": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199310075492445
+              },
+              "6": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199301811480405
+              }
+            }
+          }
+        },
+        {
+          "half": 1,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "idle": 387,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": 0.00937,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199301811480405
+              },
+              "1": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199310075492445
+              },
+              "2": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199315033899662
+              },
+              "3": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.002119931668670207
+              },
+              "4": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199315033899662
+              },
+              "5": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199310075492445
+              },
+              "6": {
+                "seconds": 0.009330000000000001,
+                "summed_Z_probability": 0.0021199301811480405
+              }
+            }
+          }
+        }
+      ],
+      "failure_details": [],
+      "mismatch_details": []
+    },
+    "0ae433d7e6b636ae5e27393fc07a04274a86a31666fd494745651c99400a109e": {
+      "catalog": "universal",
+      "counts": {
+        "noiseless_runs": 2,
+        "cross_check_runs": 7924,
+        "first_attempt_or_extraction_fault_runs": 1636,
+        "retry_only_fault_runs": 3120,
+        "conditioned_retry_fault_runs": 3120,
+        "expected_conditioned_aborts": 424,
+        "incoming_single_error_runs": 42,
+        "physical_abort_policy_runs": 4
+      },
+      "fault_runs_by_part": {
+        "prep_0/initial_resets": 304,
+        "prep_0/encoder": 1176,
+        "prep_0/verification": 480,
+        "prep_0/verification_readout": 120,
+        "Z_coupling": 258,
+        "Z_ancilla_readout": 40,
+        "prep_+/initial_resets": 304,
+        "prep_+/encoder": 1176,
+        "prep_+/verification": 480,
+        "prep_+/verification_readout": 120,
+        "X_coupling": 258,
+        "X_ancilla_readout": 40
+      },
+      "single_fault_failures": 0,
+      "incoming_failures": 0,
+      "conditioned_nonabort_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "noiseless": [
+        {
+          "basis": "0",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        },
+        {
+          "basis": "+",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        }
+      ],
+      "physical_abort_checks": [
+        {
+          "half": 0,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "idle": 280,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": 0.00502,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "1": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "2": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "3": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "4": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "5": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "6": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              }
+            }
+          }
+        },
+        {
+          "half": 0,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "idle": 280,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": 0.00502,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "1": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "2": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "3": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "4": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "5": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              },
+              "6": {
+                "seconds": 0.005020000000000001,
+                "summed_Z_probability": 0.0011408163224693802
+              }
+            }
+          }
+        },
+        {
+          "half": 1,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "idle": 387,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": 0.009450000000000002,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021380998934284598
+              },
+              "1": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021381007198296633
+              },
+              "2": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021381012156703855
+              },
+              "3": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.002138101380950626
+              },
+              "4": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021381012156703855
+              },
+              "5": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021381007198296633
+              },
+              "6": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021380998934284598
+              }
+            }
+          }
+        },
+        {
+          "half": 1,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "idle": 387,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": 0.009450000000000002,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021380998934284598
+              },
+              "1": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021381007198296633
+              },
+              "2": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021381012156703855
+              },
+              "3": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.002138101380950626
+              },
+              "4": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021381012156703855
+              },
+              "5": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021381007198296633
+              },
+              "6": {
+                "seconds": 0.009410000000000002,
+                "summed_Z_probability": 0.0021380998934284598
+              }
+            }
+          }
+        }
+      ],
+      "failure_details": [],
+      "mismatch_details": []
+    },
+    "85f7b8a1ae739df487d8bd66eceb1c05e9744fb9dce776bebdcd257376d69aa7": {
+      "catalog": "universal",
+      "counts": {
+        "noiseless_runs": 2,
+        "cross_check_runs": 7816,
+        "first_attempt_or_extraction_fault_runs": 1600,
+        "retry_only_fault_runs": 3084,
+        "conditioned_retry_fault_runs": 3084,
+        "expected_conditioned_aborts": 418,
+        "incoming_single_error_runs": 42,
+        "physical_abort_policy_runs": 4
+      },
+      "fault_runs_by_part": {
+        "prep_+/initial_resets": 272,
+        "prep_+/encoder": 1176,
+        "prep_+/verification": 480,
+        "prep_+/verification_readout": 120,
+        "X_coupling": 258,
+        "X_ancilla_readout": 28,
+        "prep_0/initial_resets": 288,
+        "prep_0/encoder": 1176,
+        "prep_0/verification": 480,
+        "prep_0/verification_readout": 120,
+        "Z_coupling": 258,
+        "Z_ancilla_readout": 28
+      },
+      "single_fault_failures": 0,
+      "incoming_failures": 0,
+      "conditioned_nonabort_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "noiseless": [
+        {
+          "basis": "0",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        },
+        {
+          "basis": "+",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        }
+      ],
+      "physical_abort_checks": [
+        {
+          "half": 0,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "idle": 264,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": 0.0036,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "1": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "2": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "3": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "4": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "5": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "6": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              }
+            }
+          }
+        },
+        {
+          "half": 0,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "idle": 264,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": 0.0036,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "1": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "2": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "3": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "4": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "5": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              },
+              "6": {
+                "seconds": 0.0035999999999999995,
+                "summed_Z_probability": 0.0008181231746521481
+              }
+            }
+          }
+        },
+        {
+          "half": 1,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "idle": 369,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": 0.00516,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.0011635526516993954
+              },
+              "1": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.001163553478100599
+              },
+              "2": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.001163553973941321
+              },
+              "3": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.0011635541392215616
+              },
+              "4": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.001163553973941321
+              },
+              "5": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.001163553478100599
+              },
+              "6": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.0011635526516993954
+              }
+            }
+          }
+        },
+        {
+          "half": 1,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "idle": 369,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": 0.00516,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.0011635526516993954
+              },
+              "1": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.001163553478100599
+              },
+              "2": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.001163553973941321
+              },
+              "3": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.0011635541392215616
+              },
+              "4": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.001163553973941321
+              },
+              "5": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.001163553478100599
+              },
+              "6": {
+                "seconds": 0.00512,
+                "summed_Z_probability": 0.0011635526516993954
+              }
+            }
+          }
+        }
+      ],
+      "failure_details": [],
+      "mismatch_details": []
+    },
+    "2faf5ce5cef07479d09d040015300a601be630dd38deb32a99eee760c6ada143": {
+      "catalog": "universal",
+      "counts": {
+        "noiseless_runs": 2,
+        "cross_check_runs": 7816,
+        "first_attempt_or_extraction_fault_runs": 1600,
+        "retry_only_fault_runs": 3084,
+        "conditioned_retry_fault_runs": 3084,
+        "expected_conditioned_aborts": 418,
+        "incoming_single_error_runs": 42,
+        "physical_abort_policy_runs": 4
+      },
+      "fault_runs_by_part": {
+        "prep_0/initial_resets": 288,
+        "prep_0/encoder": 1176,
+        "prep_0/verification": 480,
+        "prep_0/verification_readout": 120,
+        "Z_coupling": 258,
+        "Z_ancilla_readout": 28,
+        "prep_+/initial_resets": 272,
+        "prep_+/encoder": 1176,
+        "prep_+/verification": 480,
+        "prep_+/verification_readout": 120,
+        "X_coupling": 258,
+        "X_ancilla_readout": 28
+      },
+      "single_fault_failures": 0,
+      "incoming_failures": 0,
+      "conditioned_nonabort_failures": 0,
+      "frame_tableau_mismatches": 0,
+      "noiseless": [
+        {
+          "basis": "0",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        },
+        {
+          "basis": "+",
+          "logical_preserved": true,
+          "trivial_syndromes": true
+        }
+      ],
+      "physical_abort_checks": [
+        {
+          "half": 0,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "idle": 272,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": 0.00358,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "1": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "2": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "3": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "4": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "5": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "6": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              }
+            }
+          }
+        },
+        {
+          "half": 0,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 32,
+              "idle": 272,
+              "2q": 44,
+              "measurement": 4
+            },
+            "duration_seconds": 0.00358,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "1": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "2": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "3": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "4": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "5": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              },
+              "6": {
+                "seconds": 0.00358,
+                "summed_Z_probability": 0.000813578551642194
+              }
+            }
+          }
+        },
+        {
+          "half": 1,
+          "basis": "0",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "idle": 363,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": 0.00518,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680972747093493
+              },
+              "1": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680981011105529
+              },
+              "2": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680985969512749
+              },
+              "3": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680987622315155
+              },
+              "4": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680985969512749
+              },
+              "5": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680981011105529
+              },
+              "6": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680972747093493
+              }
+            }
+          }
+        },
+        {
+          "half": 1,
+          "basis": "+",
+          "aborted": true,
+          "counts_as_logical_failure": true,
+          "resources": {
+            "location_counts": {
+              "reset": 40,
+              "idle": 363,
+              "2q": 62,
+              "measurement": 12
+            },
+            "duration_seconds": 0.00518,
+            "ion_count": 15,
+            "idle_exposure_per_data_qubit": {
+              "0": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680972747093493
+              },
+              "1": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680981011105529
+              },
+              "2": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680985969512749
+              },
+              "3": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680987622315155
+              },
+              "4": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680985969512749
+              },
+              "5": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680981011105529
+              },
+              "6": {
+                "seconds": 0.00514,
+                "summed_Z_probability": 0.0011680972747093493
+              }
+            }
+          }
+        }
+      ],
+      "failure_details": [],
+      "mismatch_details": []
+    }
+  },
+  "rows": {
+    "c0_X_FIRST": {
+      "preset": "UniformNoise(0.0005)",
+      "policy": "timing-free",
+      "half_order": "X_FIRST",
+      "half_sequence": [
+        "X",
+        "Z"
+      ],
+      "check_signature": "cd894dbd33f4fe0e294d872e5992fb56590e49225aad42d2d99c3f380bf59f42",
+      "checks": {
+        "catalog": "positive preset payloads",
+        "counts": {
+          "noiseless_runs": 2,
+          "cross_check_runs": 5368,
+          "first_attempt_or_extraction_fault_runs": 1144,
+          "retry_only_fault_runs": 2088,
+          "conditioned_retry_fault_runs": 2088,
+          "expected_conditioned_aborts": 372,
+          "incoming_single_error_runs": 42,
+          "physical_abort_policy_runs": 4
+        },
+        "fault_runs_by_part": {
+          "prep_+/initial_resets": 64,
+          "prep_+/encoder": 960,
+          "prep_+/verification": 360,
+          "prep_+/verification_readout": 8,
+          "X_coupling": 210,
+          "X_ancilla_readout": 14,
+          "prep_0/initial_resets": 64,
+          "prep_0/encoder": 960,
+          "prep_0/verification": 360,
+          "prep_0/verification_readout": 8,
+          "Z_coupling": 210,
+          "Z_ancilla_readout": 14
+        },
+        "single_fault_failures": 0,
+        "incoming_failures": 0,
+        "conditioned_nonabort_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "noiseless": [
+          {
+            "basis": "0",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          },
+          {
+            "basis": "+",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          }
+        ],
+        "physical_abort_checks": [
+          {
+            "half": 0,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 0,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          }
+        ],
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "no_rejection_resources": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "all_reserved_locations": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "max_attempts": 4
+    },
+    "c0_Z_FIRST": {
+      "preset": "UniformNoise(0.0005)",
+      "policy": "timing-free",
+      "half_order": "Z_FIRST",
+      "half_sequence": [
+        "Z",
+        "X"
+      ],
+      "check_signature": "c5ff14480071112fb56cdc903d15fea482a03dc6344742e4817b12f8eb8d23f7",
+      "checks": {
+        "catalog": "positive preset payloads",
+        "counts": {
+          "noiseless_runs": 2,
+          "cross_check_runs": 5368,
+          "first_attempt_or_extraction_fault_runs": 1144,
+          "retry_only_fault_runs": 2088,
+          "conditioned_retry_fault_runs": 2088,
+          "expected_conditioned_aborts": 372,
+          "incoming_single_error_runs": 42,
+          "physical_abort_policy_runs": 4
+        },
+        "fault_runs_by_part": {
+          "prep_0/initial_resets": 64,
+          "prep_0/encoder": 960,
+          "prep_0/verification": 360,
+          "prep_0/verification_readout": 8,
+          "Z_coupling": 210,
+          "Z_ancilla_readout": 14,
+          "prep_+/initial_resets": 64,
+          "prep_+/encoder": 960,
+          "prep_+/verification": 360,
+          "prep_+/verification_readout": 8,
+          "X_coupling": 210,
+          "X_ancilla_readout": 14
+        },
+        "single_fault_failures": 0,
+        "incoming_failures": 0,
+        "conditioned_nonabort_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "noiseless": [
+          {
+            "basis": "0",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          },
+          {
+            "basis": "+",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          }
+        ],
+        "physical_abort_checks": [
+          {
+            "half": 0,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 0,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          }
+        ],
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "no_rejection_resources": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "all_reserved_locations": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "max_attempts": 4
+    },
+    "c1_X_FIRST": {
+      "preset": "UniformNoise(0.001)",
+      "policy": "timing-free",
+      "half_order": "X_FIRST",
+      "half_sequence": [
+        "X",
+        "Z"
+      ],
+      "check_signature": "cd894dbd33f4fe0e294d872e5992fb56590e49225aad42d2d99c3f380bf59f42",
+      "checks": {
+        "catalog": "positive preset payloads",
+        "counts": {
+          "noiseless_runs": 2,
+          "cross_check_runs": 5368,
+          "first_attempt_or_extraction_fault_runs": 1144,
+          "retry_only_fault_runs": 2088,
+          "conditioned_retry_fault_runs": 2088,
+          "expected_conditioned_aborts": 372,
+          "incoming_single_error_runs": 42,
+          "physical_abort_policy_runs": 4
+        },
+        "fault_runs_by_part": {
+          "prep_+/initial_resets": 64,
+          "prep_+/encoder": 960,
+          "prep_+/verification": 360,
+          "prep_+/verification_readout": 8,
+          "X_coupling": 210,
+          "X_ancilla_readout": 14,
+          "prep_0/initial_resets": 64,
+          "prep_0/encoder": 960,
+          "prep_0/verification": 360,
+          "prep_0/verification_readout": 8,
+          "Z_coupling": 210,
+          "Z_ancilla_readout": 14
+        },
+        "single_fault_failures": 0,
+        "incoming_failures": 0,
+        "conditioned_nonabort_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "noiseless": [
+          {
+            "basis": "0",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          },
+          {
+            "basis": "+",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          }
+        ],
+        "physical_abort_checks": [
+          {
+            "half": 0,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 0,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          }
+        ],
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "no_rejection_resources": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "all_reserved_locations": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "max_attempts": 4
+    },
+    "c1_Z_FIRST": {
+      "preset": "UniformNoise(0.001)",
+      "policy": "timing-free",
+      "half_order": "Z_FIRST",
+      "half_sequence": [
+        "Z",
+        "X"
+      ],
+      "check_signature": "c5ff14480071112fb56cdc903d15fea482a03dc6344742e4817b12f8eb8d23f7",
+      "checks": {
+        "catalog": "positive preset payloads",
+        "counts": {
+          "noiseless_runs": 2,
+          "cross_check_runs": 5368,
+          "first_attempt_or_extraction_fault_runs": 1144,
+          "retry_only_fault_runs": 2088,
+          "conditioned_retry_fault_runs": 2088,
+          "expected_conditioned_aborts": 372,
+          "incoming_single_error_runs": 42,
+          "physical_abort_policy_runs": 4
+        },
+        "fault_runs_by_part": {
+          "prep_0/initial_resets": 64,
+          "prep_0/encoder": 960,
+          "prep_0/verification": 360,
+          "prep_0/verification_readout": 8,
+          "Z_coupling": 210,
+          "Z_ancilla_readout": 14,
+          "prep_+/initial_resets": 64,
+          "prep_+/encoder": 960,
+          "prep_+/verification": 360,
+          "prep_+/verification_readout": 8,
+          "X_coupling": 210,
+          "X_ancilla_readout": 14
+        },
+        "single_fault_failures": 0,
+        "incoming_failures": 0,
+        "conditioned_nonabort_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "noiseless": [
+          {
+            "basis": "0",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          },
+          {
+            "basis": "+",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          }
+        ],
+        "physical_abort_checks": [
+          {
+            "half": 0,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 0,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          }
+        ],
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "no_rejection_resources": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "all_reserved_locations": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "max_attempts": 4
+    },
+    "c2_X_FIRST": {
+      "preset": "UniformNoise(0.0015)",
+      "policy": "timing-free",
+      "half_order": "X_FIRST",
+      "half_sequence": [
+        "X",
+        "Z"
+      ],
+      "check_signature": "cd894dbd33f4fe0e294d872e5992fb56590e49225aad42d2d99c3f380bf59f42",
+      "checks": {
+        "catalog": "positive preset payloads",
+        "counts": {
+          "noiseless_runs": 2,
+          "cross_check_runs": 5368,
+          "first_attempt_or_extraction_fault_runs": 1144,
+          "retry_only_fault_runs": 2088,
+          "conditioned_retry_fault_runs": 2088,
+          "expected_conditioned_aborts": 372,
+          "incoming_single_error_runs": 42,
+          "physical_abort_policy_runs": 4
+        },
+        "fault_runs_by_part": {
+          "prep_+/initial_resets": 64,
+          "prep_+/encoder": 960,
+          "prep_+/verification": 360,
+          "prep_+/verification_readout": 8,
+          "X_coupling": 210,
+          "X_ancilla_readout": 14,
+          "prep_0/initial_resets": 64,
+          "prep_0/encoder": 960,
+          "prep_0/verification": 360,
+          "prep_0/verification_readout": 8,
+          "Z_coupling": 210,
+          "Z_ancilla_readout": 14
+        },
+        "single_fault_failures": 0,
+        "incoming_failures": 0,
+        "conditioned_nonabort_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "noiseless": [
+          {
+            "basis": "0",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          },
+          {
+            "basis": "+",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          }
+        ],
+        "physical_abort_checks": [
+          {
+            "half": 0,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 0,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          }
+        ],
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "no_rejection_resources": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "all_reserved_locations": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "max_attempts": 4
+    },
+    "c2_Z_FIRST": {
+      "preset": "UniformNoise(0.0015)",
+      "policy": "timing-free",
+      "half_order": "Z_FIRST",
+      "half_sequence": [
+        "Z",
+        "X"
+      ],
+      "check_signature": "c5ff14480071112fb56cdc903d15fea482a03dc6344742e4817b12f8eb8d23f7",
+      "checks": {
+        "catalog": "positive preset payloads",
+        "counts": {
+          "noiseless_runs": 2,
+          "cross_check_runs": 5368,
+          "first_attempt_or_extraction_fault_runs": 1144,
+          "retry_only_fault_runs": 2088,
+          "conditioned_retry_fault_runs": 2088,
+          "expected_conditioned_aborts": 372,
+          "incoming_single_error_runs": 42,
+          "physical_abort_policy_runs": 4
+        },
+        "fault_runs_by_part": {
+          "prep_0/initial_resets": 64,
+          "prep_0/encoder": 960,
+          "prep_0/verification": 360,
+          "prep_0/verification_readout": 8,
+          "Z_coupling": 210,
+          "Z_ancilla_readout": 14,
+          "prep_+/initial_resets": 64,
+          "prep_+/encoder": 960,
+          "prep_+/verification": 360,
+          "prep_+/verification_readout": 8,
+          "X_coupling": 210,
+          "X_ancilla_readout": 14
+        },
+        "single_fault_failures": 0,
+        "incoming_failures": 0,
+        "conditioned_nonabort_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "noiseless": [
+          {
+            "basis": "0",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          },
+          {
+            "basis": "+",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          }
+        ],
+        "physical_abort_checks": [
+          {
+            "half": 0,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 0,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          }
+        ],
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "no_rejection_resources": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "all_reserved_locations": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "max_attempts": 4
+    },
+    "c3_X_FIRST": {
+      "preset": "TWO_QUBIT_ONLY(0.0005)",
+      "policy": "timing-free",
+      "half_order": "X_FIRST",
+      "half_sequence": [
+        "X",
+        "Z"
+      ],
+      "check_signature": "c73d2cb43aebe997114862647d5a0c712dde636aa770c3f2e74fd23aa64fce57",
+      "checks": {
+        "catalog": "positive preset payloads",
+        "counts": {
+          "noiseless_runs": 2,
+          "cross_check_runs": 5088,
+          "first_attempt_or_extraction_fault_runs": 1080,
+          "retry_only_fault_runs": 1980,
+          "conditioned_retry_fault_runs": 1980,
+          "expected_conditioned_aborts": 352,
+          "incoming_single_error_runs": 42,
+          "physical_abort_policy_runs": 4
+        },
+        "fault_runs_by_part": {
+          "prep_+/encoder": 960,
+          "prep_+/verification": 360,
+          "X_coupling": 210,
+          "prep_0/encoder": 960,
+          "prep_0/verification": 360,
+          "Z_coupling": 210
+        },
+        "single_fault_failures": 0,
+        "incoming_failures": 0,
+        "conditioned_nonabort_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "noiseless": [
+          {
+            "basis": "0",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          },
+          {
+            "basis": "+",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          }
+        ],
+        "physical_abort_checks": [
+          {
+            "half": 0,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 0,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          }
+        ],
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "no_rejection_resources": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "all_reserved_locations": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "max_attempts": 4
+    },
+    "c3_Z_FIRST": {
+      "preset": "TWO_QUBIT_ONLY(0.0005)",
+      "policy": "timing-free",
+      "half_order": "Z_FIRST",
+      "half_sequence": [
+        "Z",
+        "X"
+      ],
+      "check_signature": "d32804e18a312809730519fd4edfc46d08f2850b8e273860dfd07d0d03d07942",
+      "checks": {
+        "catalog": "positive preset payloads",
+        "counts": {
+          "noiseless_runs": 2,
+          "cross_check_runs": 5088,
+          "first_attempt_or_extraction_fault_runs": 1080,
+          "retry_only_fault_runs": 1980,
+          "conditioned_retry_fault_runs": 1980,
+          "expected_conditioned_aborts": 352,
+          "incoming_single_error_runs": 42,
+          "physical_abort_policy_runs": 4
+        },
+        "fault_runs_by_part": {
+          "prep_0/encoder": 960,
+          "prep_0/verification": 360,
+          "Z_coupling": 210,
+          "prep_+/encoder": 960,
+          "prep_+/verification": 360,
+          "X_coupling": 210
+        },
+        "single_fault_failures": 0,
+        "incoming_failures": 0,
+        "conditioned_nonabort_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "noiseless": [
+          {
+            "basis": "0",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          },
+          {
+            "basis": "+",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          }
+        ],
+        "physical_abort_checks": [
+          {
+            "half": 0,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 0,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          }
+        ],
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "no_rejection_resources": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "all_reserved_locations": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "max_attempts": 4
+    },
+    "c4_X_FIRST": {
+      "preset": "TWO_QUBIT_ONLY(0.001)",
+      "policy": "timing-free",
+      "half_order": "X_FIRST",
+      "half_sequence": [
+        "X",
+        "Z"
+      ],
+      "check_signature": "c73d2cb43aebe997114862647d5a0c712dde636aa770c3f2e74fd23aa64fce57",
+      "checks": {
+        "catalog": "positive preset payloads",
+        "counts": {
+          "noiseless_runs": 2,
+          "cross_check_runs": 5088,
+          "first_attempt_or_extraction_fault_runs": 1080,
+          "retry_only_fault_runs": 1980,
+          "conditioned_retry_fault_runs": 1980,
+          "expected_conditioned_aborts": 352,
+          "incoming_single_error_runs": 42,
+          "physical_abort_policy_runs": 4
+        },
+        "fault_runs_by_part": {
+          "prep_+/encoder": 960,
+          "prep_+/verification": 360,
+          "X_coupling": 210,
+          "prep_0/encoder": 960,
+          "prep_0/verification": 360,
+          "Z_coupling": 210
+        },
+        "single_fault_failures": 0,
+        "incoming_failures": 0,
+        "conditioned_nonabort_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "noiseless": [
+          {
+            "basis": "0",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          },
+          {
+            "basis": "+",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          }
+        ],
+        "physical_abort_checks": [
+          {
+            "half": 0,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 0,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          }
+        ],
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "no_rejection_resources": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "all_reserved_locations": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "max_attempts": 4
+    },
+    "c4_Z_FIRST": {
+      "preset": "TWO_QUBIT_ONLY(0.001)",
+      "policy": "timing-free",
+      "half_order": "Z_FIRST",
+      "half_sequence": [
+        "Z",
+        "X"
+      ],
+      "check_signature": "d32804e18a312809730519fd4edfc46d08f2850b8e273860dfd07d0d03d07942",
+      "checks": {
+        "catalog": "positive preset payloads",
+        "counts": {
+          "noiseless_runs": 2,
+          "cross_check_runs": 5088,
+          "first_attempt_or_extraction_fault_runs": 1080,
+          "retry_only_fault_runs": 1980,
+          "conditioned_retry_fault_runs": 1980,
+          "expected_conditioned_aborts": 352,
+          "incoming_single_error_runs": 42,
+          "physical_abort_policy_runs": 4
+        },
+        "fault_runs_by_part": {
+          "prep_0/encoder": 960,
+          "prep_0/verification": 360,
+          "Z_coupling": 210,
+          "prep_+/encoder": 960,
+          "prep_+/verification": 360,
+          "X_coupling": 210
+        },
+        "single_fault_failures": 0,
+        "incoming_failures": 0,
+        "conditioned_nonabort_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "noiseless": [
+          {
+            "basis": "0",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          },
+          {
+            "basis": "+",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          }
+        ],
+        "physical_abort_checks": [
+          {
+            "half": 0,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 0,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          }
+        ],
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "no_rejection_resources": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "all_reserved_locations": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "max_attempts": 4
+    },
+    "c5_X_FIRST": {
+      "preset": "TWO_QUBIT_ONLY(0.002)",
+      "policy": "timing-free",
+      "half_order": "X_FIRST",
+      "half_sequence": [
+        "X",
+        "Z"
+      ],
+      "check_signature": "c73d2cb43aebe997114862647d5a0c712dde636aa770c3f2e74fd23aa64fce57",
+      "checks": {
+        "catalog": "positive preset payloads",
+        "counts": {
+          "noiseless_runs": 2,
+          "cross_check_runs": 5088,
+          "first_attempt_or_extraction_fault_runs": 1080,
+          "retry_only_fault_runs": 1980,
+          "conditioned_retry_fault_runs": 1980,
+          "expected_conditioned_aborts": 352,
+          "incoming_single_error_runs": 42,
+          "physical_abort_policy_runs": 4
+        },
+        "fault_runs_by_part": {
+          "prep_+/encoder": 960,
+          "prep_+/verification": 360,
+          "X_coupling": 210,
+          "prep_0/encoder": 960,
+          "prep_0/verification": 360,
+          "Z_coupling": 210
+        },
+        "single_fault_failures": 0,
+        "incoming_failures": 0,
+        "conditioned_nonabort_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "noiseless": [
+          {
+            "basis": "0",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          },
+          {
+            "basis": "+",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          }
+        ],
+        "physical_abort_checks": [
+          {
+            "half": 0,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 0,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          }
+        ],
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "no_rejection_resources": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "all_reserved_locations": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "max_attempts": 4
+    },
+    "c5_Z_FIRST": {
+      "preset": "TWO_QUBIT_ONLY(0.002)",
+      "policy": "timing-free",
+      "half_order": "Z_FIRST",
+      "half_sequence": [
+        "Z",
+        "X"
+      ],
+      "check_signature": "d32804e18a312809730519fd4edfc46d08f2850b8e273860dfd07d0d03d07942",
+      "checks": {
+        "catalog": "positive preset payloads",
+        "counts": {
+          "noiseless_runs": 2,
+          "cross_check_runs": 5088,
+          "first_attempt_or_extraction_fault_runs": 1080,
+          "retry_only_fault_runs": 1980,
+          "conditioned_retry_fault_runs": 1980,
+          "expected_conditioned_aborts": 352,
+          "incoming_single_error_runs": 42,
+          "physical_abort_policy_runs": 4
+        },
+        "fault_runs_by_part": {
+          "prep_0/encoder": 960,
+          "prep_0/verification": 360,
+          "Z_coupling": 210,
+          "prep_+/encoder": 960,
+          "prep_+/verification": 360,
+          "X_coupling": 210
+        },
+        "single_fault_failures": 0,
+        "incoming_failures": 0,
+        "conditioned_nonabort_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "noiseless": [
+          {
+            "basis": "0",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          },
+          {
+            "basis": "+",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          }
+        ],
+        "physical_abort_checks": [
+          {
+            "half": 0,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 0,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          }
+        ],
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "no_rejection_resources": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "all_reserved_locations": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "max_attempts": 4
+    },
+    "c6_X_FIRST": {
+      "preset": "H2_LIKE",
+      "policy": "timing-free",
+      "half_order": "X_FIRST",
+      "half_sequence": [
+        "X",
+        "Z"
+      ],
+      "check_signature": "c30b94f83513f18bf5f4e624ce7de02b2218d0b10b57d2d3a959ad5cce169bbb",
+      "checks": {
+        "catalog": "positive preset payloads",
+        "counts": {
+          "noiseless_runs": 2,
+          "cross_check_runs": 5592,
+          "first_attempt_or_extraction_fault_runs": 1176,
+          "retry_only_fault_runs": 2184,
+          "conditioned_retry_fault_runs": 2184,
+          "expected_conditioned_aborts": 380,
+          "incoming_single_error_runs": 42,
+          "physical_abort_policy_runs": 4
+        },
+        "fault_runs_by_part": {
+          "prep_+/initial_resets": 144,
+          "prep_+/encoder": 960,
+          "prep_+/verification": 360,
+          "prep_+/verification_readout": 8,
+          "X_coupling": 210,
+          "X_ancilla_readout": 14,
+          "prep_0/initial_resets": 112,
+          "prep_0/encoder": 960,
+          "prep_0/verification": 360,
+          "prep_0/verification_readout": 8,
+          "Z_coupling": 210,
+          "Z_ancilla_readout": 14
+        },
+        "single_fault_failures": 0,
+        "incoming_failures": 0,
+        "conditioned_nonabort_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "noiseless": [
+          {
+            "basis": "0",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          },
+          {
+            "basis": "+",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          }
+        ],
+        "physical_abort_checks": [
+          {
+            "half": 0,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 0,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          }
+        ],
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "no_rejection_resources": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "all_reserved_locations": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "max_attempts": 4
+    },
+    "c6_Z_FIRST": {
+      "preset": "H2_LIKE",
+      "policy": "timing-free",
+      "half_order": "Z_FIRST",
+      "half_sequence": [
+        "Z",
+        "X"
+      ],
+      "check_signature": "baae67c3c843d3a83e301a2728e414dfaec66be2af90058e1ad66876851630de",
+      "checks": {
+        "catalog": "positive preset payloads",
+        "counts": {
+          "noiseless_runs": 2,
+          "cross_check_runs": 5592,
+          "first_attempt_or_extraction_fault_runs": 1176,
+          "retry_only_fault_runs": 2184,
+          "conditioned_retry_fault_runs": 2184,
+          "expected_conditioned_aborts": 380,
+          "incoming_single_error_runs": 42,
+          "physical_abort_policy_runs": 4
+        },
+        "fault_runs_by_part": {
+          "prep_0/initial_resets": 112,
+          "prep_0/encoder": 960,
+          "prep_0/verification": 360,
+          "prep_0/verification_readout": 8,
+          "Z_coupling": 210,
+          "Z_ancilla_readout": 14,
+          "prep_+/initial_resets": 144,
+          "prep_+/encoder": 960,
+          "prep_+/verification": 360,
+          "prep_+/verification_readout": 8,
+          "X_coupling": 210,
+          "X_ancilla_readout": 14
+        },
+        "single_fault_failures": 0,
+        "incoming_failures": 0,
+        "conditioned_nonabort_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "noiseless": [
+          {
+            "basis": "0",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          },
+          {
+            "basis": "+",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          }
+        ],
+        "physical_abort_checks": [
+          {
+            "half": 0,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 0,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          },
+          {
+            "half": 1,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": null,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": null
+            }
+          }
+        ],
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "no_rejection_resources": {
+        "location_counts": {
+          "reset": 16,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "all_reserved_locations": {
+        "location_counts": {
+          "reset": 64,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": null,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": null
+      },
+      "max_attempts": 4
+    },
+    "c7_X_FIRST": {
+      "preset": "JONES_MURALI_2026",
+      "policy": "SEQ",
+      "half_order": "X_FIRST",
+      "half_sequence": [
+        "X",
+        "Z"
+      ],
+      "check_signature": "66c7d5c5dc891586e770c549311a06df413442913f033bbac24a3cbaa7593a89",
+      "checks": {
+        "catalog": "positive preset payloads",
+        "counts": {
+          "noiseless_runs": 2,
+          "cross_check_runs": 7700,
+          "first_attempt_or_extraction_fault_runs": 1604,
+          "retry_only_fault_runs": 3024,
+          "conditioned_retry_fault_runs": 3024,
+          "expected_conditioned_aborts": 416,
+          "incoming_single_error_runs": 42,
+          "physical_abort_policy_runs": 4
+        },
+        "fault_runs_by_part": {
+          "prep_+/initial_resets": 256,
+          "prep_+/encoder": 1176,
+          "prep_+/verification": 480,
+          "prep_+/verification_readout": 120,
+          "X_coupling": 258,
+          "X_ancilla_readout": 40,
+          "prep_0/initial_resets": 224,
+          "prep_0/encoder": 1176,
+          "prep_0/verification": 480,
+          "prep_0/verification_readout": 120,
+          "Z_coupling": 258,
+          "Z_ancilla_readout": 40
+        },
+        "single_fault_failures": 0,
+        "incoming_failures": 0,
+        "conditioned_nonabort_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "noiseless": [
+          {
+            "basis": "0",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          },
+          {
+            "basis": "+",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          }
+        ],
+        "physical_abort_checks": [
+          {
+            "half": 0,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "idle": 280,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": 0.0050799999999999994,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": {
+                "0": {
+                  "seconds": 0.0050799999999999994,
+                  "summed_Z_probability": 0.0011544501191987154
+                },
+                "1": {
+                  "seconds": 0.0050799999999999994,
+                  "summed_Z_probability": 0.0011544501191987154
+                },
+                "2": {
+                  "seconds": 0.0050799999999999994,
+                  "summed_Z_probability": 0.0011544501191987154
+                },
+                "3": {
+                  "seconds": 0.0050799999999999994,
+                  "summed_Z_probability": 0.0011544501191987154
+                },
+                "4": {
+                  "seconds": 0.0050799999999999994,
+                  "summed_Z_probability": 0.0011544501191987154
+                },
+                "5": {
+                  "seconds": 0.0050799999999999994,
+                  "summed_Z_probability": 0.0011544501191987154
+                },
+                "6": {
+                  "seconds": 0.0050799999999999994,
+                  "summed_Z_probability": 0.0011544501191987154
+                }
+              }
+            }
+          },
+          {
+            "half": 0,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "idle": 280,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": 0.0050799999999999994,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": {
+                "0": {
+                  "seconds": 0.0050799999999999994,
+                  "summed_Z_probability": 0.0011544501191987154
+                },
+                "1": {
+                  "seconds": 0.0050799999999999994,
+                  "summed_Z_probability": 0.0011544501191987154
+                },
+                "2": {
+                  "seconds": 0.0050799999999999994,
+                  "summed_Z_probability": 0.0011544501191987154
+                },
+                "3": {
+                  "seconds": 0.0050799999999999994,
+                  "summed_Z_probability": 0.0011544501191987154
+                },
+                "4": {
+                  "seconds": 0.0050799999999999994,
+                  "summed_Z_probability": 0.0011544501191987154
+                },
+                "5": {
+                  "seconds": 0.0050799999999999994,
+                  "summed_Z_probability": 0.0011544501191987154
+                },
+                "6": {
+                  "seconds": 0.0050799999999999994,
+                  "summed_Z_probability": 0.0011544501191987154
+                }
+              }
+            }
+          },
+          {
+            "half": 1,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "idle": 387,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": 0.00937,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": {
+                "0": {
+                  "seconds": 0.009330000000000001,
+                  "summed_Z_probability": 0.0021199301811480405
+                },
+                "1": {
+                  "seconds": 0.009330000000000001,
+                  "summed_Z_probability": 0.0021199310075492445
+                },
+                "2": {
+                  "seconds": 0.009330000000000001,
+                  "summed_Z_probability": 0.0021199315033899662
+                },
+                "3": {
+                  "seconds": 0.009330000000000001,
+                  "summed_Z_probability": 0.002119931668670207
+                },
+                "4": {
+                  "seconds": 0.009330000000000001,
+                  "summed_Z_probability": 0.0021199315033899662
+                },
+                "5": {
+                  "seconds": 0.009330000000000001,
+                  "summed_Z_probability": 0.0021199310075492445
+                },
+                "6": {
+                  "seconds": 0.009330000000000001,
+                  "summed_Z_probability": 0.0021199301811480405
+                }
+              }
+            }
+          },
+          {
+            "half": 1,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "idle": 387,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": 0.00937,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": {
+                "0": {
+                  "seconds": 0.009330000000000001,
+                  "summed_Z_probability": 0.0021199301811480405
+                },
+                "1": {
+                  "seconds": 0.009330000000000001,
+                  "summed_Z_probability": 0.0021199310075492445
+                },
+                "2": {
+                  "seconds": 0.009330000000000001,
+                  "summed_Z_probability": 0.0021199315033899662
+                },
+                "3": {
+                  "seconds": 0.009330000000000001,
+                  "summed_Z_probability": 0.002119931668670207
+                },
+                "4": {
+                  "seconds": 0.009330000000000001,
+                  "summed_Z_probability": 0.0021199315033899662
+                },
+                "5": {
+                  "seconds": 0.009330000000000001,
+                  "summed_Z_probability": 0.0021199310075492445
+                },
+                "6": {
+                  "seconds": 0.009330000000000001,
+                  "summed_Z_probability": 0.0021199301811480405
+                }
+              }
+            }
+          }
+        ],
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "no_rejection_resources": {
+        "location_counts": {
+          "reset": 16,
+          "idle": 214,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": 0.00872,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.001962763632908404
+          },
+          "1": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.001962765285710811
+          },
+          "2": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.0019627662773922553
+          },
+          "3": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.0019627666079527367
+          },
+          "4": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.0019627662773922553
+          },
+          "5": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.001962765285710811
+          },
+          "6": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.001962763632908404
+          }
+        }
+      },
+      "all_reserved_locations": {
+        "location_counts": {
+          "reset": 64,
+          "idle": 634,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": 0.016294999999999997,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.016214999999999997,
+            "summed_Z_probability": 0.0036842134641594734
+          },
+          "1": {
+            "seconds": 0.016214999999999997,
+            "summed_Z_probability": 0.0036842151169618805
+          },
+          "2": {
+            "seconds": 0.016215,
+            "summed_Z_probability": 0.003684216108643326
+          },
+          "3": {
+            "seconds": 0.016215,
+            "summed_Z_probability": 0.0036842164392038067
+          },
+          "4": {
+            "seconds": 0.016215,
+            "summed_Z_probability": 0.003684216108643326
+          },
+          "5": {
+            "seconds": 0.016214999999999997,
+            "summed_Z_probability": 0.0036842151169618805
+          },
+          "6": {
+            "seconds": 0.016214999999999997,
+            "summed_Z_probability": 0.0036842134641594734
+          }
+        }
+      },
+      "max_attempts": 4
+    },
+    "c7_Z_FIRST": {
+      "preset": "JONES_MURALI_2026",
+      "policy": "SEQ",
+      "half_order": "Z_FIRST",
+      "half_sequence": [
+        "Z",
+        "X"
+      ],
+      "check_signature": "28795a040773b8f76366d335182ce6fa617b940f25e5457c3da781dafd80874d",
+      "checks": {
+        "catalog": "positive preset payloads",
+        "counts": {
+          "noiseless_runs": 2,
+          "cross_check_runs": 7700,
+          "first_attempt_or_extraction_fault_runs": 1604,
+          "retry_only_fault_runs": 3024,
+          "conditioned_retry_fault_runs": 3024,
+          "expected_conditioned_aborts": 416,
+          "incoming_single_error_runs": 42,
+          "physical_abort_policy_runs": 4
+        },
+        "fault_runs_by_part": {
+          "prep_0/initial_resets": 224,
+          "prep_0/encoder": 1176,
+          "prep_0/verification": 480,
+          "prep_0/verification_readout": 120,
+          "Z_coupling": 258,
+          "Z_ancilla_readout": 40,
+          "prep_+/initial_resets": 256,
+          "prep_+/encoder": 1176,
+          "prep_+/verification": 480,
+          "prep_+/verification_readout": 120,
+          "X_coupling": 258,
+          "X_ancilla_readout": 40
+        },
+        "single_fault_failures": 0,
+        "incoming_failures": 0,
+        "conditioned_nonabort_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "noiseless": [
+          {
+            "basis": "0",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          },
+          {
+            "basis": "+",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          }
+        ],
+        "physical_abort_checks": [
+          {
+            "half": 0,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "idle": 280,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": 0.00502,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": {
+                "0": {
+                  "seconds": 0.005020000000000001,
+                  "summed_Z_probability": 0.0011408163224693802
+                },
+                "1": {
+                  "seconds": 0.005020000000000001,
+                  "summed_Z_probability": 0.0011408163224693802
+                },
+                "2": {
+                  "seconds": 0.005020000000000001,
+                  "summed_Z_probability": 0.0011408163224693802
+                },
+                "3": {
+                  "seconds": 0.005020000000000001,
+                  "summed_Z_probability": 0.0011408163224693802
+                },
+                "4": {
+                  "seconds": 0.005020000000000001,
+                  "summed_Z_probability": 0.0011408163224693802
+                },
+                "5": {
+                  "seconds": 0.005020000000000001,
+                  "summed_Z_probability": 0.0011408163224693802
+                },
+                "6": {
+                  "seconds": 0.005020000000000001,
+                  "summed_Z_probability": 0.0011408163224693802
+                }
+              }
+            }
+          },
+          {
+            "half": 0,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "idle": 280,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": 0.00502,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": {
+                "0": {
+                  "seconds": 0.005020000000000001,
+                  "summed_Z_probability": 0.0011408163224693802
+                },
+                "1": {
+                  "seconds": 0.005020000000000001,
+                  "summed_Z_probability": 0.0011408163224693802
+                },
+                "2": {
+                  "seconds": 0.005020000000000001,
+                  "summed_Z_probability": 0.0011408163224693802
+                },
+                "3": {
+                  "seconds": 0.005020000000000001,
+                  "summed_Z_probability": 0.0011408163224693802
+                },
+                "4": {
+                  "seconds": 0.005020000000000001,
+                  "summed_Z_probability": 0.0011408163224693802
+                },
+                "5": {
+                  "seconds": 0.005020000000000001,
+                  "summed_Z_probability": 0.0011408163224693802
+                },
+                "6": {
+                  "seconds": 0.005020000000000001,
+                  "summed_Z_probability": 0.0011408163224693802
+                }
+              }
+            }
+          },
+          {
+            "half": 1,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "idle": 387,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": 0.009450000000000002,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": {
+                "0": {
+                  "seconds": 0.009410000000000002,
+                  "summed_Z_probability": 0.0021380998934284598
+                },
+                "1": {
+                  "seconds": 0.009410000000000002,
+                  "summed_Z_probability": 0.0021381007198296633
+                },
+                "2": {
+                  "seconds": 0.009410000000000002,
+                  "summed_Z_probability": 0.0021381012156703855
+                },
+                "3": {
+                  "seconds": 0.009410000000000002,
+                  "summed_Z_probability": 0.002138101380950626
+                },
+                "4": {
+                  "seconds": 0.009410000000000002,
+                  "summed_Z_probability": 0.0021381012156703855
+                },
+                "5": {
+                  "seconds": 0.009410000000000002,
+                  "summed_Z_probability": 0.0021381007198296633
+                },
+                "6": {
+                  "seconds": 0.009410000000000002,
+                  "summed_Z_probability": 0.0021380998934284598
+                }
+              }
+            }
+          },
+          {
+            "half": 1,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "idle": 387,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": 0.009450000000000002,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": {
+                "0": {
+                  "seconds": 0.009410000000000002,
+                  "summed_Z_probability": 0.0021380998934284598
+                },
+                "1": {
+                  "seconds": 0.009410000000000002,
+                  "summed_Z_probability": 0.0021381007198296633
+                },
+                "2": {
+                  "seconds": 0.009410000000000002,
+                  "summed_Z_probability": 0.0021381012156703855
+                },
+                "3": {
+                  "seconds": 0.009410000000000002,
+                  "summed_Z_probability": 0.002138101380950626
+                },
+                "4": {
+                  "seconds": 0.009410000000000002,
+                  "summed_Z_probability": 0.0021381012156703855
+                },
+                "5": {
+                  "seconds": 0.009410000000000002,
+                  "summed_Z_probability": 0.0021381007198296633
+                },
+                "6": {
+                  "seconds": 0.009410000000000002,
+                  "summed_Z_probability": 0.0021380998934284598
+                }
+              }
+            }
+          }
+        ],
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "no_rejection_resources": {
+        "location_counts": {
+          "reset": 16,
+          "idle": 214,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": 0.008720000000000002,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.001962763632908404
+          },
+          "1": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.001962765285710811
+          },
+          "2": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.0019627662773922553
+          },
+          "3": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.0019627666079527362
+          },
+          "4": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.0019627662773922553
+          },
+          "5": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.001962765285710811
+          },
+          "6": {
+            "seconds": 0.008640000000000002,
+            "summed_Z_probability": 0.001962763632908404
+          }
+        }
+      },
+      "all_reserved_locations": {
+        "location_counts": {
+          "reset": 64,
+          "idle": 634,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": 0.016295,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.016215000000000004,
+            "summed_Z_probability": 0.0036842134641594743
+          },
+          "1": {
+            "seconds": 0.016215000000000004,
+            "summed_Z_probability": 0.0036842151169618823
+          },
+          "2": {
+            "seconds": 0.016215000000000004,
+            "summed_Z_probability": 0.0036842161086433262
+          },
+          "3": {
+            "seconds": 0.016215000000000004,
+            "summed_Z_probability": 0.003684216439203807
+          },
+          "4": {
+            "seconds": 0.016215000000000004,
+            "summed_Z_probability": 0.0036842161086433262
+          },
+          "5": {
+            "seconds": 0.016215000000000004,
+            "summed_Z_probability": 0.003684215116961882
+          },
+          "6": {
+            "seconds": 0.016215000000000004,
+            "summed_Z_probability": 0.0036842134641594743
+          }
+        }
+      },
+      "max_attempts": 4
+    },
+    "c8_X_FIRST": {
+      "preset": "JONES_MURALI_2026",
+      "policy": "PAR_MR",
+      "half_order": "X_FIRST",
+      "half_sequence": [
+        "X",
+        "Z"
+      ],
+      "check_signature": "2bad64a09efbc6a03a3e9037be377a83a62aa6d188ef36844114cbe420159ae1",
+      "checks": {
+        "catalog": "positive preset payloads",
+        "counts": {
+          "noiseless_runs": 2,
+          "cross_check_runs": 7592,
+          "first_attempt_or_extraction_fault_runs": 1568,
+          "retry_only_fault_runs": 2988,
+          "conditioned_retry_fault_runs": 2988,
+          "expected_conditioned_aborts": 410,
+          "incoming_single_error_runs": 42,
+          "physical_abort_policy_runs": 4
+        },
+        "fault_runs_by_part": {
+          "prep_+/initial_resets": 224,
+          "prep_+/encoder": 1176,
+          "prep_+/verification": 480,
+          "prep_+/verification_readout": 120,
+          "X_coupling": 258,
+          "X_ancilla_readout": 28,
+          "prep_0/initial_resets": 208,
+          "prep_0/encoder": 1176,
+          "prep_0/verification": 480,
+          "prep_0/verification_readout": 120,
+          "Z_coupling": 258,
+          "Z_ancilla_readout": 28
+        },
+        "single_fault_failures": 0,
+        "incoming_failures": 0,
+        "conditioned_nonabort_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "noiseless": [
+          {
+            "basis": "0",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          },
+          {
+            "basis": "+",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          }
+        ],
+        "physical_abort_checks": [
+          {
+            "half": 0,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "idle": 264,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": 0.0036,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": {
+                "0": {
+                  "seconds": 0.0035999999999999995,
+                  "summed_Z_probability": 0.0008181231746521481
+                },
+                "1": {
+                  "seconds": 0.0035999999999999995,
+                  "summed_Z_probability": 0.0008181231746521481
+                },
+                "2": {
+                  "seconds": 0.0035999999999999995,
+                  "summed_Z_probability": 0.0008181231746521481
+                },
+                "3": {
+                  "seconds": 0.0035999999999999995,
+                  "summed_Z_probability": 0.0008181231746521481
+                },
+                "4": {
+                  "seconds": 0.0035999999999999995,
+                  "summed_Z_probability": 0.0008181231746521481
+                },
+                "5": {
+                  "seconds": 0.0035999999999999995,
+                  "summed_Z_probability": 0.0008181231746521481
+                },
+                "6": {
+                  "seconds": 0.0035999999999999995,
+                  "summed_Z_probability": 0.0008181231746521481
+                }
+              }
+            }
+          },
+          {
+            "half": 0,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "idle": 264,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": 0.0036,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": {
+                "0": {
+                  "seconds": 0.0035999999999999995,
+                  "summed_Z_probability": 0.0008181231746521481
+                },
+                "1": {
+                  "seconds": 0.0035999999999999995,
+                  "summed_Z_probability": 0.0008181231746521481
+                },
+                "2": {
+                  "seconds": 0.0035999999999999995,
+                  "summed_Z_probability": 0.0008181231746521481
+                },
+                "3": {
+                  "seconds": 0.0035999999999999995,
+                  "summed_Z_probability": 0.0008181231746521481
+                },
+                "4": {
+                  "seconds": 0.0035999999999999995,
+                  "summed_Z_probability": 0.0008181231746521481
+                },
+                "5": {
+                  "seconds": 0.0035999999999999995,
+                  "summed_Z_probability": 0.0008181231746521481
+                },
+                "6": {
+                  "seconds": 0.0035999999999999995,
+                  "summed_Z_probability": 0.0008181231746521481
+                }
+              }
+            }
+          },
+          {
+            "half": 1,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "idle": 369,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": 0.00516,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": {
+                "0": {
+                  "seconds": 0.00512,
+                  "summed_Z_probability": 0.0011635526516993954
+                },
+                "1": {
+                  "seconds": 0.00512,
+                  "summed_Z_probability": 0.001163553478100599
+                },
+                "2": {
+                  "seconds": 0.00512,
+                  "summed_Z_probability": 0.001163553973941321
+                },
+                "3": {
+                  "seconds": 0.00512,
+                  "summed_Z_probability": 0.0011635541392215616
+                },
+                "4": {
+                  "seconds": 0.00512,
+                  "summed_Z_probability": 0.001163553973941321
+                },
+                "5": {
+                  "seconds": 0.00512,
+                  "summed_Z_probability": 0.001163553478100599
+                },
+                "6": {
+                  "seconds": 0.00512,
+                  "summed_Z_probability": 0.0011635526516993954
+                }
+              }
+            }
+          },
+          {
+            "half": 1,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "idle": 369,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": 0.00516,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": {
+                "0": {
+                  "seconds": 0.00512,
+                  "summed_Z_probability": 0.0011635526516993954
+                },
+                "1": {
+                  "seconds": 0.00512,
+                  "summed_Z_probability": 0.001163553478100599
+                },
+                "2": {
+                  "seconds": 0.00512,
+                  "summed_Z_probability": 0.001163553973941321
+                },
+                "3": {
+                  "seconds": 0.00512,
+                  "summed_Z_probability": 0.0011635541392215616
+                },
+                "4": {
+                  "seconds": 0.00512,
+                  "summed_Z_probability": 0.001163553973941321
+                },
+                "5": {
+                  "seconds": 0.00512,
+                  "summed_Z_probability": 0.001163553478100599
+                },
+                "6": {
+                  "seconds": 0.00512,
+                  "summed_Z_probability": 0.0011635526516993954
+                }
+              }
+            }
+          }
+        ],
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "no_rejection_resources": {
+        "location_counts": {
+          "reset": 16,
+          "idle": 196,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": 0.0031599999999999996,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.00308,
+            "summed_Z_probability": 0.0006999482001144024
+          },
+          "1": {
+            "seconds": 0.00308,
+            "summed_Z_probability": 0.0006999498529168097
+          },
+          "2": {
+            "seconds": 0.00308,
+            "summed_Z_probability": 0.0006999508445982537
+          },
+          "3": {
+            "seconds": 0.0030799999999999994,
+            "summed_Z_probability": 0.000699951175158735
+          },
+          "4": {
+            "seconds": 0.00308,
+            "summed_Z_probability": 0.0006999508445982537
+          },
+          "5": {
+            "seconds": 0.00308,
+            "summed_Z_probability": 0.0006999498529168097
+          },
+          "6": {
+            "seconds": 0.00308,
+            "summed_Z_probability": 0.0006999482001144024
+          }
+        }
+      },
+      "all_reserved_locations": {
+        "location_counts": {
+          "reset": 64,
+          "idle": 598,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": 0.008544999999999999,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.008465000000000004,
+            "summed_Z_probability": 0.0019237244948351597
+          },
+          "1": {
+            "seconds": 0.008465000000000004,
+            "summed_Z_probability": 0.0019237261476375673
+          },
+          "2": {
+            "seconds": 0.008465000000000004,
+            "summed_Z_probability": 0.0019237271393190113
+          },
+          "3": {
+            "seconds": 0.008465000000000004,
+            "summed_Z_probability": 0.0019237274698794928
+          },
+          "4": {
+            "seconds": 0.008465000000000004,
+            "summed_Z_probability": 0.0019237271393190113
+          },
+          "5": {
+            "seconds": 0.008465000000000004,
+            "summed_Z_probability": 0.0019237261476375673
+          },
+          "6": {
+            "seconds": 0.008465000000000004,
+            "summed_Z_probability": 0.0019237244948351597
+          }
+        }
+      },
+      "max_attempts": 4
+    },
+    "c8_Z_FIRST": {
+      "preset": "JONES_MURALI_2026",
+      "policy": "PAR_MR",
+      "half_order": "Z_FIRST",
+      "half_sequence": [
+        "Z",
+        "X"
+      ],
+      "check_signature": "b6e41ea2e5e54c9667690c1793288e9a12193a0aad7620b44fb6128b2bc80e2d",
+      "checks": {
+        "catalog": "positive preset payloads",
+        "counts": {
+          "noiseless_runs": 2,
+          "cross_check_runs": 7592,
+          "first_attempt_or_extraction_fault_runs": 1568,
+          "retry_only_fault_runs": 2988,
+          "conditioned_retry_fault_runs": 2988,
+          "expected_conditioned_aborts": 410,
+          "incoming_single_error_runs": 42,
+          "physical_abort_policy_runs": 4
+        },
+        "fault_runs_by_part": {
+          "prep_0/initial_resets": 208,
+          "prep_0/encoder": 1176,
+          "prep_0/verification": 480,
+          "prep_0/verification_readout": 120,
+          "Z_coupling": 258,
+          "Z_ancilla_readout": 28,
+          "prep_+/initial_resets": 224,
+          "prep_+/encoder": 1176,
+          "prep_+/verification": 480,
+          "prep_+/verification_readout": 120,
+          "X_coupling": 258,
+          "X_ancilla_readout": 28
+        },
+        "single_fault_failures": 0,
+        "incoming_failures": 0,
+        "conditioned_nonabort_failures": 0,
+        "frame_tableau_mismatches": 0,
+        "noiseless": [
+          {
+            "basis": "0",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          },
+          {
+            "basis": "+",
+            "logical_preserved": true,
+            "trivial_syndromes": true
+          }
+        ],
+        "physical_abort_checks": [
+          {
+            "half": 0,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "idle": 272,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": 0.00358,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": {
+                "0": {
+                  "seconds": 0.00358,
+                  "summed_Z_probability": 0.000813578551642194
+                },
+                "1": {
+                  "seconds": 0.00358,
+                  "summed_Z_probability": 0.000813578551642194
+                },
+                "2": {
+                  "seconds": 0.00358,
+                  "summed_Z_probability": 0.000813578551642194
+                },
+                "3": {
+                  "seconds": 0.00358,
+                  "summed_Z_probability": 0.000813578551642194
+                },
+                "4": {
+                  "seconds": 0.00358,
+                  "summed_Z_probability": 0.000813578551642194
+                },
+                "5": {
+                  "seconds": 0.00358,
+                  "summed_Z_probability": 0.000813578551642194
+                },
+                "6": {
+                  "seconds": 0.00358,
+                  "summed_Z_probability": 0.000813578551642194
+                }
+              }
+            }
+          },
+          {
+            "half": 0,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 32,
+                "idle": 272,
+                "2q": 44,
+                "measurement": 4
+              },
+              "duration_seconds": 0.00358,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": {
+                "0": {
+                  "seconds": 0.00358,
+                  "summed_Z_probability": 0.000813578551642194
+                },
+                "1": {
+                  "seconds": 0.00358,
+                  "summed_Z_probability": 0.000813578551642194
+                },
+                "2": {
+                  "seconds": 0.00358,
+                  "summed_Z_probability": 0.000813578551642194
+                },
+                "3": {
+                  "seconds": 0.00358,
+                  "summed_Z_probability": 0.000813578551642194
+                },
+                "4": {
+                  "seconds": 0.00358,
+                  "summed_Z_probability": 0.000813578551642194
+                },
+                "5": {
+                  "seconds": 0.00358,
+                  "summed_Z_probability": 0.000813578551642194
+                },
+                "6": {
+                  "seconds": 0.00358,
+                  "summed_Z_probability": 0.000813578551642194
+                }
+              }
+            }
+          },
+          {
+            "half": 1,
+            "basis": "0",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "idle": 363,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": 0.00518,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": {
+                "0": {
+                  "seconds": 0.00514,
+                  "summed_Z_probability": 0.0011680972747093493
+                },
+                "1": {
+                  "seconds": 0.00514,
+                  "summed_Z_probability": 0.0011680981011105529
+                },
+                "2": {
+                  "seconds": 0.00514,
+                  "summed_Z_probability": 0.0011680985969512749
+                },
+                "3": {
+                  "seconds": 0.00514,
+                  "summed_Z_probability": 0.0011680987622315155
+                },
+                "4": {
+                  "seconds": 0.00514,
+                  "summed_Z_probability": 0.0011680985969512749
+                },
+                "5": {
+                  "seconds": 0.00514,
+                  "summed_Z_probability": 0.0011680981011105529
+                },
+                "6": {
+                  "seconds": 0.00514,
+                  "summed_Z_probability": 0.0011680972747093493
+                }
+              }
+            }
+          },
+          {
+            "half": 1,
+            "basis": "+",
+            "aborted": true,
+            "counts_as_logical_failure": true,
+            "resources": {
+              "location_counts": {
+                "reset": 40,
+                "idle": 363,
+                "2q": 62,
+                "measurement": 12
+              },
+              "duration_seconds": 0.00518,
+              "ion_count": 15,
+              "idle_exposure_per_data_qubit": {
+                "0": {
+                  "seconds": 0.00514,
+                  "summed_Z_probability": 0.0011680972747093493
+                },
+                "1": {
+                  "seconds": 0.00514,
+                  "summed_Z_probability": 0.0011680981011105529
+                },
+                "2": {
+                  "seconds": 0.00514,
+                  "summed_Z_probability": 0.0011680985969512749
+                },
+                "3": {
+                  "seconds": 0.00514,
+                  "summed_Z_probability": 0.0011680987622315155
+                },
+                "4": {
+                  "seconds": 0.00514,
+                  "summed_Z_probability": 0.0011680985969512749
+                },
+                "5": {
+                  "seconds": 0.00514,
+                  "summed_Z_probability": 0.0011680981011105529
+                },
+                "6": {
+                  "seconds": 0.00514,
+                  "summed_Z_probability": 0.0011680972747093493
+                }
+              }
+            }
+          }
+        ],
+        "failure_details": [],
+        "mismatch_details": []
+      },
+      "no_rejection_resources": {
+        "location_counts": {
+          "reset": 16,
+          "idle": 196,
+          "2q": 36,
+          "measurement": 16
+        },
+        "duration_seconds": 0.00316,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.0030800000000000003,
+            "summed_Z_probability": 0.0006999482001144024
+          },
+          "1": {
+            "seconds": 0.0030800000000000003,
+            "summed_Z_probability": 0.0006999498529168096
+          },
+          "2": {
+            "seconds": 0.0030800000000000003,
+            "summed_Z_probability": 0.0006999508445982537
+          },
+          "3": {
+            "seconds": 0.00308,
+            "summed_Z_probability": 0.000699951175158735
+          },
+          "4": {
+            "seconds": 0.0030800000000000003,
+            "summed_Z_probability": 0.0006999508445982537
+          },
+          "5": {
+            "seconds": 0.0030800000000000003,
+            "summed_Z_probability": 0.0006999498529168097
+          },
+          "6": {
+            "seconds": 0.0030800000000000003,
+            "summed_Z_probability": 0.0006999482001144024
+          }
+        }
+      },
+      "all_reserved_locations": {
+        "location_counts": {
+          "reset": 64,
+          "idle": 598,
+          "2q": 102,
+          "measurement": 22
+        },
+        "duration_seconds": 0.008544999999999999,
+        "ion_count": 15,
+        "idle_exposure_per_data_qubit": {
+          "0": {
+            "seconds": 0.008465000000000002,
+            "summed_Z_probability": 0.0019237244948351595
+          },
+          "1": {
+            "seconds": 0.008465000000000002,
+            "summed_Z_probability": 0.001923726147637567
+          },
+          "2": {
+            "seconds": 0.008465000000000002,
+            "summed_Z_probability": 0.001923727139319011
+          },
+          "3": {
+            "seconds": 0.008465000000000002,
+            "summed_Z_probability": 0.0019237274698794926
+          },
+          "4": {
+            "seconds": 0.008465000000000002,
+            "summed_Z_probability": 0.001923727139319011
+          },
+          "5": {
+            "seconds": 0.008465000000000002,
+            "summed_Z_probability": 0.001923726147637567
+          },
+          "6": {
+            "seconds": 0.008465000000000002,
+            "summed_Z_probability": 0.0019237244948351595
+          }
+        }
+      },
+      "max_attempts": 4
+    }
+  },
+  "complete": true
+}

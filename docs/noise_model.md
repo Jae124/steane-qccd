@@ -929,3 +929,75 @@ The nominal cap is `max_attempts = 4`. Run the cap-sensitivity check with
 until verification accepts, without a finite-cap abort. Rejected attempts still
 contribute their complete time, fault locations and data waiting. These are
 future-stage requirements; no B2/B3 experiment is run by this B1 clarification.
+
+## Stage B2: full extraction and waiting data
+
+The fixed B1 published circuits are embedded without modification. Seven data
+ions (0..6) are live on entry to every preparation. The block on 7..13 and
+verifier 14 are reset for each attempt, with no reset of data. Each data ion
+receives the complete preparation elapsed time as idle exposure, split at the
+same reset/encoder/verification/readout boundaries as B1. This holds for all
+rejected attempts and for the last rejected attempt of an aborted preparation.
+The verifier ceases to be live at measurement start, as in the approved model.
+No idle channel is assigned to an ancilla before its reset completes.
+
+The X-error syndrome half uses the verified plus block as target of seven
+serial data-to-ancilla CNOTs and reads the block in Z. The Z-error syndrome half
+uses the verified zero block as control of seven serial ancilla-to-data CNOTs
+and reads it in X. Both orders (`X_FIRST`, `Z_FIRST`) are implemented. Under
+PAR_MR the seven distinct adjacent ancilla readouts form one layer; under SEQ
+they run serially. Data remain live during the entire readout layer(s). Each
+block ion waits from preparation completion to its CNOT and then to its own
+readout, with the existing measurement live-window convention. Corrections
+are ideal, zero-duration Pauli-frame updates once per extracted component.
+There is no extra time at segment, half or round boundaries.
+
+For either basis, ideal ancilla readout is a random codeword m0 in ker H. A
+Pauli frame changes it by e, so H(m0+e)=H e. Only these three parity bits and
+the deterministic verification bit drive classical decisions. The same frozen
+H and syndrome bit order give the qubit address, so the standard correction is
+q=s-1 for nonzero syndrome s. No flagged table or adjusted decoder is used.
+Independent tableau tests compare H·m, all verification outcomes, actual
+corrections, six residual stabilizer signs and the logical decision after one
+ideal endpoint decode. The six signs and relevant pre-decode logical sign are
+also compared before ideal decoding; raw random bitstrings are not compared.
+
+The nominal `max_attempts = 4` includes the initial attempt. A rejected attempt
+is fully executed and discarded; all its time and physical fault locations
+remain charged. Failure of the fourth verification aborts the round before any
+remaining coupling/half. Aborted trajectories fail both logical-basis scores
+and are absorbing in the memory adapter: subsequent rounds spend no time or
+locations for them. Prepared ancillas are reused only after reset. Single-fault
+checks on noiseless entry cannot execute a later retry-only location; those
+trials are identified separately. Additional conditional-path tests activate
+later attempts using test-only rejection decisions. They compare the complete
+frame/tableau logs and residual correctability, but are not claimed as ordinary
+unconditional single-fault trials. A final conditioned rejection is an expected
+abort, separately counted. Physical verification flips on four consecutive
+attempts separately test exhaustion and abort-as-failure without branch overrides.
+
+No sourced physical numbers were added. Jones–Murali alone has timing; H2 is
+Stage 1 channels only. The schedule remains synthetic and transport stays empty.
+The no-rejection round uses 15 ions, 36 CNOTs, 16 resets and 16 readouts; duration
+is 8.720 ms for SEQ or 3.160 ms for PAR_MR, in either half-order. Each data ion's
+idle time is that elapsed duration minus its two 40-us CNOTs. Exact per-ion
+summed Z probabilities and paths with rejected attempts are reported separately.
+
+### B2 memory smoke validation and B3 boundary
+
+The Steane adapter compiles scalar Pauli propagation through each Clifford
+segment. It carries data frames and an alive mask through the unchanged A3
+memory driver. Sparse per-location Bernoulli samples and conditional payloads
+use the original channels. Only verification parity controls retry execution.
+An absorbing aborted shot does not resume or accrue later costs. Explicit
+multi-round tests retain a persistent tableau, with no intermediate ideal decode,
+and compare it with carried scalar and batch frames after each physical round.
+
+Per the user's clarification, B2 runs only 50k-trajectory integration smoke
+checks for each half-order and Jones–Murali policy at R=1 and R=4. They establish
+that the driver runs, frames carry, aborts are scored and attempt timing agrees
+with B1. Only pass/fail, resource sanity and observed abort counts are reported;
+no p_L, epsilon, p_eff, P2 or design contrast is inferred from these samples.
+Epsilon_tot, its abort share and Jones–Murali SEQ performance sensitivity at
+max_attempts in {2,4,infinity} are deferred to B3. B2 validates the finite nominal
+cap logic and reports observed round aborts from correctness/smoke execution.

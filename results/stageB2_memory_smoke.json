@@ -1,0 +1,530 @@
+{
+  "stage": "B2",
+  "purpose": "A3 driver/Steane adapter integration smoke test only; no performance estimate, fit or comparison.",
+  "simulation_fingerprint": "bca267ff665801ed308a8bafc730e761ad430a0036d770fdf8081478deec75fb",
+  "harness_fingerprint": "f665fd1cbcaa17685158e162444cdaf92ab146c4af46da7a4a1f49f2c51a4074",
+  "approved_artifacts": {
+    "artifact_count": 225,
+    "all_byte_identical": true,
+    "mismatches": []
+  },
+  "rows": {
+    "X_FIRST_SEQ": {
+      "persistent_cross_check": {
+        "trajectories_per_basis": 32,
+        "rounds": 4,
+        "frame_scalar_comparisons": 250,
+        "persistent_tableau_comparisons": 250,
+        "forced_rejection_seen": true,
+        "forced_abort_scored_in_both_bases": true,
+        "nonzero_frames_carried": true,
+        "mismatches": 0,
+        "status": "PASS"
+      },
+      "smoke": [
+        {
+          "rounds": 1,
+          "trajectories": 50000,
+          "seed": 721001,
+          "status": "PASS",
+          "executed_rounds": 50000,
+          "observed_aborts": {
+            "count": 0,
+            "shots": 50000,
+            "probability": 0.0,
+            "stderr": 0.0,
+            "ci95_Wilson": [
+              0,
+              7.682609729729246e-05
+            ]
+          },
+          "elapsed_seconds_all_trajectories": 439.52181,
+          "summed_data_idle_seconds": {
+            "0": 435.5218100000001,
+            "1": 435.5218100000001,
+            "2": 435.5218100000001,
+            "3": 435.5218100000001,
+            "4": 435.5218100000001,
+            "5": 435.5218100000001,
+            "6": 435.5218100000001
+          },
+          "attempts": 102789,
+          "rejections": 2789,
+          "executed_location_counts": {
+            "reset": 822312,
+            "2q": 1830679,
+            "measurement": 802789,
+            "idle": 10895230
+          },
+          "segment_execution_counts": {
+            "('P', 0, 0)": 50000,
+            "('P', 0, 1)": 1402,
+            "('P', 0, 2)": 37,
+            "('P', 0, 3)": 2,
+            "('C', 0, 0)": 50000,
+            "('P', 1, 0)": 50000,
+            "('P', 1, 1)": 1315,
+            "('P', 1, 2)": 32,
+            "('P', 1, 3)": 1,
+            "('C', 1, 0)": 50000
+          },
+          "rejection_cause_counts": {
+            "reset": 2046,
+            "measurement": 107,
+            "2q": 608,
+            "idle": 28,
+            "mixed": 0
+          },
+          "no_crash": true,
+          "absorbing_abort_costs_checked": true,
+          "timing_matches_B1": true
+        },
+        {
+          "rounds": 4,
+          "trajectories": 50000,
+          "seed": 721004,
+          "status": "PASS",
+          "executed_rounds": 200000,
+          "observed_aborts": {
+            "count": 0,
+            "shots": 200000,
+            "probability": 0.0,
+            "stderr": 0.0,
+            "ci95_Wilson": [
+              0,
+              1.92076310598226e-05
+            ]
+          },
+          "elapsed_seconds_all_trajectories": 1757.8949599999999,
+          "summed_data_idle_seconds": {
+            "0": 1741.89496,
+            "1": 1741.89496,
+            "2": 1741.89496,
+            "3": 1741.89496,
+            "4": 1741.89496,
+            "5": 1741.89496,
+            "6": 1741.89496
+          },
+          "attempts": 411005,
+          "rejections": 11005,
+          "executed_location_counts": {
+            "reset": 3288040,
+            "2q": 7321055,
+            "measurement": 3211005,
+            "idle": 43570350
+          },
+          "segment_execution_counts": {
+            "('P', 0, 0)": 200000,
+            "('P', 0, 1)": 5430,
+            "('P', 0, 2)": 143,
+            "('P', 0, 3)": 6,
+            "('C', 0, 0)": 200000,
+            "('P', 1, 0)": 200000,
+            "('P', 1, 1)": 5283,
+            "('P', 1, 2)": 140,
+            "('P', 1, 3)": 3,
+            "('C', 1, 0)": 200000
+          },
+          "rejection_cause_counts": {
+            "reset": 8079,
+            "measurement": 439,
+            "2q": 2403,
+            "idle": 84,
+            "mixed": 0
+          },
+          "no_crash": true,
+          "absorbing_abort_costs_checked": true,
+          "timing_matches_B1": true
+        }
+      ]
+    },
+    "X_FIRST_PAR_MR": {
+      "persistent_cross_check": {
+        "trajectories_per_basis": 32,
+        "rounds": 4,
+        "frame_scalar_comparisons": 250,
+        "persistent_tableau_comparisons": 250,
+        "forced_rejection_seen": true,
+        "forced_abort_scored_in_both_bases": true,
+        "nonzero_frames_carried": true,
+        "mismatches": 0,
+        "status": "PASS"
+      },
+      "smoke": [
+        {
+          "rounds": 1,
+          "trajectories": 50000,
+          "seed": 721011,
+          "status": "PASS",
+          "executed_rounds": 50000,
+          "observed_aborts": {
+            "count": 0,
+            "shots": 50000,
+            "probability": 0.0,
+            "stderr": 0.0,
+            "ci95_Wilson": [
+              0,
+              7.682609729729246e-05
+            ]
+          },
+          "elapsed_seconds_all_trajectories": 160.41803,
+          "summed_data_idle_seconds": {
+            "0": 156.41803,
+            "1": 156.41803,
+            "2": 156.41803,
+            "3": 156.41803,
+            "4": 156.41803,
+            "5": 156.41803,
+            "6": 156.41803
+          },
+          "attempts": 102694,
+          "rejections": 2694,
+          "executed_location_counts": {
+            "reset": 821552,
+            "2q": 1829634,
+            "measurement": 802694,
+            "idle": 9980432
+          },
+          "segment_execution_counts": {
+            "('P', 0, 0)": 50000,
+            "('P', 0, 1)": 1338,
+            "('P', 0, 2)": 39,
+            "('P', 0, 3)": 3,
+            "('C', 0, 0)": 50000,
+            "('P', 1, 0)": 50000,
+            "('P', 1, 1)": 1278,
+            "('P', 1, 2)": 35,
+            "('P', 1, 3)": 1,
+            "('C', 1, 0)": 50000
+          },
+          "rejection_cause_counts": {
+            "reset": 1984,
+            "measurement": 104,
+            "2q": 584,
+            "idle": 22,
+            "mixed": 0
+          },
+          "no_crash": true,
+          "absorbing_abort_costs_checked": true,
+          "timing_matches_B1": true
+        },
+        {
+          "rounds": 4,
+          "trajectories": 50000,
+          "seed": 721014,
+          "status": "PASS",
+          "executed_rounds": 200000,
+          "observed_aborts": {
+            "count": 1,
+            "shots": 200000,
+            "probability": 5e-06,
+            "stderr": 4.999987499984375e-06,
+            "ci95_Wilson": [
+              8.82600616654357e-07,
+              2.8324838366857648e-05
+            ]
+          },
+          "elapsed_seconds_all_trajectories": 641.896115,
+          "summed_data_idle_seconds": {
+            "0": 625.8961549999999,
+            "1": 625.8961549999999,
+            "2": 625.8961549999999,
+            "3": 625.8961549999999,
+            "4": 625.8961549999999,
+            "5": 625.8961549999999,
+            "6": 625.8961549999999
+          },
+          "attempts": 411027,
+          "rejections": 11028,
+          "executed_location_counts": {
+            "reset": 3288216,
+            "2q": 7321290,
+            "measurement": 3211020,
+            "idle": 39938751
+          },
+          "segment_execution_counts": {
+            "('P', 0, 0)": 200000,
+            "('P', 0, 1)": 5387,
+            "('P', 0, 2)": 136,
+            "('P', 0, 3)": 4,
+            "('C', 0, 0)": 200000,
+            "('P', 1, 0)": 200000,
+            "('P', 1, 1)": 5340,
+            "('P', 1, 2)": 156,
+            "('P', 1, 3)": 4,
+            "('C', 1, 0)": 199999
+          },
+          "rejection_cause_counts": {
+            "reset": 8139,
+            "measurement": 408,
+            "2q": 2419,
+            "idle": 62,
+            "mixed": 0
+          },
+          "no_crash": true,
+          "absorbing_abort_costs_checked": true,
+          "timing_matches_B1": true
+        }
+      ]
+    },
+    "Z_FIRST_SEQ": {
+      "persistent_cross_check": {
+        "trajectories_per_basis": 32,
+        "rounds": 4,
+        "frame_scalar_comparisons": 250,
+        "persistent_tableau_comparisons": 250,
+        "forced_rejection_seen": true,
+        "forced_abort_scored_in_both_bases": true,
+        "nonzero_frames_carried": true,
+        "mismatches": 0,
+        "status": "PASS"
+      },
+      "smoke": [
+        {
+          "rounds": 1,
+          "trajectories": 50000,
+          "seed": 721101,
+          "status": "PASS",
+          "executed_rounds": 50000,
+          "observed_aborts": {
+            "count": 0,
+            "shots": 50000,
+            "probability": 0.0,
+            "stderr": 0.0,
+            "ci95_Wilson": [
+              0,
+              7.682609729729246e-05
+            ]
+          },
+          "elapsed_seconds_all_trajectories": 439.44550499999997,
+          "summed_data_idle_seconds": {
+            "0": 435.445505,
+            "1": 435.445505,
+            "2": 435.445505,
+            "3": 435.445505,
+            "4": 435.445505,
+            "5": 435.445505,
+            "6": 435.445505
+          },
+          "attempts": 102729,
+          "rejections": 2729,
+          "executed_location_counts": {
+            "reset": 821832,
+            "2q": 1830019,
+            "measurement": 802729,
+            "idle": 10891030
+          },
+          "segment_execution_counts": {
+            "('P', 0, 0)": 50000,
+            "('P', 0, 1)": 1326,
+            "('P', 0, 2)": 29,
+            "('P', 0, 3)": 0,
+            "('C', 0, 0)": 50000,
+            "('P', 1, 0)": 50000,
+            "('P', 1, 1)": 1336,
+            "('P', 1, 2)": 37,
+            "('P', 1, 3)": 1,
+            "('C', 1, 0)": 50000
+          },
+          "rejection_cause_counts": {
+            "reset": 2014,
+            "measurement": 108,
+            "2q": 586,
+            "idle": 21,
+            "mixed": 0
+          },
+          "no_crash": true,
+          "absorbing_abort_costs_checked": true,
+          "timing_matches_B1": true
+        },
+        {
+          "rounds": 4,
+          "trajectories": 50000,
+          "seed": 721104,
+          "status": "PASS",
+          "executed_rounds": 200000,
+          "observed_aborts": {
+            "count": 0,
+            "shots": 200000,
+            "probability": 0.0,
+            "stderr": 0.0,
+            "ci95_Wilson": [
+              0,
+              1.92076310598226e-05
+            ]
+          },
+          "elapsed_seconds_all_trajectories": 1757.8027749999999,
+          "summed_data_idle_seconds": {
+            "0": 1741.802775,
+            "1": 1741.802775,
+            "2": 1741.802775,
+            "3": 1741.802775,
+            "4": 1741.802775,
+            "5": 1741.802775,
+            "6": 1741.802775
+          },
+          "attempts": 410932,
+          "rejections": 10932,
+          "executed_location_counts": {
+            "reset": 3287456,
+            "2q": 7320252,
+            "measurement": 3210932,
+            "idle": 43565240
+          },
+          "segment_execution_counts": {
+            "('P', 0, 0)": 200000,
+            "('P', 0, 1)": 5249,
+            "('P', 0, 2)": 140,
+            "('P', 0, 3)": 2,
+            "('C', 0, 0)": 200000,
+            "('P', 1, 0)": 200000,
+            "('P', 1, 1)": 5400,
+            "('P', 1, 2)": 138,
+            "('P', 1, 3)": 3,
+            "('C', 1, 0)": 200000
+          },
+          "rejection_cause_counts": {
+            "reset": 7975,
+            "measurement": 410,
+            "2q": 2442,
+            "idle": 105,
+            "mixed": 0
+          },
+          "no_crash": true,
+          "absorbing_abort_costs_checked": true,
+          "timing_matches_B1": true
+        }
+      ]
+    },
+    "Z_FIRST_PAR_MR": {
+      "persistent_cross_check": {
+        "trajectories_per_basis": 32,
+        "rounds": 4,
+        "frame_scalar_comparisons": 250,
+        "persistent_tableau_comparisons": 250,
+        "forced_rejection_seen": true,
+        "forced_abort_scored_in_both_bases": true,
+        "nonzero_frames_carried": true,
+        "mismatches": 0,
+        "status": "PASS"
+      },
+      "smoke": [
+        {
+          "rounds": 1,
+          "trajectories": 50000,
+          "seed": 721111,
+          "status": "PASS",
+          "executed_rounds": 50000,
+          "observed_aborts": {
+            "count": 0,
+            "shots": 50000,
+            "probability": 0.0,
+            "stderr": 0.0,
+            "ci95_Wilson": [
+              0,
+              7.682609729729246e-05
+            ]
+          },
+          "elapsed_seconds_all_trajectories": 160.51922000000002,
+          "summed_data_idle_seconds": {
+            "0": 156.51922000000002,
+            "1": 156.51922000000002,
+            "2": 156.51922000000002,
+            "3": 156.51922000000002,
+            "4": 156.51922000000002,
+            "5": 156.51922000000002,
+            "6": 156.51922000000002
+          },
+          "attempts": 102807,
+          "rejections": 2807,
+          "executed_location_counts": {
+            "reset": 822456,
+            "2q": 1830877,
+            "measurement": 802807,
+            "idle": 9988094
+          },
+          "segment_execution_counts": {
+            "('P', 0, 0)": 50000,
+            "('P', 0, 1)": 1376,
+            "('P', 0, 2)": 39,
+            "('P', 0, 3)": 1,
+            "('C', 0, 0)": 50000,
+            "('P', 1, 0)": 50000,
+            "('P', 1, 1)": 1352,
+            "('P', 1, 2)": 38,
+            "('P', 1, 3)": 1,
+            "('C', 1, 0)": 50000
+          },
+          "rejection_cause_counts": {
+            "reset": 2082,
+            "measurement": 104,
+            "2q": 607,
+            "idle": 14,
+            "mixed": 0
+          },
+          "no_crash": true,
+          "absorbing_abort_costs_checked": true,
+          "timing_matches_B1": true
+        },
+        {
+          "rounds": 4,
+          "trajectories": 50000,
+          "seed": 721114,
+          "status": "PASS",
+          "executed_rounds": 200000,
+          "observed_aborts": {
+            "count": 0,
+            "shots": 200000,
+            "probability": 0.0,
+            "stderr": 0.0,
+            "ci95_Wilson": [
+              0,
+              1.92076310598226e-05
+            ]
+          },
+          "elapsed_seconds_all_trajectories": 641.892065,
+          "summed_data_idle_seconds": {
+            "0": 625.892065,
+            "1": 625.892065,
+            "2": 625.892065,
+            "3": 625.892065,
+            "4": 625.892065,
+            "5": 625.892065,
+            "6": 625.892065
+          },
+          "attempts": 411022,
+          "rejections": 11022,
+          "executed_location_counts": {
+            "reset": 3288176,
+            "2q": 7321242,
+            "measurement": 3211022,
+            "idle": 39938546
+          },
+          "segment_execution_counts": {
+            "('P', 0, 0)": 200000,
+            "('P', 0, 1)": 5414,
+            "('P', 0, 2)": 130,
+            "('P', 0, 3)": 3,
+            "('C', 0, 0)": 200000,
+            "('P', 1, 0)": 200000,
+            "('P', 1, 1)": 5341,
+            "('P', 1, 2)": 131,
+            "('P', 1, 3)": 3,
+            "('C', 1, 0)": 200000
+          },
+          "rejection_cause_counts": {
+            "reset": 8116,
+            "measurement": 410,
+            "2q": 2415,
+            "idle": 81,
+            "mixed": 0
+          },
+          "no_crash": true,
+          "absorbing_abort_costs_checked": true,
+          "timing_matches_B1": true
+        }
+      ]
+    }
+  },
+  "complete": true
+}
